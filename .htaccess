@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Keine Directorys oder Files direkt ansprechen lassen:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?url=$1
+
+# Unsere Variante:
+# ... news/show/22
+# Controller / Methode / Parameter

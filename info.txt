@@ -1,0 +1,41 @@
+Ordnerstruktur
+
+apps/ = beinhaltet alle Applikationen (Backend und Frontend)
+config/ = Konfigurationsdatein
+libs/ = Div. Librarys, Plugins, Hilfsklassen
+models/ = Datenbankmodels - ist fürs Daten Lesen und Schreiben Backend und Frontend haben meistens die selben models
+public/ = Webverzeichnis, Images, CSS, JS, alles öffentliche
+
+index.php = Die Hauptseite, die immer aufgerufen wird
+.htaccess = ModRewrite
+
+CONFIG/PATHS
+
+Hier werden alle Pfade zu den Ordnern definiert und auf eine Konstante gelegt
+
+INDEX.PHP
+
+$url = $_GET['url']; = Der erste Get-Parameter wird auf eine VAR gesetzt.
+$url = explode("/", $url); Der gesamte URL Parameter bereich wird exploded bei jedem "/"
+
+
+require APPS . APP_FRONTEND . APP_CONTROLLERS . $url[0] . '.php'; Der erste Parameter z.B.: "Home" wird required
+
+$app = new $url[0]; // Es wird ein Objekt instanziert mit dem Namen der URL eingabe
+
+if ( !empty($url[1]) ){ // Wenn der 2te Parameter [1] nicht leer ist, wird eine entsprechende Methode required vom Objekt
+    if ( !empty($url[2])){
+        $app->{$url[1]}($url[2]); // $app -> Show($parameter) // Das selbe mit dem 3ten parameter, der selbst nur als Parameter dient
+    }else {
+        $app->{$url[1]}(); // $app -> Show()
+    }
+}
+
+Hausübung 1:
+
+- 2 Seiten anlegen (login & Registrieren)
+- Überlegung bei Login und Registrieren keinen Header und Footer inkludieren
+
+Die Bootstrap bekommt einen Request rein. Sie regelt was sie braucht -> welches Model und welcher Controller und welcher View.
+Schickt einen Request an den Controller, der wiederum vom CoreController erbt. Corecontroller erstellt ein Core-View-Object und ein Model-Object.
+Das Model Objekt holt sich die Daten vom Core-Model.

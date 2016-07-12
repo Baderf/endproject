@@ -1,0 +1,664 @@
+/*!
+ * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.topnav {
+    font-size: 14px;
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+    z-index:91;
+}
+
+.register-steps {
+    text-align: center;
+  }
+.register-steps-text p {
+    margin: 0 50px;
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+    z-index:2;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 3em;
+    }
+
+    ul.banner-social-buttons > li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+p.copyright {
+    margin: 15px 0 0;
+}
+
+@media(min-width:767px) {
+    .navbar {
+        padding: 20px 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .top-nav-collapse {
+        padding: 0;
+    }
+
+    .navbar-header {
+        height: 80px;
+    }
+
+    .navbar-right {
+        margin-top: 15px;
+    }
+}
+
+.navbar-brand {
+      margin: 0;
+}
+
+.top-nav-collapse .navbar-brand {
+    transition: all 0.2s ease-in-out;
+    background: url("../img/logo_pig_medium.png") no-repeat;
+    margin-top: 10px;
+}
+
+.top-nav-collapse {
+    background-color: #222;
+}
+
+
+
+.btn-home {
+  background-color: #e84b20;
+  color: #fff!important;
+  transition: all 0.2s ease-in-out;
+  padding: 13px 20px!important;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.get_started_free .btn-home {
+  margin-left: 30px;
+}
+
+.home_lg_nav .btn-home {
+  margin-left: 30px;
+}
+
+.btn-home:active {
+  background-color: #f56943!important;
+}
+
+.btn-home:focus {
+  background-color: #f56943!important;
+}
+
+.btn-home:hover {
+  background-color: #bd3a15!important;
+  color: #fff!important;
+}
+
+.btn-home-big {
+  font-size: 18px;
+}
+
+.mailpig_text {
+  color: #e84b20;
+  display: inline;
+}
+
+.home_mailpig_text {
+  display: inline;
+  margin-right: 20px;
+}
+
+.home_choose_name input {
+  width: 400px;
+  background-color: rgba(0,0,0,0.3)!important;
+  border-bottom: 1px solid #fff!important;
+  padding: 10px 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.home_choose_name input:focus {
+  outline: none;
+}
+
+.home_prepare .section-heading {
+  margin-bottom: 80px;
+}
+
+.home_prepare .try_out_btn {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+#services {
+  padding-top: 40px;
+}
+
+#login {
+  padding-top: 180px;
+}
+
+#login input {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#login input:focus+i {
+  color: #66afe9;
+}
+
+#login label {
+  opacity: 0;
+}
+
+#login .form-group {
+  width: 400px;
+  margin: 0 auto;
+}
+
+#login i {
+  transition: all 0.2s ease-in-out;
+  color: #959595;
+}
+
+#login .btn-home {
+  margin-top: 40px;
+  width: 400px;
+  margin-bottom: 100px;
+}
+
+
+.btn-twitter {
+  background: #179cd3;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  margin-top: 10px;
+}
+
+.btn-github {
+  background: #000;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+    margin-top: 10px;
+}
+
+.btn-linkedin {
+  background: #175ed3;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+    margin-top: 10px;
+}
+
+
+.contact_form h3 {
+  margin-bottom: 30px;
+}
+
+.form-transparent {
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 4px;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.contact_form textarea {
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.contact_form textarea:focus {
+  outline: none;
+  color: #fff;
+}
+
+.contact_form input {
+  width: 400px;
+  margin: 0 auto;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+}
+
+.contact_form .btn-home {
+  margin-top: 30px;
+  right: 0;
+}
+
+.submit-section {
+  text-align: right;
+}
+
+.contact_form input:hover {
+  color: #c3c2c2!important;
+}
+
+.contact_form input::-webkit-input-placeholder {
+   color: #959595;
+}
+
+.contact_form input:focus::-webkit-input-placeholder {
+   color: #fff;
+}
+
+.contact_form input:-moz-placeholder { /* Firefox 18- */
+   color: #959595;
+}
+
+.contact_form input::-moz-placeholder {  /* Firefox 19+ */
+   color: #959595;
+}
+
+.contact_form input:-ms-input-placeholder {
+   color: #959595;
+}
+
+.contact_form input:focus {
+  border-color: #e84b20;
+}
+
+.contact_form input:focus+i {
+  color: #fff;
+}
+
+.contact_form label {
+  opacity: 0;
+}
+
+.contact_form .form-group {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.contact_form i {
+  transition: all 0.2s ease-in-out;
+  color: #959595;
+}
+
+.list-inline a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer_nav {
+  position: relative;
+}
+
+.footer-nav .logo {
+  background-image: url("../img/logo_long.png");
+  padding: 40px 80px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -60px;
+  right: 0;
+  color: rgba(0,0,0,0);
+
+}
+
+.footer-nav .logo:hover,
+.footer-nav .logo:focus {
+  background-color: rgba(0,0,0,0)!important;
+}
+
+@media(max-width:1199px) {
+    .register-steps img {
+        max-width: 120px;
+    }
+    .register-steps-text p {
+      margin: 0 20px;
+    }
+
+    .try_out_btn .btn-home {
+      margin-top: 40px;
+    }
+
+    .communitys h3 {
+      font-size: 20px;
+    }
+
+    .banner-social-buttons .btn span {
+      display: none;
+    }
+    ul.banner-social-buttons {
+      margin-top: 0;
+    }
+
+    .socialmedia ul {
+      width: 100%;
+      text-align: right;
+    }
+
+
+}
+
+.choose_username {
+  background:none;
+  border:none;
+  text-align: center;
+}
+
+
+@media(max-width:767px) {
+  .register-steps .register-step{
+    margin-bottom: ;
+    padding: 20px;
+  }
+
+  .register-steps .register-step:first-child {
+    background-color: #ededed;
+  }
+  .register-steps .register-step:nth-child(2){
+    background-color: #e3e3e3;
+  }
+  .register-steps .register-step:nth-child(3) {
+    background-color: #cdcdcd;
+  }
+
+  .home_prepare .try_out_btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .register-steps .btn-home {
+    margin-top: 10px;
+  }
+
+  #login {
+    padding-top: 40px;
+  }
+
+  #login input {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #login input:focus+i {
+    color: #66afe9;
+  }
+
+  #login label {
+    opacity: 0;
+  }
+
+  #login .form-group {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #login i {
+    transition: all 0.2s ease-in-out;
+    color: #959595;
+  }
+
+  #login .btn-home {
+    margin-top: 40px;
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .communitys h3 {
+    font-size: 14px;
+  }
+
+  .socialmedia ul li {
+    display: inline;
+    text-align: right;
+  }
+
+  .socialmedia .btn {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+  }
+
+  .form-transparent {
+      background-color: rgba(0,0,0,0.8);
+      border-radius: 4px;
+      padding: 20px;
+      width: 90%!important;
+      margin: 0 auto;
+      margin-top: 50px;
+  }
+
+  .contact_form textarea {
+      width: 100%;
+      height: 80px;
+      color: #fff;
+      background: none;
+      border: none;
+      border-bottom: 1px solid white;
+  }
+
+  .contact_form textarea:focus {
+    outline: none;
+    color: #fff;
+  }
+
+  .contact_form input {
+    width: 100%;
+    margin: 0 auto;
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+  }
+
+  .contact_form .form-group {
+    width: 100%;
+  }
+
+  .footer-nav .logo {
+    background-image: url("../img/logo_small.png");
+    right: 0;
+    top: -40px;
+    padding: 10px 5px;
+  }
+
+  .home_choose_name input {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  .get_started_free .btn-home {
+    margin-left: 0;
+  }
+
+  #get_started_free {
+    padding: 0;
+    margin: 0;
+    display: inline;
+    background: none;
+    border: none;
+    color: #9d9d9d!important;
+    padding: 10px 15px!important;
+    display: block;
+    text-align: left;
+  }
+
+  .navbar-brand {
+    padding: 20px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  #get_started_free:hover {
+    color: #fff!important;
+    background: none!important;
+  }
+
+  #get_started_free:focus {
+    color: #fff!important;
+    background: none!important;
+  }
+
+}
+
+
+
+
+
+/*
+
+Eingeloggter Bereich:
+
+*/
+
+/* HEADER */

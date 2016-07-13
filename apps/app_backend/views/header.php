@@ -25,6 +25,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <base href="<?php echo APP_ROOT . APPS . CURRENT_APP ?>">
     <![endif]-->
 
 </head>
@@ -91,12 +92,16 @@
                 }else {
                     echo "<li class='$val'>";
                 }
+
+                $link = APP_ROOT . $url[0] . '/' . $val;
                 echo "<i class=\"icon icon_$val\"></i>";
-                echo "<a href=\"$val\" class=\"nav-btn\">$key</a>";
+                echo "<a href=\"$link\" class=\"nav-btn\">$key</a>";
+
 
             }
-            
             ?>
+
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="logout">

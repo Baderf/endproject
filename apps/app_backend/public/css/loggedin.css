@@ -17,6 +17,15 @@ main classes
 
 }
 
+.btn-right-area {
+    text-align: right;
+}
+
+.btn-left-area {
+    text-align: left;
+}
+
+
 .btn-primary {
   background-color: #e84b20!important;
 }
@@ -771,7 +780,7 @@ Statistic
 }
 
 .edit_event {
-  display: none;
+
 }
 
 .my_events_event {
@@ -1068,4 +1077,35 @@ Statistic
   .design_menu>span {
     margin-top: 17px;
   }
+}
+
+/*
+EDIT EVENT
+*/
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 15px;
+}
+
+.event_edit {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.event_edit label{
+    opacity: 1;
+}
+
+.event_edit .btn-right-area .btn {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.event_edit select {
+    border-radius: 0;
 }

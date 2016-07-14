@@ -64,28 +64,59 @@
 
                             <div class="col-lg-8 col-md-8 form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="eventdate_to">Date:</label>
-                                <input class="form-control" name="eventdate_to" type="date" id="eventdate_to" placeholder="Your event title...">
-                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                <div class='input-group date' id='datetimepicker_edit_from'>
+
+                                    <input type='text' name="eventdate_from" id="eventdate_from" class="form-control" value="" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-4 form-group has-feedback has-feedback-left">
-                                <label class="control-label" for="eventtime_to">Time:</label>
-                                <input class="form-control" name="eventtime_to" type="time" id="eventtime_to" placeholder="Your event title...">
-                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                <label class="control-label" for="eventtime_from">Time:</label>
+                                <div class="form-group">
+                                    <div class='input-group date' id='timepicker_from'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-lg-8 col-md-8">
+
+
+
+                            </div>
+                            
 
 
                             <h4>End of Event:</h4>
 
 
                             <div class="col-lg-8 col-md-8 form-group has-feedback has-feedback-left">
-                                <label class="control-label" for="eventdate_from">Date:</label>
-                                <input class="form-control" name="eventdate_from" type="date" id="eventdate_from" placeholder="Your event title...">
-                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                <label class="control-label" for="eventdate_to">Date:</label>
+                                <div class='input-group date' id='datetimepicker_edit_to'>
+
+                                    <input type='text' name="eventdate_to" id="eventdate_to" class="form-control" value=""/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-4 form-group has-feedback has-feedback-left">
-                                <label class="control-label" for="eventtime_from">Time:</label>
-                                <input class="form-control" name="eventtime_from" type="time" id="eventtime_from" placeholder="Your event title...">
-                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                <label class="control-label" for="eventtime_to">Time:</label>
+                                <div class="form-group">
+                                    <div class='input-group date' id='timepicker_to'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-right-area">

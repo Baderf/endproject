@@ -457,6 +457,7 @@ li.logout:hover {
 .date_area_to {
   position: relative;
   overflow: hidden;
+    transition: all 0.2s ease-in-out;
 }
 
 .date_area_from:hover>.hover_date_area,
@@ -464,6 +465,30 @@ li.logout:hover {
   top:0px;
   left: 0px;
 }
+
+.create_event .active{
+    background-color: #e84b20;
+}
+
+
+
+.timepicker-picker, td.day {
+    color: #009688;
+}
+
+.weekend {
+    color: #e5e5e5!important;
+}
+
+.old {
+    color: #b9b9b9!important;
+}
+
+.new {
+    color: #b9b9b9!important;
+}
+
+
 
 .hover_date_area {
   display: block;
@@ -1108,4 +1133,8 @@ EDIT EVENT
 
 .event_edit select {
     border-radius: 0;
+}
+
+.event_edit .input-group-addon {
+    border-left: 1px solid #ccc;
 }

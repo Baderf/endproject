@@ -408,7 +408,7 @@ li.logout:hover {
 
 
 .timepicker-picker table {
-  height: 100%;
+
   padding-bottom: 20px;
 }
 
@@ -421,7 +421,7 @@ li.logout:hover {
 }
 
 .date_area {
-  height: 100%;
+
   padding-right: 0;
   position: relative;
 }
@@ -1137,4 +1137,29 @@ EDIT EVENT
 
 .event_edit .input-group-addon {
     border-left: 1px solid #ccc;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.event_edit_image {
+    width: 100%;
+}
+
+.tab-content {
+    margin-bottom: 140px!important;
 }

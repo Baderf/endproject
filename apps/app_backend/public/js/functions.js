@@ -58,7 +58,7 @@ $(function(){
 
 
             $('#date_from').val(formatted_date);
-            $('#hidden-val').text($('#my_hidden_input').val());
+            //$('#hidden-val').text($('#my_hidden_input').val());
         });
 
     // PICKER TO
@@ -94,13 +94,13 @@ $(function(){
 $(function () {
     $('#datetimepicker_edit_to').datetimepicker({
         viewMode: 'days',
-        format: 'DD/MM/YYYY'
+        format: 'MM/DD/YYYY'
     });
 
 
     $('#datetimepicker_edit_from').datetimepicker({
         viewMode: 'days',
-        format: 'DD/MM/YYYY'
+        format: 'MM/DD/YYYY'
     });
 
     $(function () {

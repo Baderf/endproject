@@ -412,6 +412,10 @@ li.logout:hover {
   padding-bottom: 20px;
 }
 
+.info-box {
+    border-left: 1px solid #e9e9e9;
+}
+
 
 
 
@@ -1162,4 +1166,36 @@ EDIT EVENT
 
 .tab-content {
     margin-bottom: 140px!important;
+}
+
+
+
+/*
+
+FORMULARE
+
+*/
+
+.edit_formular textarea.form-control{
+    border: 1px solid #ccc!important;
+}
+
+.edit_formular label {
+    opacity: 1!important;
+}
+
+.edit_formular .not_active {
+    display: none;
+}
+
+.active_standard_fields tbody tr:first-child .arrow_up {
+    display: none;
+}
+
+.active_standard_fields tbody tr:last-child .arrow_down {
+    display: none;
+}
+
+.deactive_tr td:last-child{
+    display: none;
 }

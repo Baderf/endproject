@@ -115,3 +115,119 @@ $(function () {
         });
     });
 });
+
+
+// EDIT FORMULARS:
+
+
+$(function () {
+    var $formaction_field = $("#formaction");
+
+    var $choose_field_url = $(".choose_url");
+    var $choose_field_mail = $(".choose_mail");
+    var $choose_field_feedback = $(".choose_feedback");
+
+    $formaction_field.on("change", function(){
+       if($("#formaction").val() == "url"){
+           $choose_field_url.removeClass("not_active");
+           $choose_field_mail.addClass("not_active");
+           $choose_field_feedback.addClass("not_active");
+       }else if($("#formaction").val() == "confirmation_mail"){
+           $choose_field_url.addClass("not_active");
+           $choose_field_mail.removeClass("not_active");
+           $choose_field_feedback.addClass("not_active");
+       }else if($("#formaction").val() == "feedback"){
+           $choose_field_url.addClass("not_active");
+           $choose_field_mail.addClass("not_active");
+           $choose_field_feedback.removeClass("not_active");
+       }else{
+           $choose_field_url.addClass("not_active");
+           $choose_field_mail.addClass("not_active");
+           $choose_field_feedback.addClass("not_active");
+       }
+    });
+
+
+});
+
+// EDIT FORMULAR STANDARD FIELDS:
+
+$(function () {
+
+
+    $("a.arrow_up,a.arrow_down").click(function(event) {
+        event.preventDefault();
+        var row = $(this).parents("tr:first");
+        if ($(this).is("a.arrow_up")) {
+            row.hide("slow", function () {
+                row.insertBefore(row.prev()).show("slow");
+                insert_ids();
+            })
+        } else {
+            row.hide("slow", function () {
+                row.insertAfter(row.next()).show("slow");
+                insert_ids();
+            })
+        }
+    });
+
+
+    // Verschiebe TR zu Deaktivierten und Retour
+    $("a.remove_tr").click(function(event) {
+        event.preventDefault();
+        var row = $(this).parents("tr:first");
+        if ($(this).is(".standard_field_active .remove_tr")) {
+            row.hide("slow", function(){
+                row.insertAfter($(".deactivated_standard_fields tr:last-child"));
+
+                row.removeClass("active_tr").addClass("deactive_tr");
+                row.find(".td_btn_area a").removeClass("btn-danger").addClass("btn-success");
+                row.find(".td_btn_area span").remove();
+                row.find(".td_btn_area a").html('activate ' + "<span class='glyphicon glyphicon-ok'></span>");
+
+                row.show("slow");
+                $(this).children().last().hide();
+                insert_ids();
+            })
+        }else if($(this).is(".deactivated_standard_fields .remove_tr")) {
+            row.hide("slow", function(){
+                row.insertAfter($(".activated_standard_fields tr:last-child"));
+
+                row.removeClass("deactive_tr").addClass("active_tr");
+                row.find(".td_btn_area a").removeClass("btn-success").addClass("btn-danger");
+                row.find(".td_btn_area span").remove();
+                row.find(".td_btn_area a").html('deactivate ' + "<span class='glyphicon glyphicon-remove'></span>");
+
+                row.show("slow");
+                $(this).children().last().show();
+                insert_ids();
+            })
+        }
+
+    });
+
+    function insert_ids(){
+        var input_active = $(".active_standard_fields_row").val("");
+        var input_ids_active = "";
+
+        var input_deactivate = $(".deactive_standard_fields_row").val("");
+        var input_ids_deactive = "";
+
+        $(".standard_field_active tr.active_tr").each(function() {
+            var id = $(this).data("row-id");
+            input_ids_active = input_ids_active + (":"+id+":");
+        });
+
+
+        $(".deactivated_standard_fields tr.deactive_tr").each(function() {
+            var id_de = $(this).data("row-id");
+            input_ids_deactive = input_ids_deactive + (":"+id_de+":");
+        });
+
+        input_active.val(input_ids_active);
+        input_deactivate.val(input_ids_deactive);
+
+    }
+
+
+});

@@ -2,6 +2,21 @@
 
 $(function(){
 
+    // Overlay click event
+    $(".overlay").on("click", function(event){
+        if(event.target.id != "overlay_wrapper"){
+            $(".overlay_wrapper").slideUp("fast", function(){
+                $(".overlay").slideUp("fast");
+            });
+        }
+    });
+
+    $(".overlay .btn-danger").on("click", function(){
+        $(".overlay_wrapper").slideUp("fast", function(){
+            $(".overlay").slideUp("fast");
+        });
+    });
+
     var click_from = $(".hover_date_from");
     var click_to = $(".hover_date_to");
     var area_from = $(".date_area_from");
@@ -95,6 +110,25 @@ $(function () {
     $('#datetimepicker_edit_to').datetimepicker({
         viewMode: 'days',
         format: 'MM/DD/YYYY'
+    });
+
+    $('.datepicker_userspec').datetimepicker({
+        viewMode: 'days',
+        format: 'MM/DD/YYYY'
+    });
+
+    $('.datepicker_userspec').on('dp.change', function(event){
+        $('#selected-date').text(event.date);
+        $(this).val(event.date.format('MM/DD/YYYY'));
+    });
+
+    $('.timepicker_userspec').datetimepicker({
+        format: 'LT'
+    });
+
+    $('.timepicker_userspec').on('dp.change', function(event){
+        $('#selected-date').text(event.date);
+        $(this).val(event.date.format('LT'));
     });
 
 
@@ -231,3 +265,127 @@ $(function () {
 
 
 });
+
+
+// FORMBUILDER EDIT
+
+$(function () {
+    $("body .btn-field-creator").on("click", function(e){
+        e.preventDefault();
+
+        var select = $(".form_choose_type");
+
+        if(select.val() == "default"){
+            // Meldung, dass er was aussuchen soll..
+            console.log("ist default");
+        }else{
+            var type =  select.val();
+
+            switch (type) {
+                case "select":
+                    console.log("SEAS");
+
+
+
+                    break;
+                case value2:
+                    // Anweisungen werden ausgeführt,
+                    // falls expression mit value2 übereinstimmt
+                    break;
+
+                    case valueN:
+                    // Anweisungen werden ausgeführt,
+                    // falls expression mit valueN übereinstimmt[break;
+                default:
+                    // Anweisungen werden ausgeführt,
+                    // falls keine der case-Klauseln mit expression übereinstimmt[break;]
+            }
+
+
+
+        }
+    });
+
+    function remove_field($field_class){
+
+    }
+
+    function show_field($field_class){
+
+    }
+
+    function focusInput(event){
+
+    }
+
+    $("body .editable_text").on("click : focus", function(){
+        $(this).hide(0);
+
+        $(this).parent().find(".editable_input").attr("type", "text").focus();
+
+        $(this).parent().find(".editable_input").on("blur", function(){
+           $(this).val();
+           $(this).parent().find("span").text($(this).val());
+           $(this).attr("type", "hidden");
+            $(this).parent().find("span").show(0);
+        });
+
+    });
+
+    $("body .option_delete").on("click", function(event){
+        event.preventDefault();
+
+        window_alert_show("Are you sure that you want to delete the selection?");
+
+        $(".overlay_wrapper .btn-success").on("click", function(){
+            $(".overlay .btn-success").data('clicked', "1");
+            $(".overlay_wrapper").slideUp("fast", function(){
+                $(".overlay").slideUp("fast");
+            });
+
+            $(event.target).closest("tr").remove();
+        });
+
+
+
+
+    });
+
+    // SELECT: ADD Field
+    $("body .btn-selection-field-adder").on("click", function(e){
+
+        input = $(this).parent().parent().find("input[name=selection_user_add]").val();
+
+        if(input != ""){
+            new_option = $("<option>");
+            new_option.appendTo($(this).closest(".select_field_area").find("select"));
+
+            new_option.text(input);
+            new_option.val(input);
+
+            tr = $(".tr_template").clone();
+
+            table = $(this).parent().parent().parent().find(".form_field_options tbody");
+            tr.appendTo(table);
+            tr = "";
+
+
+        }
+
+
+
+
+        return false;
+    });
+
+    function window_alert_show(text){
+
+        $(".overlay_wrapper p").text(text);
+        $(".overlay").slideDown("fast", function(){
+            $(".overlay_wrapper").slideDown("slow");
+        });
+    }
+
+
+});
+

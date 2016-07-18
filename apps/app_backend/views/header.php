@@ -31,7 +31,21 @@
 
 </head>
 
+<div class="overlay is_hidden">
+    <div class="overlay_wrapper" id="overlay_wrapper">
+        <p>
+            Are you sure to do this?
+        </p>
+        <span class="btn btn-lg btn-success">
+            YES
+        </span>
+        <span class="btn btn-lg btn-danger">
+            NO
+        </span>
+    </div>
+</div>
 <body class="logged_in">
+
 
 <!-- Mobile Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top topnav visible-xs" role="navigation">

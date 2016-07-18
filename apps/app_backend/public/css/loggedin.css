@@ -104,8 +104,11 @@ label {
 
 /* HEADER */
 
+html {
+    position: relative;
+}
+
 body {
-    background-color:
 }
 
 .wrapper {
@@ -1197,5 +1200,51 @@ FORMULARE
 }
 
 .deactive_tr td:last-child{
+    display: none;
+}
+
+
+/*/ Formbuilder /*/
+.input_templates {
+    display: none;
+}
+
+.form_field_options tr:first-child .arrow_up {
+    display: none;
+}
+
+.form_field_options tr:last-child .arrow_down {
+    display: none;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    display: none;
+}
+
+.overlay_wrapper {
+    display: none;
+    width: 500px;
+    height: 200px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: calc(50vh - 100px);
+}
+
+.overlay_wrapper p {
+    margin-top: 20px;
+}
+
+.table_template {
     display: none;
 }

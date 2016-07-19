@@ -1248,3 +1248,7 @@ FORMULARE
 .table_template {
     display: none;
 }
+
+.hidden_fields {
+    display: none;
+}

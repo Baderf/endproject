@@ -172,8 +172,8 @@
                                                 <td>Type</td>
                                                 <td>Edit</td>
                                             </tr>
-                                            </thead>                 F
-                                            <tbody>                  F
+                                            </thead>
+                                            <tbody>
 
                                             <?php
                                             if(isset($data['deactivefields']) && !empty($data['deactivefields'])){
@@ -220,6 +220,9 @@
 
                 <div class="tab-pane" id="panel-820473">
                     <div class="row">
+                        <form action="">
+
+
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4>Create a new form</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet dicta doloremque earum error eum illum, placeat quisquam rem saepe sequi! Facilis nesciunt optio porro quasi quo quos reprehenderit, ut! Explicabo.</p>
@@ -227,7 +230,7 @@
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group has-feedback has-feedback-left">
                                         <label class="control-label" for="formtitle">Formtitle</label>
-                                        <input class="form-control" name="formtitle" type="text" id="formtitle" placeholder="Your formular title...">
+                                        <input class="form-control" name="formtitle" type="text" id="formtitle_user_spec" placeholder="Your formular title..." value="">
                                         <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                     </div>
                                 </div>
@@ -261,446 +264,580 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 select_field_area select_field_area_1" data-table-id="1" data-type="selection" data-table-input-id="1" data-user-field-id="1">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="form-group form_build_selection" >
-                                        <label class="control-label" for="selection_user" id="field_title_1">Defaultvalue:</label>
-                                        <select class="form-control selection_user" name="form_selection_1" >
-                                            <option value="select" selected>Please choose</option>
-                                        </select>
-                                    </div>
-                                    <div class="hidden_fields">
-                                        <input type="hidden" class="hidden_id_input hidden_user_field_id_1" name="user_field_1_id" value="">
-                                        <input type="hidden" class="hidden_user_field_type_1" name="user_field_1_type" value="select">
-                                        <input type="hidden" class="hidden_user_field_default_1" name="user_field_1_default" value="">
-                                        <input type="hidden" class="hidden_user_field_values_1" name="user_field_1_values" value="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group form_build_selection_add">
-                                        <label class="control-label" for="selection_user_add">Defaultvalue:</label>
-                                        <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    </br>
-                                    <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="1"> add
-                                                                            </a>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
-                                   <p>Your possible Selections:</p>
-                                    <table class="table table-striped form_field_options" data-table-id="1">
-                                        <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Edit</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tbody_id_1">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-
-                            </div>
-
-
-
-
-
-
 
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_templates">
+                        <div class="row" id="userspec_field_area">
+                            <input type="hidden" id="last_id" value="45">
 
-
-
-
-                            <!---
-
-                             CHECKBOX
-
-
-
-                             --->
-
-
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 select_field_area" data-type="checkbox" data-table-input-id="#" data-user-field-id="#">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="form-group form_build_selection" >
-                                        <label class="control-label" for="selection_user" id="field_title_#">Defaultvalue:</label>
-                                        <select class="form-control selection_user" name="form_selection_#" >
-                                            <option value="select" selected>Please choose</option>
-                                        </select>
-                                    </div>
-                                    <div class="hidden_fields">
-                                        <input type="hidden" class="hidden_id_input hidden_user_field_id_#" name="user_field_#_id" value="">
-                                        <input type="hidden" class="hidden_user_field_type_#" name="user_field_#_type" value="checkbox">
-                                        <input type="hidden" class="hidden_user_field_default_#" name="user_field_#_default" value="">
-                                        <input type="hidden" class="hidden_user_field_values_#" name="user_field_#_values" value="">
-                                        <input type="hidden" class="hidden_user_field_title_#" name="user_field_#_title" value="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group form_build_selection_add">
-                                        <label class="control-label" for="selection_user_add">Defaultvalue:</label>
-                                        <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    </br>
-                                    <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
-                                    </a>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
-                                    <p>Your possible Selections:</p>
-                                    <table class="table table-striped form_field_options" data-table-id="#">
-                                        <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Edit</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tbody_id_#">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
-
-
-
-                            <!---
-
-                          TEXTINPUT
-
-
-
-                          --->
-
-
-
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_field" data-table-id="4" data-table-input-field="4" data-table-input-id="4" data-table-type="text">
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">The Input Title: </label>
-                                    <input class="form-control input_field_title" name="formtitle" type="text" placeholder="Fill in the title..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">Placeholder: </label>
-                                    <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_4" name="user_field_4_id" value="">
-                                    <input type="hidden" class="hidden_user_field_type_4" name="user_field_4_type" value="text">
-                                    <input type="hidden" class="hidden_user_field_default_4" name="user_field_4_default" value="">
-                                    <input type="hidden" class="hidden_user_field_title_4" name="user_field_4_title" value="">
-                                </div>
-
-                            </div>
-
-
-
-                            <!---
-
-                        NUMBERINPUT
-
-
-
-                        --->
-
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_field number_field" data-table-id="5" data-table-input-field="5" data-table-input-id="5" data-table-type="number">
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">The Input Title: </label>
-                                    <input class="form-control input_field_title" name="formtitle" type="text" placeholder="Fill in the title..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 min_max">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                        <div class="form-group has-feedback has-feedback-left">
-                                            <label class="control-label" for="formtype">Placeholder: </label>
-                                            <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <div class="form-group has-feedback has-feedback-left">
-                                            <label class="control-label" for="formtype">Min-Value: </label>
-                                            <input class="form-control input_field_placeholder min_value_field" name="formtitle" type="number" placeholder="min-value" value="">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                        <div class="form-group has-feedback has-feedback-left">
-                                            <label class="control-label" for="formtype">Max-Value: </label>
-                                            <input class="form-control input_field_placeholder max_value_field" name="formtitle" type="number" placeholder="max-value" value="">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_5" name="user_field_5_id" value="">
-                                    <input type="hidden" class="hidden_user_field_type_5" name="user_field_5_type" value="number">
-                                    <input type="hidden" class="hidden_user_field_default_5" name="user_field_5_default" value="">
-                                    <input type="hidden" class="hidden_user_field_title_5" name="user_field_5_title" value="">
-                                    <input type="hidden" class="hidden_user_field_values_5" name="user_field_5_values" value="">
-                                </div>
-                            </div>
-
-                            <!---
-
-                      DATEINPUT
-
-
-
-                      --->
-
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_field date_field" data-table-id="6" data-table-input-field="6" data-table-input-id="6" data-table-type="date">
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">The Input Title: </label>
-                                    <input class="form-control input_field_title" name="formtitle" type="text" placeholder="Fill in the title..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                                        <div class="form-group has-feedback has-feedback-left placeholder_value">
-                                            <label class="control-label" for="formtype">Placeholder: </label>
-                                            <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                                        <div class="form-group has-feedback has-feedback-left default_value">
-                                            <label class="control-label" for="formtype">Default-Value: </label>
-                                            <input class="form-control datepicker_userspec" name="formtitle" type="text" placeholder="Your formular title...">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_6" name="user_field_6_id" value="">
-                                    <input type="hidden" class="hidden_user_field_type_6" name="user_field_6_type" value="date">
-                                    <input type="hidden" class="hidden_user_field_default_6" name="user_field_6_default" value="">
-                                    <input type="hidden" class="hidden_user_field_title_6" name="user_field_6_title" value="">
-                                    <input type="hidden" class="hidden_user_field_values_6" name="user_field_6_values" value="">
-                                    <input type="hidden" class="hidden_user_field_placeholder_6" name="user_field_6_placeholder" value="">
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <!---
-
-                      TIMEINPUT
-
-
-
-                      --->
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_field date_field" data-table-id="7" data-table-input-field="7" data-table-input-id="7" data-table-type="time">
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">The Input Title: </label>
-                                    <input class="form-control input_field_title" name="formtitle" type="text" placeholder="Fill in the title..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                                        <div class="form-group has-feedback has-feedback-left placeholder_value">
-                                            <label class="control-label" for="formtype">Placeholder: </label>
-                                            <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                                        <div class="form-group has-feedback has-feedback-left">
-                                            <label class="control-label" for="formtype">Default-Value: </label>
-                                            <input class="form-control timepicker_userspec" name="formtitle" type="text" placeholder="Your time goes here...">
-                                            <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_7" name="user_field_7_id" value="">
-                                    <input type="hidden" class="hidden_user_field_type_7" name="user_field_7_type" value="time">
-                                    <input type="hidden" class="hidden_user_field_default_7" name="user_field_7_default" value="">
-                                    <input type="hidden" class="hidden_user_field_title_7" name="user_field_7_title" value="">
-                                    <input type="hidden" class="hidden_user_field_values_7" name="user_field_7_values" value="">
-                                    <input type="hidden" class="hidden_user_field_placeholder_7" name="user_field_7_placeholder" value="">
-                                </div>
-                            </div>
-
-
-
-                            <!---
-
-               RADIOINPUT
-
-
-
-               --->            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 select_field_area select_field_area_8" data-type="radio" data-table-id="8" data-table-input-id="8" data-user-field-id="8">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="form-group form_build_selection" >
-                                        <label class="control-label" for="selection_user" id="field_title_8">Defaultvalue:</label>
-                                        <select class="form-control selection_user" name="form_selection_8" id="selection_user_8" >
-                                            <option value="select" selected>Please choose</option>
-                                        </select>
-                                    </div>
-                                    <div class="hidden_fields">
-                                        <input type="hidden" class="hidden_id_input hidden_user_field_id_8" name="user_field_8_id" value="">
-                                        <input type="hidden" class="hidden_user_field_type_8" name="user_field_8_type" value="radio">
-                                        <input type="hidden" class="hidden_user_field_default_8" name="user_field_8_default" value="">
-                                        <input type="hidden" class="hidden_user_field_values_8" name="user_field_8_values" value="">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <div class="form-group form_build_selection_add">
-                                        <label class="control-label" for="selection_user_add">Defaultvalue:</label>
-                                        <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    </br>
-                                    <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="8"> add
-                                    </a>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
-                                    <p>Your possible Selections:</p>
-                                    <table class="table table-striped form_field_options" data-table-id="8">
-                                        <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Edit</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody class="tbody_id_8">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-
-                            </div>
-
-                            <!-- TEMPLATE für mich dann: RADIO-TEMPLATE
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label class="control-label" for="formtype">Formtitlte</label>
-                                <p>type = Yes/No</p>
-                                <div class="form-group">
-
-                                        <label class="control-label" for="formtype">Default-Value: </label>
-
-                                        <label class="control-label" for="Yes">Yes</label>
-                                        <input name="formtitle" id="Yes" type="radio" value="Yes" >
-                                        <label class="control-label" for="No">No</label>
-                                        <input name="formtitle" id="No" type="radio" value="No" >
-
-                                </div>
-                            </div>
-
-                            -->
-
-
-
-                                            <!---
-
-                               NOTICE - TEXTAREA - INPUT
-
-
-
-                               --->
-
-
-
-
-
-
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_field" data-table-id="9" data-table-input-field="9" data-table-input-id="9" data-table-type="textarea">
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">The Input Title: </label>
-                                    <input class="form-control input_field_title" name="formtitle" type="text" placeholder="Fill in the title..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype">Placeholder: </label>
-                                    <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
-                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
-                                </div>
-
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_9" name="user_field_9_id" value="">
-                                    <input type="hidden" class="hidden_user_field_type_9" name="user_field_9_type" value="textarea">
-                                    <input type="hidden" class="hidden_user_field_default_9" name="user_field_9_default" value="">
-                                    <input type="hidden" class="hidden_user_field_title_9" name="user_field_9_title" value="">
-                                    <input type="hidden" class="hidden_user_field_placeholder_9" name="user_field_9_placeholder" value="">
-                                </div>
-
-                            </div>
-
-
-                                <table class="table_template">
-                                    <thead>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>Edit</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="tr_template" data-table-type="selection">
-                                        <td>
-                                            <input type="hidden" class="editable_input" value="Please choose...">
-                                            <span class="editable_text">Please choose...</span>
-                                        </td>
-                                        <td width="200">
-                                            <a href="#" class="btn btn-sm btn-info arrow_up">
-                                                <span class="glyphicon glyphicon-arrow-up"></span>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-info arrow_down">
-                                                <span class="glyphicon glyphicon-arrow-down"></span>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-danger option_delete">
-                                                <span class="glyphicon glyphicon-trash"></span>
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
-
-                            <!--TEXT AREA TEMPLATE -->
-                            <div class="form-group has-feedback has-feedback-left">
-                                <p>type = Notice</p>
-                                <div class="form-group">
-                                    <label class="control-label" for="formtitle">Defaultvalue</label>
-                                    <textarea class="form-control" name="formdescription" rows="3" placeholder="Your description goes here..."></textarea>
-                                </div>
-
-                            </div>
-                            </div>
                         </div>
+
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-right-area">
                             <input type="hidden" value="" name="UserFieldIds" id="userfieldids">
                             <input type="submit" name="saveUserFields" class="btn btn-lg spec spec_dashboard" value="Save">
                         </div>
+                        </form>
                     </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input_templates">
+
+                        <!--
+                           SELECT
+                        -->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_select select_field_area select_field_area_" data-table-id="#" data-table-type="select" data-type="select" data-table-input-id="#" data-user-field-id="#">
+
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <label class="control-label" for="formtype">The Input Title: </label>
+                                    <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group form_build_selection" >
+                                    <label class="control-label" for="selection_user" id="field_title_">Values / Defaultvalue:</label>
+                                    <select class="form-control selection_user" name="form_selection_" >
+
+                                    </select>
+                                </div>
+                                <div class="hidden_fields">
+                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                    <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="select">
+                                    <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                    <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                    <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                    <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                    <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="form-group form_build_selection_add">
+                                    <label class="control-label" for="selection_user_add">Add an option:</label>
+                                    <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                </br>
+                                <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
+                                </a>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
+                                <p>Your possible Selections:</p>
+                                <table class="table table-striped form_field_options" data-table-id="#">
+                                    <thead>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Edit</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="tbody_id_">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+
+                            </dd>
+
+                        </div>
+
+
+                        <!---
+
+                         CHECKBOX
+
+
+
+                         --->
+
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_checkbox select_field_area select_field_area_" data-type="checkbox" data-table-type="checkbox" data-table-input-id="#" data-user-field-id="#">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <label class="control-label" for="formtype">The Input Title: </label>
+                                    <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group form_build_selection" >
+                                    <label class="control-label" for="selection_user" id="field_title_">Defaultvalue:</label>
+                                    <select class="form-control selection_user" name="form_selection_" >
+                                        <option value="select" selected>Please choose</option>
+                                    </select>
+                                </div>
+                                <div class="hidden_fields">
+                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                    <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="checkox">
+                                    <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                    <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                    <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                    <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                    <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="form-group form_build_selection_add">
+                                    <label class="control-label" for="selection_user_add">Defaultvalue:</label>
+                                    <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                </br>
+                                <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
+                                </a>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
+                                <p>Your possible Selections:</p>
+                                <table class="table table-striped form_field_options" data-table-id="#">
+                                    <thead>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Edit</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="tbody_id_">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                               </dd>
+                        </div>
+
+
+
+                        <!---
+
+                      TEXTINPUT
+
+
+
+                      --->
+
+
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field text_input" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="text">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">The Input Title: </label>
+                                <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">Placeholder: </label>
+                                <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+
+                            <div class="hidden_fields">
+                                <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="text">
+                                <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                                </dd>
+                        </div>
+
+
+
+                        <!---
+
+                    NUMBERINPUT
+
+
+
+                    --->
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field number_field" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="number">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">The Input Title: </label>
+                                <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 min_max">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group has-feedback has-feedback-left">
+                                        <label class="control-label" for="formtype">Placeholder: </label>
+                                        <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group has-feedback has-feedback-left">
+                                        <label class="control-label" for="formtype">Min-Value: </label>
+                                        <input class="form-control input_field_placeholder min_value_field" name="formtitle" type="number" placeholder="min-value" value="">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                    <div class="form-group has-feedback has-feedback-left">
+                                        <label class="control-label" for="formtype">Max-Value: </label>
+                                        <input class="form-control input_field_placeholder max_value_field" name="formtitle" type="number" placeholder="max-value" value="">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hidden_fields">
+                                <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="number">
+                                <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                            </dd>
+                        </div>
+
+                        <!---
+
+                  DATEINPUT
+
+
+
+                  --->
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_input" data-table-id="#" data-table-input-id="#" data-table-type="date">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">The Input Title: </label>
+                                <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="form-group has-feedback has-feedback-left placeholder_value">
+                                        <label class="control-label" for="formtype">Placeholder: </label>
+                                        <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="form-group has-feedback has-feedback-left default_value">
+                                        <label class="control-label" for="formtype">Default-Value: </label>
+                                        <input class="form-control datepicker_userspec" name="formtitle" type="text" placeholder="Your formular title...">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hidden_fields">
+                                <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="date">
+                                <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                            </dd>
+                        </div>
+
+
+
+
+
+
+                        <!---
+
+                  TIMEINPUT
+
+
+
+                  --->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_field time_input" data-table-id="#" data-table-input-id="#" data-table-type="time" data-type="time">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">The Input Title: </label>
+                                <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="form-group has-feedback has-feedback-left placeholder_value">
+                                        <label class="control-label" for="formtype">Placeholder: </label>
+                                        <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="form-group has-feedback has-feedback-left">
+                                        <label class="control-label" for="formtype">Default-Value: </label>
+                                        <input class="form-control timepicker_userspec" name="formtitle" type="text" placeholder="Your time goes here...">
+                                        <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hidden_fields">
+                                <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="time">
+                                <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                            </dd>
+                        </div>
+
+
+
+                        <!---
+
+           RADIOINPUT
+
+
+
+       --->            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_radio select_field_area select_field_area_" data-type="radio" data-table-type="radio" data-table-input-id="#" data-user-field-id="#">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <label class="control-label" for="formtype">The Input Title: </label>
+                                    <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group form_build_selection" >
+                                    <label class="control-label" for="selection_user">Defaultvalue:</label>
+                                    <select class="form-control selection_user" name="form_selection_" >
+                                        <option value="select" selected>Please choose</option>
+                                    </select>
+                                </div>
+                                <div class="hidden_fields">
+                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                    <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="radio">
+                                    <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                    <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                    <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                    <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                    <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <div class="form-group form_build_selection_add">
+                                    <label class="control-label" for="selection_user_add">Defaultvalue:</label>
+                                    <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                </br>
+                                <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
+                                </a>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
+                                <p>Your possible Selections:</p>
+                                <table class="table table-striped form_field_options" data-table-id="#">
+                                    <thead>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Edit</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="tbody_id_">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                            </dd>
+                        </div>
+
+                        <!-- TEMPLATE für mich dann: RADIO-TEMPLATE
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label class="control-label" for="formtype">Formtitlte</label>
+                            <p>type = Yes/No</p>
+                            <div class="form-group">
+
+                                    <label class="control-label" for="formtype">Default-Value: </label>
+
+                                    <label class="control-label" for="Yes">Yes</label>
+                                    <input name="formtitle" id="Yes" type="radio" value="Yes" >
+                                    <label class="control-label" for="No">No</label>
+                                    <input name="formtitle" id="No" type="radio" value="No" >
+
+                            </div>
+                        </div>
+
+                        -->
+
+
+
+                        <!---
+
+           NOTICE - TEXTAREA - INPUT
+
+
+
+           --->
+
+
+
+
+
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field textarea_input" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="textarea">
+                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dd>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">The Input Title: </label>
+                                <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback has-feedback-left">
+                                <label class="control-label" for="formtype">Placeholder: </label>
+                                <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
+                                <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                            </div>
+
+                            <div class="hidden_fields">
+                                <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="textarea">
+                                <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                <p>Options:</p>
+                                <div class="checkbox">
+                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                </a>
+                            </div>
+                              </dd>
+                        </div>
+
+
+                        <table class="table_template">
+                            <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Edit</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr_template" data-table-type="selection">
+                                <td>
+                                    <input type="hidden" class="editable_input" value="Please choose...">
+                                    <span class="editable_text">Please choose...</span>
+                                </td>
+                                <td width="200">
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger option_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <!--TEXT AREA TEMPLATE -->
+                        <div class="form-group has-feedback has-feedback-left">
+                            <p>type = Notice</p>
+                            <div class="form-group">
+                                <label class="control-label" for="formtitle">Defaultvalue</label>
+                                <textarea class="form-control" name="formdescription" rows="3" placeholder="Your description goes here..."></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 </div>
 
 

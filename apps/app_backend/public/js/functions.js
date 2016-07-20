@@ -263,52 +263,323 @@ $(function () {
         e.preventDefault();
 
         var select = $(".form_choose_type");
+        var title = $("#formtitle_user_spec");
 
-        if(select.val() == "default"){
+
+        if ($(title).val().length === 0){
+            console.log("Titel ist leer, bitte Titel füllen!"); // FEEDBACK
+
+        }else if(select.val() == "default"){
             // Meldung, dass er was aussuchen soll..
             console.log("ist default");
         }else{
             var type =  select.val();
+            var field_to_input_area = $("body").find("#userspec_field_area");
+            var last_id = $(field_to_input_area).find("#last_id");
+            var id = parseInt($(last_id).val());
+
+            console.log(id);
 
             switch (type) {
                 case "select":
-                    console.log("SEAS");
+                    var clone = $("body").find(".input_templates").find("div.user_input_select").clone();
 
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+                    // Anpassung select id:
+                    var select_input = $(new_element).find("select[name=form_selection_]");
+                    $(select_input).attr("name", "form_selection_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (select field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+                    // ID von ADD BTN
+                    $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
+
+                    $(new_element).find("table.form_field_options").attr("data-table-id", id);
+                    $(new_element).find("tbody.tbody_id_").attr("class", "tbody_id_"+id);
 
 
                     break;
-                case value2:
-                    // Anweisungen werden ausgeführt,
-                    // falls expression mit value2 übereinstimmt
+                case "checkbox":
+                var clone = $("body").find(".input_templates").find("div.user_input_checkbox").clone();
+                var new_element = $(clone).hide().appendTo(field_to_input_area);
+                $(new_element).slideDown("slow");
+
+                // Anpassung DIV ID's
+                $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                // Anpassung Label ID
+                var label = $(new_element).find("#field_title_");
+                $(label).attr("id", "field_title_"+id);
+                // Anpassung select id:
+                var select_input = $(new_element).find("select[name=form_selection_]");
+                $(select_input).attr("name", "form_selection_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (checkbox field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+                    // ID von ADD BTN
+                $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
+
+                $(new_element).find("table.form_field_options").attr("data-table-id", id);
+                $(new_element).find("tbody.tbody_id_").attr("class", "tbody_id_"+id);
+
+
+                break;
+
+                case "radio":
+                    var clone = $("body").find(".input_templates").find("div.user_input_radio").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+                    // Anpassung select id:
+                    var select_input = $(new_element).find("select[name=form_selection_]");
+                    $(select_input).attr("name", "form_selection_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (radio field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+                    // ID von ADD BTN
+                    $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
+
+                    $(new_element).find("table.form_field_options").attr("data-table-id", id);
+                    $(new_element).find("tbody.tbody_id_").attr("class", "tbody_id_"+id);
+
+
                     break;
 
-                    case valueN:
-                    // Anweisungen werden ausgeführt,
-                    // falls expression mit valueN übereinstimmt[break;
-                default:
-                    // Anweisungen werden ausgeführt,
-                    // falls keine der case-Klauseln mit expression übereinstimmt[break;]
+
+                case "number":
+                    var clone = $("body").find(".input_templates").find("div.number_field").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (number field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+                    break;
+
+                case "text":
+                    var clone = $("body").find(".input_templates").find("div.text_input").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (text field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+
+                    break;
+
+                case "date":
+                    var clone = $("body").find(".input_templates").find("div.date_input").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (date field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+                    $(new_element).find('.datepicker_userspec').datetimepicker({
+                        viewMode: 'days',
+                        format: 'MM/DD/YYYY'
+                    });
+
+                    break;
+
+                case "time":
+                    var clone = $("body").find(".input_templates").find("div.time_input").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (time field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+
+                    $(new_element).find('.timepicker_userspec').datetimepicker({
+                        format: 'LT'
+                    });
+
+
+                    break;
+
+                case "textarea":
+                    var clone = $("body").find(".input_templates").find("div.textarea_input").clone();
+                    var new_element = $(clone).hide().appendTo(field_to_input_area);
+                    $(new_element).slideDown("slow");
+
+                    // Anpassung DIV ID's
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
+                    // Anpassung Label ID
+                    var label = $(new_element).find("#field_title_");
+                    $(label).attr("id", "field_title_"+id);
+
+                    $(clone).find("dt").html($(title).val() + " (textarea field)");
+                    title_input = $(clone).find("#field_title_"+id);
+                    $(title_input).val((title).val());
+
+                    // Hidden Fields:
+                    var hidden_field_area = $(new_element).find("div.hidden_fields");
+                    var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
+                    $(hidden_id_field).val(id);
+                    $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
+                    $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
+                    var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
+                    $(hidden_title).val((title).val());
+                    $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+
+
+                    break;
             }
+
+            $(title).val("");
+            $(last_id).val(id + 1);
+
+            render_post_ids();
 
              // die Id's von dem neuen in ein INput speichern
 
         }
     });
 
-    function remove_field($field_class){
-
-    }
-
-    function show_field($field_class){
-
-    }
-
-    function focusInput(event){
-
-    }
 
     $("body").on("click : focus", function(event) {
-        event.preventDefault();
+
         var target = $(event.target);
 
         tr = $(target).closest("tr");
@@ -316,6 +587,7 @@ $(function () {
         table_type = tr.data("table-type");
 
         if (target.is(".editable_text")) {
+            event.preventDefault();
 
             var input = target.parent().find(".editable_input");
             var text = target.parent().find(".editable_text");
@@ -330,6 +602,7 @@ $(function () {
                 render_table(table_id, table_type);
             });
         } else if (target.is(".option_delete")) {
+            event.preventDefault();
             window_alert_show("Are you sure that you want to delete the selection?");
             $(".overlay_wrapper .btn-success").on("click", function () {
                 $(".overlay .btn-success").data('clicked', "1");
@@ -344,8 +617,45 @@ $(function () {
 
 
             });
-        } else if (target.is("table .arrow_up") || target.is("table .arrow_down")) {
+        } else if (target.is(".accordion_opener")) {
 
+            $(target).next("dd").slideToggle("slow");
+            //$(this).children("a").toggleClass("closed open");
+
+        }else if (target.is(".btn-field-remover")) {
+            this_user_field = $(target).closest(".user_input_field");
+            event.preventDefault();
+            window_alert_show("Are you sure that you want to delete this field input?");
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+
+                this_user_field.slideUp("slow", function(){
+                    this_user_field.remove();
+                    render_post_ids();
+                });
+
+
+                render_table(table_id, table_type);
+                render_post_ids();
+
+
+            });
+        }else if (target.is(".label_option_is_required > .option_is_required")) {
+
+            var element = $(target).closest(".user_input_field");
+
+            element_id = $(element).attr("data-table-id");
+            element_required_field = $(element).find(".hidden_user_field_required_" + element_id);
+
+            val = element_required_field.val();
+
+            element_required_field.val(val === "true" ? "false" : "true");
+
+        }else if (target.is("table .arrow_up") || target.is("table .arrow_down")) {
+            event.preventDefault();
             var row = target.parents("tr:first");
             if (target.is(".arrow_up")) {
                 row.hide("slow", function () {
@@ -357,6 +667,7 @@ $(function () {
                     }
                 })
             } else if (target.is(".arrow_down")) {
+                event.preventDefault();
                 row.hide("slow", function () {
                     row.insertAfter(row.next()).show("slow");
                     insert_ids();
@@ -369,6 +680,7 @@ $(function () {
 
 
         } else if (target.is(".btn-selection-field-adder")) {
+            event.preventDefault();
             input_field = target.closest(".select_field_area").find("input[name=selection_user_add]");
             title_field = $("#formtitle").val();
             input = input_field.val();
@@ -412,7 +724,7 @@ $(function () {
                     table = $(target).parents(".select_field_area");
                     table_id = $(table).attr("data-table-id");
                     table_type = $(table).attr("data-type");
-                    console.log(table_id);
+
                     render_table(table_id, table_type);
                 });
                 $(".select_field_area select").on("blur", function (e) {
@@ -421,7 +733,7 @@ $(function () {
                     table = $(target).parents(".select_field_area");
                     table_id = $(table).attr("data-table-id");
                     table_type = $(table).attr("data-type");
-                    console.log(table_id);
+
                     render_table(table_id, table_type);
                 });
 
@@ -430,18 +742,38 @@ $(function () {
 
             }
         } else if (target.is(".input_field_title") || target.is(".input_field_placeholder")) {
-            // Bei einem Input feld:
-            $(".input_field input").on("blur", function (e) {
-                table = target.closest('.input_field');
+            event.preventDefault();
+            if (target.is(".input_field_title")) {
+                table = target.closest('.user_input_field');
+                dd_element = $(table).find("dd");
+                dt_element = $(table).find("dt");
                 table_id = table.attr("data-table-id");
                 table_type = table.attr("data-table-type");
+                title_input_field = $(dd_element).find(".input_field_title");
+                hidden_title_input_field = $(dd_element).find(".hidden_user_field_title_"+table_id);
 
-                render_table(table_id, table_type);
+                $(title_input_field).on("blur", function (e) {
+                    new_title = $(this).val();
 
-            });
+                    $(dt_element).text(new_title + " (" + table_type + " field)");
+                    $(hidden_title_input_field).val(new_title);
+                });
 
+
+                // Bei einem Input feld:
+                $(".input_field input").on("blur", function (e) {
+
+
+                    table = target.closest('.input_field');
+                    table_id = table.attr("data-table-id");
+                    table_type = table.attr("data-table-type");
+
+                    render_table(table_id, table_type);
+
+                });
+
+            }
         }
-        ;
 
         // SELECT: ADD Field
 
@@ -454,6 +786,8 @@ $(function () {
             });
         }
 
+
+
         function render_table(id, type) {
             var table = $('*[data-table-id=' + id + ']');
 
@@ -461,7 +795,7 @@ $(function () {
             var title = $("#formtitle");
 
 
-            console.log(table);
+
 
             // Hidden Fields
             var user_field_id = $(input).find("input.hidden_user_field_id_" + id);
@@ -584,10 +918,10 @@ $(function () {
                     break;
 
                 case "radio":
-                    var select = input.find("#selection_user_" +id).html("");
+                    var select = input.find(".selection_user").html("");
 
 
-                    $(".select_field_area_" + id).find("tbody tr").each(function () {
+                    $(table).find("tbody tr").each(function () {
                         var value = $(this).find(".editable_text").text();
                         var option = $("<option>");
                         option.val(value);
@@ -606,11 +940,9 @@ $(function () {
                         user_field_values.val(options);
 
 
-                        console.log(select.val());
-                        user_field_default.val($(select).val());
+                        user_field_default.val(select.val());
+
                     });
-
-
                     break;
                 case "textarea":
                     title = $(table).find(".input_field_title").val();
@@ -625,6 +957,17 @@ $(function () {
         }
 
     });
+    function render_post_ids(){
+        hidden_post_ids = $("#userfieldids");
+        $(hidden_post_ids).val("");
+
+        $("#userspec_field_area .hidden_id_input").each(function () {
+            console.log("Hallo");
+            var id = $(this).val();
+            var new_id = ":" + id + ":";
+            $(hidden_post_ids).val(hidden_post_ids.val() + new_id);
+        });
+    }
 });
 
 

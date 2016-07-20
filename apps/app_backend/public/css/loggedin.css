@@ -1252,3 +1252,14 @@ FORMULARE
 .hidden_fields {
     display: none;
 }
+
+.user_input_field {
+    padding: 10px;
+    background-color: #ccc;
+
+}
+
+#userspec_field_area {
+    padding: 15px;
+}
+dd { display: none; }

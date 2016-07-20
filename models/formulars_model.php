@@ -79,7 +79,7 @@ class formulars_model extends model{
         $sql = $this -> db -> query("SELECT MAX(id) FROM user_formular_fields");
 
         if($sql -> num_rows == 1){
-            $last_id = $sql -> fetch_assoc();
+            $last_id = $sql -> fetch_all(MYSQLI_ASSOC);
         }
 
         return $last_id;

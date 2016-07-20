@@ -158,6 +158,7 @@ class formulars extends user_controller{
             $this -> view -> data['user_form_ids'] = $user_form_ids;
         }
 
+        $this -> view -> last_id = $this -> model -> getLastIdFormulars();
         //$this -> view -> data['formuserfields'] = $this -> model -> getFormularUserFields($form_id, sessions::get("userid"));
         $this -> view -> render("formulars/edit", $this -> view -> data);
 

@@ -287,14 +287,16 @@
                         </div>
 
                         <div class="row" id="userspec_field_area">
-                            <input type="hidden" id="last_id" value="45">
+                            <input type="hidden" id="last_id" value="<?php
+
+                            echo $this -> last_id;?>">
 
                         </div>
 
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-right-area">
-                            <input type="hidden" value="" name="UserFieldIds" id="userfieldids">
+                            <input type="hidden" value="<?php echo $data['formdetails']['user_field_ids'];?>" name="UserFieldIds" id="userfieldids">
                             <input type="submit" name="saveUserFields" class="btn btn-lg spec spec_dashboard" value="Save">
                         </div>
                         </form>

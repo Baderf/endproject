@@ -3,6 +3,7 @@
 class view{
 
     public $data = array();
+    public $last_id = "";
 
     public function __construct(){
 

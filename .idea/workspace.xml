@@ -22,14 +22,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="edit.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/app_backend/views/formulars/edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="320" column="44" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="291" column="42" selection-start-line="291" selection-start-column="42" selection-end-line="291" selection-end-column="42" />
               <folding>
-                <marker date="1469043264186" expanded="true" signature="4354:4395" ph="..." />
+                <marker date="1469046271246" expanded="true" signature="4354:4395" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formulars.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/formulars.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1604">
+              <caret line="114" column="83" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,29 +57,29 @@
       <file leaf-file-name="formulars_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/formulars_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+            <state relative-caret-position="102">
+              <caret line="87" column="38" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="38" />
               <folding>
-                <marker date="1469034541107" expanded="true" signature="240:315" ph="SELECT stand... settings" />
-                <marker date="1469034541107" expanded="true" signature="452:502" ph="INSERT INTO formulars... " />
-                <marker date="1469034541107" expanded="true" signature="693:780" ph="UPDATE formu... " />
-                <marker date="1469034541107" expanded="true" signature="1136:1213" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="1136:1214" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="1136:1230" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="1136:1240" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="1136:1241" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="1526:1594" ph="UPDATE formu... " />
-                <marker date="1469034541107" expanded="true" signature="1947:2097" ph="UPDATE user_... " />
-                <marker date="1469034541107" expanded="true" signature="1953:2097" ph="INSERT INTO user_formular_fields... " />
-                <marker date="1469034541107" expanded="true" signature="2553:2699" ph="INSERT INTO user_formular_fields... " />
-                <marker date="1469034541107" expanded="true" signature="3048:3088" ph="SELECT MAX(i... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="3304:3338" ph="SELECT * FRO... formulars" />
-                <marker date="1469034541107" expanded="true" signature="3304:3339" ph="SELECT * FRO... formulars" />
-                <marker date="1469034541107" expanded="true" signature="3581:3619" ph="SELECT * FRO... standard_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="3878:3928" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="3878:3929" ph="SELECT * FRO... user_formular_fields" />
-                <marker date="1469034541107" expanded="true" signature="4236:4323" ph="UPDATE formu... " />
-                <marker date="1469034541107" expanded="true" signature="4655:4747" ph="UPDATE formu... " />
+                <marker date="1469046179904" expanded="true" signature="240:315" ph="SELECT stand... settings" />
+                <marker date="1469046179904" expanded="true" signature="452:502" ph="INSERT INTO formulars... " />
+                <marker date="1469046179904" expanded="true" signature="693:780" ph="UPDATE formu... " />
+                <marker date="1469046179904" expanded="true" signature="1136:1213" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="1136:1214" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="1136:1230" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="1136:1240" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="1136:1241" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="1526:1594" ph="UPDATE formu... " />
+                <marker date="1469046179904" expanded="true" signature="1947:2097" ph="UPDATE user_... " />
+                <marker date="1469046179904" expanded="true" signature="1953:2097" ph="INSERT INTO user_formular_fields... " />
+                <marker date="1469046179904" expanded="true" signature="2553:2699" ph="INSERT INTO user_formular_fields... " />
+                <marker date="1469046179904" expanded="true" signature="3048:3088" ph="SELECT MAX(i... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="3314:3348" ph="SELECT * FRO... formulars" />
+                <marker date="1469046179904" expanded="true" signature="3314:3349" ph="SELECT * FRO... formulars" />
+                <marker date="1469046179904" expanded="true" signature="3591:3629" ph="SELECT * FRO... standard_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="3888:3938" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="3888:3939" ph="SELECT * FRO... user_formular_fields" />
+                <marker date="1469046179904" expanded="true" signature="4246:4333" ph="UPDATE formu... " />
+                <marker date="1469046179904" expanded="true" signature="4665:4757" ph="UPDATE formu... " />
               </folding>
             </state>
           </provider>
@@ -84,9 +104,6 @@
         <option value="$PROJECT_DIR$/apps/app_backend/views/header.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/data_form.php" />
-        <option value="$PROJECT_DIR$/models/formulars_model.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/controllers/formulars.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/edit.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/date_form.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/public/js/functions.js" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/checkbox_form.php" />
@@ -96,6 +113,10 @@
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/text_form.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/textarea_form.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/templates/time_form.php" />
+        <option value="$PROJECT_DIR$/models/formulars_model.php" />
+        <option value="$PROJECT_DIR$/core/view.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/controllers/formulars.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/edit.php" />
       </list>
     </option>
   </component>
@@ -459,12 +480,12 @@
       <workItem from="1468622281664" duration="2000" />
       <workItem from="1468840496918" duration="25184000" />
       <workItem from="1468930064168" duration="23602000" />
-      <workItem from="1469014282854" duration="28985000" />
+      <workItem from="1469014282854" duration="29716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121536000" />
+    <option name="totallyTimeSpent" value="122267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -659,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -783,43 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/formulars.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="153" column="33" selection-start-line="153" selection-start-column="33" selection-end-line="153" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/formulars_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding>
-            <marker date="1469034541107" expanded="true" signature="240:315" ph="SELECT stand... settings" />
-            <marker date="1469034541107" expanded="true" signature="452:502" ph="INSERT INTO formulars... " />
-            <marker date="1469034541107" expanded="true" signature="693:780" ph="UPDATE formu... " />
-            <marker date="1469034541107" expanded="true" signature="1136:1213" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="1136:1214" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="1136:1230" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="1136:1240" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="1136:1241" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="1526:1594" ph="UPDATE formu... " />
-            <marker date="1469034541107" expanded="true" signature="1947:2097" ph="UPDATE user_... " />
-            <marker date="1469034541107" expanded="true" signature="1953:2097" ph="INSERT INTO user_formular_fields... " />
-            <marker date="1469034541107" expanded="true" signature="2553:2699" ph="INSERT INTO user_formular_fields... " />
-            <marker date="1469034541107" expanded="true" signature="3048:3088" ph="SELECT MAX(i... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="3304:3338" ph="SELECT * FRO... formulars" />
-            <marker date="1469034541107" expanded="true" signature="3304:3339" ph="SELECT * FRO... formulars" />
-            <marker date="1469034541107" expanded="true" signature="3581:3619" ph="SELECT * FRO... standard_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="3878:3928" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="3878:3929" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1469034541107" expanded="true" signature="4236:4323" ph="UPDATE formu... " />
-            <marker date="1469034541107" expanded="true" signature="4655:4747" ph="UPDATE formu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/public/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
@@ -892,13 +869,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/views/formulars/edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="320" column="44" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="291" column="42" selection-start-line="291" selection-start-column="42" selection-end-line="291" selection-end-column="42" />
           <folding>
-            <marker date="1469043264186" expanded="true" signature="4354:4395" ph="..." />
+            <marker date="1469046271246" expanded="true" signature="4354:4395" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/formulars_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="87" column="38" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="38" />
+          <folding>
+            <marker date="1469046179904" expanded="true" signature="240:315" ph="SELECT stand... settings" />
+            <marker date="1469046179904" expanded="true" signature="452:502" ph="INSERT INTO formulars... " />
+            <marker date="1469046179904" expanded="true" signature="693:780" ph="UPDATE formu... " />
+            <marker date="1469046179904" expanded="true" signature="1136:1213" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="1136:1214" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="1136:1230" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="1136:1240" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="1136:1241" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="1526:1594" ph="UPDATE formu... " />
+            <marker date="1469046179904" expanded="true" signature="1947:2097" ph="UPDATE user_... " />
+            <marker date="1469046179904" expanded="true" signature="1953:2097" ph="INSERT INTO user_formular_fields... " />
+            <marker date="1469046179904" expanded="true" signature="2553:2699" ph="INSERT INTO user_formular_fields... " />
+            <marker date="1469046179904" expanded="true" signature="3048:3088" ph="SELECT MAX(i... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="3314:3348" ph="SELECT * FRO... formulars" />
+            <marker date="1469046179904" expanded="true" signature="3314:3349" ph="SELECT * FRO... formulars" />
+            <marker date="1469046179904" expanded="true" signature="3591:3629" ph="SELECT * FRO... standard_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="3888:3938" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="3888:3939" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1469046179904" expanded="true" signature="4246:4333" ph="UPDATE formu... " />
+            <marker date="1469046179904" expanded="true" signature="4665:4757" ph="UPDATE formu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/formulars.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1604">
+          <caret line="114" column="83" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>

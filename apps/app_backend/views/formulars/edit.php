@@ -220,7 +220,7 @@
 
                 <div class="tab-pane" id="panel-820473">
                     <div class="row">
-                        <form action="">
+                        <form action="" method="post">
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -264,6 +264,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12 col-md-12">
+                                <?php
+                                    if(isset($data['user_form_ids']) && !empty($data['user_form_ids'])){
+                                        $user_form_ids = explode("::", $data['user_form_ids']);
+
+                                        foreach ($user_form_ids as &$id){
+                                            $id = str_replace(":", "", $id);
+
+                                            $type = $data['user_form_' . $id][0]['type'];
+
+                                            if($type != ""){
+                                                require APPS . CURRENT_APP . APP_VIEWS . '/formulars/templates/' . $type . '_form.php';
+                                            }
+
+                                        }
+
+                                    }
+                                    ?>
+                            </div>
 
                         </div>
 
@@ -287,8 +306,7 @@
                            SELECT
                         -->
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_select select_field_area select_field_area_" data-table-id="#" data-table-type="select" data-type="select" data-table-input-id="#" data-user-field-id="#">
-
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_select select_field_area select_field_area_" data-type="select" data-table-type="select" data-table-input-id="#" data-user-field-id="#">
                             <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
                             <dd>
                                 <div class="form-group has-feedback has-feedback-left">
@@ -296,61 +314,59 @@
                                     <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
                                     <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                 </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="form-group form_build_selection" >
-                                    <label class="control-label" for="selection_user" id="field_title_">Values / Defaultvalue:</label>
-                                    <select class="form-control selection_user" name="form_selection_" >
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group form_build_selection" >
+                                        <label class="control-label" for="selection_user">Defaultvalue:</label>
+                                        <select class="form-control selection_user" name="form_selection_" >
 
-                                    </select>
+                                        </select>
+                                    </div>
+                                    <div class="hidden_fields">
+                                        <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
+                                        <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="select">
+                                        <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
+                                        <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
+                                        <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
+                                        <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
+                                        <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                                    </div>
                                 </div>
-                                <div class="hidden_fields">
-                                    <input type="hidden" class="hidden_id_input hidden_user_field_id_" name="user_field_id_" value="">
-                                    <input type="hidden" class="hidden_user_field_type_" name="user_field_type_" value="select">
-                                    <input type="hidden" class="hidden_user_field_default_" name="user_field_default_" value="">
-                                    <input type="hidden" class="hidden_user_field_values_" name="user_field_values_" value="">
-                                    <input type="hidden" class="hidden_user_field_title_" name="user_field_title_" value="">
-                                    <input type="hidden" class="hidden_user_field_placeholder_" name="user_field_placeholder_" value="">
-                                    <input type="hidden" class="hidden_user_field_required_" name="user_field_required_" value="true">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="form-group form_build_selection_add">
+                                        <label class="control-label" for="selection_user_add">Defaultvalue:</label>
+                                        <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                <div class="form-group form_build_selection_add">
-                                    <label class="control-label" for="selection_user_add">Add an option:</label>
-                                    <input class="form-control" name="selection_user_add" type="text" id="selection_user_add" placeholder="Enter another section value...">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    </br>
+                                    <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                </br>
-                                <a href="#" class="btn btn-sm btn-success btn-selection-field-adder" data-table-id="#"> add
-                                </a>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
-                                <p>Your possible Selections:</p>
-                                <table class="table table-striped form_field_options" data-table-id="#">
-                                    <thead>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>Edit</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="tbody_id_">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 selection_table">
+                                    <p>Your possible Selections:</p>
+                                    <table class="table table-striped form_field_options" data-table-id="#">
+                                        <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Edit</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="tbody_id_">
 
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
-                                <p>Options:</p>
-                                <div class="checkbox">
-                                    <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
-                                <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
-                                </a>
-                            </div>
-
+                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 input_field_options">
+                                    <p>Options:</p>
+                                    <div class="checkbox">
+                                        <label class="label_option_is_required"><input class="option_is_required" type="checkbox" value="" checked>required?</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove_user_field">
+                                    <a href="#" class="btn btn-sm btn-danger btn-field-remover"> remove field
+                                    </a>
+                                </div>
                             </dd>
-
                         </div>
 
 
@@ -806,7 +822,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="tr_template" data-table-type="selection">
+                            <tr class="tr_template" data-table-type="selection" data-table-id="#">
                                 <td>
                                     <input type="hidden" class="editable_input" value="Please choose...">
                                     <span class="editable_text">Please choose...</span>

@@ -278,7 +278,7 @@ $(function () {
             var last_id = $(field_to_input_area).find("#last_id");
             var id = parseInt($(last_id).val());
 
-            console.log(id);
+
 
             switch (type) {
                 case "select":
@@ -314,7 +314,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
                     // ID von ADD BTN
                     $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
 
@@ -353,6 +353,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
                     // ID von ADD BTN
                 $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
 
@@ -392,6 +393,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
                     // ID von ADD BTN
                     $(new_element).find("a.btn-selection-field-adder").attr("data-table-id", id);
 
@@ -429,7 +431,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
                     break;
 
                 case "text":
@@ -460,7 +462,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
 
                     break;
 
@@ -485,14 +487,14 @@ $(function () {
                     var hidden_id_field = $(hidden_field_area).find(".hidden_user_field_id_").removeClass("hidden_user_field_id_").addClass("hidden_user_field_id_"+id).attr("name", "user_field_id_"+id);
                     $(hidden_id_field).val(id);
                     $(hidden_field_area).find(".hidden_user_field_type_").removeClass("hidden_user_field_type_").addClass("hidden_user_field_type_"+id).attr("name", "user_field_type_"+id);
-                    $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
+                    var default_input = $(hidden_field_area).find(".hidden_user_field_default_").removeClass("hidden_user_field_default_").addClass("hidden_user_field_default_"+id).attr("name", "user_field_default_"+id);
                     $(hidden_field_area).find(".hidden_user_field_values_").removeClass("hidden_user_field_values_").addClass("hidden_user_field_values_"+id).attr("name", "user_field_values_"+id);
                     $(hidden_field_area).find(".hidden_user_field_placeholder_").removeClass("hidden_user_field_placeholder_").addClass("hidden_user_field_placeholder_"+id).attr("name", "user_field_placeholder_"+id);
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
-                    $(new_element).find('.datepicker_userspec').datetimepicker({
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
+                    var new_datepicker = $(new_element).find('.datepicker_userspec').datetimepicker({
                         viewMode: 'days',
                         format: 'MM/DD/YYYY'
                     });
@@ -526,7 +528,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
 
                     $(new_element).find('.timepicker_userspec').datetimepicker({
                         format: 'LT'
@@ -562,7 +564,7 @@ $(function () {
                     var hidden_title = $(hidden_field_area).find(".hidden_user_field_title_").removeClass("hidden_user_field_title_").addClass("hidden_user_field_title_"+id).attr("name", "user_field_title_"+id);
                     $(hidden_title).val((title).val());
                     $(hidden_field_area).find(".hidden_user_field_required_").removeClass("hidden_user_field_required_").addClass("hidden_user_field_required_"+id).attr("name", "user_field_required_"+id);
-
+                    $("<input>").attr("type", "hidden").attr("name", "user_field_new_"+id).val("true").appendTo(hidden_field_area);
 
                     break;
             }
@@ -583,8 +585,10 @@ $(function () {
         var target = $(event.target);
 
         tr = $(target).closest("tr");
-        table_id = tr.data("table-id");
-        table_type = tr.data("table-type");
+
+        element = $(this).closest(".user_input_field");
+        table_id = $(element).attr("data-table-id");
+        table_type = $(element).attr("data-table-type");
 
         if (target.is(".editable_text")) {
             event.preventDefault();
@@ -599,6 +603,11 @@ $(function () {
                 input.attr("type", "hidden");
                 text.show(0);
 
+                element = $(target).closest(".user_input_field");
+                table_id = $(element).attr("data-table-input-id");
+                table_type = $(element).attr("data-table-type");
+
+
                 render_table(table_id, table_type);
             });
         } else if (target.is(".option_delete")) {
@@ -609,8 +618,10 @@ $(function () {
                 $(".overlay_wrapper").slideUp("fast", function () {
                     $(".overlay").slideUp("fast");
                 });
-
-
+                element = $(target).closest(".user_input_field");
+                table_id = $(element).attr("data-table-input-id");
+                table_type = $(element).attr("data-table-type");
+                tr = $(target).closest("tr");
                 tr.remove();
 
                 render_table(table_id, table_type);
@@ -636,7 +647,9 @@ $(function () {
                     this_user_field.remove();
                     render_post_ids();
                 });
-
+                element = $(target).closest(".user_input_field");
+                table_id = $(element).attr("data-table-input-id");
+                table_type = $(element).attr("data-table-type");
 
                 render_table(table_id, table_type);
                 render_post_ids();
@@ -645,10 +658,11 @@ $(function () {
             });
         }else if (target.is(".label_option_is_required > .option_is_required")) {
 
-            var element = $(target).closest(".user_input_field");
+            element = $(target).closest(".user_input_field");
+            table_id = $(element).attr("data-table-input-id");
+            table_type = $(element).attr("data-table-type");
 
-            element_id = $(element).attr("data-table-id");
-            element_required_field = $(element).find(".hidden_user_field_required_" + element_id);
+            element_required_field = $(element).find(".hidden_user_field_required_" + table_id);
 
             val = element_required_field.val();
 
@@ -656,6 +670,10 @@ $(function () {
 
         }else if (target.is("table .arrow_up") || target.is("table .arrow_down")) {
             event.preventDefault();
+            element = $(target).closest(".user_input_field");
+            table_id = $(element).attr("data-table-input-id");
+            table_type = $(element).attr("data-table-type");
+            
             var row = target.parents("tr:first");
             if (target.is(".arrow_up")) {
                 row.hide("slow", function () {
@@ -663,10 +681,12 @@ $(function () {
                     insert_ids();
                     if (row.hasClass("is_selection")) {
 
+                        
                         render_table(table_id, table_type);
                     }
                 })
             } else if (target.is(".arrow_down")) {
+
                 event.preventDefault();
                 row.hide("slow", function () {
                     row.insertAfter(row.next()).show("slow");
@@ -677,6 +697,15 @@ $(function () {
                     }
                 })
             }
+
+
+        }else if (target.is(".datepicker_userspec") || target.is(".timepicker_userspec")) {
+            event.preventDefault();
+            element = $(target).closest(".user_input_field");
+            table_id = $(element).attr("data-table-input-id");
+            table_type = $(element).attr("data-table-type");
+
+            render_table(table_id, table_type);
 
 
         } else if (target.is(".btn-selection-field-adder")) {
@@ -701,6 +730,7 @@ $(function () {
                 // New Selection in the Table
                 tr = $(".tr_template").clone();
                 tr.attr("data-table-id", id);
+                tr.attr("data-table-input-id", id);
                 tr.attr("data-table-type", "selection");
                 tr.removeClass("tr_template");
                 tr.addClass("is_selection");
@@ -712,11 +742,13 @@ $(function () {
                 input_field.val("");
 
 
-
+                table = $(target).closest(".select_field_area");
                 table_id = tr.data("table-id");
                 // table_type = tr.data("table-type");
-                table = $(target).closest(".select_field_area");
+
                 table_type = table.data("type");
+
+
 
                 $(".select_field_area input").on("blur", function (event) {
                     target = $(event.target);
@@ -737,6 +769,7 @@ $(function () {
                     render_table(table_id, table_type);
                 });
 
+                
                 render_table(table_id, table_type);
 
 
@@ -744,11 +777,13 @@ $(function () {
         } else if (target.is(".input_field_title") || target.is(".input_field_placeholder")) {
             event.preventDefault();
             if (target.is(".input_field_title")) {
-                table = target.closest('.user_input_field');
+                table = $(target).closest(".user_input_field");
+                table_id = $(table).data("table-input-id");
+                table_type = $(table).attr("data-type");
                 dd_element = $(table).find("dd");
                 dt_element = $(table).find("dt");
-                table_id = table.attr("data-table-id");
-                table_type = table.attr("data-table-type");
+                console.log(table_id);
+
                 title_input_field = $(dd_element).find(".input_field_title");
                 hidden_title_input_field = $(dd_element).find(".hidden_user_field_title_"+table_id);
 
@@ -767,6 +802,7 @@ $(function () {
                     table = target.closest('.input_field');
                     table_id = table.attr("data-table-id");
                     table_type = table.attr("data-table-type");
+
 
                     render_table(table_id, table_type);
 
@@ -792,7 +828,7 @@ $(function () {
             var table = $('*[data-table-id=' + id + ']');
 
             var input = $('*[data-table-input-id=' + id + ']');
-            var title = $("#formtitle");
+            var title = $("#field_title_"+id);
 
 
 
@@ -804,7 +840,7 @@ $(function () {
             var user_field_placeholder = $(input).find("input.hidden_user_field_placeholder_" + id);
 
             user_field_id.val(id);
-            user_field_title.val(title);
+            user_field_title.val(title.val());
 
 
             var user_field_type = $(input).find(".hidden_user_field_type_" + id);
@@ -815,7 +851,7 @@ $(function () {
             user_field_values.val("");
 
             switch (type) {
-                case "selection":
+                case "select":
                     var select = input.find(".selection_user").html("");
 
 
@@ -827,21 +863,16 @@ $(function () {
                         option.appendTo(select);
 
                         // In das Hidden-Feld eintragen:
-                        options = user_field_values.val() + "," + value + ",";
-                        if (options.match(/,/g).length > 1) {
-                            if (options.substring(options.length - 1) == ",") {
-                                options = options.substring(0, options.length - 1);
-                            }
-                        }
+                        options = user_field_values.val() + ":" + value + ":";
+
 
 
                         user_field_values.val(options);
 
 
                         user_field_default.val(select.val());
+
                     });
-
-
                     break;
 
                 case "checkbox":
@@ -856,12 +887,8 @@ $(function () {
                         option.appendTo(select);
 
                         // In das Hidden-Feld eintragen:
-                        options = user_field_values.val() + "," + value + ",";
-                        if (options.match(/,/g).length > 1) {
-                            if (options.substring(options.length - 1) == ",") {
-                                options = options.substring(0, options.length - 1);
-                            }
-                        }
+                        options = user_field_values.val() + ":" + value + ":";
+
 
 
                         user_field_values.val(options);
@@ -929,12 +956,8 @@ $(function () {
                         option.appendTo(select);
 
                         // In das Hidden-Feld eintragen:
-                        options = user_field_values.val() + "," + value + ",";
-                        if (options.match(/,/g).length > 1) {
-                            if (options.substring(options.length - 1) == ",") {
-                                options = options.substring(0, options.length - 1);
-                            }
-                        }
+                        options = user_field_values.val() + ":" + value + ":";
+
 
 
                         user_field_values.val(options);

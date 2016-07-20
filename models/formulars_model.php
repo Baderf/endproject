@@ -32,6 +32,59 @@ class formulars_model extends model{
         return true;
     }
 
+    public function getUserFormular($formular_id, $user_form_id, $user_id){
+        $sql = $this -> db -> query("SELECT * FROM user_formular_fields WHERE id = $user_form_id AND formular_id = $formular_id AND user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $user_fields = $sql -> fetch_all(MYSQLI_ASSOC);
+        }
+
+        return $user_fields;
+    }
+
+    public function updateUserFormularDetails($formular_id, $user_id, $user_formular_ids){
+        $stmt = $this -> db -> prepare("UPDATE formulars SET user_field_ids = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("sii", $user_formular_ids, $formular_id, $user_id);
+        $stmt -> execute();
+        $stmt -> close();
+
+        return true;
+    }
+
+    public function updateUserFormular($user_id, $formular_id, $title, $type, $default_value, $data_values, $placeholder, $is_required = "true"){
+        $stmt = $this -> db -> prepare("UPDATE user_formular_fields SET title = ?, type = ?, default_value = ?, data_values = ?, placeholder = ?, is_required = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("ssssssii", $title, $type, $default_value, $data_values, $placeholder, $is_required, $formular_id, $user_id);
+        if($stmt -> execute()){
+            $stmt -> close();
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function createUserFormular($user_id, $formular_id, $title, $type, $default_value, $data_values, $placeholder, $is_required = "true"){
+        $stmt = $this -> db -> prepare("INSERT INTO user_formular_fields (user_id, formular_id, title, type, default_value, data_values, placeholder, is_required) VALUES(?,?,?,?,?,?,?,?)");
+        $stmt -> bind_param("iissssss", $user_id, $formular_id, $title, $type, $default_value, $data_values, $placeholder, $is_required);
+        if($stmt -> execute()){
+            $stmt -> close();
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function getLastIdFormulars(){
+        $sql = $this -> db -> query("SELECT MAX(id) FROM user_formular_fields");
+
+        if($sql -> num_rows == 1){
+            $last_id = $sql -> fetch_assoc();
+        }
+
+        return $last_id;
+    }
+
     public function getFormularDetails($formular_id){
         $sql = $this->db->query("SELECT * FROM formulars WHERE id = $formular_id");
 

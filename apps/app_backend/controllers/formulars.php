@@ -65,7 +65,50 @@ class formulars extends user_controller{
                 }
 
             } elseif (isset($_POST['saveUserFields'])){
-                echo "Hallo" ;
+                $ids_all = $_POST['UserFieldIds'];
+                $ids = explode("::", $_POST['UserFieldIds']);
+                foreach ($ids as &$id) {
+                    $id = str_replace(":", "", $id);
+
+                    if(isset($_POST['user_field_new_' . $id])){
+                        // New User Field
+                        $title = $_POST['user_field_title_' . $id];
+                        $type = $_POST['user_field_type_' . $id];
+                        $default_value = $_POST['user_field_default_' . $id];
+                        $data_values = $_POST['user_field_values_' . $id];
+                        $placeholder = $_POST['user_field_placeholder_' . $id];
+                        $is_required = $_POST['user_field_required_' . $id];
+
+                        echo "Neu";
+
+                       if($this -> model -> createUserFormular(sessions::get("userid"), $form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
+                           // FEEDBACK HAT GEPASST
+
+                       }
+                    }elseif(!isset($_POST['user_field_new_' . $id])){
+                        // New User Field
+                        echo "Update";
+                        $title = $_POST['user_field_title_' . $id];
+                        $type = $_POST['user_field_type_' . $id];
+                        $default_value = $_POST['user_field_default_' . $id];
+                        $data_values = $_POST['user_field_values_' . $id];
+                        $placeholder = $_POST['user_field_placeholder_' . $id];
+                        $is_required = $_POST['user_field_required_' . $id];
+
+                        if($this -> model -> updateUserFormular(sessions::get("userid"), $form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
+                            // FEEDBACK HAT GEPASST
+
+                        };
+                    }
+                }
+
+                // Update:
+                if($this -> model -> updateUserFormularDetails($form_id, sessions::get("userid"), $ids_all)){
+                    // FEEDBACK HAT PASST
+                    header("Location: edit/$form_id");
+                }
+
+
             }
         }
 
@@ -98,6 +141,22 @@ class formulars extends user_controller{
 
         $this -> view -> data['activefields'] = $active_forms;
         $this -> view -> data['deactivefields'] = $standard_forms;
+
+        // GET USER_SPEC_FORMS:
+        $user_form_ids = $this -> view -> data['formdetails']['user_field_ids'];
+
+        if(!empty($user_form_ids)){
+            $user_ids = explode("::", $user_form_ids);
+
+            foreach ($user_ids as &$id){
+                $id = str_replace(":", "", $id);
+                
+                $this -> view -> data['user_form_' . $id] = $this -> model -> getUserFormular($form_id, $id, sessions::get("userid"));
+
+            }
+
+            $this -> view -> data['user_form_ids'] = $user_form_ids;
+        }
 
         //$this -> view -> data['formuserfields'] = $this -> model -> getFormularUserFields($form_id, sessions::get("userid"));
         $this -> view -> render("formulars/edit", $this -> view -> data);

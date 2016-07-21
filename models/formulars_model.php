@@ -51,9 +51,9 @@ class formulars_model extends model{
         return true;
     }
 
-    public function updateUserFormular($user_id, $formular_id, $title, $type, $default_value, $data_values, $placeholder, $is_required = "true"){
-        $stmt = $this -> db -> prepare("UPDATE user_formular_fields SET title = ?, type = ?, default_value = ?, data_values = ?, placeholder = ?, is_required = ? WHERE id = ? AND user_id = ?");
-        $stmt -> bind_param("ssssssii", $title, $type, $default_value, $data_values, $placeholder, $is_required, $formular_id, $user_id);
+    public function updateUserFormular($user_id, $formular_id, $user_form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required = "true"){
+        $stmt = $this -> db -> prepare("UPDATE user_formular_fields SET title = ?, type = ?, default_value = ?, data_values = ?, placeholder = ?, is_required = ? WHERE id = ? AND user_id = ? AND formular_id = ?");
+        $stmt -> bind_param("ssssssiii", $title, $type, $default_value, $data_values, $placeholder, $is_required, $user_form_id, $user_id, $formular_id);
         if($stmt -> execute()){
             $stmt -> close();
             return true;
@@ -79,7 +79,7 @@ class formulars_model extends model{
         $sql = $this -> db -> query("SELECT MAX(id) FROM user_formular_fields");
 
         if($sql -> num_rows == 1){
-            $last_id = $sql -> fetch_all(MYSQLI_ASSOC);
+            $last_id = $sql -> fetch_row();
         }
 
         return $last_id;

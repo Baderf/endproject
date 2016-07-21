@@ -1,5 +1,5 @@
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_input" data-table-id="<?php echo $data['user_form_' . $id][0]['id']; ?>" data-table-input-id="<?php echo $data['user_form_' . $id][0]['id']; ?>" data-table-type="date">
-    <dt class="accordion_opener"><?php echo $data['user_form_' . $id][0]['title']; ?></dt>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_input" data-table-id="<?php echo $data['user_form_' . $id][0]['id']; ?>" data-type="<?php echo $data['user_form_' . $id][0]['type']; ?>" data-table-input-id="<?php echo $data['user_form_' . $id][0]['id']; ?>" data-table-type="date">
+    <dt class="accordion_opener"><?php echo $data['user_form_' . $id][0]['title']; ?> (<?php echo $data['user_form_' . $id][0]['type']; ?> field)</dt>
     <dd>
         <div class="form-group has-feedback has-feedback-left">
             <label class="control-label" for="formtype">The Input Title: </label>

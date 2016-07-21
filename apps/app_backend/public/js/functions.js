@@ -410,7 +410,7 @@ $(function () {
                     $(new_element).slideDown("slow");
 
                     // Anpassung DIV ID's
-                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id);
+                    $(new_element).attr("data-table-id", id).attr("data-table-input-id", id).attr("data-user-field-id", id).attr("data-table-input-field", id);
                     $(new_element).removeClass("select_field_area_").addClass("select_field_area_"+id);
                     // Anpassung Label ID
                     var label = $(new_element).find("#field_title_");
@@ -573,6 +573,7 @@ $(function () {
             $(last_id).val(id + 1);
 
             render_post_ids();
+            render_post_ids();
 
              // die Id's von dem neuen in ein INput speichern
 
@@ -609,6 +610,7 @@ $(function () {
 
 
                 render_table(table_id, table_type);
+                render_post_ids();
             });
         } else if (target.is(".option_delete")) {
             event.preventDefault();
@@ -625,6 +627,7 @@ $(function () {
                 tr.remove();
 
                 render_table(table_id, table_type);
+                render_post_ids();
 
 
             });
@@ -683,6 +686,7 @@ $(function () {
 
                         
                         render_table(table_id, table_type);
+                        render_post_ids();
                     }
                 })
             } else if (target.is(".arrow_down")) {
@@ -694,6 +698,7 @@ $(function () {
                     if (row.hasClass("is_selection")) {
 
                         render_table(table_id, table_type);
+                        render_post_ids();
                     }
                 })
             }
@@ -706,6 +711,7 @@ $(function () {
             table_type = $(element).attr("data-table-type");
 
             render_table(table_id, table_type);
+            render_post_ids();
 
 
         } else if (target.is(".btn-selection-field-adder")) {
@@ -758,6 +764,7 @@ $(function () {
                     table_type = $(table).attr("data-type");
 
                     render_table(table_id, table_type);
+                    render_post_ids();
                 });
                 $(".select_field_area select").on("blur", function (e) {
                     target = $(event.target);
@@ -767,10 +774,12 @@ $(function () {
                     table_type = $(table).attr("data-type");
 
                     render_table(table_id, table_type);
+                    render_post_ids();
                 });
 
                 
                 render_table(table_id, table_type);
+                render_post_ids();
 
 
             }
@@ -805,6 +814,7 @@ $(function () {
 
 
                     render_table(table_id, table_type);
+                    render_post_ids();
 
                 });
 
@@ -976,6 +986,8 @@ $(function () {
 
                     break;
             }
+
+            render_post_ids();
 
         }
 

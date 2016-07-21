@@ -70,42 +70,39 @@ class formulars extends user_controller{
                 foreach ($ids as &$id) {
                     $id = str_replace(":", "", $id);
 
+                    $title = $_POST['user_field_title_' . $id];
+                    $type = $_POST['user_field_type_' . $id];
+                    $default_value = $_POST['user_field_default_' . $id];
+                    $data_values = $_POST['user_field_values_' . $id];
+                    $placeholder = $_POST['user_field_placeholder_' . $id];
+                    $is_required = $_POST['user_field_required_' . $id];
+
                     if(isset($_POST['user_field_new_' . $id])){
                         // New User Field
-                        $title = $_POST['user_field_title_' . $id];
-                        $type = $_POST['user_field_type_' . $id];
-                        $default_value = $_POST['user_field_default_' . $id];
-                        $data_values = $_POST['user_field_values_' . $id];
-                        $placeholder = $_POST['user_field_placeholder_' . $id];
-                        $is_required = $_POST['user_field_required_' . $id];
-
-                        echo "Neu";
 
                        if($this -> model -> createUserFormular(sessions::get("userid"), $form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
                            // FEEDBACK HAT GEPASST
 
                        }
                     }elseif(!isset($_POST['user_field_new_' . $id])){
-                        // New User Field
-                        echo "Update";
-                        $title = $_POST['user_field_title_' . $id];
-                        $type = $_POST['user_field_type_' . $id];
-                        $default_value = $_POST['user_field_default_' . $id];
-                        $data_values = $_POST['user_field_values_' . $id];
-                        $placeholder = $_POST['user_field_placeholder_' . $id];
-                        $is_required = $_POST['user_field_required_' . $id];
+                        // Update user field
 
-                        if($this -> model -> updateUserFormular(sessions::get("userid"), $form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
+
+                        if($this -> model -> updateUserFormular(sessions::get("userid"), $form_id, $id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
                             // FEEDBACK HAT GEPASST
 
                         };
                     }
+
                 }
+
+
 
                 // Update:
                 if($this -> model -> updateUserFormularDetails($form_id, sessions::get("userid"), $ids_all)){
                     // FEEDBACK HAT PASST
-                    header("Location: edit/$form_id");
+                    $location = APP_ROOT . 'backend/' . 'formulars/' . 'edit/' . $form_id;
+                    header("Location: $location");
                 }
 
 
@@ -150,7 +147,8 @@ class formulars extends user_controller{
 
             foreach ($user_ids as &$id){
                 $id = str_replace(":", "", $id);
-                
+
+
                 $this -> view -> data['user_form_' . $id] = $this -> model -> getUserFormular($form_id, $id, sessions::get("userid"));
 
             }
@@ -158,7 +156,8 @@ class formulars extends user_controller{
             $this -> view -> data['user_form_ids'] = $user_form_ids;
         }
 
-        $this -> view -> last_id = $this -> model -> getLastIdFormulars();
+        $this -> view -> data['last_user_id'] = $this -> model -> getLastIdFormulars();
+
         //$this -> view -> data['formuserfields'] = $this -> model -> getFormularUserFields($form_id, sessions::get("userid"));
         $this -> view -> render("formulars/edit", $this -> view -> data);
 

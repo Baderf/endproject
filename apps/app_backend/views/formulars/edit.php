@@ -264,32 +264,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12">
-                                <?php
-                                    if(isset($data['user_form_ids']) && !empty($data['user_form_ids'])){
-                                        $user_form_ids = explode("::", $data['user_form_ids']);
-
-                                        foreach ($user_form_ids as &$id){
-                                            $id = str_replace(":", "", $id);
-
-                                            $type = $data['user_form_' . $id][0]['type'];
-
-                                            if($type != ""){
-                                                require APPS . CURRENT_APP . APP_VIEWS . '/formulars/templates/' . $type . '_form.php';
-                                            }
-
-                                        }
-
-                                    }
-                                    ?>
-                            </div>
 
                         </div>
 
                         <div class="row" id="userspec_field_area">
                             <input type="hidden" id="last_id" value="<?php
 
-                            echo $this -> last_id;?>">
+                            echo $this -> data['last_user_id'][0] +1;?>">
+
+                            <?php
+                            if(isset($data['user_form_ids']) && !empty($data['user_form_ids'])){
+                                $user_form_ids = explode("::", $data['user_form_ids']);
+
+                                foreach ($user_form_ids as &$id){
+                                    $id = str_replace(":", "", $id);
+
+                                    $type = $data['user_form_' . $id][0]['type'];
+
+                                    if($type != ""){
+                                        require APPS . CURRENT_APP . APP_VIEWS . '/formulars/templates/' . $type . '_form.php';
+                                    }
+
+                                }
+
+                            }
+                            ?>
 
                         </div>
 

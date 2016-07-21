@@ -299,7 +299,7 @@ $(function () {
                     var select_input = $(new_element).find("select[name=form_selection_]");
                     $(select_input).attr("name", "form_selection_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (select field)");
+                    $(clone).find("dt > span").html($(title).val() + " (select field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -338,7 +338,7 @@ $(function () {
                 var select_input = $(new_element).find("select[name=form_selection_]");
                 $(select_input).attr("name", "form_selection_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (checkbox field)");
+                    $(clone).find("dt > span").html($(title).val() + " (checkbox field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -378,7 +378,7 @@ $(function () {
                     var select_input = $(new_element).find("select[name=form_selection_]");
                     $(select_input).attr("name", "form_selection_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (radio field)");
+                    $(clone).find("dt > span").html($(title).val() + " (radio field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -416,7 +416,7 @@ $(function () {
                     var label = $(new_element).find("#field_title_");
                     $(label).attr("id", "field_title_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (number field)");
+                    $(clone).find("dt > span").html($(title).val() + " (number field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -446,7 +446,7 @@ $(function () {
                     var label = $(new_element).find("#field_title_");
                     $(label).attr("id", "field_title_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (text field)");
+                    $(clone).find("dt > span").html($(title).val() + " (text field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -478,7 +478,7 @@ $(function () {
                     var label = $(new_element).find("#field_title_");
                     $(label).attr("id", "field_title_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (date field)");
+                    $(clone).find("dt > span").html($(title).val() + " (date field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -513,7 +513,7 @@ $(function () {
                     var label = $(new_element).find("#field_title_");
                     $(label).attr("id", "field_title_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (time field)");
+                    $(clone).find("dt > span").html($(title).val() + " (time field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -549,7 +549,7 @@ $(function () {
                     var label = $(new_element).find("#field_title_");
                     $(label).attr("id", "field_title_"+id);
 
-                    $(clone).find("dt").html($(title).val() + " (textarea field)");
+                    $(clone).find("dt > span").html($(title).val() + " (textarea field)");
                     title_input = $(clone).find("#field_title_"+id);
                     $(title_input).val((title).val());
 
@@ -631,6 +631,33 @@ $(function () {
 
 
             });
+        } else if (target.is(".make_preview")) {
+            event.preventDefault();
+            id = $(target).data("id");
+
+
+            window.open("http://localhost/endproject/backend/formulars/preview/" +id, "endproject/backend/formulars/preview/" +id, "width=650,height=700");
+
+
+        } else if (target.is(".field_delete")) {
+            event.preventDefault();
+            window_alert_show("Are you sure that you want to delete the hole input field?");
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+                element = $(target).closest(".user_input_field");
+                table_id = $(element).attr("data-table-input-id");
+                table_type = $(element).attr("data-table-type");
+
+                element.remove();
+
+                render_table(table_id, table_type);
+                render_post_ids();
+
+
+            });
         } else if (target.is(".accordion_opener")) {
 
             $(target).next("dd").slideToggle("slow");
@@ -702,6 +729,37 @@ $(function () {
                     }
                 })
             }
+
+
+        }else if (target.is(".dt_options .arrow_up") || target.is(".dt_options .arrow_down")) {
+            event.preventDefault();
+            element = $(target).closest(".user_input_field");
+            table_id = $(element).attr("data-table-input-id");
+            table_type = $(element).attr("data-table-type");
+
+            var row = target.parents(".user_input_field:first");
+            if (target.is(".arrow_up")) {
+                row.hide("slow", function () {
+                    row.insertBefore(row.prev()).show("slow", function(){
+                        insert_ids();
+                        render_post_ids();
+                    });
+
+
+                })
+            } else if (target.is(".arrow_down")) {
+
+                event.preventDefault();
+                row.hide("slow", function () {
+                    row.insertAfter(row.next()).show("slow", function(){
+                        insert_ids();
+                        render_post_ids();
+                    });
+
+                })
+            }
+
+
 
 
         }else if (target.is(".datepicker_userspec") || target.is(".timepicker_userspec")) {
@@ -790,7 +848,7 @@ $(function () {
                 table_id = $(table).data("table-input-id");
                 table_type = $(table).attr("data-type");
                 dd_element = $(table).find("dd");
-                dt_element = $(table).find("dt");
+                dt_element = $(table).find("dt > span");
                 console.log(table_id);
 
                 title_input_field = $(dd_element).find(".input_field_title");

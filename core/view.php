@@ -20,7 +20,9 @@ class view{
             require APPS . CURRENT_APP . APP_VIEWS . $template . '.php';
             require APPS . CURRENT_APP . APP_VIEWS . 'footer.php';
         }else{
+            require APPS . CURRENT_APP . APP_VIEWS . 'header_srcs.php';
             require APPS . CURRENT_APP . APP_VIEWS . $template . '.php';
+            require APPS . CURRENT_APP . APP_VIEWS . 'footer.php';
         }
     }
 }

@@ -17,6 +17,120 @@ class formulars extends user_controller{
         $this -> view -> render("formulars/index", $this -> view -> data);
     }
 
+    public function preview($form_id){
+
+        // Formular Infos:
+        $form_infos = $this -> model -> getFormularDetails($form_id);
+        $this -> view -> data['form_details'] = $form_infos;
+
+        // Holen der Standard-Felder
+        $standard_fields = $this -> model -> getFormularStandardfields($form_id);
+
+        //Holen der aktiven Standard-Felder
+        $active_standard_fields = $form_infos['standard_field_ids'];
+
+        $user_fields = $form_infos['user_field_ids'];
+
+
+        // Holen der einzelnen User-Felder
+
+
+
+        if(!empty($active_standard_fields)){
+            $active_ids = explode("::", $active_standard_fields);
+
+            $form = new formbuilder("preview_".$form_id);
+
+            foreach ($active_ids as $id) {
+                $id = str_replace(":", "", $id);
+
+                foreach ($standard_fields as $field){
+                    if($field['id'] == $id){
+                        $placeholder = 'Pleace insert your ' . $field['fullname'] . ' ...';
+                        $form ->addInput($field['type'], $field['name'], $field['fullname'], array('placeholder' => $placeholder));
+                    }
+                }
+
+
+            }
+            if(!empty($user_fields)){
+
+                $user_ids = explode("::", $user_fields);
+
+                foreach ($user_ids as &$id) {
+                    $id = str_replace(":", "", $id);
+
+                    $user_field = $this -> model -> getUserFormular($form_id, $id, sessions::get("userid"));
+
+
+                    switch ($user_field['type']) {
+                        case "text":
+                            $form ->addInput($user_field['type'], $user_field['id'], $user_field['title'], array('value' => $user_field['default_value'], 'placeholder' => $user_field['placeholder']));
+                            break;
+                        case "time":
+                            $form ->addInput($user_field['type'], $user_field['id'], $user_field['title'], array('value' => $user_field['default_value'], 'placeholder' => $user_field['placeholder'], "class" => "timepicker_userspec"));
+                            break;
+                        case "date":
+                            $form ->addInput($user_field['type'], $user_field['id'], $user_field['title'], array('value' => $user_field['default_value'], 'placeholder' => $user_field['placeholder'], "class" => "datepicker_userspec"));
+                            break;
+                        case "number":
+                            $form ->addInput($user_field['type'], $user_field['id'], $user_field['title'], array('value' => $user_field['default_value'], 'placeholder' => $user_field['placeholder']));
+                            break;
+                        case "select":
+                            $user_options = explode("::",$user_field['data_values']);
+                            $options = array();
+
+                            foreach ($user_options as &$option){
+                                $option = str_replace(":", "", $option);
+                                array_push($options, $option);
+                            }
+
+
+                            $form ->addSelect($user_field['id'], $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']));
+                            break;
+                        case "radio":
+                            $user_options = explode("::",$user_field['data_values']);
+                            $options = array();
+
+                            foreach ($user_options as &$option){
+                                $option = str_replace(":", "", $option);
+                                array_push($options, $option);
+                            }
+
+
+                            $form ->addSelect($user_field['id'], $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']));
+                            break;
+                        case "checkbox":
+                            $user_options = explode("::",$user_field['data_values']);
+                            $options = array();
+
+                            foreach ($user_options as &$option){
+                                $option = str_replace(":", "", $option);
+                                array_push($options, $option);
+                            }
+
+
+                            $form ->addSelect($user_field['id'], $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']));
+                            break;
+                        case "textarea":
+                             $form -> addTextarea($user_field['id'], $user_field['title'], array('placeholder' => $user_field['placeholder']));
+                             break;
+                    }
+                }
+            }
+
+
+
+            $form -> addInput("submit", "setregister", null, array('value' => 'Send', 'class' => 'spec_dashboard'));
+
+            $this -> view -> data['form'] = $form ->getForm();
+        }
+
+
+        $this -> view -> render("formulars/preview", $this -> view -> data, false);
+
+    }
+
     public function new(){
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
            $title = $_POST['formtitle'];

@@ -36,7 +36,7 @@ class formulars_model extends model{
         $sql = $this -> db -> query("SELECT * FROM user_formular_fields WHERE id = $user_form_id AND formular_id = $formular_id AND user_id = $user_id");
 
         if($sql -> num_rows > 0){
-            $user_fields = $sql -> fetch_all(MYSQLI_ASSOC);
+            $user_fields = $sql -> fetch_assoc();
         }
 
         return $user_fields;
@@ -103,6 +103,16 @@ class formulars_model extends model{
         }
 
         return $standard_fields;
+    }
+    
+    public function getFormularStandardActiveFields($formular_id){
+        $sql = $this -> db -> query ("SELECT standard_field_ids FROM formulars WHERE id = $formular_id");
+
+        if($sql -> num_rows > 0){
+            $active_fields = $sql -> fetch_row();
+        }
+
+        return $active_fields;
     }
 
     public function getFormularUserFields($formular_id, $user_id){

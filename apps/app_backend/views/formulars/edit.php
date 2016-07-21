@@ -85,6 +85,7 @@
                                 -->
 
                                 <input type="submit" name="saveOverviewFormular" class="btn btn-lg btn-block spec spec_dashboard visible-lg visible-md" value="Save">
+                                <a href="<?php echo APP_ROOT . 'backend/' . 'formulars/' . 'preview/' . $data['formdetails']['id']; ?>" data-id = "<?php echo $data['formdetails']['id']; ?>" class="btn btn-lg btn-block spec spec_event visible-lg visible-md make_preview">See preview</a>
 
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 info-box">
@@ -279,7 +280,8 @@
                                 foreach ($user_form_ids as &$id){
                                     $id = str_replace(":", "", $id);
 
-                                    $type = $data['user_form_' . $id][0]['type'];
+
+                                    $type = $data['user_form_' . $id]['type'];
 
                                     if($type != ""){
                                         require APPS . CURRENT_APP . APP_VIEWS . '/formulars/templates/' . $type . '_form.php';
@@ -308,7 +310,19 @@
                         -->
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_select select_field_area select_field_area_" data-type="select" data-table-type="select" data-table-input-id="#" data-user-field-id="#">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                                 <div class="form-group has-feedback has-feedback-left">
                                     <label class="control-label" for="formtype">The Input Title: </label>
@@ -382,7 +396,19 @@
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_checkbox select_field_area select_field_area_" data-type="checkbox" data-table-type="checkbox" data-table-input-id="#" data-user-field-id="#">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                                 <div class="form-group has-feedback has-feedback-left">
                                     <label class="control-label" for="formtype">The Input Title: </label>
@@ -458,7 +484,19 @@
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field text_input" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="text">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                             <div class="form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="formtype">The Input Title: </label>
@@ -505,7 +543,19 @@
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field number_field" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="number">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                             <div class="form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="formtype">The Input Title: </label>
@@ -568,7 +618,19 @@
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_input" data-table-id="#" data-table-input-id="#" data-table-type="date">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                             <div class="form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="formtype">The Input Title: </label>
@@ -628,7 +690,19 @@
                   --->
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field date_field time_input" data-table-id="#" data-table-input-id="#" data-table-type="time" data-type="time">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                             <div class="form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="formtype">The Input Title: </label>
@@ -683,7 +757,19 @@
 
 
        --->            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field user_input_radio select_field_area select_field_area_" data-type="radio" data-table-type="radio" data-table-input-id="#" data-user-field-id="#">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                                 <div class="form-group has-feedback has-feedback-left">
                                     <label class="control-label" for="formtype">The Input Title: </label>
@@ -779,7 +865,19 @@
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 user_input_field input_field textarea_input" data-table-id="#" data-table-input-field="#" data-table-input-id="#" data-table-type="textarea">
-                            <dt class="accordion_opener">Hier steht der Titel des Formulars</dt>
+                            <dt class="accordion_opener"><span>Hier steht der Titel des Formulars</span>
+                            <div class="dt_options">
+                                <a href="#" class="btn btn-sm btn-info arrow_up">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info arrow_down">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-transparent field_delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                            </dt>
                             <dd>
                             <div class="form-group has-feedback has-feedback-left">
                                 <label class="control-label" for="formtype">The Input Title: </label>

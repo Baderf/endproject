@@ -1255,11 +1255,126 @@ FORMULARE
 
 .user_input_field {
     padding: 10px;
-    background-color: #ccc;
-
-}
+    }
 
 #userspec_field_area {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.user_input_field {
+    border: 1px solid #204d74;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.user_input_field .form-group:first-child {
+    margin: 15px;
+}
+
+
+
+.user_input_field .col-lg-6,
+.user_input_field .col-lg-3 {
+    padding: 0;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.select_field_area .col-lg-6 {
     padding: 15px;
 }
-dd { display: none; }
+
+.user_input_field .col-lg-6 .form-group {
+    margin: 0;
+}
+
+.user_input_field .col-lg-3 .form-group {
+    margin: 0;
+}
+
+
+
+.user_input_field dt {
+
+    background-color: #337ab7;
+    color: #fff;
+    display: block;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 15px;
+    position: relative;
+}
+
+dd { display: none;
+    }
+
+.dt_options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.user_input_field:first-of-type .dt_options .arrow_up {
+     display: none;
+}
+
+.user_input_field:last-of-type .dt_options .arrow_down{
+    display: none;
+}
+
+.btn-transparent {
+    color: #fff;
+    border-color: #fff;
+    transition: all 0.2s ease-in-out;
+    background-color: transparent;
+}
+
+.btn-transparent:hover {
+    color: #fff;
+    border-color: #c9302c;
+}
+
+.remove_user_field .btn-field-remover {
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.preview_field_area {
+    color: #000!important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.preview_field_area label {
+    opacity: 1!important;
+}
+
+.formular_description {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #ccc;
+    border: 1px solid #3c3c3c;
+    margin-top: 10px;
+
+}
+
+.wrapper_formular{
+
+    width: 95%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+
+    z-index: 999999;
+    margin-top: 20px;
+}
+
+input[type=submit]{
+
+}

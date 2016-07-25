@@ -14,4 +14,11 @@ class designs extends user_controller{
         $this -> view -> render("designs/index", $this -> view -> data);
     }
 
+    public function new(){
+
+        $this -> view -> data['username'] = sessions::get('uname');
+
+        $this -> view -> render("designs/new", $this -> view -> data);
+    }
+
 }

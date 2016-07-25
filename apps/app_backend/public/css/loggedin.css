@@ -963,6 +963,7 @@ Statistic
 
 .design_area {
   padding: 0;
+    z-index: 999;
 }
 
 .design_tools {
@@ -1023,12 +1024,16 @@ Statistic
   color: #902082;
 }
 
-.design_tool_elements {
+.design_tool_elements,
+.content_tool_elements {
   text-align: center;
   border-bottom: 1px solid #bbb;
   padding-bottom: 20px;
   padding-top: 20px;
+}
 
+.content_tool_elements {
+    display: none;
 }
 
 .design_tool {
@@ -1071,6 +1076,7 @@ Statistic
   border:1px solid #bbb;
   padding: 50px 10px;
   margin-bottom: 50px;
+
 }
 
 .email-item {
@@ -1079,6 +1085,35 @@ Statistic
   margin: 0 auto;
   margin-bottom: 20px;
   clear: both;
+    z-index: 9;
+    position: relative;
+}
+
+.email-item:hover .email_item_options {
+    display: block;
+}
+
+.email_item_options:first-child .arrow_up {
+    display: none;
+}
+
+.email-wrapper .email-item:first-child .arrow_up {
+    display: none;
+}
+.email-wrapper .email-item:last-child .arrow_down {
+    display: none;
+}
+
+.email_item_options {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    display: none;
+    padding-left: 10px;
+}
+
+.email_item_options div {
+    margin-bottom: 5px;
 }
 
 .email-item:hover {
@@ -1377,4 +1412,44 @@ dd { display: none;
 
 input[type=submit]{
 
+}
+
+/* CKE EDITOR */
+
+.cke_focus {
+    background-color: black;
+    position: relative;
+}
+
+.cke_panel {
+    z-index: 100001;
+}
+
+/*
+
+DRAGULAR
+
+*/
+
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+}
+.gu-hide {
+    display: none !important;
+}
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
 }

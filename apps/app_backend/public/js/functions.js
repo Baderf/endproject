@@ -658,6 +658,18 @@ $(function () {
 
 
             });
+        } else if (target.is(".email_item_options .item_delete")) {
+            event.preventDefault();
+            window_alert_show("Are you sure that you want to delete this element?");
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+                element = $(target).closest(".email-item");
+                element.remove();
+
+            });
         } else if (target.is(".accordion_opener")) {
 
             $(target).next("dd").slideToggle("slow");
@@ -758,6 +770,64 @@ $(function () {
 
                 })
             }
+
+
+
+
+        }else if (target.is(".email_item_options .arrow_up") || target.is(".email_item_options .arrow_down")) {
+            event.preventDefault();
+            element = $(target).closest(".email-item");
+
+            var row = target.parents(".email-item:first");
+            if (target.is(".arrow_up")) {
+                row.hide("slow", function () {
+                    row.insertBefore(row.prev()).show("slow", function(){
+
+                    });
+
+
+                })
+            } else if (target.is(".arrow_down")) {
+
+                event.preventDefault();
+                row.hide("slow", function () {
+                    row.insertAfter(row.next()).show("slow", function(){
+
+                    });
+
+                })
+            }
+
+
+
+
+        }else if (target.is(".design_switch")) {
+
+
+            if(target.is(".switch_designs")){
+                if(!$(target).hasClass("switch_active")){
+                    $(".switch_content").removeClass("switch_active");
+                    $(".switch_designs").addClass("switch_active");
+
+                    $(".content_tool_elements").slideUp("slow", function(){
+                        $(".design_tool_elements").slideDown("slow");
+                    });
+                }
+            }else if(target.is(".switch_content")){
+                if(!$(target).hasClass("switch_active")){
+                    $(".switch_designs").removeClass("switch_active");
+                    $(".switch_content").addClass("switch_active");
+
+                    $(".design_tool_elements").slideUp("slow", function(){
+                        $(".content_tool_elements").slideDown("slow");
+                    });
+                }
+            }
+
+
+
+
+
 
 
 
@@ -1061,6 +1131,68 @@ $(function () {
             $(hidden_post_ids).val(hidden_post_ids.val() + new_id);
         });
     }
+
+
+    // IST FÜR DESIGN-TEMPLATE:
+
+    dragula([document.querySelector('#left_1'), document.querySelector('#email_template')], {
+        copy: function (el, source) {
+            return source === document.querySelector('#left_1')
+        },
+        accepts: function (el, target) {
+            return target !== document.querySelector('#left_1')
+        }
+    });
+    dragula([document.querySelector('#left_2'), document.querySelector('#email_template')], {
+        copy: function (el, source) {
+            return source === document.querySelector('#left_2')
+        },
+        accepts: function (el, target) {
+            return target !== document.querySelector('#left_2')
+        }
+    });
+    dragula([document.querySelector('#left_3'), document.querySelector('#email_template')], {
+        copy: function (el, source) {
+            return source === document.querySelector('#left_3')
+        },
+        accepts: function (el, target) {
+            return target !== document.querySelector('#left_3')
+        }
+    });
+    dragula([document.querySelector('#left_4'), document.querySelector('#email_template')], {
+        copy: function (el, source) {
+            return source === document.querySelector('#left_4')
+        },
+        accepts: function (el, target) {
+            return target !== document.querySelector('#left_4')
+        }
+    });
+
+    // Autosave abfrage
+
+    setTimeout(function(){
+
+        // select the target node
+        var target = document.querySelector('#email_template');
+
+        // create an observer instance
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                console.log(mutation.type);
+            });
+        });
+
+        // configuration of the observer:
+        var config = { attributes: true, childList: true, characterData: true }
+
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+
+        console.log("Hallo");
+        // later, you can stop observing
+        //observer.disconnect();
+    }, 3000);
+
 });
 
 

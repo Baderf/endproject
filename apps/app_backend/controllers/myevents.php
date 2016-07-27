@@ -95,7 +95,13 @@ class myevents extends user_controller{
     public function createEvent($title, $eventtype,$date_from, $date_to, $user_id) {
         if($this -> model -> newEvent($title, $eventtype,$date_from, $date_to, $user_id)){
             $event_id = $this -> model -> event_id;
-            header("Location: edit/$event_id");
+            $new_table_name = "users_event_" . $event_id;
+            $name_mail = "users_mails_" . $event_id;
+
+            if($this -> model -> createEventUsersTable($new_table_name, $name_mail)){
+                header("Location: edit/$event_id");
+            };
+
         };
     }
 

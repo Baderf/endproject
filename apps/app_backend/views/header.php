@@ -77,6 +77,9 @@
                 <li>
                     <a href="#login" class="nav-btn">Settings</a>
                 </li>
+                <li>
+                    <a href="#users" class="nav-btn">Users</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

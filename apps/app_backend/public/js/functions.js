@@ -1150,9 +1150,25 @@ $(function () {
         accepts: function (el, target) {
             return target !== document.querySelector('#left_2')
         }
+
+
+    }).on('drop', function (el) {
+        email_part = $(el).find(".email-item").clone();
+        $(email_part).insertAfter($(el));
+        $(el).hide("fast");
+        $(el).remove();
+        new_id =  Math.floor((Math.random() * 100) + 1);
+        $(email_part.find("div").first()).attr("id", "editor" + new_id);
+        $(email_part.find("div").first()).attr("aria-label", "Rich Text Editor, editor" + new_id);
+        $(email_part.find("div").first()).attr("title", "Rich Text Editor, editor" + new_id);
+        $(email_part.find("div").first()).attr("contenteditable", "true");
+        CKEDITOR.inline($(email_part.find("div").first()));
+
     });
+
     dragula([document.querySelector('#left_3'), document.querySelector('#email_template')], {
         copy: function (el, source) {
+
             return source === document.querySelector('#left_3')
         },
         accepts: function (el, target) {
@@ -1168,6 +1184,7 @@ $(function () {
         }
     });
 
+
     // Autosave abfrage
 
     setTimeout(function(){
@@ -1179,6 +1196,8 @@ $(function () {
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 console.log(mutation.type);
+                fill_email_inputs();
+
             });
         });
 
@@ -1188,12 +1207,38 @@ $(function () {
         // pass in the target node, as well as the observer options
         observer.observe(target, config);
 
-        console.log("Hallo");
+
         // later, you can stop observing
         //observer.disconnect();
     }, 3000);
 
+    function fill_email_inputs(){
+        emailinput_all = $("body").find("#emailhtmlall");
+        emailinput_email = $("body").find("#emailhtmltext");
+        $(emailinput_email).val("");
+
+        // Kompletter HTML-Anteil ins Input:
+        emailinput_all = $(emailinput_all).val($('#email_template').html());
+
+        // Innerer HTML-Anteil ins Input:
+        $("#email_template .email-item").each(function(element){
+            innerhtml = $(this).text();
+
+            $(innerhtml).find(".email_item_options").remove();
+            not =  $(innerhtml).find("div.email_item_options");
+
+            console.log(innerhtml);
+
+            $(emailinput_email).val($(emailinput_email).val() + innerhtml);
+
+        });
+
+
+    }
+
 });
+
+
 
 
 

@@ -7,15 +7,15 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
             <a href="myevents/newEvent" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Create new Design
+                Create new User
             </a>
         </div>
 
     </div>
 
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_design">
-        <h3>My Designs</h3>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_users">
+        <h3><?php echo "Users of ". $data['event_infos']['name'];?></h3>
         <span class="page_quader"></span>
     </div>
 
@@ -25,23 +25,23 @@
 
 
     <div class="row left_filter">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 left_filter_area spec_design">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 left_filter_area spec_users">
 
             <ul class="list">
                 <li>
-                    <a href="#">All mails</a>
+                    <a href="#">All user</a>
                 </li>
 
                 <li>
-                    <a href="#about">In progress</a>
+                    <a href="#about">Commited</a>
                 </li>
 
                 <li>
-                    <a href="#services">Already sent</a>
+                    <a href="#services">Cancelled</a>
                 </li>
 
                 <li>
-                    <a href="#contact">Latest created</a>
+                    <a href="#contact">No feedback</a>
                 </li>
             </ul>
         </div>
@@ -50,17 +50,15 @@
             <table class="table table-inverse table-striped">
                 <thead class="thead-inverse">
                 <tr>
-                    <th>Name</th>
-                    <th>Created at</th>
-                    <th>Type</th>
-
-                    <th>Sent</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
                     <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">Invitation</th>
+
                     <td>Mark</td>
                     <td>Otto</td>
 
@@ -68,7 +66,7 @@
                     <td>@mdo</td>
                 </tr>
                 <tr>
-                    <th scope="row">Mail</th>
+
                     <td>Jacob</td>
                     <td>Thornton</td>
 
@@ -76,7 +74,7 @@
                     <td>@fat</td>
                 </tr>
                 <tr>
-                    <th scope="row">Mail</th>
+
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>23.12.2016</td>

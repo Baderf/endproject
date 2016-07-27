@@ -10,6 +10,13 @@ class myevents_model extends model{
         parent::__construct();
     }
 
+    public function createEventUsersTable($name, $name_mail){
+        $this -> db -> query("CREATE TABLE $name SELECT * FROM users_event_template");
+        $this -> db -> query("CREATE TABLE $name_mail SELECT * FROM users_mails_template");
+
+        return true;
+    }
+
     public function newEvent($title, $eventtype, $date_from, $date_to, $user_id){
 
         $created_at = date("m/d/Y g:i a");

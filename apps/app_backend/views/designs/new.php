@@ -152,6 +152,32 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
+                        <div class="email_header email-item">
+
+                            <div contenteditable="true">
+                                <h1>Inline Editing in Action!</h1>
+                                <p>The "div" element that contains this text is now editable.
+                            </div>
+
+                            <div class="email_item_options">
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -195,6 +221,9 @@
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Create new Formular</a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
+                <input type="submit" name="saveEmail" class="btn btn-primary btn-block btn-back btn-self" value="save">
+                <input type="hidden" value="" name="emailhtmltext" id="emailhtmltext">
+                <input type="hidden" value="" name="emailhtmlall" id="emailhtmlall">
             </div>
         </div>
 
@@ -210,12 +239,12 @@
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 email-wrapper" id="email_template">
                 <div class="email_header email-item">
-                    <div style="z-index: 1">
+
                         <div id="editor1" contenteditable="true">
                             <h1>Inline Editing in Action!</h1>
                             <p>The "div" element that contains this text is now editable.
                         </div>
-                    </div>
+
                     <div class="email_item_options">
                         <div>
                             <a href="#" class="btn btn-sm btn-info arrow_up">
@@ -261,11 +290,11 @@
                 </div>
 
                 <div class="email_image_textbox email-item clearfix">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="editor3" contenteditable="true">
                         <img src="http://fpoimg.com/320x320">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid at corporis deleniti deserunt dolore ex fugit itaque modi nesciunt obcaecati optio qui quibusdam sed soluta temporibus ut, vero voluptatibus.</p>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="editor4" contenteditable="true">
                         <img src="http://fpoimg.com/320x320">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid at corporis deleniti deserunt dolore ex fugit itaque modi nesciunt obcaecati optio qui quibusdam sed soluta temporibus ut, vero voluptatibus.</p>
                     </div>
@@ -289,7 +318,7 @@
                     </div>
                 </div>
 
-                <div class="email_textbox email-item clearfix">
+                <div class="email_textbox email-item clearfix" id="editor5" contenteditable="true">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam, commodi consectetur deserunt dicta doloremque fugiat illum, itaque iure molestiae molestias neque nobis numquam odit optio pariatur quibusdam sit tenetur.</p>
                     <div class="email_item_options">
                         <div>

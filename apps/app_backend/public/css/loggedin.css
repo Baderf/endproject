@@ -46,6 +46,14 @@ main classes
   color: #fff;
   text-transform: uppercase;
 }
+
+.spec_users {
+  transition: all 0.2s ease-in-out;
+  background-color: #dd4b4b;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 .btn.spec_design:hover {
   background-color:#902082;
   color: #fff;
@@ -184,6 +192,10 @@ body {
     background-image: url("../img/icons/icon.events.png");
 }
 
+.icon_users {
+    background-image: url("../img/icons/icon.users.png");
+}
+
 .icon_designs {
     background-image: url("../img/icons/icon.design.png");
 }
@@ -227,6 +239,23 @@ li.dashboard.active a {
 
 li.dashboard.active .icon_dashboard {
     background-image: url("../img/icons/icon.dashboard-active.png");
+}
+
+
+li.users:hover {
+    background-color: #dd4b4b;
+}
+
+li.users.active {
+    background-color: #f3f3f3;
+}
+
+li.users.active a {
+    color: #e84a20;
+}
+
+li.users.active .icon_users {
+    background-image: url("../img/icons/icon.users-active.png");
 }
 
 
@@ -1453,3 +1482,32 @@ DRAGULAR
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
     filter: alpha(opacity=20);
 }
+
+.design_tool .email-item {
+    display: none;
+}
+
+.default_user_values,
+.default_mail_values {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.default_user_values h4,
+.default_mail_values h4{
+    margin-bottom: 40px;
+}
+
+.default_user_values label,
+.default_mail_values label{
+    opacity:1;
+}
+
+.default_mail_values {
+    margin-left: 10px;
+
+}
+

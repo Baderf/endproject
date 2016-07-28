@@ -106,9 +106,6 @@ input:focus+i {
   color: #66afe9;
 }
 
-label {
-  opacity: 0;
-}
 
 /* HEADER */
 
@@ -125,7 +122,7 @@ body {
     margin: 0 auto;
     overflow: hidden;
     margin-top: 160px;
-    z-index: 999999;
+    z-index: 999;
 }
 
 .nav-logged_in {
@@ -1446,12 +1443,20 @@ input[type=submit]{
 /* CKE EDITOR */
 
 .cke_focus {
-    background-color: black;
     position: relative;
 }
 
 .cke_panel {
     z-index: 100001;
+}
+
+.design_area label {
+    opacity: 1!important;
+    color: #000!important;
+}
+
+#toolbarLocation {
+    padding: 0;
 }
 
 /*

@@ -7,9 +7,14 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-    config.baseFloatZIndex = 1;
+    config.baseFloatZIndex = 1000;
 
     config.colorButton_colors = '00923E,F8C100,28166F';
-    config.FloatingPanelsZIndex = 1;
+    config.FloatingPanelsZIndex = 10000;
     config.colorButton_colors = 'blue';
+    config.extraPlugins = 'sharedspace';
+    config.removePlugins = 'floatingspace,maximize,resize';
+    config.sharedSpaces = {
+        top: 'toolbarLocation'
+    };
 };

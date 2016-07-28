@@ -25,16 +25,24 @@ class formbuilder{
      * @param array $attr
      * @return $this
      */
-    public function addInput($type = "text", $name = "", $label = null, $attr = array()){
+    public function addInput($type = "text", $name = "", $label = null, $attr = array(), $required = false){
 
         $this -> output .= "<div class=\"form-group\">";
 
         if($label !== null){
-
-            $this -> output .= "<label for=\"f-$name\">$label</label>";
+            if($required){
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+                $this -> output .= "*";
+            }else{
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+            }
         }
 
-        $this -> output .= "<input type=\"$type\" name=\"f-$name\" id=\"f-$name\"";
+        if($required == TRUE){
+            $this -> output .= "<input type=\"$type\" name=\"f-$name\" id=\"f-$name\" required";
+        }else{
+            $this -> output .= "<input type=\"$type\" name=\"f-$name\" id=\"f-$name\"";
+        }
 
         foreach( $attr as $key => $val ){
 
@@ -53,16 +61,25 @@ class formbuilder{
     }
 
 
-    public function addSelect($name = "", $label = null, $options = array(), $selected = null, $attr = array()){
+    public function addSelect($name = "", $label = null, $options = array(), $selected = null, $attr = array(), $required = false){
 
         $this -> output .= "<div class=\"form-group\">";
 
         if($label !== null){
-
-            $this -> output .= "<label for=\"f-$name\">$label</label>";
+            if($required){
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+                $this -> output .= "*";
+            }else{
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+            }
         }
 
-        $this -> output .= "<select name=\"f-$name\" id=\"f-$name\"";
+        if ($required == TRUE){
+            $this -> output .= "<select name=\"f-$name\" id=\"f-$name\" required";
+        }else{
+            $this -> output .= "<select name=\"f-$name\" id=\"f-$name\"";
+        }
+
 
         foreach( $attr as $key => $val ){
 
@@ -85,16 +102,24 @@ class formbuilder{
         return $this;
     }
 
-    public function addTextarea($name = "", $label = null, $attr = array()){
+    public function addTextarea($name = "", $label = null, $attr = array(), $required = false){
 
         $this -> output .= "<div class=\"form-group\">";
 
         if($label !== null){
-
-            $this -> output .= "<label for=\"f-$name\">$label</label>";
+            if($required){
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+                $this -> output .= "*";
+            }else{
+                $this -> output .= "<label for=\"f-$name\">$label</label>";
+            }
         }
 
-        $this -> output .= "<textarea id=\"f-$name\" name=\"f-$name\"";
+        if($required){
+            $this -> output .= "<textarea id=\"f-$name\" name=\"f-$name\" required";
+        }else{
+            $this -> output .= "<textarea id=\"f-$name\" name=\"f-$name\"";
+        }
 
         foreach( $attr as $key => $val ){
 

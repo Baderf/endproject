@@ -1,4 +1,4 @@
-<body class="logged_in">
+
 
 <!-- Mobile Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top topnav visible-xs" role="navigation">
@@ -154,7 +154,7 @@
                         <p>Textbox</p>
                         <div class="email_header email-item">
 
-                            <div contenteditable="true">
+                            <div id="editor8" contenteditable="true">
                                 <h1>Inline Editing in Action!</h1>
                                 <p>The "div" element that contains this text is now editable.
                             </div>
@@ -221,18 +221,15 @@
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Create new Formular</a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
-                <input type="submit" name="saveEmail" class="btn btn-primary btn-block btn-back btn-self" value="save">
-                <input type="hidden" value="" name="emailhtmltext" id="emailhtmltext">
-                <input type="hidden" value="" name="emailhtmlall" id="emailhtmlall">
             </div>
         </div>
 
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 templater">
 
-            <script src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC ?>ckeditor/ckeditor.js"></script>
+            <script src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . "ckeditor/ckeditor.js";?>"></script>
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 edit_toolbar" id="toolbarLocation">
-                <pre>Hier kommt die Toolbar</pre>
+
             </div>
 
 
@@ -240,10 +237,10 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 email-wrapper" id="email_template">
                 <div class="email_header email-item">
 
-                        <div id="editor1" contenteditable="true">
-                            <h1>Inline Editing in Action!</h1>
-                            <p>The "div" element that contains this text is now editable.
-                        </div>
+                    <div id="editor1" contenteditable="true">
+                        <h1>Inline Editing in Action!</h1>
+                        <p>The "div" element that contains this text is now editable.
+                    </div>
 
                     <div class="email_item_options">
                         <div>
@@ -349,6 +346,3 @@
 
 </div>
 <!-- /.banner -->
-
-
-</body>

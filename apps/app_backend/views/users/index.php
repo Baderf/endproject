@@ -2,7 +2,12 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <?php
+            $url_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
+            ?>
+            <a href="<?php
+            echo $url_back;
+            ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
 
 
@@ -58,10 +63,7 @@
                         <td>12.02.2016</td>
                         <td><strong>99</strong></td>
                         <td>
-                            <form action="" method="post">
-                                <input type="hidden" name="event_id" value="1">
-                                <input type="submit" name="go_to_userlist" class="btn btn-sm btn-info" value="users">
-                            </form>
+                            <a href="users/edit/1">go to users</a>
                         </td>
                     </tr>
 

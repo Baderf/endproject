@@ -1162,7 +1162,7 @@ $(function () {
         $(email_part.find("div").first()).attr("aria-label", "Rich Text Editor, editor" + new_id);
         $(email_part.find("div").first()).attr("title", "Rich Text Editor, editor" + new_id);
         $(email_part.find("div").first()).attr("contenteditable", "true");
-        CKEDITOR.inline($(email_part.find("div").first()));
+       // CKEDITOR.inline($(email_part.find("div").first()));
 
     });
 
@@ -1226,8 +1226,6 @@ $(function () {
 
             $(innerhtml).find(".email_item_options").remove();
             not =  $(innerhtml).find("div.email_item_options");
-
-            console.log(innerhtml);
 
             $(emailinput_email).val($(emailinput_email).val() + innerhtml);
 

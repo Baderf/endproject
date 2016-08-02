@@ -113,13 +113,6 @@
     <!-- /.content-section-a -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-
-    <script src="js/moment.min.js"></script>
     <div class="design_menu visible-md visible-sm visible-xs">
         <span class="glyphicon glyphicon-picture"></span>
     </div>
@@ -136,6 +129,12 @@
                     <p>content</p>
                 </div>
             </div>
+
+            <div>
+                <input type="hidden" id="emailhtmlall" value="1">
+                <input type="hidden" id="emailhtmltext" value="1">
+            </div>
+
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left">

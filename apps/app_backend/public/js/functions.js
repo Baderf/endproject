@@ -1155,14 +1155,15 @@ $(function () {
     }).on('drop', function (el) {
         email_part = $(el).find(".email-item").clone();
         $(email_part).insertAfter($(el));
-        $(el).hide("fast");
-        $(el).remove();
+        $(el).hide("fast", function(){
+            $(this).remove();
+        });
         new_id =  Math.floor((Math.random() * 100) + 1);
-        $(email_part.find("div").first()).attr("id", "editor" + new_id);
-        $(email_part.find("div").first()).attr("aria-label", "Rich Text Editor, editor" + new_id);
-        $(email_part.find("div").first()).attr("title", "Rich Text Editor, editor" + new_id);
-        $(email_part.find("div").first()).attr("contenteditable", "true");
-       // CKEDITOR.inline($(email_part.find("div").first()));
+        $(email_part.find("div").first()).attr("id", "editor" + new_id)
+            .attr("aria-label", "Rich Text Editor, editor" + new_id)
+            .attr("title", "Rich Text Editor, editor" + new_id)
+            .attr("contenteditable", "true");
+        CKEDITOR.inline("editor" + new_id);
 
     });
 
@@ -1213,21 +1214,27 @@ $(function () {
     }, 3000);
 
     function fill_email_inputs(){
-        emailinput_all = $("body").find("#emailhtmlall");
-        emailinput_email = $("body").find("#emailhtmltext");
-        $(emailinput_email).val("");
+        emailinput_all = $("#emailhtmlall");
+        emailinput_email = $("#emailhtmltext");
+        console.log(emailinput_email.val(""));
 
         // Kompletter HTML-Anteil ins Input:
-        emailinput_all = $(emailinput_all).val($('#email_template').html());
+        emailinput_all = emailinput_all.val($('#email_template').html());
 
         // Innerer HTML-Anteil ins Input:
         $("#email_template .email-item").each(function(element){
-            innerhtml = $(this).text();
 
-            $(innerhtml).find(".email_item_options").remove();
-            not =  $(innerhtml).find("div.email_item_options");
 
-            $(emailinput_email).val($(emailinput_email).val() + innerhtml);
+
+            clone = $(this).clone();
+
+            clone.find(".email_item_options").remove();
+            innerhtml = $(clone).html();
+
+
+            emailinput_email.val(emailinput_email.val() + innerhtml);
+
+
 
         });
 

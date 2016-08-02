@@ -7,7 +7,7 @@ class users extends user_controller{
         parent::__construct();
     }
 
-    public function index($event_id){
+    public function index(){
 
             $this -> view -> data['username'] = sessions::get('uname');
 

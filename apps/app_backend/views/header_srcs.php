@@ -30,5 +30,5 @@
     <![endif]-->
 
 </head>
-<body style="background-color: #123;">
+<body style="background-color: #123;" data-baseurl="<?php echo APP_ROOT; ?>">
 

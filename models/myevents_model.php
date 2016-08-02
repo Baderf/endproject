@@ -11,8 +11,8 @@ class myevents_model extends model{
     }
 
     public function createEventUsersTable($name, $name_mail){
-        $this -> db -> query("CREATE TABLE $name (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) ) SELECT * FROM users_event_template ");
-        $this -> db -> query("CREATE TABLE $name_mail (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) ) SELECT * FROM users_mails_template ");
+        $this -> db -> query("CREATE TABLE $name (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) ) SELECT * FROM users_event_template");
+        $this -> db -> query("CREATE TABLE $name_mail SELECT * FROM users_mails_template");
 
         return true;
     }

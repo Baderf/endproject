@@ -131,7 +131,7 @@ class formulars extends user_controller{
 
     }
 
-    public function new(){
+    public function newFormular(){
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
            $title = $_POST['formtitle'];
 
@@ -195,6 +195,7 @@ class formulars extends user_controller{
                         // New User Field
 
                        if($this -> model -> createUserFormular(sessions::get("userid"), $form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required)){
+                           
                            // FEEDBACK HAT GEPASST
 
                        }

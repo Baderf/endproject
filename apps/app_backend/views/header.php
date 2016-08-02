@@ -44,7 +44,7 @@
         </span>
     </div>
 </div>
-<body class="logged_in">
+<body class="logged_in" data-baseurl="<?php echo APP_ROOT; ?>">
 
 
 <!-- Mobile Navigation -->

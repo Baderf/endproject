@@ -1516,3 +1516,8 @@ DRAGULAR
 
 }
 
+#select_type
+{
+    text-transform:capitalize;
+}
+

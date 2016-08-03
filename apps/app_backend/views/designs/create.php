@@ -41,7 +41,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-feedback has-feedback-left">
+                    <div class="form-group has-feedback has-feedback-left mailtype_choose">
                         <label class="control-label" for="mailtype">Mailtype</label>
                         <select class="form-control selection_user" name="type_selection" id="select_type">
                             <option value="savethedate">Save the date</option>

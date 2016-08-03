@@ -1516,8 +1516,9 @@ DRAGULAR
 
 }
 
-#select_type
+.mailtype_choose
 {
-    text-transform:capitalize;
+
+    display: none;
 }
 

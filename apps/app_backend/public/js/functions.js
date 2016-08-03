@@ -1247,15 +1247,24 @@ $(function () {
 
 $(function(){
     select = $("#select_event");
+    types = $(".mailtype_choose");
+    types_input = $("#select_type");
     var baseURL = $('body').data('baseurl');
 
     if(select[0]){
+
+        $(select).on("focus", function(event){
+            $(types).slideUp("slow", function(){
+                $(this).hide();
+            });
+        });
         $(select).on("change", function(event){
             if($("#select_event option:selected").val() != "default"){
                 // Wenn nicht default dann mach ajax:
 
                 var user_id = $("#user").val();
                 var event_id = $("#select_event option:selected").val();
+                available_mails = {invitation: 'Invitation', savethedate: 'Save the date', reminder: 'Reminder', information: 'Information', thankyou: 'Thank You', confirmation: 'Confirmation'};
 
                 $.ajax({
                     method: "POST",
@@ -1266,15 +1275,13 @@ $(function(){
                     },
                     success: function (data) {
 
-                       // data = $.parseJSON(data);
+
 
                         select_type = $("#select_type");
                         $(select_type).html("");
 
-                        available_mails = {invitation: 'Invitation', savethedate: 'Save the date', reminder: 'Reminder', information: 'Information', thankyou: 'Thank You'};
-
                         $.each(data, function(index) {
-                            console.log(data[index]['mail_type']);
+
                             if(available_mails.hasOwnProperty(data[index]['mail_type'])){
                                 delete available_mails[data[index]['mail_type']];
                             }
@@ -1286,6 +1293,31 @@ $(function(){
                             option.text(value);
                             option.appendTo(select_type);
 
+                        });
+
+                        $(types).slideDown("slow", function(){
+                            $(types_input).focus();
+                        });
+
+
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        select_type = $("#select_type");
+                        $(select_type).html("");
+
+
+
+                        $.each( available_mails, function( key, value ) {
+                            option = $("<option></option>");
+                            option.val(key);
+                            option.text(value);
+                            option.appendTo(select_type);
+
+                        });
+
+                        $(types).slideDown("slow",function(){
+                            $(types_input).focus();
                         });
 
                     }

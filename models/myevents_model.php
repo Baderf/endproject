@@ -112,11 +112,11 @@ class myevents_model extends model{
         $max_size = 2000*1024; // 2 MB
 
         if (!file_exists($user_media_root)) {
-            mkdir($user_media_root, 0700);
+            mkdir($user_media_root, 0777);
         }
 
         if (!file_exists($user_media_event)){
-            mkdir($user_media_event, 0700);
+            mkdir($user_media_event, 0777);
         }
 
         $extension = strtolower(pathinfo($_FILES['event_image']['name'], PATHINFO_EXTENSION));

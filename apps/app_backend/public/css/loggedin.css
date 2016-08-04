@@ -30,6 +30,11 @@ main classes
   background-color: #e84b20!important;
 }
 
+#email_template {
+    height: 500px;
+    overflow-y: scroll;
+}
+
 .spec_event_low {
   transition: all 0.2s ease-in-out;
   background-color: #3db3a7;
@@ -394,8 +399,16 @@ li.logout:hover {
     margin-bottom: 20px;
 }
 
+#metaboxes {
+    display: none;
+}
+
 .btn {
-  border-radius: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
 }
 
 .btn-self:hover {
@@ -1056,6 +1069,10 @@ Statistic
   border-bottom: 1px solid #bbb;
   padding-bottom: 20px;
   padding-top: 20px;
+    height: 250px;
+    overflow-y: scroll;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .content_tool_elements {
@@ -1520,5 +1537,17 @@ DRAGULAR
 {
 
     display: none;
+}
+
+.table_mails .mail_type {
+    text-transform: capitalize;
+}
+
+.select_mail_template {
+    margin-top: 15px;
+}
+
+.design_settings .btn {
+    margin-bottom: 20px;
 }
 

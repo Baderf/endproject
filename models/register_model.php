@@ -31,7 +31,31 @@ class register_model extends model{
         $stmt = $this -> db -> prepare("INSERT INTO users (username, password, email, data, created_at, hash, is_active, usergroup) VALUES (?,?,?,?,?,?,?,?)");
 
         $stmt -> bind_param("ssssssii", $uname, $pw, $email, $userData, $createdAt, $hash, $isActive, $userGroup);
-        $stmt -> execute();
+        if($stmt -> execute()){
+            $user_id = $stmt -> insert_id;
+
+            // Create User-Dir:
+            $user_root = 'usermedia_' . $user_id;
+
+            $user_media_root = APPS . "app_backend/" . APP_PUBLIC . 'media/' . $user_root;
+            $user_mails_root = APPS . "app_backend/" . APP_PUBLIC . 'media/' . $user_root . "/mails";
+
+            $user_mails_edit = APPS . "app_backend/" . APP_PUBLIC . 'media/' . $user_root . "/mails/mail_edit";
+            $user_mails_html = APPS . "app_backend/" . APP_PUBLIC . 'media/' . $user_root . "/mails/mail_html";
+            $user_mails_templates = APPS . "app_backend/" . APP_PUBLIC . 'media/' . $user_root . "/mails/templates";
+            $user_mail_standard_template = APPS . "app_backend/" . APP_PUBLIC . 'media/standard.html';
+
+            if(!is_dir($user_media_root)){
+                mkdir($user_media_root, 0777);
+                mkdir($user_mails_root, 0777);
+                mkdir($user_mails_edit, 0777);
+                mkdir($user_mails_html, 0777);
+                mkdir($user_mails_templates, 0777);
+                mkdir($user_mails_templates, 0777);
+                copy($user_mail_standard_template, $user_mails_templates . "/" . 'standard.html');
+            }
+
+        }
 
         $stmt -> close();
 

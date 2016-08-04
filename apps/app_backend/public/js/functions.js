@@ -670,6 +670,42 @@ $(function () {
                 element.remove();
 
             });
+        } else if (target.is("#save_email")) {
+            event.preventDefault();
+
+            fill_email_inputs();
+
+            var baseURL = $('body').data('baseurl');
+
+            // AJAX - CALL - SAVE EMAIL
+            fulltext = $("#emailhtmlall").val();
+            emailtext = $("#emailhtmltext").val();
+            mail_id = $("#this_id").val();
+            user_id = $("#user_id").val();
+
+            $.ajax({
+                method: "POST",
+                url: baseURL + 'backend/designs/saveMail/' + mail_id,
+                data: {
+                    user_id: user_id,
+                    mail_id: mail_id,
+                    emailtext: emailtext,
+                    fulltext: fulltext
+                },
+                success: function (data) {
+
+
+                },
+                error: function(xhr, textStatus, errorThrown){
+                   
+
+                }
+
+            });
+
+
+
+
         } else if (target.is(".accordion_opener")) {
 
             $(target).next("dd").slideToggle("slow");
@@ -840,6 +876,32 @@ $(function () {
 
             render_table(table_id, table_type);
             render_post_ids();
+
+
+        }else if (target.is("#setmetaboxes")) {
+            event.preventDefault();
+            select_metabox = $("#email_template .metabox");
+
+            if(!select_metabox[0]){
+                metabox = $("#metaboxes");
+                item = $(metabox).find(".email-item").clone();
+
+                $("#email_template").append(item);
+
+                new_id = 999999;
+                new_item = $(item).find(".cke_editable");
+
+                $(new_item).attr("id", "editor" + new_id)
+                    .attr("aria-label", "Rich Text Editor, editor" + new_id)
+                    .attr("title", "Rich Text Editor, editor" + new_id)
+                    .attr("contenteditable", "true");
+                CKEDITOR.inline("editor" + new_id);
+
+            }
+            
+
+
+
 
 
         } else if (target.is(".btn-selection-field-adder")) {
@@ -1131,8 +1193,6 @@ $(function () {
             $(hidden_post_ids).val(hidden_post_ids.val() + new_id);
         });
     }
-
-
     // IST FÜR DESIGN-TEMPLATE:
 
     dragula([document.querySelector('#left_1'), document.querySelector('#email_template')], {
@@ -1244,6 +1304,87 @@ $(function () {
 });
 
 // CREATE NEW DESIGN
+
+$(function(){
+
+    $('.btn_template').on('click', function() {
+        var $this = $(this);
+        var baseURL = $('body').data('baseurl');
+        var mail_id = $("#this_id").val();
+        var user_id = $("#user_id").val();
+        var title = $("#mail_title").val();
+
+        if(mail_id != "" || mail_id != 0){
+            console.log("HEY");
+            $this.button('loading');
+
+            if($this.data("action")== "save"){
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/designs/saveAsTemplate',
+                    data: {
+                        user_id: user_id,
+                        mail_id: mail_id,
+                        title: title
+                    },
+                    success: function (data) {
+                        $this.removeClass("btn-self").addClass("btn-success");
+                        $this.button('success');
+                        $this.prop("disabled", true);
+                        setTimeout(function(){
+                            $this.removeClass("btn-success").addClass("btn-danger");
+                            $this.text("Delete as Template");
+                            $this.data("action", "delete");
+                            $this.prop("disabled", false);
+                        }, 2000);
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+
+
+                    }
+
+
+
+                });
+            }else if($this.data("action")=="delete"){
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/designs/deleteTemplate',
+                    data: {
+                        user_id: user_id,
+                        mail_id: mail_id,
+                        title: title
+                    },
+                    success: function (data) {
+                        $this.removeClass("btn-danger").addClass("btn-success");
+                        $this.button('success');
+                        $this.prop("disabled", true);
+                        setTimeout(function(){
+                            $this.removeClass("btn-success").addClass("btn-self");
+                            $this.text("Save as Template");
+                            $this.data("action", "save");
+                            $this.prop("disabled", false);
+                        }, 2000);
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+
+
+                    }
+
+
+
+                });
+            }
+
+
+
+
+    };
+
+});
+});
 
 $(function(){
     select = $("#select_event");

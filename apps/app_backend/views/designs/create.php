@@ -50,6 +50,17 @@
                             <option value="information">Information</option>
                             <option value="thankyou">Thank you</option>
                         </select>
+                        <label class="control-label select_mail_template" for="mailtemplate">Use Template:</label>
+                        <select class="form-control selection_template" name="template_selection" id="select_template">
+                            <option value="default">Mailpig standard mail</option>
+                            <?php
+                            if(isset($data['templates'])){
+                                foreach ($data['templates'] as $template){
+                                    echo "<option value='$template[template_mail]'>$template[title]</option>";
+                                }
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <input type="submit" name="createDesign" class="btn btn-lg btn-block spec spec_dashboard visible-lg visible-md" value="Create">

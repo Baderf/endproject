@@ -47,41 +47,74 @@
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 my_events_list">
 
-            <table class="table table-inverse table-striped">
+            <table class="table table-inverse table-striped table_mails">
                 <thead class="thead-inverse">
                 <tr>
                     <th>Name</th>
-                    <th>Created at</th>
                     <th>Type</th>
-
-                    <th>Sent</th>
-                    <th>Edit</th>
+                    <th>Eventname</th>
+                    <th>In progress/sent</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Invitation</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
 
-                    <td>-</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">Mail</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
+                <?php
 
-                    <td>23.12.2016</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">Mail</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>23.12.2016</td>
-                    <td>@twitter</td>
-                </tr>
+                if(isset($data['mails']) && !empty($data['mails'])){
+                    foreach ($data['mails'] as $mail){
+                ?>
+
+                        <tr>
+                            <th scope="row"><?php echo $mail['title'];?></th>
+                            <td class="mail_type"><?php echo $mail['mail_type'];?></td>
+                            <td><?php echo $mail['event_title'];?></td>
+                            <td><?php
+                                    if($mail['in_progress'] == "1"){
+                                        echo "in progress";
+                                    }elseif($mail['already_sent'] == "1"){
+                                        echo "already sent";
+                                    }else{
+                                        echo "just created";
+                                    }
+                                ?></td>
+                            <td>
+
+                                <?php if($mail['already_sent'] != "1"){
+                                  ?>
+                                    <a href="designs/edit/<?php echo $mail['id'];?>" class="btn btn-sm btn-info">edit</a>
+                                    <a href="designs/send/<?php echo $mail['id'];?>" class="btn btn-sm btn-success">send</a>
+                            <?php
+                                }else{
+                                    ?>
+                                    <a href="designs/view/<?php echo $mail['id'];?>" class="btn btn-sm btn-info">view</a>
+                                    <a href="designs/send/<?php echo $mail['id'];?>" class="btn btn-sm btn-success">send again</a>
+                            <?php
+                                }?>
+
+                            </td>
+                        </tr>
+
+                <?php
+                    }
+                }else{
+                     ?>
+
+                    <tr>
+                        <th scope="row" colspan="5"><span>You haven't created mails yet.</span>
+                        <span><a href="designs/newDesign" class="btn btn-default btn-lg btn-back btn-self">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Create new Design
+            </a></span>
+                        </th>
+
+                    </tr>
+                <?php
+
+                }
+
+                ?>
+
                 </tbody>
             </table>
 

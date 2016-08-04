@@ -1,4 +1,3 @@
-<body class="logged_in">
 
 <!-- Mobile Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top topnav visible-xs" role="navigation">
@@ -91,14 +90,9 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Create new Event
-            </a>
-        </div>
+
 
     </div>
 
@@ -108,14 +102,10 @@
         <span class="page_quader"></span>
     </div>
 
-
-
-    <!-- /.content-section-a -->
-
-    <!-- jQuery -->
     <div class="design_menu visible-md visible-sm visible-xs">
         <span class="glyphicon glyphicon-picture"></span>
     </div>
+
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_area">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 design_tools">
@@ -130,14 +120,8 @@
                 </div>
             </div>
 
-            <div>
-                <input type="hidden" id="emailhtmlall" value="1">
-                <input type="hidden" id="emailhtmltext" value="1">
-            </div>
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements" >
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_1">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
@@ -151,7 +135,7 @@
                         <p>Textbox</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
@@ -163,6 +147,92 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
+                        <div class="email_header email-item">
+
+                            <div id="editor8" contenteditable="true">
+                                <h1>Inline Editing in Action!</h1>
+                                <p>The "div" element that contains this text is now editable.
+                            </div>
+
+                            <div class="email_item_options">
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="metaboxes">
+                <div class="email-item metabox">
+                    <div contenteditable="true" class="cke_editable cke_editable_inline cke_contents_ltr cke_show_borders" tabindex="0" spellcheck="true" style="position: relative;" role="textbox" aria-describedby="cke_101">
+                        <table cellspacing="0" cellpadding="0" border="0" style="width:100%" class=" cke_show_border"><tbody><tr><td style="width:50%"><h3><a href="###AUTHCODE-YES###">I will participate</a></h3></td><td><br></td><td style="width:50%"><h3><a href="###AUTHCODE-NO###">I can't participate</a></h3></td></tr><tr><td>Text 1</td><td><br></td><td>Text 2</td></tr></tbody></table><p>More text goes here.</p>
+                    </div>
+
+                    <div class="email_item_options">
+                        <div>
+                            <a href="#" class="btn btn-sm btn-info arrow_up">
+                                <span class="glyphicon glyphicon-arrow-up"></span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-sm btn-info arrow_down">
+                                <span class="glyphicon glyphicon-arrow-down"></span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content_tool_elements">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_3">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Content</p>
                     </div>
                 </div>
 
@@ -170,39 +240,63 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_settings">
-                <a href="#" class="btn btn-default btn-block btn-back btn-self">Create new Formular</a>
-                <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
-                <a href="#" class="btn btn-default btn-block btn-back btn-self">Save as Template</a>
+
+
+                <?php
+                if($data['is_template'] == "1"){
+
+                    ?>
+                    <button type="button" class="btn btn-default btn-danger btn-block btn_template" id="load" data-action="delete" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading..." data-success-text="Successful!"
+                    >Delete as template</button>
+                <?php
+
+                }else{
+
+                    ?>
+                    <button type="button" class="btn btn-default btn-self btn-block btn_template" id="load" data-action="save" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading..." data-success-text="Successful!"
+                    >Save as template</button>
+                    <?php
+
+                }
+
+                ?>
+
+                <hr>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self">Settings</a>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</a>
+                <hr>
+                <form action="" method="post">
+                    <?php
+                    $user_file = "usermedia_" . sessions::get("userid") . "/";
+                    $mail_file = "mails/mail_edit/mail_" . $data['mail_id'] . ".html";
+
+                    ob_start();
+                    require_once $_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;
+                    $email = ob_get_contents();
+                    ob_end_clean();
+
+                    ?>
+                    <input type="hidden" id="this_id" name="this_id" value="<?php echo $url[3];?>">
+                    <input type="hidden" id="user_id" name="user_id" value="<?php echo sessions::get("userid");?>">
+                    <input type="hidden" id="mail_title" name="mail_title" value="<?php echo $data['mail_infos']['title'];?>">
+                    <input type="hidden" id="emailhtmlall" name="emailhtmlall" value="1">
+                    <input type="hidden" id="emailhtmltext" name="emailhtmltext" value="1">
+                    <input type="submit" class="btn btn-block btn-primary btn-self" id="save_email" value="Save" name="savemail">
+                </form>
             </div>
         </div>
 
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 templater">
 
+            <script src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . "ckeditor/ckeditor.js";?>"></script>
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 edit_toolbar" id="toolbarLocation">
-                <pre>Hier kommt die Toolbar</pre>
-            </div>
-
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 email-wrapper">
-                <div class="email_header email-item">
-                    <img src="http://fpoimg.com/720x320">
                 </div>
 
-                <div class="email_image_textbox email-item clearfix">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <img src="http://fpoimg.com/320x320">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid at corporis deleniti deserunt dolore ex fugit itaque modi nesciunt obcaecati optio qui quibusdam sed soluta temporibus ut, vero voluptatibus.</p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <img src="http://fpoimg.com/320x320">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid at corporis deleniti deserunt dolore ex fugit itaque modi nesciunt obcaecati optio qui quibusdam sed soluta temporibus ut, vero voluptatibus.</p>
-                    </div>
-                </div>
 
-                <div class="email_textbox email-item clearfix">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam, commodi consectetur deserunt dicta doloremque fugiat illum, itaque iure molestiae molestias neque nobis numquam odit optio pariatur quibusdam sit tenetur.</p>
-                </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 email-wrapper" id="email_template">
+                <?php echo $email;?>
             </div>
 
 
@@ -213,39 +307,3 @@
 
 </div>
 <!-- /.banner -->
-
-
-
-<!-- Footer -->
-<footer class="footer-inverse">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="js/moment.min.js"></script>
-<script src="js/bootstrap-datetimepicker.js"></script>
-
-
-</body>

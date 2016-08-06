@@ -21,9 +21,10 @@ class designs extends user_controller{
 
         if(!empty($user_id) && !empty($mail_id) && !empty($fulltext) && !empty($emailtext)){
             if($this -> model -> saveMail($user_id, $mail_id, $fulltext, $emailtext)){
-                return "saved";
+                echo "saved";
             }else{
-                return "error";
+                echo "error";
+                var_dump($this->model->saveMail($user_id, $mail_id, $fulltext, $emailtext));
             }
         }
     }
@@ -58,14 +59,21 @@ class designs extends user_controller{
         }
     }
 
+    public function saveMailSettings($mail_id){
+        $user_id = $_POST['user_id'];
+        $title = $_POST['title'];
+        $sender = $_POST['sender'];
+        $sender_adress = $_POST['sender_adress'];
+        $subject = $_POST['subject'];
+        $preview_text = $_POST['preview_text'];
+
+        if($this -> model -> savemailsettings($user_id, $mail_id, $title, $sender, $sender_adress, $subject, $preview_text)){
+            echo "saved";
+        }
+    }
+
     public function edit($mail_id){
 
-        if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
-            if(isset($_POST['savemail'])){
-
-            }
-
-        }
 
         $this -> view -> data['mail_id'] = $mail_id;
         if($this -> model -> checkIfIsTemplate(sessions::get("userid"), $mail_id)){
@@ -75,6 +83,8 @@ class designs extends user_controller{
         }
 
         $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+        $event_id = $this -> view -> data['mail_infos']['event_id'];
+        $this -> view -> data['event_info'] = $this -> model -> getEventInfos($event_id, sessions::get("userid"));
 
         $this -> view -> data['username'] = sessions::get('uname');
 
@@ -87,7 +97,7 @@ class designs extends user_controller{
             if(isset($_POST['createDesign'])){
 
                 $title = $_POST['mailtitle'];
-                $enterprise = $_POST['enterprisename'];
+                $subject = $_POST['subject'];
                 $type = $_POST['type_selection'];
                 $event_id = intval($_POST['event_selection']);
                 $template = $_POST['template_selection'];
@@ -96,13 +106,16 @@ class designs extends user_controller{
                     // Bitte TItle ausfüllen
                 }elseif (empty($enterprise)){
                     // Bitte Enterprise ausfüllen
-                }elseif ($id = $this -> model -> createNewDesign($event_id, sessions::get("userid"), $title, $type, $enterprise, $template)){
-                    header("Location: edit/$id");
-                }
+                }elseif($id = $this -> model -> createNewDesign($event_id, sessions::get("userid"), $title, $type, $subject, $template)){
+                            header("Location: edit/$id");
+                        }
+
+
             }
 
 
         }else{
+
             $this -> view -> data['templates'] = $this -> model -> getUserTemplates(sessions::get("userid"));
             $this -> view -> data['events'] = $this -> model -> getUserEvents(sessions::get("userid"));
         }

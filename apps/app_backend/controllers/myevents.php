@@ -19,11 +19,12 @@ class myevents extends user_controller{
 
             $title = $_POST['eventtitle'];
             $eventtype = $_POST['eventtype'];
+            $enterprise = $_POST['enterprise'];
             $date_from = $_POST['date_from'];
             $date_to = $_POST['date_to'];
             $user_id = sessions::get("userid");
 
-            $this -> createEvent($title, $eventtype, $date_from, $date_to, $user_id);
+            $this -> createEvent($title, $eventtype, $enterprise, $date_from, $date_to, $user_id);
         }
 
         $this -> view -> render('myevents/new');
@@ -37,6 +38,7 @@ class myevents extends user_controller{
 
             if (isset($_POST['edit_overview'])){
                 $title = $_POST['eventtitle'];
+                $enterprise = $_POST['enterprise'];
                 $eventtype = $_POST['eventtype'];
                 $date_from = $_POST['eventdate_from'];
                 $time_from = $_POST['eventtime_from'];
@@ -45,7 +47,7 @@ class myevents extends user_controller{
                 $datetime_from = $date_from . ' ' . $time_from;
                 $datetime_to = $date_to . ' ' . $time_to;
 
-                if($this -> model -> updateEventOverview($title, $eventtype, $datetime_from, $datetime_to, $event_id)){
+                if($this -> model -> updateEventOverview($title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id)){
                     // Gib Feedback!
                 }else{
                     // Wirf Error
@@ -68,17 +70,43 @@ class myevents extends user_controller{
                 }else{
                     // Wirf Error
                 }
-            }elseif (isset($_POST['edit_links'])){
-
             }
-
 
         }
 
             $this->view->data['event_edit'] = $this->model->getEventData($event_id);
-            $this->view->data['event_formulars'] = $this->model->getFormularData($event_id, sessions::get("userid"));
+            $this->view->data['event_formulars'] = $this->model->getAllFormulars(sessions::get("userid"));
+            $this->view->data['linked_formular'] = $this->model->getFormularData($event_id, sessions::get("userid"));
             $this->view->data['event_details'] = $this->model->getEventDetailsData($event_id);
             $this->view->render('myevents/edit', $this->view->data);
+
+    }
+
+    public function unlinkFormular(){
+        $event_id = $_POST['event_id'];
+        $user_id = $_POST['user_id'];
+
+        $unlink = $this -> model -> unlinkEventFormular($event_id, $user_id);
+
+        if($unlink){
+            echo "unlinked";
+        }else{
+            echo "error";
+        }
+    }
+
+    public function linkFormularToEvent(){
+        $formular_to_link = $_POST['formular_id'];
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $linked = $this -> model -> linkFormular($event_id, $formular_to_link, $user_id);
+
+        if($linked === TRUE){
+            echo "linked";
+        }else{
+            echo "error";
+        }
 
     }
 
@@ -92,8 +120,8 @@ class myevents extends user_controller{
 
 
 
-    public function createEvent($title, $eventtype,$date_from, $date_to, $user_id) {
-        if($this -> model -> newEvent($title, $eventtype,$date_from, $date_to, $user_id)){
+    public function createEvent($title, $eventtype, $enterprise,$date_from, $date_to, $user_id) {
+        if($this -> model -> newEvent($title, $eventtype, $enterprise, $date_from, $date_to, $user_id)){
             $event_id = $this -> model -> event_id;
             $new_table_name = "users_event_" . $event_id;
             $name_mail = "users_mails_" . $event_id;

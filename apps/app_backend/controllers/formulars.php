@@ -12,6 +12,10 @@ class formulars extends user_controller{
 
     public function index(){
 
+        if(!$this -> view -> data['formulars'] = $this -> model -> getAllFormulars(sessions::get("userid"))){
+            $this -> view -> data['formulars'] = "none";
+        }
+
         $this -> view -> data['username'] = sessions::get('uname');
 
         $this -> view -> render("formulars/index", $this -> view -> data);

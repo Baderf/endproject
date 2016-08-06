@@ -21,8 +21,8 @@
                         <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback has-feedback-left">
-                        <label class="control-label" for="enterprisename">Enterprise name</label>
-                        <input class="form-control" type="text" name="enterprisename" id="enterprisename" placeholder="Your enterprise name...">
+                        <label class="control-label" for="enterprise">Enterprise name</label>
+                        <input class="form-control" type="text" name="enterprise" id="enterprise" placeholder="Your enterprise name...">
                         <i class="glyphicon glyphicon-home form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback has-feedback-left">

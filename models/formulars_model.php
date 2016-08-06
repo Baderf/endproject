@@ -9,15 +9,30 @@ class formulars_model extends model{
         parent::__construct();
     }
 
+    public function getAllFormulars($user_id){
+        $sql = $this -> db -> query("SELECT * FROM formulars WHERE user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $formulars = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $formulars;
+        }else{
+            return false;
+        }
+
+
+    }
+
     public function createNewFormular($title, $user_id){
+
+        $created_at = date("d/m/Y h:s a");
 
         $sql = $this -> db -> query("SELECT standard_active_field_ids, standard_deactive_field_ids FROM settings");
         if($sql -> num_rows == 1){
             $settings = $sql -> fetch_assoc();
         }
 
-        $stmt = $this -> db -> prepare("INSERT INTO formulars (title, user_id) VALUES(?,?)");
-        $stmt -> bind_param("si", $title, $user_id);
+        $stmt = $this -> db -> prepare("INSERT INTO formulars (title, user_id, created_at, updated_at) VALUES(?,?,?,?)");
+        $stmt -> bind_param("siss", $title, $user_id, $created_at, $created_at);
         if($stmt -> execute() && isset($settings)){
             $this -> last_id = $stmt -> insert_id;
 
@@ -43,8 +58,9 @@ class formulars_model extends model{
     }
 
     public function updateUserFormularDetails($formular_id, $user_id, $user_formular_ids){
-        $stmt = $this -> db -> prepare("UPDATE formulars SET user_field_ids = ? WHERE id = ? AND user_id = ?");
-        $stmt -> bind_param("sii", $user_formular_ids, $formular_id, $user_id);
+        $update = date("d/m/Y h:s a");
+        $stmt = $this -> db -> prepare("UPDATE formulars SET user_field_ids = ?, updated_at = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("ssii", $user_formular_ids, $update,$formular_id, $user_id);
         $stmt -> execute();
         $stmt -> close();
 
@@ -52,11 +68,20 @@ class formulars_model extends model{
     }
 
     public function updateUserFormular($user_id, $formular_id, $user_form_id, $title, $type, $default_value, $data_values, $placeholder, $is_required = "true"){
+        $update = date("d/m/Y h:s a");
+
         $stmt = $this -> db -> prepare("UPDATE user_formular_fields SET title = ?, type = ?, default_value = ?, data_values = ?, placeholder = ?, is_required = ? WHERE id = ? AND user_id = ? AND formular_id = ?");
         $stmt -> bind_param("ssssssiii", $title, $type, $default_value, $data_values, $placeholder, $is_required, $user_form_id, $user_id, $formular_id);
         if($stmt -> execute()){
-            $stmt -> close();
-            return true;
+            $stmt -> prepare("UPDATE formulars SET updated_at = ? WHERE id = ? AND user_id = ?");
+            $stmt -> bind_param("sii", $update, $formular_id, $user_id);
+
+            if($stmt ->execute()){
+                $stmt -> close();
+                return true;
+            }
+
+            return false;
         }
 
         return false;
@@ -67,8 +92,15 @@ class formulars_model extends model{
         $stmt = $this -> db -> prepare("INSERT INTO user_formular_fields (user_id, formular_id, title, type, default_value, data_values, placeholder, is_required) VALUES(?,?,?,?,?,?,?,?)");
         $stmt -> bind_param("iissssss", $user_id, $formular_id, $title, $type, $default_value, $data_values, $placeholder, $is_required);
         if($stmt -> execute()){
-            $stmt -> close();
-            return true;
+            $stmt -> prepare("UPDATE formulars SET updated_at = ? WHERE id = ? AND user_id = ?");
+            $stmt -> bind_param("sii", $update, $formular_id, $user_id);
+
+            if($stmt ->execute()){
+                $stmt -> close();
+                return true;
+            }
+
+            return false;
         }
 
         return false;
@@ -126,9 +158,9 @@ class formulars_model extends model{
     }
 
     public function updateStandardFields($formular_id, $active_standard_fields, $deactive_standard_fields){
-
-        $stmt = $this -> db -> prepare("UPDATE formulars SET standard_field_ids = ?, deactive_standard_fields = ?  WHERE id = ?");
-        $stmt -> bind_param("ssi", $active_standard_fields, $deactive_standard_fields, $formular_id);
+        $update = date("d/m/Y h:s a");
+        $stmt = $this -> db -> prepare("UPDATE formulars SET updated_at = ?, standard_field_ids = ?, deactive_standard_fields = ?  WHERE id = ?");
+        $stmt -> bind_param("sssi", $update, $active_standard_fields, $deactive_standard_fields, $formular_id);
         $stmt -> execute();
         $stmt -> close();
 
@@ -136,8 +168,9 @@ class formulars_model extends model{
     }
 
     public function updateFormularDetails($fomular_id, $title, $description, $action, $action_target){
-        $stmt = $this -> db -> prepare("UPDATE formulars SET title = ?, description = ?, action = ?, action_target = ?  WHERE id = ?");
-        $stmt -> bind_param("ssssi", $title, $description, $action, $action_target, $fomular_id);
+        $update = date("d/m/Y h:s a");
+        $stmt = $this -> db -> prepare("UPDATE formulars SET updated_at = ?, title = ?, description = ?, action = ?, action_target = ?  WHERE id = ?");
+        $stmt -> bind_param("sssssi", $update, $title, $description, $action, $action_target, $fomular_id);
         $stmt -> execute();
         $stmt -> close();
 

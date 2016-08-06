@@ -1,5 +1,21 @@
 <div class="wrapper clearfix">
 
+    <div class="myevents_saving">
+        <div class="hidden_message alert alert-success fixed_alert">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+            <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+        </div>
+        <div class="hidden_message alert alert-info fixed_alert">
+            <strong>Info!</strong>
+        </div>
+        <div class="hidden_message alert alert-danger fixed_alert">
+            <strong>Danger!</strong>
+        </div>
+        <div class="hidden_message alert alert-warning fixed_alert">
+            <strong>Warning!</strong>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
@@ -57,6 +73,11 @@
                                 <div class="form-group has-feedback has-feedback-left">
                                     <label class="control-label" for="eventtype">Eventtype:</label>
                                     <input class="form-control" name="eventtype" type="text" id="eventtype" placeholder="Your event type..." value="<?php if(isset($data['event_edit']['type'])){echo $data['event_edit']['type'];}; ?>">
+                                    <i class="glyphicon glyphicon-plus form-control-feedback"></i>
+                                </div>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <label class="control-label" for="enterprise">Enterprise:</label>
+                                    <input class="form-control" name="enterprise" type="text" id="enterprise" placeholder="Your enterprise..." value="<?php if(isset($data['event_edit']['enterprise'])){echo $data['event_edit']['enterprise'];}; ?>">
                                     <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                 </div>
                             </div>
@@ -189,31 +210,56 @@
                                 <h3>Formulars</h3>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 link_formular">
-                                <div class="col-lg-10 col-md-10 form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="event_link_formular">Link a sign-formular to the event:</label>
-                                    <select class="form-control" min="0" name="event_link_formular" id="event_link_formular">
-                                        <option value="bla">Formular 1</option>
-                                        <option value="bla">Formular 2</option>
-                                        <option value="bla">Formular 3</option>
-                                    </select>
-                                </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 link_formular">
+                                <div class="col-lg-4 col-md-4 form-group has-feedback has-feedback-left form_link">
+
+                                        <?php
+                                        if(isset($data['event_formulars']) && !empty($data['event_formulars'])){
+                                            echo "<label class=\"control-label\" for=\"event_link_formular\">Link a sign-formular to the event:</label>";
+                                            echo "<select class=\"form-control\" name=\"event_link_formular\" id=\"event_link_formular\">";
+
+                                            foreach ($data['event_formulars'] as $formular){
+                                                ?>
+                                                <option value="<?php echo $formular['id'];?>"><?php echo $formular['title'];?></option>
+                                        <?php   
+                                            }
+                                            echo "</select>";
+                                            echo "</div>";
+                                            echo "<div class=\"col-lg-2 col-md-2 form-group has-feedback has-feedback-left\">";
+                                            echo  "<button class=\"btn btn-sm btn-self add_formular_link\" id='add_formular_link'>Link<i class='fa fa-spinner fa-spin'></i></button>";
+
+                                            echo "</div>";
+                                        }else{
+                                            ?>
+                                            <div>
+                                                <p>No formulars available! Please <a href="<?php echo APP_ROOT . $url[0];?>/formulars/newFormular">create</a> a formular first!</p>
+                                            </div>
+
+                                    <?php
+
+                                        }
+                                        ?>
+
+
+
                             </div>
 
                             </form>
                         </div>
                         <div class="col-lg-12 col-md-12">
-                            <h4>Linked Formulars</h4>
-                              <table class="table table-striped">
+                            <input type="hidden" class="hidden_input" id="user_id" value="<?php echo sessions::get("userid");?>">
+                            <input type="hidden" class="hidden_input" id="event_id" value="<?php echo $url[3];?>">
+                            <h4>Linked Formular</h4>
+                              <table class="table table-striped" id="linked_event">
                                 <thead>
                                     <tr>
                                         <td>Name</td>
-                                        <td>Edit</td>
+                                        <td>Unlink</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                if(!isset($data['event_formulars']) || empty($data['event_formulars'])){
+                                if(!isset($data['linked_formular']) || empty($data['linked_formular'])){
                                     echo "<tr>";
                                     echo "<td>";
                                     echo "<p>There are no formulars linked.</p>";
@@ -221,19 +267,17 @@
                                     echo "<td width='100'></td>";
                                     echo "</tr>";
                                 }else{
-                                    foreach ($data['event_formulars'] as $formular){
+                                    foreach ($data['linked_formular'] as $formular){
                                         echo "<tr>";
-                                        echo "<td>";
+                                        echo "<td data-linked='1' class='linked_event'>";
                                         echo "<a href=\"formulars/view/{$formular['id']}\">{$formular['title']}</a>";
 
                                         echo "</td>";
                                         echo "<td width='100'>";
-                                        echo "<a href=\"#\" class=\"btn btn-sm btn-warning\">
+                                        echo "<button class=\"btn btn-sm btn-warning unlink_formular\">
                                                 <span class=\"glyphicon glyphicon-remove\"></span>
-                                            </a>";
-                                        echo "<a href=\"#\" class=\"btn btn-sm btn-info\">
-                                                <span class=\"glyphicon glyphicon-pencil\"></span>
-                                            </a></td>";
+                                            </button>";
+                                        echo "</td>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }

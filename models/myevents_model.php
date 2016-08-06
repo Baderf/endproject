@@ -17,12 +17,13 @@ class myevents_model extends model{
         return true;
     }
 
-    public function newEvent($title, $eventtype, $date_from, $date_to, $user_id){
+    public function newEvent($title, $eventtype, $enterprise, $date_from, $date_to, $user_id){
 
+        echo $enterprise;
         $created_at = date("m/d/Y g:i a");
         // Eintrag in DB 'events'
-        $stmt = $this -> db -> prepare("INSERT INTO events (title, type, created_at, date_from, date_to, user_id) VALUES(?,?,?,?,?,?)");
-        $stmt -> bind_param("sssssi", $title, $eventtype, $created_at, $date_from, $date_to, $user_id);
+        $stmt = $this -> db -> prepare("INSERT INTO events (title, type, created_at, enterprise, date_from, date_to, user_id) VALUES(?,?,?,?,?,?,?)");
+        $stmt -> bind_param("ssssssi", $title, $eventtype, $created_at, $enterprise, $date_from, $date_to, $user_id);
         if($stmt -> execute()){
             $this -> event_id = $stmt -> insert_id;
 
@@ -59,9 +60,10 @@ class myevents_model extends model{
         return $event;
     }
 
-    public function updateEventOverview($title, $eventtype, $datetime_from, $datetime_to, $event_id){
-        $stmt = $this -> db -> prepare("UPDATE events SET title = ?, type = ?, date_from = ?, date_to = ? WHERE id = ?");
-        $stmt -> bind_param("ssssi", $title, $eventtype, $datetime_from, $datetime_to, $event_id);
+    public function updateEventOverview($title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id){
+        
+        $stmt = $this -> db -> prepare("UPDATE events SET title = ?, type = ?, enterprise = ?, date_from = ?, date_to = ? WHERE id = ?");
+        $stmt -> bind_param("sssssi", $title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id);
 
         $stmt -> execute();
         $stmt -> close();
@@ -78,18 +80,161 @@ class myevents_model extends model{
         return true;
     }
 
-    public function getFormularData($event_id, $user_id){
-        $sql = $this -> db -> query("SELECT * FROM formulars WHERE event_id = $event_id AND user_id = $user_id");
+    public function getAllFormulars($user_id){
+        $sql = $this -> db -> query("SELECT * FROM formulars WHERE user_id = $user_id");
 
-        if($sql -> num_rows != 0){
+        if($sql -> num_rows > 0){
             $formulars = $sql -> fetch_all(MYSQLI_ASSOC);
             return $formulars;
+        }else{
+            return false;
+        }
+    }
+
+    public function linkFormular($event_id, $formular_to_link, $user_id){
+
+        if($this -> checkForLinkedEvents($event_id, $user_id)){
+            if($this -> deleteTable($event_id, $user_id)){
+                if($this -> createTable($event_id)){
+                    if($this -> fillNewTable($formular_to_link, $event_id)){
+                        if($this -> linkFormularToEvent($event_id, $user_id, $formular_to_link)){
+                            return true;
+                        } else{
+                            return "linking";
+                        }
+                    }return "fillTable";
+                }return "createTable";
+            }return "deleteTable";
+
+        }else{
+            if($this -> createTable($event_id)){
+                if($this -> fillNewTable($formular_to_link, $event_id)){
+                    if($this -> linkFormularToEvent($event_id, $user_id, $formular_to_link)){
+                        return true;
+                    } else{
+                        return "linking";
+                    }
+                } return "fillTable";
+            }return "createTable";
+        }
+
+    }
+
+    public function fillNewTable($formular_to_link, $event_id){
+        $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_to_link");
+
+        $tablename = "users_form_" . $event_id;
+
+        if($sql -> num_rows == 1){
+            $userfields = $sql ->fetch_all(MYSQLI_ASSOC);
+
+            $active_ids = explode("::", $userfields[0]['user_field_ids']);
+
+            foreach ($active_ids as $id) {
+                $user_field_id = str_replace(":", "", $id);
+
+                $new_sql = $this -> db -> query("SELECT title FROM user_formular_fields WHERE id = $user_field_id");
+
+                if($new_sql -> num_rows > 0){
+
+                    $title = $new_sql -> fetch_assoc();
+                    $sql_title = strtolower($title['title']);
+                    $preg_title = preg_replace("/[^0-9a-zA-Z \-\_]/", "", $sql_title);
+                    $new_title = str_replace(' ','',$preg_title);
+
+                    $new_sql = $this -> db -> query("ALTER TABLE $tablename ADD $new_title VARCHAR(300) NOT NULL");
+
+                }
+
+            }
+
+            return true;
+        }
+
+    }
+
+    public function createTable($event_id){
+        $tablename = "users_form_" . $event_id;
+
+
+
+        if($this -> db -> query("CREATE TABLE $tablename (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, user_id INT(11))")){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function deleteTable($event_id){
+        $tablename = "users_form_" . $event_id;
+
+        if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
+         return true;
+        }
+        return false;
+    }
+
+    public function linkFormularToEvent($event_id, $user_id, $formular_id){
+        $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("iii", $formular_id, $event_id, $user_id);
+
+        if($stmt ->execute()){
+            $stmt -> close();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function checkForLinkedEvents($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id AND user_id = $user_id");
+
+        if($sql ->num_rows == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getFormularData($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT * FROM events WHERE id = $event_id AND user_id = $user_id LIMIT 1");
+
+        if($sql -> num_rows > 0){
+            $event = $sql -> fetch_all(MYSQLI_ASSOC);
+            $form_id = $event[0]['form_id'];
+
+
+            $sql = $this -> db -> query("SELECT * FROM formulars WHERE id=$form_id AND user_id = $user_id");
+
+            if($sql -> num_rows > 0){
+                $formular_linked = $sql -> fetch_all(MYSQLI_ASSOC);
+
+                return $formular_linked;
+            }
+
         }else {
             return false;
         }
+    }
 
+
+    public function unlinkEventFormular($event_id, $user_id){
+        $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
+        $unlink = "0";
+        $stmt -> bind_param("sii", $unlink, $event_id, $user_id);
+
+        if($stmt ->execute()){
+            $stmt->close();
+
+            if($this -> deleteTable($event_id, $user_id)){
+                return true;
+            }else{
+                return false;
+            }
+        }
 
     }
+
 
     public function getEventDetailsData($event_id){
         $sql = $this -> db -> query("SELECT * FROM event_details WHERE event_id = $event_id LIMIT 1");

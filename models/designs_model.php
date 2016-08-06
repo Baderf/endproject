@@ -19,8 +19,23 @@ class designs_model extends model{
         $userfile_fulltext = $_SERVER['DOCUMENT_ROOT'] . "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_edit/" . $mailfile;
         $userfile_email = $_SERVER['DOCUMENT_ROOT'] . "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_html/" . $mailfile;
 
-        file_put_contents($userfile_fulltext, $fulltext);
-        file_put_contents($userfile_email, $emailtext);
+        if(file_put_contents($userfile_fulltext, $fulltext)){
+            if(file_put_contents($userfile_email, $emailtext)){
+                $stmt = $this -> db -> prepare("UPDATE mails SET last_update = ? WHERE id = ? AND user_id = ?");
+                $stmt -> bind_param("sii", $update_time, $mail_id, $user_id);
+
+                if($stmt->execute()){
+                    $stmt -> close();
+                    return true;
+                }else{
+                    $stmt -> close();
+                    return false;
+                }
+            }
+        };
+        ;
+
+
 
     }
 
@@ -43,13 +58,36 @@ class designs_model extends model{
     }
 
     public function getMailInfos($mail_id, $user_id){
-        $sql = $this -> db -> query("SELECT title FROM mails WHERE id = $mail_id AND user_id = $user_id");
+        $sql = $this -> db -> query("SELECT * FROM mails WHERE id = $mail_id AND user_id = $user_id LIMIT 1");
 
         if($sql -> num_rows > 0){
             $mail = $sql -> fetch_assoc();
         }
 
         return $mail;
+    }
+
+    public function savemailsettings($user_id, $mail_id, $title, $sender, $sender_adress, $subject, $preview_text){
+        $stmt = $this -> db -> prepare("UPDATE mails SET title = ?, sender = ?, subject = ?, sender_adress = ?, preview = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("sssssii", $title, $sender, $subject, $sender_adress, $preview_text, $mail_id, $user_id);
+
+        if($stmt -> execute()){
+            $stmt -> close();
+            return true;
+        }
+
+        $stmt -> close();
+        return false;
+    }
+
+    public function getEventInfos($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT enterprise FROM events WHERE id = $event_id AND user_id = $user_id LIMIT 1");
+
+        if($sql -> num_rows == 1){
+            $event_info = $sql -> fetch_assoc();
+        }
+
+        return $event_info;
     }
 
     public function getAllUserMails($user_id){

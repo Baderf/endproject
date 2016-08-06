@@ -31,15 +31,16 @@
 
 </head>
 
-<div class="overlay is_hidden">
+<div class="overlay is_hidden" id="delete_overlay" data-action="close">
     <div class="overlay_wrapper" id="overlay_wrapper">
+        <span class="btn_cancel" data-action="close">X</span>
         <p>
             Are you sure to do this?
         </p>
-        <span class="btn btn-lg btn-success">
+        <span class="btn btn-lg btn-success" data-action="close">
             YES
         </span>
-        <span class="btn btn-lg btn-danger">
+        <span class="btn btn-lg btn-danger" data-action="close">
             NO
         </span>
     </div>

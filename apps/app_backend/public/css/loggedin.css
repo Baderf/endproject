@@ -4,6 +4,12 @@ main classes
 
 */
 
+button {
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  position: relative
+}
+
 .spec_event {
   transition: all 0.2s ease-in-out;
   background-color: #009688;
@@ -824,7 +830,7 @@ Statistic
 
 
 .left_filter_area{
-  height: 100%;
+  height: calc(80vh - 200px);
 }
 
 .left_filter_area ul {
@@ -1317,6 +1323,28 @@ FORMULARE
     margin: 0 auto;
     text-align: center;
     margin-top: calc(50vh - 100px);
+    position: relative;
+    padding-top: 40px;
+}
+
+.btn_cancel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 1px 7px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn_cancel:hover {
+  color: #7b7b7b;
+}
+
+#overlay_wrapper_settings {
+  height: auto;
+  margin-top: calc(50vh - 300px);
 }
 
 .overlay_wrapper p {
@@ -1551,3 +1579,70 @@ DRAGULAR
     margin-bottom: 20px;
 }
 
+#overlay_wrapper_settings {
+  text-align: left!important;
+  padding: 20px;
+}
+
+#overlay_wrapper_settings h3 {
+  text-align: center!important;
+  margin-bottom: 20px;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+#overlay_wrapper_settings .mail_settings_buttons{
+  text-align: center!important;
+}
+
+#overlay_wrapper_settings .last_input{
+  padding-bottom: 20px;
+}
+
+#overlay_wrapper_settings form{
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.btn_settings_mail {
+  position: relative;
+}
+
+input.info_settings {
+  border: 2px solid rgba(232,75,32,0.5);
+}
+
+.success {
+  background-color: #29c118!important;
+}
+
+.settings_warner {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: inline-block;
+  background-color: #c9302c;
+  padding: 4px 8px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  z-index: 99999;
+}
+
+.full-info {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  display: none;
+}
+
+.fixed_alert {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  z-index: 999999;
+  display: block;
+}
+
+.hidden_message {
+  display: none;
+}

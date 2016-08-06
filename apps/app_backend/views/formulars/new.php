@@ -1,6 +1,6 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
     <div class="col-lg-12 page_header spec_formular">
         <h3>Create new formular</h3>

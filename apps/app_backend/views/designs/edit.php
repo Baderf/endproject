@@ -82,6 +82,57 @@
     </div>
 
 </nav>
+
+
+<div class="overlay is_hidden_settings" data-action="close">
+    <div class="overlay_wrapper" id="overlay_wrapper_settings">
+        <span class="btn_cancel" data-action="close">&times;</span>
+
+        <div class="alert alert-warning full-info">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+            <strong>Warning! </strong>Please check the email settings and fill out all needed informations! Otherwise it could make some problems at sending this mail.
+        </div>
+        <h3 class="spec_event">Settings</h3>
+
+        <form action="" method="post">
+            <div class="form-group has-feedback has-feedback-left <?php if(isset($data['mail_infos']['title']) && empty($data['mail_infos']['title'])){echo 'info_settings';};?>" >
+                <label class="control-label" for="mail_title">Name:</label>
+                <input class="form-control" type="text" name="mail_title" id="mail_title" value="<?php echo $data['mail_infos']['title'];?>">
+                <i class="glyphicon glyphicon-user form-control-feedback"></i>
+            </div>
+            <div class="form-group has-feedback has-feedback-left <?php if(isset($data['event_info']['enterprise']) && empty($data['event_info']['enterprise'])){echo 'info_settings';};?>">
+                <label class="control-label" for="mail_sender">Sender:</label>
+                <input class="form-control" type="text" name="mail_sender" id="mail_sender" value="<?php echo $data['event_info']['enterprise'];?>">
+                <i class="glyphicon glyphicon-user form-control-feedback"></i>
+            </div>
+            <div class="form-group has-feedback has-feedback-left <?php if(isset($data['mail_infos']['sender_adress']) && empty($data['mail_infos']['sender_adress'])){echo 'info_settings';};?>">
+                <label class="control-label" for="mail_sender_adress">Senders adress:</label>
+                <input class="form-control" type="email" name="mail_sender_adress" id="mail_sender_adress" value="<?php echo $data['mail_infos']['sender_adress'];?>">
+                <i class="glyphicon glyphicon-user form-control-feedback"></i>
+            </div>
+            <div class="form-group has-feedback has-feedback-left <?php if(isset($data['mail_infos']['subject']) && empty($data['mail_infos']['subject'])){echo 'info_settings';};?>">
+                <label class="control-label" for="subject">Subject:</label>
+                <input class="form-control" type="text" name="subject" id="subject" placeholder="Type in the subject of the mail..." value="<?php echo $data['mail_infos']['subject'];?>">
+                <i class="glyphicon glyphicon-user form-control-feedback"></i>
+            </div>
+            <div class="form-group has-feedback has-feedback-left last_input <?php if(isset($data['mail_infos']['preview']) && empty($data['mail_infos']['preview'])){echo 'info_settings';};?>">
+                <label class="control-label" for="preheader">Preview text:</label>
+                <input class="form-control" type="text" name="preheader" id="preheader" placeholder="Type in your preview text..." value="<?php echo $data['mail_infos']['preview'];?>">
+                <i class="glyphicon glyphicon-lock form-control-feedback"></i>
+            </div>
+            <div class="form-group mail_settings_buttons">
+                <span class="btn btn-lg btn-home btn-home-big spec_event" data-action="close">close</span>
+                <button id="saveMailSettings" class="btn btn-lg btn-home btn-home-big spec_dashboard">save <i class='fa fa-spinner fa-spin'></i></button>
+            </div>
+            <div class="hidden_message alert alert-success">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+            </div>
+
+        </form>
+    </div>
+</div>
+
 <div class="col-lg-12 hader_background">
 
 </div>
@@ -95,11 +146,34 @@
 
 
     </div>
+    <div class="mail_saving">
+        <div class="hidden_message alert alert-success fixed_alert">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+            <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+        </div>
+        <div class="hidden_message alert alert-info fixed_alert">
+            <strong>Info!</strong>
+        </div>
+        <div class="hidden_message alert alert-danger fixed_alert">
+            <strong>Danger!</strong>
+        </div>
+        <div class="hidden_message alert alert-warning fixed_alert">
+            <strong>Warning!</strong>
+        </div>
+    </div>
+
+
 
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_design">
-        <h3>Design: Edit Invitation</h3>
+        <h3>Design: <?php echo $data['mail_infos']['title'];?></h3>
         <span class="page_quader"></span>
+    </div>
+
+    <div class="alert alert-warning full-info col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+        <strong>Warning! </strong>Please check the email settings and fill out all needed informations! <br/>
+        Otherwise it could make some problems at sending this mail.
     </div>
 
     <div class="design_menu visible-md visible-sm visible-xs">
@@ -144,7 +218,7 @@
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool" style="border-color: green">
                         <img src="http://fpoimg.com/120x60">
                         <p>Textbox</p>
                         <div class="email_header email-item">
@@ -262,8 +336,8 @@
                 ?>
 
                 <hr>
-                <a href="#" class="btn btn-default btn-block btn-back btn-self">Settings</a>
-                <a href="#" class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</a>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self btn_settings_mail">Settings <span class="settings_warner">x</span></a>
+                <button class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</button>
                 <hr>
                 <form action="" method="post">
                     <?php
@@ -281,7 +355,7 @@
                     <input type="hidden" id="mail_title" name="mail_title" value="<?php echo $data['mail_infos']['title'];?>">
                     <input type="hidden" id="emailhtmlall" name="emailhtmlall" value="1">
                     <input type="hidden" id="emailhtmltext" name="emailhtmltext" value="1">
-                    <input type="submit" class="btn btn-block btn-primary btn-self" id="save_email" value="Save" name="savemail">
+                    <button class="btn btn-block btn-primary btn-self" id="save_email" name="savemail">save <i class='fa fa-spinner fa-spin'></i></button>
                 </form>
             </div>
         </div>

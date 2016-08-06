@@ -1,10 +1,95 @@
 // NEW EVENT - DATEPICKER:
 
+function show_success_message(element, button, text){
+    message = element.find(".alert-success");
+
+    if (text){
+        message.html("<strong>Success!</strong>" + " " + text);
+    }
+
+
+
+    message.slideDown("slow", function(){
+        setTimeout(function(){
+            message.slideUp("fast", function(){
+                if(button){
+                    button.prop("disabled", false);
+                    stop_loading(button);
+                }
+            });
+        }, 2000);
+    })
+}
+
+function show_info_message(element, button, text){
+    message = element.find(".alert-info");
+    message.html("<strong>Info!</strong>" + " " + text);
+    message.slideDown("slow", function(){
+        setTimeout(function(){
+            message.slideUp("fast", function(){
+                button.prop("disabled", false);
+            });
+        }, 2000);
+    })
+}
+
+function start_loading(button){
+
+    spinner = button.parent().find(".fa-spinner").fadeIn("slow");
+
+}
+
+function stop_loading(button){
+    spinner = button.parent().find(".fa-spinner").fadeOut("slow");
+}
+
+function count_settings(){
+
+    inputs = $("#overlay_wrapper_settings input");
+    counter = 0;
+    inputs.each(function() {
+        if($(this).val() == ""){
+            $(this).addClass("info_settings");
+            counter++;
+        }else{
+            $(this).removeClass("info_settings");
+        }
+    });
+
+    warner = $(".settings_warner");
+    info_text = $(".full-info");
+
+    if (counter == 0){
+        warner.html("<i class='glyphicon glyphicon-ok'></i>");
+        warner.addClass("success");
+        info_text.fadeOut("slow");
+    }else{
+        info_text.fadeIn("slow");
+        warner.html(counter);
+        warner.removeClass("success");
+    }
+
+
+}
+
 $(function(){
+
+    $(".fa-spinner").hide();
+
+    if($(".btn_settings_mail")[0]){
+        inputs = $("#overlay_wrapper_settings input");
+
+            $("#mail_title, #mail_sender, #mail_sender_adress, #subject, #preheader").on("blur", function(){
+                count_settings();
+            });
+
+        count_settings();
+    }
 
     // Overlay click event
     $(".overlay").on("click", function(event){
-        if(event.target.id != "overlay_wrapper"){
+        if($(event.target).data("action") == "close"){
+
             $(".overlay_wrapper").slideUp("fast", function(){
                 $(".overlay").slideUp("fast");
             });
@@ -631,6 +716,10 @@ $(function () {
 
 
             });
+        } else if (target.is(".btn_settings_mail")) {
+            event.preventDefault();
+            show_settings();
+
         } else if (target.is(".make_preview")) {
             event.preventDefault();
             id = $(target).data("id");
@@ -658,6 +747,209 @@ $(function () {
 
 
             });
+        } else if (target.is(".unlink_formular")) {
+            event.preventDefault();
+            window_alert_show("Are you sure that you want to unlink the formular? This will delete the whole data table of your formular!");
+
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                form_id = $("#event_link_formular").val();
+                user_id = $('#user_id').val();
+                event_id = $('#event_id').val();
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/myevents/unlinkFormular',
+                    data: {
+                        user_id: user_id,
+                        event_id: event_id
+                    },
+
+
+                    success: function (data) {
+                        if(data == "unlinked"){
+                            element = $(".myevents_saving");
+                            text="Formular unlinked!";
+                            show_success_message(element, button, text);
+
+                            button.closest("tr").html("<td colspan='2'>There are no formulars linked.</td>");
+
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+
+
+
+            });
+
+        } else if (target.is("#add_formular_link")) {
+            event.preventDefault();
+
+
+            if($("#linked_event td.linked_event")[0]){
+                td = $("#linked_event td.linked_event").data("linked");
+
+                if(td == "1"){
+                    window_alert_show("Are you sure that you want link a new formular to the event? This will delete the old formular data table and will create a new one!");
+                    $(".overlay_wrapper .btn-success").on("click", function () {
+                        $(".overlay .btn-success").data('clicked', "1");
+                        $(".overlay_wrapper").slideUp("fast", function () {
+                            $(".overlay").slideUp("fast");
+                        });
+
+                        // Ajax Call:
+                        var baseURL = $('body').data('baseurl');
+                        button = $(event.target);
+                        button.prop("disabled", true);
+                        start_loading(button);
+
+                        form_id = $("#event_link_formular").val();
+                        user_id = $('#user_id').val();
+                        event_id = $('#event_id').val();
+
+                        $.ajax({
+                            method: "POST",
+                            url: baseURL + 'backend/myevents/linkFormularToEvent',
+                            data: {
+                                user_id: user_id,
+                                event_id: event_id,
+                                formular_id: form_id
+                            },
+
+
+                            success: function (data) {
+                                if(data == "linked"){
+                                    element = $(".myevents_saving");
+                                    text="Formular linked and saved!";
+                                    show_success_message(element, button, text);
+
+                                    title = $('.form_link option[value="'+form_id+'"]').text();
+
+                                    button.closest("tr").html("<td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td>");
+                                }
+
+                            },
+                            error: function(xhr, textStatus, errorThrown){
+                                stop_loading(button);
+                            }
+
+                        }).always(function(jqXHR, textStatus){
+                            start_loading(button);
+                        });
+
+
+
+                    });
+                }
+            }else{
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                form_id = $("#event_link_formular").val();
+                user_id = $('#user_id').val();
+                event_id = $('#event_id').val();
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/myevents/linkFormularToEvent',
+                    data: {
+                        user_id: user_id,
+                        event_id: event_id,
+                        formular_id: form_id
+                    },
+
+
+                    success: function (data) {
+                        if(data == "linked"){
+                            element = $(".myevents_saving");
+                            text="Formular linked and saved!";
+                            show_success_message(element, button, text);
+                            title = $('.form_link option[value="'+form_id+'"]').text();
+
+                            button.closest("tr").html("<td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td>");
+
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+            }
+
+        } else if (target.is("#saveMailSettings")) {
+            var baseURL = $('body').data('baseurl');
+            button = $(event.target);
+            button.prop("disabled", true);
+            start_loading(button);
+
+            name = $("#mail_title").val();
+            sender = $("#mail_sender").val();
+            sender_adress = $("#mail_sender_adress").val();
+            subject = $("#subject").val();
+            preview_text = $("#preheader").val();
+            user_id = $("#user_id").val();
+            mail_id = $("#this_id").val();
+
+            $.ajax({
+                method: "POST",
+                url: baseURL + 'backend/designs/saveMailSettings/' + mail_id,
+                data: {
+                    user_id: user_id,
+                    title: name,
+                    sender: sender,
+                    sender_adress: sender_adress,
+                    subject: subject,
+                    preview_text: preview_text
+                },
+
+
+                success: function (data) {
+                    if(data == "saved"){
+                        element = $("#overlay_wrapper_settings");
+                        text="Email settings saved!";
+                        show_success_message(element, button, text);
+
+                    }
+
+                },
+                always: function () {
+                    console.log("hallo");
+                    start_loading(button);
+                },
+                error: function(xhr, textStatus, errorThrown){
+                    stop_loading(button);
+                }
+
+            }).always(function(jqXHR, textStatus){
+                start_loading(button);
+            });
+
+
         } else if (target.is(".email_item_options .item_delete")) {
             event.preventDefault();
             window_alert_show("Are you sure that you want to delete this element?");
@@ -672,6 +964,8 @@ $(function () {
             });
         } else if (target.is("#save_email")) {
             event.preventDefault();
+            button = $(event.target);
+            button.prop("disabled", true);
 
             fill_email_inputs();
 
@@ -693,6 +987,12 @@ $(function () {
                     fulltext: fulltext
                 },
                 success: function (data) {
+                    if(data == "saved"){
+                        element = $(".mail_saving");
+                        text = "Email saved!";
+                        show_success_message(element, button, text);
+                        count_settings();
+                    }
 
 
                 },
@@ -701,6 +1001,8 @@ $(function () {
 
                 }
 
+            }).always(function(jqXHR, textStatus){
+                start_loading(button);
             });
 
 
@@ -881,6 +1183,7 @@ $(function () {
         }else if (target.is("#setmetaboxes")) {
             event.preventDefault();
             select_metabox = $("#email_template .metabox");
+            message_element = $(".mail_saving");
 
             if(!select_metabox[0]){
                 metabox = $("#metaboxes");
@@ -897,6 +1200,15 @@ $(function () {
                     .attr("contenteditable", "true");
                 CKEDITOR.inline("editor" + new_id);
 
+                button = $(event.target);
+                text = "Meta-boxes inserted!";
+                show_success_message(element, button, text);
+
+            }else{
+                button = $(event.target);
+                button.prop("disabled", true);
+                text = "Meta-boxes are already inserted!";
+                show_info_message(message_element, button, text);
             }
             
 
@@ -981,7 +1293,7 @@ $(function () {
                 table_type = $(table).attr("data-type");
                 dd_element = $(table).find("dd");
                 dt_element = $(table).find("dt > span");
-                console.log(table_id);
+
 
                 title_input_field = $(dd_element).find(".input_field_title");
                 hidden_title_input_field = $(dd_element).find(".hidden_user_field_title_"+table_id);
@@ -1017,8 +1329,13 @@ $(function () {
         function window_alert_show(text) {
 
             $(".overlay_wrapper p").text(text);
-            $(".overlay").slideDown("fast", function () {
-                $(".overlay_wrapper").slideDown("slow");
+            $(".overlay#delete_overlay").slideDown("fast", function () {
+                $(".overlay_wrapper#overlay_wrapper").slideDown("slow");
+            });
+        }
+        function show_settings() {
+            $(".overlay.is_hidden_settings").slideDown("fast", function () {
+                $("#overlay_wrapper_settings").slideDown("slow");
             });
         }
 
@@ -1187,7 +1504,7 @@ $(function () {
         $(hidden_post_ids).val("");
 
         $("#userspec_field_area .hidden_id_input").each(function () {
-            console.log("Hallo");
+
             var id = $(this).val();
             var new_id = ":" + id + ":";
             $(hidden_post_ids).val(hidden_post_ids.val() + new_id);
@@ -1225,6 +1542,10 @@ $(function () {
             .attr("contenteditable", "true");
         CKEDITOR.inline("editor" + new_id);
 
+        massage_element = $('.mail_saving');
+        text = "Box added!";
+        show_success_message(massage_element, false, text);
+
     });
 
     dragula([document.querySelector('#left_3'), document.querySelector('#email_template')], {
@@ -1256,7 +1577,6 @@ $(function () {
         // create an observer instance
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                console.log(mutation.type);
                 fill_email_inputs();
 
             });
@@ -1276,7 +1596,6 @@ $(function () {
     function fill_email_inputs(){
         emailinput_all = $("#emailhtmlall");
         emailinput_email = $("#emailhtmltext");
-        console.log(emailinput_email.val(""));
 
         // Kompletter HTML-Anteil ins Input:
         emailinput_all = emailinput_all.val($('#email_template').html());
@@ -1315,7 +1634,7 @@ $(function(){
         var title = $("#mail_title").val();
 
         if(mail_id != "" || mail_id != 0){
-            console.log("HEY");
+
             $this.button('loading');
 
             if($this.data("action")== "save"){

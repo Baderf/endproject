@@ -299,50 +299,57 @@
                         <div class="col-md-12">
                             <form action="" method="post">
                                 <div class="col-lg-12 col-md-12">
-                                    <h3>Mails</h3>
+                                    <h3>Linked mails</h3>
                                 </div>
 
+                                <?php
+                                 if(isset($data['linked_mails']) && !empty($data['linked_mails']) && $data['linked_mails'] != "no_mails"){
+                                     echo "<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">";
+                                      foreach ($data['linked_mails'] as $mail){
+
+                                          if($mail['already_sent'] == "1"){
+                                              $already_sent = "Already sent";
+                                          }else{
+                                              $already_sent = "In progress";
+                                          }
 
 
-                                <div class="col-lg-4 col-md-4 link_formular">
-                                    <div class="col-lg-10 col-md-10 form-group has-feedback has-feedback-left">
-                                        <label class="control-label" for="event_link_formular">Link a mail to the event:</label>
-                                        <select class="form-control" min="0" name="event_link_formular" id="event_link_formular">
-                                            <option value="bla">Mail 1</option>
-                                            <option value="bla">Mail 2</option>
-                                            <option value="bla">Mail 3</option>
-                                        </select>
-                                    </div>
-                                </div>
+
+                                          ?>
+                                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mail_item">
+                                              <h4><?php echo $mail['title'];?></h4>
+                                              <div class="mail_item_content">
+                                                  <p>Type: <span class="mail_content_type"><?php echo $mail['mail_type'];?></span></p>
+                                                  <p>Status: <span class="text-info"><?php echo $already_sent;?></span></p>
+                                                  <hr>
+                                                  <div class="mail_item_options">
+                                                      <a href="<?php echo APP_ROOT . $url[0] . '/designs/edit/' . $mail['id'];?>" class="btn btn-sm spec_design">edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                                      <a href="<?php echo APP_ROOT . $url[0] . '/myevents/send/' . $mail['id'];?>" class="btn btn-sm spec_dashboard">send <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                <?php
+                                      }
+                                     echo "</div>";
+                                 }else{
+                                     ?>
+                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert alert-info">
+                                         <strong>No Mails linked!</strong> Please <a href="designs/newDesign">create a new design.</a>
+                                     </div>
+                                <?php
+                                 }
+                                ?>
+
+
+
+
+
+
+
 
                             </form>
                         </div>
 
-                        <div class="col-lg-12 col-md-12">
-                            <h4>Linked Mails</h4>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Edit</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="#">Mail 1</a></td>
-                                    <td width="100"><a href="#" class="btn btn-sm btn-warning">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-info">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-right-area">
-                            <input type="submit" class="btn btn-lg spec spec_dashboard" value="Save">
-                        </div>
                     </div>
                     </div>
 

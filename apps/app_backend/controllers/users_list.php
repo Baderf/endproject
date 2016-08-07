@@ -7,12 +7,12 @@ class users_list extends user_controller{
         parent::__construct();
     }
 
-    public function show($event_id){
+    public function index($event_id){
         $this -> view -> data = $this -> model -> getUserDataEvent($event_id);
         $this -> view -> render("users_list/show", $this -> view -> data);
     }
 
-    public function new($event_id){
+    public function newUser($event_id){
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
             if(isset($_POST['createneweventuser'])){
                 $firstname = $_POST['f-firstname'];

@@ -91,6 +91,17 @@ class myevents_model extends model{
         }
     }
 
+    public function getLinkedMails($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT * FROM mails WHERE event_id = $event_id AND user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $mails = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $mails;
+        }
+
+        return false;
+    }
+
     public function linkFormular($event_id, $formular_to_link, $user_id){
 
         if($this -> checkForLinkedEvents($event_id, $user_id)){

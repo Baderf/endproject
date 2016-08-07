@@ -58,14 +58,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Finance Meeting</td>
-                        <td>12.02.2016</td>
-                        <td><strong>99</strong></td>
-                        <td>
-                            <a href="users/edit/1">go to users</a>
-                        </td>
-                    </tr>
+
+                    <?php
+                        if(isset($data['events']) && !empty($data['events'])){
+
+                            foreach ($data['events'] as $event){
+                                ?>
+                            <tr>
+                                <td><?php echo $event['title'];?></td>
+                                <td><?php echo $event['created_at'];?></td>
+                                <td><strong><?php echo $event['count'];?></strong></td>
+                                <td>
+                                    <a href="users/edit/<?php echo $event['id'];?>">go to users</a>
+                                </td>
+                            </tr>
+                    <?php
+                            }
+                        }else{
+                            ?>
+                            <tr>
+                                <td colspan="4">No events created - Please <a href="myevents/newEvent">create</a> an event!</td>
+
+                            </tr>
+                    <?php
+                        }
+                    ?>
+
 
                     </tbody>
                 </table>

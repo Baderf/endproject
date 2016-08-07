@@ -9,6 +9,8 @@ class users extends user_controller{
 
     public function index(){
 
+            $this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"));
+
             $this -> view -> data['username'] = sessions::get('uname');
 
             $this -> view -> render("users/index", $this -> view -> data);

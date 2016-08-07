@@ -179,6 +179,40 @@ class users_model extends model{
 
     }
 
+    public function getAllEvents($user_id){
+        $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id");
+
+        if($sql -> num_rows >0){
+            $events = $sql -> fetch_all(MYSQLI_ASSOC);
+
+            foreach ($events as &$event){
+                if($count = $this -> countUsers($event['id'])){
+                    $event['count'] = $count;
+                }else{
+                    $event['count'] = "0";
+                }
+
+            }
+
+            return $events;
+        }
+
+        return false;
+    }
+
+    public function countUsers($event_id){
+
+        $tablename = "users_event_" . $event_id;
+        $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename");
+
+        if($sql -> num_rows > 0){
+            $count = $sql ->fetch_row();
+
+            return $count[0];
+        }
+
+        return false;
+    }
 
     public function checkForUserFields($event_id){
         $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id");

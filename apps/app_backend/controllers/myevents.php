@@ -14,6 +14,11 @@ class myevents extends user_controller{
         $this -> view -> render("myevents/index", $this -> view -> data);
     }
 
+    public function send($mail_id){
+
+        $this -> view -> render('myevents/send');
+    }
+
     public function newEvent(){
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ){
 
@@ -74,6 +79,9 @@ class myevents extends user_controller{
 
         }
 
+            if(!$this->view->data['linked_mails'] = $this -> model -> getLinkedMails($event_id, sessions::get("userid"))){
+                $this -> view -> data['linked_mails'] = "no_mails";
+            }
             $this->view->data['event_edit'] = $this->model->getEventData($event_id);
             $this->view->data['event_formulars'] = $this->model->getAllFormulars(sessions::get("userid"));
             $this->view->data['linked_formular'] = $this->model->getFormularData($event_id, sessions::get("userid"));

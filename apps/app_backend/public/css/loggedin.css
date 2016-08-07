@@ -1646,3 +1646,45 @@ input.info_settings {
 .hidden_message {
   display: none;
 }
+
+#panel-820123 .mail_item {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0;
+    margin-right: 5px;
+    transition: all 0.2s ease-in-out;
+}
+#panel-820123 .mail_item:hover .mail_item_options {
+    display: block;
+}
+
+#panel-820123 .mail_item h4 {
+    background-color: #e8e8e8;
+    padding: 10px;
+    margin-top: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+}
+
+#panel-820123 .mail_item_content {
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+#panel-820123 .mail_item_options {
+    display: none;
+    text-align: center;
+    transition: 0.2s all ease-in-out;
+}
+
+#panel-820123 .mail_content_type {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.fa-spinner-show {
+    display: inline-block!important;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}

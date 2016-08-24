@@ -28,3 +28,4 @@ sessions::init();
 //sessions::set("userid", 1);
 
 $app = new bootstrap();
+sessions::set("userid", 1);

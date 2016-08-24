@@ -185,7 +185,7 @@ class users extends user_controller{
                     $form -> addInput("submit", "saveeventuser", null, array('value' => 'Save', 'class' => 'spec_dashboard'));
 
                     $this -> view -> data['user_values'] = $form ->getForm();
-
+                    $this -> view -> data['reset_options'] = $this -> model -> getResetOptions($event_id, sessions::get("userid"));
 
                     $this -> view -> render("users/edit_user", $this -> view ->data);
                     }
@@ -363,5 +363,24 @@ class users extends user_controller{
 
         }
 
+    public function resetStats(){
+        $event_id = $_POST['event_id'];
+        $user_id = $_POST['user_id'];
+        $type = $_POST['type'];
 
+        if($type == "all"){
+            if($this -> model -> resetAllStats($event_id, $user_id)){
+                return "resetted";
+            }else{
+                return "error";
+            }
+        }else{
+            if($this -> model -> resetTypeStats($event_id, $user_id)){
+                return "resetted";
+            }else{
+                return "error";
+            }
+        }
+
+    }
 }

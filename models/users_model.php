@@ -242,4 +242,42 @@ class users_model extends model{
             return false;
         }
     }
+
+    public function getResetOptions($event_id, $user_id){
+        $tablename = "users_mails_" . $event_id;
+
+        $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id");
+
+        if($sql -> num_rows > 0 ){
+            $reset_options = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $reset_options;
+        }
+
+        return false;
+    }
+
+    public function resetAllStats($event_id, $user_id){
+        $tablename = 'users_mails_' . $event_id;
+        $last_update = date("m/d/Y g:i a");
+
+        $stmt = $this -> db -> query("UPDATE $tablename SET 
+                                      invitation_sent = 0,
+                                      invitation_open = 0,
+                                      invitation_viewed = 0,
+                                      reminder_sent = 0,
+                                      reminder_open = 0,
+                                      reminder_viewed = 0,
+                                      std_sent = 0,
+                                      std_open = 0,
+                                      std_viewed = 0,
+                                      info_sent = 0,
+                                      info_open = 0,
+                                      info_viewed = 0,
+                                      ty_sent = 0,
+                                      ty_open = 0,
+                                      ty_viewed = 0,
+                                      last_update = $last_update
+                                      WHERE user_id = $user_id
+                                      ");
+    }
 }

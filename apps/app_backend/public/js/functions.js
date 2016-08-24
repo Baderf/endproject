@@ -747,6 +747,54 @@ $(function () {
 
 
             });
+        } else if (target.is(".static_delete")) {
+            event.preventDefault();
+            window_alert_show("Are you sure that you want to delete the statics?");
+
+
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                user_id = $('#user_id').val();
+                event_id = $('#event_id').val();
+                reset_type = $(event.target).attr("id");
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/users/resetStats',
+                    data: {
+                        user_id: user_id,
+                        event_id: event_id,
+                        type: reset_type
+                    },
+
+
+                    success: function (data) {
+                        if(data == "unlinked"){
+                            // Mach
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+
+
+
+            });
         } else if (target.is(".unlink_formular")) {
             event.preventDefault();
             window_alert_show("Are you sure that you want to unlink the formular? This will delete the whole data table of your formular!");

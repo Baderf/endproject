@@ -1538,7 +1538,8 @@ DRAGULAR
 }
 
 .default_user_values,
-.default_mail_values {
+.default_mail_values,
+.default_user_mail_settings{
     background-color: #fff;
     color: #000;
     border: 1px solid #ccc;
@@ -1546,9 +1547,14 @@ DRAGULAR
     margin-top: 20px;
 }
 
+.default_user_mail_settings h4,
 .default_user_values h4,
 .default_mail_values h4{
     margin-bottom: 40px;
+}
+
+.default_user_mail_settings button {
+    margin-bottom: 20px;
 }
 
 .default_user_values label,

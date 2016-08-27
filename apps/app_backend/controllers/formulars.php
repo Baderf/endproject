@@ -12,6 +12,7 @@ class formulars extends user_controller{
 
     public function index(){
 
+
         if(!$this -> view -> data['formulars'] = $this -> model -> getAllFormulars(sessions::get("userid"))){
             $this -> view -> data['formulars'] = "none";
         }
@@ -152,7 +153,16 @@ class formulars extends user_controller{
 
     public function edit($form_id){
 
+
+        if($events = $this -> model -> checkForEntries($form_id, sessions::get("userid"))){
+            $this -> view -> data['linked_events'] = $events;
+        }
+
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
+
+
+
+
             if (isset($_POST['saveStandardFieldsFormular'])) {
                 $active_fields = $_POST['active_standard_fields'];
                 $deactive_fields = $_POST['deactive_standard_fields'];
@@ -183,6 +193,14 @@ class formulars extends user_controller{
                 }
 
             } elseif (isset($_POST['saveUserFields'])){
+
+                if(isset($_POST['linked_events'])){
+                    $ids = $_POST['linked_events'];
+                    $user_id = $_POST['user_id'];
+
+                    $this -> model -> deleteUserColumns($ids, $form_id);
+                }
+
                 $ids_all = $_POST['UserFieldIds'];
                 $ids = explode("::", $_POST['UserFieldIds']);
                 foreach ($ids as &$id) {
@@ -220,9 +238,21 @@ class formulars extends user_controller{
                 // Update:
                 if($this -> model -> updateUserFormularDetails($form_id, sessions::get("userid"), $ids_all)){
                     // FEEDBACK HAT PASST
+
+                    if(isset($_POST['linked_events'])){
+                        $ids = $_POST['linked_events'];
+
+                        $this -> model -> createUserColumns($ids, $form_id);
+                    }
+
+
                     $location = APP_ROOT . 'backend/' . 'formulars/' . 'edit/' . $form_id;
+
+
                     header("Location: $location");
                 }
+
+
 
 
             }

@@ -243,7 +243,158 @@ class myevents_model extends model{
                 return false;
             }
         }
+    }
 
+    public function createUserColumns($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id AND user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $form_id = $sql -> fetch_assoc();
+            if($form_id['form_id'] != "0"){
+                $formular_id = $form_id['form_id'];
+                $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_id");
+                if($sql -> num_rows >0){
+                    $user_fields = $sql -> fetch_assoc();
+
+                    var_dump($user_fields['user_field_ids']);
+
+                    $ids = explode("::", $user_fields['user_field_ids']);
+                    $user_ids = "";
+
+                    $numItems = count($ids);
+                    $g = 0;
+
+                    foreach ($ids as &$id) {
+                        $id = str_replace(":", "", $id);
+
+                        if(++$g === $numItems){
+                            $user_ids .= $id;
+                        }else{
+                            $user_ids .= $id . ",";
+                        }
+
+                    }
+
+                    // Namen holen:
+                    $sql = $this -> db -> query("SELECT title FROM user_formular_fields WHERE id IN ($user_ids)");
+
+                    if($sql -> num_rows >0){
+                        $result = $sql -> fetch_all(MYSQLI_ASSOC);
+
+                        if(count($result) != 0){
+                            $numItems = count($result);
+                            $i = 0;
+
+                            $names = "";
+
+                            foreach($result as $key => $val){
+                                if(++$i === $numItems){
+                                    $names .= "ADD " . "`" . $val['title'] . "`" . " VARCHAR(200) NOT NULL";
+                                }else{
+                                    $names .= "ADD " . "`" . $val['title']. "`" . " VARCHAR(200) NOT NULL" . ", " ;
+                                }
+
+
+                            }
+
+                            // DROP Tables:
+                            $tablename = "users_event_".$event_id;
+                            $dec = "ALTER TABLE " . $tablename . " " . $names;
+                            var_dump($dec);
+
+                            if($sql = $this -> db -> query($dec)){
+                                return true;
+                            }else{
+                                return false;
+                            }
+
+
+                        }
+
+                    }
+                }
+
+            }else{
+                // hat keine Verlinkung
+            }
+
+        }
+    }
+
+    public function deleteUserColumns($event_id, $user_id){
+        $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id AND user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $form_id = $sql -> fetch_assoc();
+            if($form_id['form_id'] != "0"){
+                $formular_id = $form_id['form_id'];
+                $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_id");
+                if($sql -> num_rows >0){
+                    $user_fields = $sql -> fetch_assoc();
+
+                    var_dump($user_fields['user_field_ids']);
+
+                    $ids = explode("::", $user_fields['user_field_ids']);
+                    $user_ids = "";
+
+                    $numItems = count($ids);
+                    $g = 0;
+
+                    foreach ($ids as &$id) {
+                        $id = str_replace(":", "", $id);
+
+                        if(++$g === $numItems){
+                          $user_ids .= $id;
+                        }else{
+                            $user_ids .= $id . ",";
+                        }
+
+                    }
+
+                   // Namen holen:
+                    $sql = $this -> db -> query("SELECT title FROM user_formular_fields WHERE id IN ($user_ids)");
+
+                    if($sql -> num_rows >0){
+                        $result = $sql -> fetch_all(MYSQLI_ASSOC);
+
+                        if(count($result) != 0){
+                            $numItems = count($result);
+                            $i = 0;
+
+                            $names = "";
+
+                            foreach($result as $key => $val){
+                                if(++$i === $numItems){
+                                    $names .= "DROP COLUMN " . "`" . $val['title'] . "`";
+                                }else{
+                                    $names .= "DROP COLUMN " . "`" . $val['title']. "`" . ", ";
+                                }
+
+
+                            }
+
+                            // DROP Tables:
+                            $tablename = "users_event_".$event_id;
+                            $dec = "ALTER TABLE " . $tablename . " " . $names;
+                            var_dump($dec);
+
+                            if($sql = $this -> db -> query($dec)){
+                                return true;
+                            }else{
+                                return false;
+                            }
+
+
+                        }
+
+                    }
+                }
+
+            }else{
+                // hat keine Verlinkung
+            }
+
+        }
     }
 
 

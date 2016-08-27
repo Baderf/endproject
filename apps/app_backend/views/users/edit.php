@@ -10,7 +10,7 @@
             ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
-            <a href="<?php echo APP_ROOT . $url[0] . '/users_list/newUser/' . $url[3];?>" class="btn btn-default btn-lg btn-back btn-self">
+            <a href="<?php echo $data['event_id'];?>/new_user" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new User
             </a>
@@ -84,7 +84,7 @@
 
                         <tr>
 
-                            <td colspan="4">No users found - <a href="<?php echo $data['event_id'];?>/new_user/">Create new user</a></td>
+                            <td colspan="4">No users found - <a href="<?php echo $data['event_id'];?>/new_user">Create new user</a></td>
 
                         </tr>
                 <?php

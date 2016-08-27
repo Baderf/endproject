@@ -90,16 +90,27 @@ class myevents extends user_controller{
 
     }
 
+    public function test(){
+        $event_id = 24;
+        $user_id = 1;
+
+        $this -> model -> createUserColumns($event_id, $user_id);
+
+    }
+
     public function unlinkFormular(){
         $event_id = $_POST['event_id'];
         $user_id = $_POST['user_id'];
 
-        $unlink = $this -> model -> unlinkEventFormular($event_id, $user_id);
+        // delete tables
+        if($this -> model -> deleteUserColumns($event_id, sessions::get("userid"))){
+            $unlink = $this -> model -> unlinkEventFormular($event_id, $user_id);
 
-        if($unlink){
-            echo "unlinked";
-        }else{
-            echo "error";
+            if($unlink){
+                echo "unlinked";
+            }else{
+                echo "error";
+            }
         }
     }
 
@@ -110,10 +121,12 @@ class myevents extends user_controller{
 
         $linked = $this -> model -> linkFormular($event_id, $formular_to_link, $user_id);
 
-        if($linked === TRUE){
-            echo "linked";
-        }else{
-            echo "error";
+        if($this -> model -> createUserColumns($event_id, sessions::get("userid"))){
+            if($linked === TRUE){
+                echo "linked";
+            }else{
+                echo "error";
+            }
         }
 
     }

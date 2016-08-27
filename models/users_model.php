@@ -28,9 +28,12 @@ class users_model extends model{
 
         if($sql -> num_rows > 0){
             $user_fields = $sql -> fetch_assoc();
+            return $user_fields;
+        }else{
+            return false;
         }
 
-        return $user_fields;
+
     }
 
     public function getUserData($event_id, $user_id){
@@ -47,14 +50,18 @@ class users_model extends model{
 
     public function insertNewUser($event_id, $user_data = array(), $user_fields = array()){
         $tablename = "users_event_".$event_id;
+
         $hash = sha1($user_data['lastname'] . $user_data['birthday']);
 
         $this -> where = "INSERT INTO ".$tablename . " (hash,";
 
         if (empty($user_fields)){
-            $last_key = end(array_keys($user_data));
+            $numItems = count($user_data);
+
+            $e = 0;
+
             foreach( $user_data as $key => $val ){
-                if($key == $last_key){
+                if(++$e === $numItems){
                     $this -> where .= "$key";
                 }else{
                     $this -> where .= "$key,";
@@ -69,9 +76,12 @@ class users_model extends model{
 
         if(!empty($user_fields)){
 
-            $last_key = end(array_keys($user_fields));
+            $numItems = count($user_fields);
+            $i = 0;
+
+
             foreach ( $user_fields as $key => $val ){
-                if($key == $last_key){
+                if(++$i === $numItems){
                     $this -> where .= "$key";
                 }else{
                     $this -> where .= "$key,";
@@ -82,9 +92,11 @@ class users_model extends model{
         $this -> where .= ") VALUES(\"$hash\",";
 
         if (empty($user_fields)){
-            $last_key = end(array_keys($user_data));
+            $numItems = count($user_data);
+            $f = 0;
+
             foreach( $user_data as $key => $val ){
-                if($key == $last_key){
+                if(++$f === $numItems){
                     $this -> where .= "\"$val\"";
                 }else{
                     $this -> where .= "\"$val\",";
@@ -99,10 +111,11 @@ class users_model extends model{
 
         if(!empty($user_fields)){
 
-            $last_key = end(array_keys($user_fields));
+            $numItems = count($user_fields);
+            $g = 0;
 
             foreach ( $user_fields as $key => $val ){
-                if($key == $last_key){
+                if(++$g === $numItems){
                     $this -> where .= "\"$val\"";
                 }else{
                     $this -> where .= "\"$val\",";
@@ -113,11 +126,29 @@ class users_model extends model{
 
 
         $this -> where .= ")";
-        
+        var_dump($this -> where);
 
         if($sql = $this -> db -> query($this -> where)){
+
+
+
+            $this -> last_id = $this -> db -> insert_id;
+
+
+            if($this -> insertUserMailTable($this->last_id, $event_id)){
+                return true;
+            }
+        }
+
+    }
+
+    public function insertUserMailTable($user_id, $event_id){
+        $tablename2 = "users_mails_".$event_id;
+
+        if($sql = $this -> db -> query("INSERT INTO $tablename2 (user_id) VALUES('$user_id') ")){
             return true;
         }
+
 
     }
 
@@ -154,12 +185,11 @@ class users_model extends model{
 
         if(!empty($user_fields)){
 
-
-            $last_key = end(array_keys($user_fields));
-
+            $numItems = count($user_fields);
+            $f = 0;
 
             foreach ( $user_fields as $key => $val ){
-                if($key == $last_key){
+                if(++$f === $numItems){
                     $this -> where .= "$key = \"$val\"";
                 }else{
                     $this -> where .= "$key = \"$val\",";
@@ -171,7 +201,10 @@ class users_model extends model{
 
         $this -> where .= " WHERE id = $user_id";
 
+
+
         if($sql = $this -> db -> query($this -> where)){
+
            return true;
         }
 
@@ -246,7 +279,7 @@ class users_model extends model{
     public function getResetOptions($event_id, $user_id){
         $tablename = "users_mails_" . $event_id;
 
-        $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id");
+        $sql = $this -> db -> query("SELECT * FROM '$tablename' WHERE user_id = $user_id");
 
         if($sql -> num_rows > 0 ){
             $reset_options = $sql -> fetch_all(MYSQLI_ASSOC);
@@ -254,6 +287,17 @@ class users_model extends model{
         }
 
         return false;
+    }
+
+    public function getSendOptions($event_id, $user_id){
+          $sql = $this -> db -> query("SELECT * FROM mails WHERE event_id = $event_id AND user_id = $user_id");
+
+        if($sql -> num_rows > 0){
+            $send_options = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $send_options;
+        }else {
+            return false;
+        }
     }
 
     public function resetAllStats($event_id, $user_id){

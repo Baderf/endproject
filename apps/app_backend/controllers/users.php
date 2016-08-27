@@ -72,6 +72,7 @@ class users extends user_controller{
 
                                     $userfields[$title] = $_POST[$name];
 
+
                                 }
 
                             }
@@ -147,8 +148,14 @@ class users extends user_controller{
                                         array_push($options, $option);
                                     }
 
+                                    $userfield_title = $user_field['title'];
+                                    if (isset($user[$userfield_title])) {
+                                        $selected = $user[$userfield_title];
+                                    }else{
+                                        $selected = $user_field['default_value'];
+                                    }
 
-                                    $form ->addSelect($name, $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']),$required);
+                                    $form ->addSelect($name, $user_field['title'], $options, $selected, array('placeholder' => $user_field['placeholder']),$required);
                                     break;
                                 case "radio":
                                     $user_options = explode("::",$user_field['data_values']);
@@ -159,8 +166,14 @@ class users extends user_controller{
                                         array_push($options, $option);
                                     }
 
+                                    $userfield_title = $user_field['title'];
+                                    if (isset($user[$userfield_title])) {
+                                        $selected = $user[$userfield_title];
+                                    }else{
+                                        $selected = $user_field['default_value'];
+                                    }
 
-                                    $form ->addSelect($name, $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']),$required);
+                                    $form ->addSelect($name, $user_field['title'], $options, $selected, array('placeholder' => $user_field['placeholder']),$required);
                                     break;
                                 case "checkbox":
                                     $user_options = explode("::",$user_field['data_values']);
@@ -171,8 +184,15 @@ class users extends user_controller{
                                         array_push($options, $option);
                                     }
 
+                                    $userfield_title = $user_field['title'];
+                                    if (isset($user[$userfield_title])) {
+                                        $selected = $user[$userfield_title];
+                                    }else{
+                                        $selected = $user_field['default_value'];
+                                    }
 
-                                    $form ->addSelect($name, $user_field['title'], $options, $selected = $user_field['default_value'], array('placeholder' => $user_field['placeholder']),$required);
+
+                                    $form ->addSelect($name, $user_field['title'], $options, $selected, array('placeholder' => $user_field['placeholder']),$required);
                                     break;
                                 case "textarea":
                                     $form -> addTextarea($user_field['id'], $user_field['title'], array('placeholder' => $user_field['placeholder']),$required);
@@ -186,6 +206,7 @@ class users extends user_controller{
 
                     $this -> view -> data['user_values'] = $form ->getForm();
                     $this -> view -> data['reset_options'] = $this -> model -> getResetOptions($event_id, sessions::get("userid"));
+                    $this -> view -> data['send_options'] = $this -> model -> getSendOptions($event_id, sessions::get("userid"));
 
                     $this -> view -> render("users/edit_user", $this -> view ->data);
                     }
@@ -220,12 +241,12 @@ class users extends user_controller{
                                 'department' => $_POST['f-department']
                             );
 
+
                             if($user_field_ids = $this -> model -> checkForUserFields($event_id)){
+
                                 $ids = explode("::", $user_field_ids['user_field_ids']);
                                 $form_id = $user_field_ids['id'];
                                 $userfields = array();
-
-
 
                                 foreach ($ids as &$id) {
 
@@ -240,11 +261,13 @@ class users extends user_controller{
 
                                 }
 
+
                             }
 
+
                             if($this->model->insertNewUser($event_id, $user_data, $userfields)){
-                                $location = APP_ROOT . 'backend/users/edit/' .$event_id;
-                                header("Location: $location");
+                                $location = APP_ROOT . 'backend/users/edit/' . $event_id;
+                               header("Location: $location");
                             }
 
 
@@ -279,10 +302,15 @@ class users extends user_controller{
                         if($user_field_ids = $this -> model -> checkForUserFields($event_id)){
                             $ids = explode("::", $user_field_ids['user_field_ids']);
                             $form_id = $user_field_ids['id'];
+
+
                             foreach ($ids as &$id) {
                                 $id = str_replace(":", "", $id);
 
                                 $user_field = $this -> model -> getUserFormular($form_id, $id, sessions::get("userid"));
+                                var_dump($user_field);
+
+
                                 $name = "u-" . $user_field['title'];
 
                                 if($user_field['is_required'] == "true"){$required = true;}else{$required = false;};

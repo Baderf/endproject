@@ -91,10 +91,30 @@
                         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 info-box">
                             <h4>Information</h4>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Consectetur corporis culpa deserunt nam nemo officiis rem.
-                                Cumque ducimus eaque eligendi fugiat illo, numquam odit quidem quod sint sit,
-                                ullam velit.
+                                <?php if(!empty($data['linked_events'])){
+                                    ?>
+                            <div class="alert alert-danger">
+
+                                <strong>Warning!</strong> - This formular is linked with following events, where you already have sent emails:
+                                <br>
+                                <br>
+                                <ul>
+
+
+                                <?php
+                                    foreach ($data['linked_events'] as $event){
+                                        ?>
+                                           <li><strong><?php echo $event['title'];?></strong></li>
+                                <?php
+                                    }
+                                ?>
+                                </ul>
+                                <br>
+                                If you save the formular, it could reset userspecified data. <br><br>
+                                If you dont want that, please create a new formular and link it with the event.
+                            </div>
+                                <?php
+                                }; ?>
                             </p>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -112,6 +132,30 @@
                 <div class="tab-pane" id="panel-820482">
                     <div class="row">
                         <form action="" role="form" method="post">
+                            <?php if(!empty($data['linked_events'])){
+                                ?>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert alert-danger">
+
+                                    <strong>Warning!</strong> - This formular is linked with following events, where you already have sent emails:
+                                    <br>
+                                    <br>
+                                    <ul>
+
+
+                                        <?php
+                                        foreach ($data['linked_events'] as $event){
+                                            ?>
+                                            <li><strong><?php echo $event['title'];?></strong></li>
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                    <br>
+                                    If you save the formular, it could reset userspecified data. <br><br>
+                                    If you dont want that, please create a new formular and link it with the event.
+                                </div>
+                                <?php
+                            }; ?>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <h4>Active fields</h4>
                                 <hr>
@@ -222,7 +266,35 @@
                 <div class="tab-pane" id="panel-820473">
                     <div class="row">
                         <form action="" method="post">
+                            <?php if(!empty($data['linked_events'])){
+                                $event_ids = "";
+                                ?>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert alert-danger">
 
+                                    <strong>Warning!</strong> - This formular is linked with following events, where you already have sent emails:
+                                    <br>
+                                    <br>
+                                    <ul>
+
+
+                                        <?php
+                                        foreach ($data['linked_events'] as $event){
+                                            $event_ids .= ":" . $event['id'] . ":";
+                                            ?>
+                                            <li><strong><?php echo $event['title'];?></strong></li>
+                                            <?php
+                                        }
+
+                                        ?>
+                                    </ul>
+                                    <input type="hidden" id="linked_events" name="linked_events" value="<?php echo $event_ids; ?>">
+                                    <input type="hidden" id="user_id" name="user_id" value="<?php echo sessions::get("userid"); ?>">
+                                    <br>
+                                    If you save the formular and change it, it could reset userspecified data. <br><br>
+                                    If you dont want that, please create a new formular and link it with the event.
+                                </div>
+                                <?php
+                            }; ?>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4>Create a new form</h4>

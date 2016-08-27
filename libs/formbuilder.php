@@ -94,7 +94,7 @@ class formbuilder{
 
         foreach( $options as $key => $val){
 
-            $this -> output .= ( $key == $selected ) ? "<option value=\"$key\" selected>$val</option>" : "<option value=\"$key\">$val</option>";
+            $this -> output .= ( $val == $selected ) ? "<option value=\"$val\" selected>$val</option>" : "<option value=\"$val\">$val</option>";
         }
 
         $this -> output .= "</select></div>";

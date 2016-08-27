@@ -59,7 +59,14 @@
 
                 <?php
 
-                // Abfrage welche Mails bereits geschickt wurden
+               if(!isset($data['reset_options']) || empty($data['reset_options'])){
+                   ?>
+                   <div class="alert alert-info">
+                       <strong>Info!</strong> This user has got no mails from you!
+                   </div>
+                   <?php
+               }else{
+
                 // Wenn 0 dann nur ein div mit info anzeigen
                 foreach ($data['reset_options'] as $option){
                     if($option['invitation_sent'] != 0){
@@ -112,6 +119,8 @@
                     }
                 }
 
+               }
+
 
                 ?>
 
@@ -120,9 +129,16 @@
 
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 send_mail_user">
-                <hr>
-                <h4>Send Mails:</h4>
-                <button class="btn btn-sm btn-block spec_event">Send user mail</button>
+                <?php
+                if(isset($data['send_options']) || !empty($data['send_options'])) {
+                    ?>
+                    <hr>
+                    <h4>Send Mails:</h4>
+                    <button class="btn btn-sm btn-block spec_event">Send user mail</button>
+                    <?php
+                }
+                ?>
+
                 <h4>Set user options:</h4>
                 <button class="btn btn-sm btn-success">participate</button>
                 <button class="btn btn-sm btn-warning">no action</button>

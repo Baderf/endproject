@@ -142,6 +142,19 @@ class users_model extends model{
 
     }
 
+    public function getEventMails($event_id){
+        $sql = $this -> db -> query("SELECT * FROM mails WHERE event_id = $event_id");
+
+        if($sql){
+            $mails = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $mails;
+        }
+
+        return false;
+
+
+    }
+
     public function insertUserMailTable($user_id, $event_id){
         $tablename2 = "users_mails_".$event_id;
 
@@ -281,7 +294,7 @@ class users_model extends model{
 
         $sql = $this -> db -> query("SELECT * FROM '$tablename' WHERE user_id = $user_id");
 
-        if($sql -> num_rows > 0 ){
+        if($sql){
             $reset_options = $sql -> fetch_all(MYSQLI_ASSOC);
             return $reset_options;
         }
@@ -297,6 +310,31 @@ class users_model extends model{
             return $send_options;
         }else {
             return false;
+        }
+    }
+
+    public function setUserReaction($event_id, $user_id, $reaction){
+
+
+        $tablename = "users_event_".$event_id;
+        if($reaction == "participate"){
+            if($sql = $this -> db -> query("UPDATE $tablename SET accepted = 1, canceled = 0 WHERE id= $user_id")){
+                return true;
+            }else{
+                return false;
+            }
+        }elseif($reaction == "cancel"){
+            if($sql = $this -> db -> query("UPDATE $tablename SET accepted = 0, canceled = 1 WHERE id = $user_id")){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            if($sql = $this -> db -> query("UPDATE $tablename SET accepted = 0, canceled = 0 WHERE id = $user_id")){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 

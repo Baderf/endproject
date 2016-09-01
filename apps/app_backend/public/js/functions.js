@@ -35,7 +35,7 @@ function show_info_message(element, button, text){
 
 function start_loading(button){
 
-    spinner = button.parent().find(".fa-spinner").fadeIn("slow");
+    spinner = button.find(".fa-spinner").fadeIn("slow");
 
 }
 
@@ -85,6 +85,22 @@ $(function(){
 
         count_settings();
     }
+
+
+    if($("#send_button_user_mail")[0]){
+
+        select = $("#user_mails");
+        button = $('#send_button_user_mail');
+        select.on("change", function(e){
+            if(select.val() == "default"){
+                button.attr("disabled","true");
+            }else{
+                button.removeAttr("disabled");
+            }
+        });
+    }
+
+
 
     // Overlay click event
     $(".overlay").on("click", function(event){
@@ -716,6 +732,65 @@ $(function () {
 
 
             });
+        } else if (target.is(".user_reaction")) {
+            event.preventDefault();
+            button = $(event.target);
+
+            button.attr("disabled", "true");
+            var baseURL = $('body').data('baseurl');
+
+            reaction = button.data("action");
+            user_id = $('#user_id').val();
+            event_id = $('#event_id').val();
+            start_loading(button);
+
+            $.ajax({
+                method: "POST",
+                url: baseURL + 'backend/users/setReaction',
+                data: {
+                    user_id: user_id,
+                    event_id: event_id,
+                    reaction: reaction
+                },
+
+
+                success: function (data) {
+                    stop_loading(button);
+
+                    if(data != "false"){
+                        element = $(".user_saving");
+                        text="Action set!";
+                        current = $(".user_reactions").slideUp("fast");
+                        show_success_message(element, button, text);
+
+                        setTimeout(function(){
+                                current.html(data).slideDown("slow");
+                                current.find(".fa-spinner").hide();
+                        }, 3000);
+
+
+
+
+                        
+                        
+
+                    }
+
+                },
+                error: function(xhr, textStatus, errorThrown){
+                    stop_loading(button);
+                }
+
+            }).always(function(jqXHR, textStatus){
+                start_loading(button);
+            });
+
+
+
+        } else if (target.is("#send_mail_user")) {
+            event.preventDefault();
+            show_settings();
+
         } else if (target.is(".btn_settings_mail")) {
             event.preventDefault();
             show_settings();

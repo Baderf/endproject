@@ -88,6 +88,13 @@ class users extends user_controller{
 
 
 
+                        }elseif(isset($_POST['send_user_mail'])){
+
+                            // TO-DO
+                            // Befehl das Mail zu senden:
+                            // Umleitung auf die User-Gruppe:
+                            $location = APP_ROOT . 'backend/users/edit/' .$event_id;
+                            header("Location: $location");
                         }
                     }else{
 
@@ -95,6 +102,10 @@ class users extends user_controller{
 
                     $user = $this -> model -> getUserData($event_id, $url[5]);
 
+                    $this -> view -> data['user_reactions'] = [
+                        "yes" => $user['accepted'],
+                        "no" => $user['canceled'],
+                    ];
 
                     $form = new formbuilder("user_edit_".$url[5]);
 
@@ -203,6 +214,9 @@ class users extends user_controller{
                     }
 
                     $form -> addInput("submit", "saveeventuser", null, array('value' => 'Save', 'class' => 'spec_dashboard'));
+
+                    $this -> view -> data['user_mails'] = $this -> model -> getEventMails($event_id);
+
 
                     $this -> view -> data['user_values'] = $form ->getForm();
                     $this -> view -> data['reset_options'] = $this -> model -> getResetOptions($event_id, sessions::get("userid"));
@@ -391,6 +405,44 @@ class users extends user_controller{
 
         }
 
+    public function setReaction(){
+
+        $event_id = $_POST['event_id'];
+        $user_id = $_POST['user_id'];
+        $reaction = $_POST['reaction'];
+
+        if($this->model->setUserReaction($event_id, $user_id, $reaction)){
+            if($reaction == "noaction"){
+                ?>
+                <p>Active status:</p>
+                <p class="btn-sm btn-warning">no action</p>
+                <p>Set other status:</p>
+                <button id="user_participate" data-action="participate" class="user_reaction btn btn-sm btn-default">participate <i class='fa fa-spinner fa-spin'></i></button>
+                <button id="user_cancel" data-action="cancel" class="user_reaction btn btn-sm btn-default">dont participate <i class='fa fa-spinner fa-spin'></i></button>
+                <?php
+            }elseif($reaction == "participate"){
+                ?>
+                <p>Active status:</p>
+                <p class="btn-sm btn-success">participate</p>
+                <p>Set other status:</p>
+                <button id="user_noaction" data-action="noaction" class="user_reaction btn btn-sm btn-default">no action <i class='fa fa-spinner fa-spin'></i></button>
+                <button id="user_cancel" data-action="cancel" class="user_reaction btn btn-sm btn-default">dont participate <i class='fa fa-spinner fa-spin'></i></button>
+                <?php
+            }else{
+                ?>
+                <p>Active status:</p>
+                <p class="btn-sm btn-danger">dont participate</p>
+                <p>Set other status:</p>
+                <button id="user_participate" data-action="participate" class="user_reaction btn btn-sm btn-default">participate <i class='fa fa-spinner fa-spin'></i></button>
+                <button id="user_noaction" data-action="noaction" class="user_reaction btn btn-sm btn-default">no action <i class='fa fa-spinner fa-spin'></i></button>
+
+                <?php
+            }
+        }else{
+            echo "false";
+        }
+    }
+
     public function resetStats(){
         $event_id = $_POST['event_id'];
         $user_id = $_POST['user_id'];
@@ -398,15 +450,15 @@ class users extends user_controller{
 
         if($type == "all"){
             if($this -> model -> resetAllStats($event_id, $user_id)){
-                return "resetted";
+                echo "resetted";
             }else{
-                return "error";
+                echo "error";
             }
         }else{
             if($this -> model -> resetTypeStats($event_id, $user_id)){
-                return "resetted";
+                echo "resetted";
             }else{
-                return "error";
+                echo "error";
             }
         }
 

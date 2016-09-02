@@ -12,13 +12,13 @@
     <title>Mailpig - Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC ?>css/bootstrap.css"/>
-    <link rel="stylesheet" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC ?>css/loggedin.css"/>
+    <link rel="stylesheet" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC; ?>css/bootstrap.css"/>
+    <link rel="stylesheet" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC; ?>css/loggedin.css"/>
 
     <!-- Custom Fonts -->
-    <link href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC; ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC ?>css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC; ?>css/bootstrap-datetimepicker.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +26,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-    <base href="<?php echo APP_ROOT . APPS . CURRENT_APP ?>">
+    <base href="<?php echo APP_ROOT . APPS . CURRENT_APP; ?>"/>
     <![endif]-->
 
 </head>

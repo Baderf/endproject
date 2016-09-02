@@ -246,6 +246,65 @@ class users_model extends model{
         return false;
     }
 
+    public function getSearchedEvents($user_id, $search_text){
+         $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id AND title LIKE '%$search_text%'");
+
+        if($sql){
+            $events = $sql -> fetch_all(MYSQLI_ASSOC);
+
+            foreach ($events as &$event){
+                if($count = $this -> countUsers($event['id'])){
+                    $event['count'] = $count;
+                }else{
+                    $event['count'] = "0";
+                }
+
+            }
+
+            return $events;
+        }
+
+        return false;
+
+    }
+
+    public function getEventsWithFilter($user_id, $filter){
+
+        $actualdate = time();
+
+        if($filter == "all"){
+            $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id");
+        }elseif($filter == "progress"){
+            $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id AND date_to_time > $actualdate ORDER BY date_to_time DESC");
+
+        }elseif($filter == "completed"){
+            $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id AND date_to_time < $actualdate ORDER BY date_to_time DESC");
+
+        }elseif($filter == "latest"){
+            $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id ORDER BY created_at DESC");
+
+        }else{
+            $sql = $this -> db -> query("SELECT id, title, created_at FROM events WHERE user_id = $user_id");
+        }
+
+        if($sql -> num_rows >0){
+            $events = $sql -> fetch_all(MYSQLI_ASSOC);
+
+            foreach ($events as &$event){
+                if($count = $this -> countUsers($event['id'])){
+                    $event['count'] = $count;
+                }else{
+                    $event['count'] = "0";
+                }
+
+            }
+
+            return $events;
+        }
+
+        return false;
+    }
+
     public function countUsers($event_id){
 
         $tablename = "users_event_" . $event_id;

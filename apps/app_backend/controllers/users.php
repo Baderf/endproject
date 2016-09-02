@@ -7,13 +7,55 @@ class users extends user_controller{
         parent::__construct();
     }
 
-    public function index(){
+    public function progress(){
+        $filter = "progress";
+        $this -> index($filter);
+    }
 
-            $this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"));
+    public function all(){
+        $filter = "all";
+        $this -> index($filter);
+    }
 
-            $this -> view -> data['username'] = sessions::get('uname');
+    public function completed(){
+        $filter = "completed";
+        $this -> index($filter);
+    }
+
+    public function latest(){
+        $filter = "latest";
+        $this -> index($filter);
+    }
+
+    public function index($filter = false){
+
+        if(isset($_POST['search_event'])){
+            $this -> view -> data['link_active'] = "all";
+            $search_text = $_POST['search'];
+
+            if($this -> view-> data['events'] = $this -> model -> getSearchedEvents(sessions::get("userid"), $search_text)){
+                $this -> view -> render("users/index", $this -> view -> data);
+            }else{
+                $this -> view->data['events'] = "false";
+                $this -> view -> render("users/index", $this -> view -> data);
+            }
+
+        }else{
+            if(!isset($filter)){
+                $filter = "all";
+            }
+
+            if(isset($filter)){
+                $this -> view -> data['link_active'] = $filter;
+                $this -> view -> data['events'] = $this -> model -> getEventsWithFilter(sessions::get("userid"), $filter);
+            }else{
+                $this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"));
+            }
 
             $this -> view -> render("users/index", $this -> view -> data);
+        }
+
+
 
 
     }

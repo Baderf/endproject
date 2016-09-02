@@ -21,9 +21,13 @@ class myevents_model extends model{
 
         echo $enterprise;
         $created_at = date("m/d/Y g:i a");
+        $time = time();
+        $date_to_time = strtotime($date_to, time());
+
+
         // Eintrag in DB 'events'
-        $stmt = $this -> db -> prepare("INSERT INTO events (title, type, created_at, enterprise, date_from, date_to, user_id) VALUES(?,?,?,?,?,?,?)");
-        $stmt -> bind_param("ssssssi", $title, $eventtype, $created_at, $enterprise, $date_from, $date_to, $user_id);
+        $stmt = $this -> db -> prepare("INSERT INTO events (title, type, created_at, created_at_time, enterprise, date_from, date_to, date_to_time, user_id) VALUES(?,?,?,?,?,?,?,?,?)");
+        $stmt -> bind_param("ssssssssi", $title, $eventtype, $created_at, $time, $enterprise, $date_from, $date_to, $date_to_time, $user_id);
         if($stmt -> execute()){
             $this -> event_id = $stmt -> insert_id;
 
@@ -61,9 +65,11 @@ class myevents_model extends model{
     }
 
     public function updateEventOverview($title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id){
-        
-        $stmt = $this -> db -> prepare("UPDATE events SET title = ?, type = ?, enterprise = ?, date_from = ?, date_to = ? WHERE id = ?");
-        $stmt -> bind_param("sssssi", $title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id);
+
+        $date_to_time = strtotime($datetime_to, time());
+
+        $stmt = $this -> db -> prepare("UPDATE events SET title = ?, type = ?, enterprise = ?, date_from = ?, date_to = ?, date_to_time = ? WHERE id = ?");
+        $stmt -> bind_param("ssssssi", $title, $eventtype, $enterprise, $datetime_from, $datetime_to, $date_to_time, $event_id);
 
         $stmt -> execute();
         $stmt -> close();

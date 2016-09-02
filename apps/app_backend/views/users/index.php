@@ -17,6 +17,19 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_users">
         <h3>Users</h3>
         <span class="page_quader"></span>
+        <form action="" method="post">
+        <div class="search_field">
+            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 form-group has-feedback has-feedback-left">
+                <label class="control-label invisible" for="search">Search:</label>
+                <input class="form-control" name="search" type="text" id="search" placeholder="The event title..">
+                <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            </div>
+            <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 form-group has-feedback has-feedback-left">
+                <input type="submit" name="search_event" class="btn btn-block spec_event" id="search_submit" value="go">
+            </div>
+        </div>
+
+        </form>
     </div>
 
 
@@ -30,19 +43,20 @@
 
             <ul class="list">
                 <li>
-                    <a href="#">All events</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/all'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "all"){echo "active";}?>">All events</a>
                 </li>
 
                 <li>
-                    <a href="#about">Events in progress</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/progress'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "progress"){echo "active";}?>">Events in progress</a>
+
                 </li>
 
                 <li>
-                    <a href="#services">Events Completed</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/completed'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "completed"){echo "active";}?>">Completed events</a>
                 </li>
 
                 <li>
-                    <a href="#contact">Latest created</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/latest'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "latest"){echo "active";}?>">Latest created</a>
                 </li>
             </ul>
         </div>

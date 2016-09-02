@@ -371,6 +371,31 @@ li.logout:hover {
     position: relative;
 }
 
+.search_field {
+    position: absolute;
+    right: 10px;
+    top: -10px;
+}
+
+#search {
+    color: #fff!important;
+}
+
+.search_field .has-feedback-left i {
+    color: #fff;
+    left: 10px!important;
+}
+
+#search::-webkit-input-placeholder{
+    color: #fff;
+}
+
+#search_submit {
+    margin-top: 27px;
+    text-align: center;
+    padding-right: 35px;
+}
+
 .page_header h3 {
     margin-top: 20px;
     margin-left: 10px;
@@ -831,6 +856,11 @@ Statistic
 
 .left_filter_area{
   height: calc(80vh - 200px);
+}
+
+.left_filter_area .active{
+    color: #fff;
+    font-weight: bold;
 }
 
 .left_filter_area ul {

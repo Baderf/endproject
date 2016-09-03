@@ -16,7 +16,46 @@ class myevents extends user_controller{
 
     public function send($mail_id){
 
-        $this -> view -> render('myevents/send');
+        if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ){
+            $mail_sender = $_POST['mail_sender'];
+            $mail_sender_adress = $_POST['mail_sender_adress'];
+            $subject = $_POST['subject'];
+            $preheader = $_POST['preheader'];
+            $empty = FALSE;
+
+            $email_options = [$mail_sender, $mail_sender_adress, $subject, $preheader];
+
+            foreach ($email_options as $option){
+                if($option === ""){
+                    $empty = TRUE;
+                }
+            }
+
+            if ($empty === TRUE){
+                $this -> view -> data['errors'] = "Please fill in all settings-fields! Otherwise the mail can't be send!";
+            }else{
+                $email = $_POST["mail_sender_adress"];
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $empty = TRUE;
+                }
+
+                if ($empty === TRUE){
+                    $this -> view -> data['errors'] = "You typed in an invalid email-adress!";
+                }else{
+                    if($this -> model -> updateMailSettings($mail_id, sessions::get("userid"),$mail_sender, $mail_sender_adress, $subject, $preheader)){
+
+                    }else{
+                        $this -> view -> data['errors'] = "There has been an error by updating your settings. Please try again later!";
+                    }
+                }
+            }
+
+
+        }
+
+        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+
+        $this -> view -> render('myevents/send', $this -> view ->data);
     }
 
     public function newEvent(){
@@ -152,6 +191,84 @@ class myevents extends user_controller{
             };
 
         };
+    }
+
+
+
+    // SEND FUNCTIONS:
+
+    public function countuser(){
+
+        $event_id = $_POST['event_id'];
+        $mail_type = $_POST['mail_type'];
+
+        if($count = $this -> model -> countUser($event_id, $mail_type)){
+            echo $count;
+        }else{
+            echo "Error";
+        }
+    }
+
+    public function checkuseremails(){
+        header('Content-type: application/json');
+
+        $event_id = $_POST['event_id'];
+
+        if($check = $this -> model -> checkUserEmails($event_id)){
+
+            echo json_encode($check);
+        }
+    }
+
+    public function checkmailsettings(){
+        $event_id = $_POST['event_id'];
+        $mail_id = $_POST['mail_id'];
+        $user_id = $_POST['user_id'];
+
+        $check = $this -> model -> checkMailSettings($event_id, $mail_id, $user_id);
+
+        if($check === TRUE){
+            echo "true";
+        }else{
+            echo json_encode($check);
+        }
+
+    }
+
+    public function checkforduplicates(){
+        $event_id = $_POST['event_id'];
+
+        $check = $this -> model -> checkForDuplicates($event_id);
+
+        if($check === TRUE){
+            echo "true";
+        }else{
+            echo json_encode($check);
+        }
+
+
+
+    }
+
+    public function updatemailsettings_manual(){
+        $event_id = $_POST['event_id'];
+        $user_id = $_POST['user_id'];
+        $mail_id = $_POST['mail_id'];
+
+        $mail_sender = $_POST['mail_sender'];
+        $mail_sender_adress = $_POST['mail_sender_adress'];
+        $subject = $_POST['subject'];
+        $preheader = $_POST['preheader'];
+
+        $update = $this -> model -> UpdateMailSettingsMan($event_id, $user_id, $mail_id, $mail_sender, $mail_sender_adress, $subject, $preheader);
+
+        if($update){
+            echo "success";
+        }else{
+            echo "error";
+        }
+
+
     }
 
 

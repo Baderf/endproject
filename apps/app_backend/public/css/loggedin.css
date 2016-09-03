@@ -1665,6 +1665,29 @@ input.info_settings {
   z-index: 99999;
 }
 
+.info_shown {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.info_invisible {
+    display: none;
+}
+
+#check_system .error {
+    border-color: #a94442;
+    background-color: rgba(169,68,66,0.2);
+
+}
+
+#check_system .error + i {
+    color: #000!important;
+}
+
+.check_operator_area button .fa-spinner {
+    display: none;
+}
+
 .full-info {
   margin-top: 20px;
   margin-bottom: 0px;

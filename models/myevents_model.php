@@ -53,6 +53,197 @@ class myevents_model extends model{
         }
     }
 
+    public function countUser($event_id, $mail_type){
+        $tablename = "users_mails_" . $event_id;
+
+
+           switch ($mail_type) {
+               case "invitation":
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE invitation_sent = 0");
+                   break;
+               case "reminder":
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE reminder_sent = 0");
+                   break;
+               case "savethedate":
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE std_sent = 0");
+                   break;
+               case "information":
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE info_sent = 0");
+                   break;
+               case "thankyou":
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE ty_sent = 0");
+                   break;
+           }
+
+        if($sql){
+            $count = $sql ->fetch_row();
+
+            return $count[0];
+        }
+
+        return false;
+    }
+
+    public function checkUserEmails($event_id){
+        $tablename = "users_event_".$event_id;
+
+        $sql = $this -> db -> query("SELECT lastname, firstname, email FROM $tablename");
+
+        if($sql){
+            $users = $sql -> fetch_all(MYSQLI_ASSOC);
+            $error_mails = array();
+
+            foreach ($users as $user){
+
+                $thrown = false;
+
+                if (!filter_var($user['email'], FILTER_VALIDATE_EMAIL)) {
+
+                    $thrown = true;
+                }
+
+                if(!$this -> validate_email($user['email'])){
+                    $thrown = true;
+                }
+
+                if($thrown){
+                    $error = array($user['email'], $user['lastname'], $user['firstname']);
+                    array_push($error_mails, $error);
+                }
+            }
+
+            if(!empty($error_mails)){
+                return $error_mails;
+            }else{
+                return "success";
+            }
+
+
+        }
+
+
+    }
+
+    public function UpdateMailSettingsMan($event_id, $user_id, $mail_id, $mail_sender, $mail_sender_adress, $subject, $preheader){
+        $stmt = $this -> db -> prepare("UPDATE mails SET subject = ?, sender = ?, sender_adress = ?, preview = ? WHERE id = ? AND user_id = ? AND event_id = ?");
+        $stmt->bind_param("ssssiii", $subject, $mail_sender, $mail_sender_adress, $preheader, $mail_id, $user_id, $event_id);
+
+        if($stmt->execute()){
+            $stmt->close();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function checkForDuplicates($event_id){
+
+        $tablename = "users_event_".$event_id;
+
+        $sql = $this -> db -> query("SELECT id, firstname, lastname, email FROM $tablename");
+
+        if($sql){
+            $users = $sql -> fetch_all(MYSQLI_ASSOC);
+            $duplicates = array();
+            $double_ids = array();
+            $thrown = false;
+
+
+
+            foreach ($users as $user){
+
+                $email = $user['email'];
+
+                foreach ($users as $userdup){
+                    if($user['id'] === $userdup['id']){
+                        continue;
+                    }
+
+                    if($email === $userdup['email']){
+                        $thrown = true;
+
+                        $error1 = ":" . $user['id'] . "::" . $userdup['id'] . ":";
+                        $error2 = ":" . $userdup['id'] . "::" . $user['id'] . ":";
+
+                        if(!in_array($error1, $double_ids) || !in_array($error2, $double_ids)){
+                            $error = "User " . $user['lastname'] . ", ". $user['firstname'] . " and user " . $userdup['lastname'] . ", " .$userdup['firstname'] . " have the same email.";
+
+                            array_push($duplicates, $error);
+                            array_push($double_ids, $error1);
+                            array_push($double_ids, $error2);
+                        }else{
+                            continue;
+                        }
+
+                    }
+                }
+
+            }
+
+
+
+            if($thrown){
+                return $duplicates;
+            }else{
+                return true;
+            }
+
+
+
+        }
+    }
+
+    public function checkMailSettings($event_id, $mail_id, $user_id){
+        $sql = $this -> db -> query("SELECT subject, sender, sender_adress, preview FROM mails WHERE id = $mail_id AND user_id = $user_id AND event_id = $event_id LIMIT 1");
+
+        if($sql){
+            $settings = $sql -> fetch_assoc();
+            $error_mails = array();
+            $thrown = false;
+
+            foreach ($settings as $setting => $value){
+
+                if(empty($value) || $value == ""){
+                    $thrown = true;
+                    $error = "The " . $setting . "-option is empty!";
+                    array_push($error_mails, $error);
+                    continue;
+                }
+
+            }
+
+            if(!$this->validate_email($settings['sender_adress'])){
+                $thrown = true;
+                $error = "Your sender adress is incorrect. Please correct it and try again.";
+                array_push($error_mails, $error);
+            }
+
+            if($thrown){
+                return $error_mails;
+            }else{
+                return true;
+            }
+
+
+        }else{
+            return false;
+        }
+    }
+
+    public function validate_email($email){
+
+            if(!preg_match ("/^[\w\.-]{1,}\@([\da-zA-Z-]{1,}\.){1,}[\da-zA-Z-]+$/", $email))
+                return false;
+            list($prefix, $domain) = explode("@",$email);
+            if(function_exists("getmxrr") && getmxrr($domain, $mxhosts))
+                return true;
+            elseif (@fsockopen($domain, 25, $errno, $errstr, 5))
+                return true;
+            else
+                return false;
+
+    }
+
     public function getEventData($event_id){
 
         $res = $this -> db -> query("SELECT * FROM events WHERE id = $event_id LIMIT 1");
@@ -62,6 +253,31 @@ class myevents_model extends model{
         }
 
         return $event;
+    }
+
+    public function updateMailSettings($mail_id, $user_id, $mail_sender, $mail_sender_adress, $subject, $preheader){
+       $stmt = $this -> db -> prepare("UPDATE mails SET subject = ?, sender = ?, sender_adress = ?, preview = ? WHERE id = ? AND user_id = ?");
+        $stmt -> bind_param("ssssii", $subject, $mail_sender, $mail_sender_adress, $preheader, $mail_id, $user_id);
+
+        if($stmt->execute()){
+            $stmt -> close();
+
+            return true;
+        }else{
+            return false;
+        }
+
+
+    }
+
+    public function getMailInfos($mail_id, $user_id){
+        $sql = $this -> db -> query("SELECT * FROM mails WHERE id = $mail_id AND user_id = $user_id LIMIT 1");
+
+        if($sql -> num_rows > 0){
+            $mail = $sql -> fetch_assoc();
+        }
+
+        return $mail;
     }
 
     public function updateEventOverview($title, $eventtype, $enterprise, $datetime_from, $datetime_to, $event_id){

@@ -1,3 +1,244 @@
+// SEND - Checking System:
+
+
+
+
+function send_button(){
+    select = $("#user_mails");
+    button = $('#send_button_user_mail');
+    if(select.val() == "default"){
+        button.attr("disabled","true");
+    }else{
+        button.removeAttr("disabled");
+    }
+}
+
+function check_countusers(baseURL, event_id, mail_type){
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/myevents/countuser',
+        data: {
+            event_id: event_id,
+            mail_type: mail_type
+        },
+
+        success: function (data) {
+
+            if(data == "Error" || data == "0") {
+                $checkbox = $(".check_count_users").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>There are no users to send this mail!");
+                $checkbox.removeClass("alert-info").addClass("alert-danger");
+                $checkbox.attr("data-error", "true");
+            }else{
+                $checkbox = $(".check_count_users").html("This mail goes to <strong>" + data + "</strong> receiver! <span class='glyphicon glyphicon-ok-circle fa-spinner-show'></span>");
+                $checkbox.removeClass("alert-info").addClass("alert-success");
+            }
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+            $checkbox = $(".check_count_users").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>An error occured. Please try again later.");
+            $checkbox.removeClass("alert-info").addClass("alert-warning");
+            $checkbox.attr("data-error", "true");
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+}
+
+function checkuseremails(baseURL,event_id){
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/myevents/checkuseremails',
+        data: {
+            event_id: event_id
+        },
+
+        success: function (data) {
+
+            if($.type(data) == 'array') {
+                $checkbox = $(".check_mails_users").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>Some mails are not ok: <ul class='error_mails'></ul>");
+                $checkbox.removeClass("alert-info").addClass("alert-danger");
+
+                $.each( data, function( key, value ) {
+                    $("<li>").text(( ++key + ": " + value )).appendTo(".error_mails");
+                });
+
+                $("<br><p>").text("You can still send the mail").appendTo(".check_mails_users");
+
+            }else{
+                $checkbox = $(".check_mails_users").html("All emails are <strong>ok!</strong> <span class='glyphicon glyphicon-ok-circle fa-spinner-show'></span>");
+                $checkbox.removeClass("alert-info").addClass("alert-success");
+            }
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+            $checkbox = $(".check_mails_users").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>An error occured. Please try again later.");
+            $checkbox.removeClass("alert-info").addClass("alert-warning");
+            $checkbox.attr("data-error", "true");
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+}
+
+function checkmailsettings(baseURL,event_id, mail_id, user_id){
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/myevents/checkmailsettings',
+        data: {
+            event_id: event_id,
+            mail_id: mail_id,
+            user_id: user_id
+        },
+
+        success: function (data) {
+
+            if(data != 'true') {
+                $checkbox = $(".check_mail_settings").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>Some mailsettings are not ok: <ul class='error_settings'></ul>");
+                $checkbox.removeClass("alert-info").addClass("alert-danger");
+                $checkbox.attr("data-error", "true");
+
+                obj = jQuery.parseJSON(data);
+
+                $.each( obj, function( key, value ) {
+                    $("<li>").text(( value )).appendTo(".error_settings");
+                });
+
+                $('.check_mail_settings').append("<button class='btn btn-sm spec spec_event' id='checkmailsettings_again'>check again <i class='fa fa-spinner fa-spin'></i></button>");
+
+
+            }else{
+                $checkbox = $(".check_mail_settings").html("Your settings are <strong>ok!</strong> <span class='glyphicon glyphicon-ok-circle fa-spinner-show'></span>");
+                $checkbox.removeClass("alert-info").addClass("alert-success");
+                $checkbox.removeClass("alert-danger");
+                $checkbox.removeAttr("data-error");
+                setTimeout(function(){
+                    checkforerrors();
+                },500);
+
+            }
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+            $checkbox = $(".check_mail_settings").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>An error occured. Please try again later.");
+            $checkbox.removeClass("alert-info").addClass("alert-warning");
+            $checkbox.attr("data-error", "true");
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+}
+
+function updatemailsettings_manual(baseURL, event_id, mail_id, user_id, mail_sender, mail_sender_adress, subject, preheader, button){
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/myevents/updatemailsettings_manual',
+        data: {
+            event_id: event_id,
+            mail_id: mail_id,
+            user_id: user_id,
+            mail_sender: mail_sender,
+            mail_sender_adress: mail_sender_adress,
+            subject: subject,
+            preheader: preheader
+        },
+
+        success: function (data) {
+            element = $(".mail_saving");
+
+            if(data != 'success') {
+                text = "A problem occured. Please reload the page or try it later.";
+                show_info_message(element, button, text);
+                return false;
+            }else{
+                text = "Settings updated!";
+                show_success_message(element, button, text);
+                return true;
+            }
+
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+}
+
+function checkduplicates(baseURL,event_id){
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/myevents/checkforduplicates',
+        data: {
+            event_id: event_id
+        },
+
+        success: function (data) {
+
+            if(data != 'true') {
+                $checkbox = $(".check_user_duplicates").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>There are some email duplicates: <ul class='error_mails_duplicates'></ul>");
+                $checkbox.removeClass("alert-info").addClass("alert-warning");
+
+                obj = jQuery.parseJSON(data);
+
+                $.each( obj, function( key, value ) {
+                    $("<li>").text(( value )).appendTo(".error_mails_duplicates");
+                });
+
+                $("<br><p>").text("They will get the mail too often, but you can still continue!").appendTo(".check_user_duplicates");
+
+
+            }else{
+                $checkbox = $(".check_user_duplicates").html("No duplicates were found! <span class='glyphicon glyphicon-ok-circle fa-spinner-show'></span>");
+                $checkbox.removeClass("alert-info").addClass("alert-success");
+            }
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+            $checkbox = $(".check_user_duplicates").html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>Warning! </strong>An error occured. Please try again later.");
+            $checkbox.removeClass("alert-info").addClass("alert-warning");
+            $checkbox.attr("data-error", "true");
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+}
+
+function checksettings(){
+    $("#check_system input").each(function(){
+        if($(this).val() == ""){
+            $(this).addClass("error");
+        }else{
+            $(this).removeClass("error");
+        }
+    });
+}
+
+function checkforerrors(){
+    error = false;
+
+    $("#check_operator .alert").each(function(){
+       if($(this).attr("data-error")){
+           console.log("ERROR");
+           error = true;
+       }
+    });
+
+    if(error){
+        $('#update_settings').removeAttr("disabled");
+    }else{
+        $('#send_mail_btn').removeAttr("disabled");
+        $('#update_settings').removeAttr("disabled");
+    }
+
+}
+
+
 // NEW EVENT - DATEPICKER:
 
 function show_success_message(element, button, text){
@@ -21,6 +262,15 @@ function show_success_message(element, button, text){
     })
 }
 
+function show_slide_message(element, text){
+    element.html(text);
+    element.slideDown("slow", function(){
+        setTimeout(function(){
+            element.slideUp("slow");
+        },2000)
+    })
+}
+
 function show_info_message(element, button, text){
     message = element.find(".alert-info");
     message.html("<strong>Info!</strong>" + " " + text);
@@ -40,7 +290,7 @@ function start_loading(button){
 }
 
 function stop_loading(button){
-    spinner = button.parent().find(".fa-spinner").fadeOut("slow");
+    spinner = button.find(".fa-spinner").fadeOut("slow");
 }
 
 function count_settings(){
@@ -74,6 +324,13 @@ function count_settings(){
 
 $(function(){
 
+    if($("#send_button_user_mail")[0]){
+        select = $("#user_mails");
+        select.on("change", function(){
+            send_button();
+        });
+    }
+
     $(".fa-spinner").hide();
 
     if($(".btn_settings_mail")[0]){
@@ -86,19 +343,53 @@ $(function(){
         count_settings();
     }
 
+    if($("#check_system")[0]){
+        user_id = $('#user_id').val();
+        event_id = $('#event_id').val();
+        mail_id = $('#mail_id').val();
+        mail_type = $('#mail_type').val();
 
-    if($("#send_button_user_mail")[0]){
+        var baseURL = $('body').data('baseurl');
 
-        select = $("#user_mails");
-        button = $('#send_button_user_mail');
-        select.on("change", function(e){
-            if(select.val() == "default"){
-                button.attr("disabled","true");
-            }else{
-                button.removeAttr("disabled");
-            }
+        setTimeout(function() {
+            // AJAX CALL: CHECK HOW MUCH USER
+            check_countusers(baseURL, event_id, mail_type);
+        }, 2000);
+
+
+        setTimeout(function() {
+            // AJAX CALL: CHECK MAILS
+            checkuseremails(baseURL, event_id);
+        }, 4000);
+
+        setTimeout(function() {
+            // AJAX CALL: CHECK SETTINGS
+            checkmailsettings(baseURL, event_id, mail_id, user_id);
+        }, 6000);
+
+        setTimeout(function() {
+            // AJAX CALL: CHECK DUPLICATES
+            checkduplicates(baseURL, event_id);
+            $('.wait-info').slideUp("slow");
+        }, 8000);
+
+        $("#check_system input").on("blur", function(){
+            checksettings();
+
         });
+
+        checksettings();
+        setTimeout(function(){
+           check = checkforerrors();
+
+
+
+
+        }, 8500);
     }
+
+
+
 
 
 
@@ -790,6 +1081,63 @@ $(function () {
         } else if (target.is("#send_mail_user")) {
             event.preventDefault();
             show_settings();
+
+        } else if (target.is("#checkmailsettings_again")) {
+            event.preventDefault();
+            user_id = $('#user_id').val();
+            event_id = $('#event_id').val();
+            mail_id = $('#mail_id').val();
+            mail_type = $('#mail_type').val();
+
+            baseURL = $('body').data('baseurl');
+            button = $(event.target);
+            start_loading(button);
+
+
+
+            setTimeout(function(){
+                checkmailsettings(baseURL,event_id, mail_id, user_id);
+            }, 2000);
+
+
+
+
+
+
+        } else if (target.is("#update_settings")) {
+            event.preventDefault();
+            user_id = $('#user_id').val();
+            event_id = $('#event_id').val();
+            mail_id = $('#mail_id').val();
+            mail_type = $('#mail_type').val();
+
+            baseURL = $('body').data('baseurl');
+            button = $(event.target);
+            start_loading(button);
+
+
+
+            mail_sender = $('#mail_sender').val();
+            mail_sender_adress = $('#mail_sender_adress').val();
+            subject = $('#subject').val();
+            preheader = $('#preheader').val();
+
+            if(mail_sender == "" || mail_sender_adress == "" || subject == "" || preheader == ""){
+                stop_loading(button);
+                element = $(".slide-info");
+                text = "<strong>Information!</strong> Please fill out all fields!";
+                show_slide_message(element, text);
+            }else{
+                setTimeout(function(){
+                    update = updatemailsettings_manual(baseURL, event_id, mail_id, user_id, mail_sender, mail_sender_adress, subject, preheader, button);
+
+                }, 2000);
+
+                stop_loading(button);
+
+            }
+
+
 
         } else if (target.is(".btn_settings_mail")) {
             event.preventDefault();

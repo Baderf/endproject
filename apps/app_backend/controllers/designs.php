@@ -82,7 +82,7 @@ class designs extends user_controller{
             $this -> view -> data['is_template'] = "0";
         }
 
-        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));$this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
         $event_id = $this -> view -> data['mail_infos']['event_id'];
         $this -> view -> data['event_info'] = $this -> model -> getEventInfos($event_id, sessions::get("userid"));
 

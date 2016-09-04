@@ -497,7 +497,7 @@ class users extends user_controller{
                 echo "error";
             }
         }else{
-            if($this -> model -> resetTypeStats($event_id, $user_id)){
+            if($this -> model -> resetTypeStats($event_id, $user_id, $type)){
                 echo "resetted";
             }else{
                 echo "error";

@@ -14,6 +14,37 @@ class myevents extends user_controller{
         $this -> view -> render("myevents/index", $this -> view -> data);
     }
 
+    public function sendingSuccess($mail_id){
+        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+        $this -> view -> render("myevents/ss_sent", $this -> view -> data);
+    }
+
+    public function sendingErrors($mail_id){
+        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+        $this -> view -> data['sending_errors'] = sessions::get("sending-errors");
+        sessions::del("sending-errors");
+        $this -> view -> render("myevents/er_sent", $this -> view -> data);
+    }
+
+    public function sent($result, $mail_id){
+
+        if(is_array($result)){
+
+            sessions::set("sending-errors", $result);
+            $location = APP_ROOT . 'backend/' . 'myevents/' . 'sendingErrors/' . $mail_id;
+            header("Location: $location");
+
+        }elseif($result === TRUE){
+            $location = APP_ROOT . 'backend/' . 'myevents/' . 'sendingSuccess/' . $mail_id;
+            header("Location: $location");
+
+        }else{
+            $location = APP_ROOT . 'backend/' . 'myevents/' . 'send/' . $mail_id;
+            sessions::set("sending-errors", "error");
+            header("Location: $location");
+        }
+    }
+
     public function send($mail_id){
 
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ){
@@ -47,13 +78,13 @@ class myevents extends user_controller{
                     $this -> view -> render('myevents/send', $this -> view ->data);
                 }else{
                     if($this -> model -> updateMailSettings($mail_id, sessions::get("userid"),$mail_sender, $mail_sender_adress, $subject, $preheader)){
-                        if($this -> model -> sendMail($mail_id, sessions::get("userid"))){
-                            $this -> view -> data['errors'] = "All ok. SEND IS ACTIVE!";
 
-                        }else{
-                            $this -> view -> data['errors'] = "There has been an error sending the mail. Please try again later!";
-                            $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
-                            $this -> view -> render('myevents/send', $this -> view ->data);
+                        $result = $this -> model -> sendMail($mail_id, sessions::get("userid"));
+
+                        if($result === TRUE) {
+                            $this -> sent($result, $mail_id);
+                        }elseif(is_array($result)){
+                            $this -> sent($result, $mail_id);
                         }
                     }else{
                         $this -> view -> data['errors'] = "There has been an error by updating your settings. Please try again later!";
@@ -65,10 +96,17 @@ class myevents extends user_controller{
 
 
         }else{
+
+            if(sessions::get("sending-errors") === "error"){
+                $this -> view -> data['sending-errors'] = "error";
+                sessions::del("sending-erros");
+            }
+
             $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
 
             $this -> view -> render('myevents/send', $this -> view ->data);
         }
+
 
 
     }

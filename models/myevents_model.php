@@ -12,7 +12,7 @@ class myevents_model extends model{
 
     public function createEventUsersTable($name, $name_mail){
         $this -> db -> query("CREATE TABLE $name (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) ) SELECT * FROM users_event_template");
-        $this -> db -> query("CREATE TABLE $name_mail SELECT * FROM users_mails_template");
+        $this -> db -> query("CREATE TABLE $name_mail (id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) ) SELECT * FROM users_mails_template");
 
         return true;
     }
@@ -60,7 +60,7 @@ class myevents_model extends model{
 
            switch ($mail_type) {
                case "invitation":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE invitation_sent = 0");
+                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE invitation_sent != 1");
                    break;
                case "reminder":
                    $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE reminder_sent = 0");
@@ -685,10 +685,14 @@ class myevents_model extends model{
     public function sendMail($mail_id, $user_id){
         $mailservice = new mailservice();
 
-        if($mailservice -> sendCampaign($mail_id, $user_id)){
-            echo "Hat gefunkt!";
+        $result = $mailservice -> sendCampaign($mail_id, $user_id);
+
+        if(is_array($result)){
+            return $result;
+        }elseif($result === true){
+            return true;
         }else{
-            echo "Nein!";
+            return false;
         }
     }
 

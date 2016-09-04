@@ -129,7 +129,7 @@
 
                 // Wenn 0 dann nur ein div mit info anzeigen
                 foreach ($data['reset_options'] as $option){
-                    if($option['invitation_sent'] != 0){
+                    if($option['invitation_sent'] == 1){
                         ?>
                         <div>
                         <button class="btn-block btn btn-sm spec_event static_delete" id="invitation">invitation statics <i class='fa fa-spinner fa-spin'></i></button>

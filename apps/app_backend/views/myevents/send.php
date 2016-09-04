@@ -7,6 +7,16 @@
         <span class="page_quader"></span>
     </div>
 
+    <?php
+    if(isset($data['sending-errors']) && $data['sending-errors'] === "error"){
+        ?>
+        <div class="alert alert-danger info_shown">
+            <strong>Attention!</strong>  The mail couldn't be sent. Please check all settings and your user and try it again later!
+        </div>
+    <?php
+    }
+    ?>
+
     <input type="hidden" id="event_id" value="<?php echo $data['mail_infos']['event_id'];?>">
     <input type="hidden" id="user_id" value="<?php echo sessions::get("userid");?>">
     <input type="hidden" id="mail_id" value="<?php echo $data['mail_infos']['id'];?>">

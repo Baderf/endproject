@@ -348,10 +348,41 @@ class users_model extends model{
         }
     }
 
+    public function resetTypeStats($event_id, $user_id, $mail_type){
+        $tablename = "users_mails_".$event_id;
+
+        switch ($mail_type) {
+            case "invitation":
+                $sql_type = "invitation_sent";
+                break;
+            case 'reminder':
+                $sql_type = "reminder_sent";
+                break;
+            case "std":
+                $sql_type = "std_sent";
+                break;
+            case "info":
+                $sql_type = "info_sent";
+                break;
+            case "ty":
+                $sql_type = "ty_sent";
+                break;
+        }
+
+        $sql = $this -> db ->query("UPDATE $tablename SET $sql_type = 0 WHERE user_id = $user_id");
+
+        if($sql){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public function getResetOptions($event_id, $user_id){
         $tablename = "users_mails_" . $event_id;
 
-        $sql = $this -> db -> query("SELECT * FROM '$tablename' WHERE user_id = $user_id");
+        $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id");
 
         if($sql){
             $reset_options = $sql -> fetch_all(MYSQLI_ASSOC);

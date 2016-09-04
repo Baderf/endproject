@@ -55,6 +55,7 @@ class myevents_model extends model{
 
     public function countUser($event_id, $mail_type){
         $tablename = "users_mails_" . $event_id;
+        $sql = false;
 
 
            switch ($mail_type) {
@@ -680,4 +681,15 @@ class myevents_model extends model{
 
 
     }
+
+    public function sendMail($mail_id, $user_id){
+        $mailservice = new mailservice();
+
+        if($mailservice -> sendCampaign($mail_id, $user_id)){
+            echo "Hat gefunkt!";
+        }else{
+            echo "Nein!";
+        }
+    }
+
 }

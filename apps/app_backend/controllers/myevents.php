@@ -33,6 +33,8 @@ class myevents extends user_controller{
 
             if ($empty === TRUE){
                 $this -> view -> data['errors'] = "Please fill in all settings-fields! Otherwise the mail can't be send!";
+                $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+                $this -> view -> render('myevents/send', $this -> view ->data);
             }else{
                 $email = $_POST["mail_sender_adress"];
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -41,21 +43,34 @@ class myevents extends user_controller{
 
                 if ($empty === TRUE){
                     $this -> view -> data['errors'] = "You typed in an invalid email-adress!";
+                    $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+                    $this -> view -> render('myevents/send', $this -> view ->data);
                 }else{
                     if($this -> model -> updateMailSettings($mail_id, sessions::get("userid"),$mail_sender, $mail_sender_adress, $subject, $preheader)){
+                        if($this -> model -> sendMail($mail_id, sessions::get("userid"))){
+                            $this -> view -> data['errors'] = "All ok. SEND IS ACTIVE!";
 
+                        }else{
+                            $this -> view -> data['errors'] = "There has been an error sending the mail. Please try again later!";
+                            $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+                            $this -> view -> render('myevents/send', $this -> view ->data);
+                        }
                     }else{
                         $this -> view -> data['errors'] = "There has been an error by updating your settings. Please try again later!";
+                        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+                        $this -> view -> render('myevents/send', $this -> view ->data);
                     }
                 }
             }
 
 
+        }else{
+            $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
+
+            $this -> view -> render('myevents/send', $this -> view ->data);
         }
 
-        $this -> view -> data['mail_infos'] = $this -> model -> getMailInfos($mail_id, sessions::get("userid"));
 
-        $this -> view -> render('myevents/send', $this -> view ->data);
     }
 
     public function newEvent(){

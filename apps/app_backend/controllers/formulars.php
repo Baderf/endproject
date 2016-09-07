@@ -158,10 +158,13 @@ class formulars extends user_controller{
             $this -> view -> data['linked_events'] = $events;
         }
 
+        if($confirmationmails = $this -> model -> getConfMails(sessions::get("userid"))){
+            $this -> view -> data['confirmation_mails'] = $confirmationmails;
+        }else{
+            $this -> view -> data['confirmation_mails'] = "false";
+        }
+
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
-
-
-
 
             if (isset($_POST['saveStandardFieldsFormular'])) {
                 $active_fields = $_POST['active_standard_fields'];

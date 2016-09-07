@@ -328,17 +328,19 @@ class myevents_model extends model{
     public function linkFormular($event_id, $formular_to_link, $user_id){
 
         if($this -> checkForLinkedEvents($event_id, $user_id)){
-            if($this -> deleteTable($event_id, $user_id)){
-                if($this -> createTable($event_id)){
-                    if($this -> fillNewTable($formular_to_link, $event_id)){
-                        if($this -> linkFormularToEvent($event_id, $user_id, $formular_to_link)){
-                            return true;
-                        } else{
-                            return "linking";
-                        }
-                    }return "fillTable";
-                }return "createTable";
-            }return "deleteTable";
+            if($this -> deleteUserColumns($event_id, $user_id)){
+                if($this -> linkFormular($event_id, $formular_to_link, $user_id)){
+                   if($this -> createUserColumns($event_id, $user_id)){
+                       return true;
+                   }else{
+                       echo "CreateUserCOl";
+                   }
+                } else {
+                    echo "linking";
+                }
+            }else{
+                return false;
+            }
 
         }else{
             if($this -> createTable($event_id)){
@@ -346,10 +348,10 @@ class myevents_model extends model{
                     if($this -> linkFormularToEvent($event_id, $user_id, $formular_to_link)){
                         return true;
                     } else{
-                        return "linking";
+                        echo "linking";
                     }
-                } return "fillTable";
-            }return "createTable";
+                } echo "fillTable";
+            }echo "createTable";
         }
 
     }
@@ -387,34 +389,19 @@ class myevents_model extends model{
 
     }
 
-    public function createTable($event_id){
-        $tablename = "users_form_" . $event_id;
-
-
-
-        if($this -> db -> query("CREATE TABLE $tablename (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, user_id INT(11))")){
-            return true;
-        }
-
-        return false;
-    }
-
-    public function deleteTable($event_id){
-        $tablename = "users_form_" . $event_id;
-
-        if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
-         return true;
-        }
-        return false;
-    }
 
     public function linkFormularToEvent($event_id, $user_id, $formular_id){
-        $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
-        $stmt -> bind_param("iii", $formular_id, $event_id, $user_id);
 
-        if($stmt ->execute()){
-            $stmt -> close();
-            return true;
+        if($this -> linkFormular($event_id, $formular_id, $user_id)){
+            $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
+            $stmt -> bind_param("iii", $formular_id, $event_id, $user_id);
+
+            if($stmt ->execute()){
+                $stmt -> close();
+                return true;
+            }
+
+            return false;
         }
 
         return false;
@@ -477,9 +464,9 @@ class myevents_model extends model{
                 $formular_id = $form_id['form_id'];
                 $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_id");
                 if($sql -> num_rows >0){
+
                     $user_fields = $sql -> fetch_assoc();
 
-                    var_dump($user_fields['user_field_ids']);
 
                     $ids = explode("::", $user_fields['user_field_ids']);
                     $user_ids = "";
@@ -502,9 +489,11 @@ class myevents_model extends model{
                     $sql = $this -> db -> query("SELECT title FROM user_formular_fields WHERE id IN ($user_ids)");
 
                     if($sql -> num_rows >0){
+
                         $result = $sql -> fetch_all(MYSQLI_ASSOC);
 
                         if(count($result) != 0){
+
                             $numItems = count($result);
                             $i = 0;
 
@@ -523,7 +512,7 @@ class myevents_model extends model{
                             // DROP Tables:
                             $tablename = "users_event_".$event_id;
                             $dec = "ALTER TABLE " . $tablename . " " . $names;
-                            var_dump($dec);
+
 
                             if($sql = $this -> db -> query($dec)){
                                 return true;
@@ -538,7 +527,7 @@ class myevents_model extends model{
                 }
 
             }else{
-                // hat keine Verlinkung
+                return false;
             }
 
         }
@@ -555,7 +544,7 @@ class myevents_model extends model{
                 if($sql -> num_rows >0){
                     $user_fields = $sql -> fetch_assoc();
 
-                    var_dump($user_fields['user_field_ids']);
+
 
                     $ids = explode("::", $user_fields['user_field_ids']);
                     $user_ids = "";
@@ -599,7 +588,6 @@ class myevents_model extends model{
                             // DROP Tables:
                             $tablename = "users_event_".$event_id;
                             $dec = "ALTER TABLE " . $tablename . " " . $names;
-                            var_dump($dec);
 
                             if($sql = $this -> db -> query($dec)){
                                 return true;

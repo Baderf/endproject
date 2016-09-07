@@ -196,9 +196,9 @@ class designs_model extends model{
 
 
     public function checkMailTypesJSON($event_id, $user_id){
-        $sql = $this -> db -> query("SELECT mail_type FROM mails WHERE event_id = $event_id AND user_id = $user_id LIMIT 5");
+        $sql = $this -> db -> query("SELECT mail_type FROM mails WHERE event_id = $event_id AND user_id = $user_id LIMIT 6");
 
-        if($sql -> num_rows > 0 && $sql ->num_rows < 6){
+        if($sql -> num_rows > 0 && $sql ->num_rows < 7){
             $types = $sql -> fetch_all(MYSQLI_ASSOC);
         }
 

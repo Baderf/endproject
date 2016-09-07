@@ -104,11 +104,13 @@ class designs extends user_controller{
 
                 if(empty($title)){
                     // Bitte TItle ausfüllen
-                }elseif (empty($enterprise)){
-                    // Bitte Enterprise ausfüllen
+                }elseif (empty($subject)){
+                    // Bitte Subject ausfülen
                 }elseif($id = $this -> model -> createNewDesign($event_id, sessions::get("userid"), $title, $type, $subject, $template)){
-                            header("Location: edit/$id");
-                        }
+                    header("Location: edit/$id");
+                }else{
+                    echo "ERROR";
+                }
 
 
             }

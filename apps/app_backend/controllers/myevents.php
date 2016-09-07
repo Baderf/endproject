@@ -223,6 +223,8 @@ class myevents extends user_controller{
             }else{
                 echo "error";
             }
+        }else{
+            echo "error";
         }
 
     }

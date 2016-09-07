@@ -2143,13 +2143,6 @@ $(function () {
             });
         });
 
-        // configuration of the observer:
-        var config = { attributes: true, childList: true, characterData: true }
-
-        // pass in the target node, as well as the observer options
-        observer.observe(target, config);
-
-
         // later, you can stop observing
         //observer.disconnect();
     }, 3000);
@@ -2301,6 +2294,8 @@ $(function(){
                         select_type = $("#select_type");
                         $(select_type).html("");
 
+
+
                         $.each(data, function(index) {
 
                             if(available_mails.hasOwnProperty(data[index]['mail_type'])){
@@ -2308,13 +2303,30 @@ $(function(){
                             }
                         });
 
-                        $.each( available_mails, function( key, value ) {
-                            option = $("<option></option>");
-                            option.val(key);
-                            option.text(value);
-                            option.appendTo(select_type);
+                        if($.inArray(data, available_mails)){
 
-                        });
+                            optionsset = false;
+
+                            $.each( available_mails, function( key, value ) {
+                                option = $("<option></option>");
+                                option.val(key);
+                                option.text(value);
+                                option.appendTo(select_type);
+                                optionsset = true;
+                            });
+
+                            if(optionsset == false){
+                                option = $("<option value='nomails'>No mails available!</option>");
+                                option.appendTo(select_type);
+                            }
+
+                        }else{
+
+                            option = $("<option value='nomails'>No mails available!</option>");
+                            option.appendTo(select_type);
+                        }
+
+
 
                         $(types).slideDown("slow", function(){
                             $(types_input).focus();

@@ -42,47 +42,53 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="formtitle">Description</label>
-                                    <textarea class="form-control" name="formdescription" rows="3" placeholder="Your description goes here..."></textarea>
+                                    <textarea class="form-control" name="formdescription" rows="3" placeholder="Your description goes here..."><?php if(isset($data['formdetails']['description']) && $data['formdetails']['description'] != ""){echo $data['formdetails']['description'];} ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="formaction">What should the user get after positive type in?</label>
                                     <select class="form-control" name="formaction" id="formaction">
                                         <option value="choose" selected>Please choose</option>
-                                        <option value="url">User gets to a external url</option>
-                                        <option value="confirmation_mail">Confirmation mail will be sent</option>
-                                        <option value="feedback">Direct feedback in browser</option>
+                                        <option value="url" <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] == "url"){echo "selected";}?>>User gets to a external url</option>
+                                        <option value="confirmation_mail" <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] == "confirmation_mail"){echo "selected";}?>>Confirmation mail will be sent</option>
+                                        <option value="feedback" <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] == "feedback"){echo "selected";}?>>Direct feedback in browser</option>
                                     </select>
                                 </div>
                                 <div class="form-group chosen_fields">
-                                    <div class="form-group not_active choose_url">
+                                    <div class="form-group <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] != "url"){echo "not_active";}?> choose_url">
                                         <label class="control-label" for="form_choose_url">Url:</label>
-                                        <input class="form-control" name="form_choose_url" type="text" id="form_choose_url" placeholder="Which url?">
+                                        <input class="form-control" name="form_choose_url" type="text" id="form_choose_url" placeholder="Which url?" value="<?php if(isset($data['formdetails']['action_target']) && $data['formdetails']['action_target'] != ""){echo $data['formdetails']['action_target'];}?>">
                                     </div>
-                                    <div class="form-group not_active choose_mail">
+                                    <div class="form-group <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] != "confirmation_mail"){echo "not_active";}?> choose_mail">
                                         <label class="control-label" for="form_choose_mail">Confirmation mail:</label>
                                         <select class="form-control" name="form_choose_mail" id="form_choose_mail">
-                                            <option value="id" selected>Mail 1</option>
+
+                                            <?php if($data['confirmation_mails'] != "false" && isset($data['confirmation_mails'])){
+                                                foreach ($data['confirmation_mails'] as $mail) {
+
+                                                    if($mail['id'] == $data['formdetails']['action_target']){
+                                                        ?>
+                                                        <option value="<?php echo $mail['id'];  ?>" selected><?php echo $mail['title'];  ?></option>
+                                                        <?php
+
+                                                    }else{
+                                                        ?>
+                                                        <option value="<?php echo $mail['id'];  ?>"><?php echo $mail['title'];  ?></option>
+                                                        <?php
+                                                    }
+
+
+
+                                                }
+                                            } ?>
+
                                         </select>
                                     </div>
-                                    <div class="form-group not_active choose_feedback">
+                                    <div class="form-group <?php if(isset($data['formdetails']['action']) && $data['formdetails']['action'] != "feedback"){echo "not_active";}?> choose_feedback">
                                         <label class="control-label" for="form_choose_feedback">Direct feedback:</label>
-                                        <textarea class="form-control" name="form_choose_feedback" rows="3" placeholder="Your feedback goes here..."></textarea>
+                                        <textarea class="form-control" name="form_choose_feedback" rows="3" placeholder="Your feedback goes here..."><?php if(isset($data['formdetails']['action_target']) && $data['formdetails']['action_target'] != ""){echo $data['formdetails']['action_target'];}?></textarea>
                                     </div>
                                 </div>
 
-
-                                <!--
-                                <div class="form-group has-feedback has-feedback-left">
-                                    <label class="control-label" for="formtype"></label>
-                                    <select class="form-control" name="formtype" id="formtype" placeholder="The type of the formular...">
-                                        <option value="select">Selection</option>
-                                        <option value="checkbox">Checkbox</option>
-                                        <option value="radio">One-Selection (Radio)</option>
-                                        <option value="forminput">Form-Input</option>
-                                    </select>
-                                    <i class="glyphicon glyphicon-home form-control-feedback"></i>
-                                </div>
-                                -->
 
                                 <input type="submit" name="saveOverviewFormular" class="btn btn-lg btn-block spec spec_dashboard visible-lg visible-md" value="Save">
                                 <a href="<?php echo APP_ROOT . 'backend/' . 'formulars/' . 'preview/' . $data['formdetails']['id']; ?>" data-id = "<?php echo $data['formdetails']['id']; ?>" class="btn btn-lg btn-block spec spec_event visible-lg visible-md make_preview">See preview</a>

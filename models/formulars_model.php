@@ -195,6 +195,17 @@ class formulars_model extends model{
 
     }
 
+    public function getConfMails($user_id){
+        $sql = $this -> db -> query("SELECT id, title FROM mails WHERE user_id = $user_id AND mail_type = 'confirmation'");
+
+        if($sql){
+            $mails = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $mails;
+        }else{
+            return false;
+        }
+    }
+
     public function deleteUserColumns($event_ids, $formular_id){
 
                 $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_id");

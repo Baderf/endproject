@@ -125,7 +125,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="logout">
                 <i class="icon icon_logout"></i>
-                <a href="#about" class="nav-btn">Logout</a>
+                <a href="<?php echo APP_ROOT . $url[0] . '/' . 'logout'?>" class="nav-btn">Logout</a>
             </li>
             <li>
                 <i class="icon icon_logo"></i>

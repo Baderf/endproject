@@ -23,9 +23,4 @@ spl_autoload_register("autoloader::loadCore");
 
 sessions::init();
 
-
-//sessions::set("usergroup", 1);
-//sessions::set("userid", 1);
-
 $app = new bootstrap();
-sessions::set("userid", 1);

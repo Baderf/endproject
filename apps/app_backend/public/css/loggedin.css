@@ -1746,3 +1746,7 @@ input.info_settings {
     right: 20px;
     top: 20px;
 }
+
+.view_mode .email_item_options {
+    display: none!important;
+}

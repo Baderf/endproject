@@ -41,7 +41,7 @@
                 </li>
 
                 <li>
-                    <a href="#contact">Latest created</a>
+                    <a href="#contact">Latest updated</a>
                 </li>
             </ul>
         </div>
@@ -70,12 +70,10 @@
                             <td class="mail_type"><?php echo $mail['mail_type'];?></td>
                             <td><?php echo $mail['event_title'];?></td>
                             <td><?php
-                                    if($mail['in_progress'] == "1"){
-                                        echo "in progress";
-                                    }elseif($mail['already_sent'] == "1"){
+                                    if($mail['already_sent'] == "1"){
                                         echo "already sent";
                                     }else{
-                                        echo "just created";
+                                        echo "in progress";
                                     }
                                 ?></td>
                             <td>
@@ -88,7 +86,7 @@
                                 }else{
                                     ?>
                                     <a href="designs/view/<?php echo $mail['id'];?>" class="btn btn-sm btn-info">view</a>
-                                    <a href="designs/send/<?php echo $mail['id'];?>" class="btn btn-sm btn-success">send again</a>
+                                    <a href="myevents/send/<?php echo $mail['id'];?>" class="btn btn-sm btn-success">send again</a>
                             <?php
                                 }?>
 

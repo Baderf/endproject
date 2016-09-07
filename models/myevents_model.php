@@ -19,7 +19,6 @@ class myevents_model extends model{
 
     public function newEvent($title, $eventtype, $enterprise, $date_from, $date_to, $user_id){
 
-        echo $enterprise;
         $created_at = date("m/d/Y g:i a");
         $time = time();
         $date_to_time = strtotime($date_to, time());
@@ -325,66 +324,45 @@ class myevents_model extends model{
         return false;
     }
 
+    public function linkform($event_id, $user_id, $formular_id){
+        $sql = $this -> db -> query("UPDATE events SET form_id = $formular_id WHERE id = $event_id AND user_id = $user_id");
+
+        if($sql){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function linkFormular($event_id, $formular_to_link, $user_id){
 
         if($this -> checkForLinkedEvents($event_id, $user_id)){
             if($this -> deleteUserColumns($event_id, $user_id)){
-                if($this -> linkFormular($event_id, $formular_to_link, $user_id)){
-                   if($this -> createUserColumns($event_id, $user_id)){
-                       return true;
-                   }else{
-                       echo "CreateUserCOl";
-                   }
-                } else {
-                    echo "linking";
+                if($this -> linkform($event_id, $user_id, $formular_to_link)){
+                    if($this -> createUserColumns($event_id, $user_id)){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                   return false;
                 }
+
             }else{
                 return false;
             }
 
         }else{
-            if($this -> createTable($event_id)){
-                if($this -> fillNewTable($formular_to_link, $event_id)){
-                    if($this -> linkFormularToEvent($event_id, $user_id, $formular_to_link)){
-                        return true;
-                    } else{
-                        echo "linking";
-                    }
-                } echo "fillTable";
-            }echo "createTable";
-        }
+            if($this -> linkform($event_id, $user_id, $formular_to_link)){
 
-    }
-
-    public function fillNewTable($formular_to_link, $event_id){
-        $sql = $this -> db -> query("SELECT user_field_ids FROM formulars WHERE id = $formular_to_link");
-
-        $tablename = "users_form_" . $event_id;
-
-        if($sql -> num_rows == 1){
-            $userfields = $sql ->fetch_all(MYSQLI_ASSOC);
-
-            $active_ids = explode("::", $userfields[0]['user_field_ids']);
-
-            foreach ($active_ids as $id) {
-                $user_field_id = str_replace(":", "", $id);
-
-                $new_sql = $this -> db -> query("SELECT title FROM user_formular_fields WHERE id = $user_field_id");
-
-                if($new_sql -> num_rows > 0){
-
-                    $title = $new_sql -> fetch_assoc();
-                    $sql_title = strtolower($title['title']);
-                    $preg_title = preg_replace("/[^0-9a-zA-Z \-\_]/", "", $sql_title);
-                    $new_title = str_replace(' ','',$preg_title);
-
-                    $new_sql = $this -> db -> query("ALTER TABLE $tablename ADD $new_title VARCHAR(300) NOT NULL");
-
+                if($this -> createUserColumns($event_id, $user_id)){
+                    return true;
+                }else{
+                    return false;
                 }
-
+            }else{
+                return false;
             }
-
-            return true;
         }
 
     }
@@ -393,24 +371,16 @@ class myevents_model extends model{
     public function linkFormularToEvent($event_id, $user_id, $formular_id){
 
         if($this -> linkFormular($event_id, $formular_id, $user_id)){
-            $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
-            $stmt -> bind_param("iii", $formular_id, $event_id, $user_id);
-
-            if($stmt ->execute()){
-                $stmt -> close();
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         return false;
     }
 
     public function checkForLinkedEvents($event_id, $user_id){
-        $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id AND user_id = $user_id");
+        $sql = $this -> db -> query("SELECT form_id FROM events WHERE id = $event_id AND user_id = $user_id AND form_id != 0 LIMIT 1");
 
-        if($sql ->num_rows == 1){
+        if($sql->num_rows > 0){
             return true;
         }else{
             return false;
@@ -440,19 +410,19 @@ class myevents_model extends model{
 
 
     public function unlinkEventFormular($event_id, $user_id){
-        $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
-        $unlink = "0";
-        $stmt -> bind_param("sii", $unlink, $event_id, $user_id);
 
-        if($stmt ->execute()){
-            $stmt->close();
+            $stmt = $this -> db -> prepare("UPDATE events SET form_id = ? WHERE id = ? AND user_id = ?");
+            $unlink = "0";
+            $stmt -> bind_param("sii", $unlink, $event_id, $user_id);
 
-            if($this -> deleteTable($event_id, $user_id)){
+            if($stmt ->execute()){
+                $stmt->close();
                 return true;
             }else{
                 return false;
             }
-        }
+
+
     }
 
     public function createUserColumns($event_id, $user_id){
@@ -701,10 +671,37 @@ class myevents_model extends model{
         $tablename = "users_mails_".$event_id;
         $tablename2 = "users_event_".$event_id;
 
-        if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
-            if($this -> db -> query("DROP TABLE IF EXISTS $tablename2")){
-                if($this -> db -> query("DELETE FROM events WHERE id = $event_id AND user_id = $user_id")){
-                    return true;
+        $sql = $this -> db -> query("SELECT id FROM mails WHERE user_id = $user_id AND event_id = $event_id");
+
+        if($sql -> num_rows > 0){
+            $mails = $sql -> fetch_all(MYSQLI_ASSOC);
+
+            $ids = "";
+            $i = 0;
+            $len = count($mails);
+            foreach ($mails as $mail) {
+                if ($i == $len - 1) {
+                    $ids .= $mail['id'];
+                }else {
+                    $ids .= $mail['id'] . ",";
+                }
+
+                $i++;
+            }
+
+            $sql = $this -> db -> query("DELETE from mails WHERE id IN ($ids)");
+
+            if($sql){
+                if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
+                    if($this -> db -> query("DROP TABLE IF EXISTS $tablename2")){
+                        if($this -> db -> query("DELETE FROM events WHERE id = $event_id AND user_id = $user_id")){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }else{
+                        return false;
+                    }
                 }else{
                     return false;
                 }
@@ -712,8 +709,22 @@ class myevents_model extends model{
                 return false;
             }
         }else{
-            return false;
+            if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
+                if($this -> db -> query("DROP TABLE IF EXISTS $tablename2")){
+                    if($this -> db -> query("DELETE FROM events WHERE id = $event_id AND user_id = $user_id")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }
+
+
     }
 
 }

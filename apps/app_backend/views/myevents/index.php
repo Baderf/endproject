@@ -46,7 +46,8 @@
             </ul>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 my_events_list">
-
+<?php echo sessions::get("userid"); ?>
+<?php echo sessions::get("username"); ?>
             <?php if($data['events']){
 
 
@@ -224,6 +225,12 @@
             <?php
                 }
 
+            }elseif(!$data['events']){
+                ?>
+                <div class="alert alert-info">
+                    <strong>Info</strong> You no created events. Please <a href="myevents/newEvent">create</a> a new event!
+                </div>
+            <?php
             }?>
 
 

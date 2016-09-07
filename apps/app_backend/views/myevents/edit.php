@@ -219,8 +219,18 @@
                                             echo "<select class=\"form-control\" name=\"event_link_formular\" id=\"event_link_formular\">";
 
                                             foreach ($data['event_formulars'] as $formular){
+                                                if($formular['id'] === $data['event_edit']['form_id']){
+                                                    ?>
+                                                    <option value="<?php echo $formular['id'];?>" selected><?php echo $formular['title'];?></option>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <option value="<?php echo $formular['id'];?>"><?php echo $formular['title'];?></option>
+                                                    <?php
+                                                }
+
                                                 ?>
-                                                <option value="<?php echo $formular['id'];?>"><?php echo $formular['title'];?></option>
+
                                         <?php   
                                             }
                                             echo "</select>";
@@ -257,7 +267,7 @@
                                         <td>Unlink</td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="linked_events_table">
                                 <?php
                                 if(!isset($data['linked_formular']) || empty($data['linked_formular'])){
                                     echo "<tr>";

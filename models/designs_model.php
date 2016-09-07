@@ -92,7 +92,7 @@ class designs_model extends model{
 
     public function getAllUserMails($user_id){
        $sql = $this -> db -> query("SELECT 
-                                    mails.id, mails.already_sent, mails.in_progress, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
                                     FROM mails 
                                     LEFT JOIN events
                                     ON mails.event_id = events.id
@@ -144,11 +144,9 @@ class designs_model extends model{
     }
 
     public function createNewDesign($event_id, $user_id, $title, $type, $subject, $template = "default"){
-        $in_progress = 1;
 
-
-        $stmt = $this -> db -> prepare("INSERT INTO mails (user_id, event_id, title, subject, mail_type, in_progress) VALUES(?,?,?,?,?,?)");
-        $stmt -> bind_param("iisssi", $user_id, $event_id, $title, $subject, $type, $in_progress);
+        $stmt = $this -> db -> prepare("INSERT INTO mails (user_id, event_id, title, subject, mail_type) VALUES(?,?,?,?,?)");
+        $stmt -> bind_param("iisss", $user_id, $event_id, $title, $subject, $type);
         if($stmt -> execute()){
             $this -> last_id = $stmt -> insert_id;
 

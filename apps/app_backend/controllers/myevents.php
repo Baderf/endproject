@@ -200,9 +200,13 @@ class myevents extends user_controller{
 
         // delete tables
         if($this -> model -> deleteUserColumns($event_id, sessions::get("userid"))){
-            $unlink = $this -> model -> unlinkEventFormular($event_id, $user_id);
-
-            if($unlink){
+            if($this -> model -> unlinkEventFormular($event_id, $user_id)){
+                echo "unlinked";
+            }else{
+                echo "error";
+            }
+        }else{
+            if($this -> model -> unlinkEventFormular($event_id, $user_id)){
                 echo "unlinked";
             }else{
                 echo "error";
@@ -215,17 +219,12 @@ class myevents extends user_controller{
         $user_id = $_POST['user_id'];
         $event_id = $_POST['event_id'];
 
-        $linked = $this -> model -> linkFormular($event_id, $formular_to_link, $user_id);
-
-        if($this -> model -> createUserColumns($event_id, sessions::get("userid"))){
-            if($linked === TRUE){
-                echo "linked";
-            }else{
-                echo "error";
-            }
+        if($this -> model -> linkFormular($event_id, $formular_to_link, $user_id)){
+            echo "linked";
         }else{
             echo "error";
         }
+
 
     }
 
@@ -240,15 +239,6 @@ class myevents extends user_controller{
     }
 
 
-
-
-
-
-
-
-
-
-
     public function createEvent($title, $eventtype, $enterprise,$date_from, $date_to, $user_id) {
         if($this -> model -> newEvent($title, $eventtype, $enterprise, $date_from, $date_to, $user_id)){
             $event_id = $this -> model -> event_id;
@@ -261,8 +251,6 @@ class myevents extends user_controller{
 
         };
     }
-
-
 
     // SEND FUNCTIONS:
 

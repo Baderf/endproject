@@ -1343,8 +1343,9 @@ $(function () {
                             text="Formular unlinked!";
                             show_success_message(element, button, text);
 
-                            button.closest("tr").html("<td colspan='2'>There are no formulars linked.</td>");
+                            $(".linked_events_table").html("<tr><td colspan='2'>There are no formulars linked.</td></tr>");
 
+                            console.log(".linked_events_table");
                         }
 
                     },
@@ -1397,13 +1398,16 @@ $(function () {
 
                             success: function (data) {
                                 if(data == "linked"){
+
                                     element = $(".myevents_saving");
                                     text="Formular linked and saved!";
                                     show_success_message(element, button, text);
 
+
                                     title = $('.form_link option[value="'+form_id+'"]').text();
 
-                                    button.closest("tr").html("<td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td>");
+
+                                    $(".linked_events_table").html("<tr><td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
                                 }
 
                             },
@@ -1448,8 +1452,8 @@ $(function () {
                             show_success_message(element, button, text);
                             title = $('.form_link option[value="'+form_id+'"]').text();
 
-                            button.closest("tr").html("<td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td>");
 
+                            $(".linked_events_table").html("<tr><td><a href='formulars/edit/"+form_id+"'>"+title+"</a></td><td width='100'><button class='btn btn-sm btn-warning unlink_formular'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
                         }
 
                     },

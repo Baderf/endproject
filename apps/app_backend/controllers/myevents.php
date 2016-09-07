@@ -11,6 +11,10 @@ class myevents extends user_controller{
 
         $this -> view -> data['username'] = sessions::get('uname');
 
+        if(!$this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"))){
+            $this -> view -> data['events'] = FALSE;
+        }
+
         $this -> view -> render("myevents/index", $this -> view -> data);
     }
 
@@ -221,6 +225,16 @@ class myevents extends user_controller{
             }
         }
 
+    }
+
+    public function delete($event_id){
+
+
+       if($this -> model -> deleteEvent($event_id, sessions::get("userid"))){
+           echo "deleted";
+       }else{
+           echo "error";
+       }
     }
 
 

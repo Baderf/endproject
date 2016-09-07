@@ -75,7 +75,8 @@
                                 <td><?php echo $user['lastname'];?></td>
 
                                 <td><?php echo $user['email'];?></td>
-                                <td><a href="<?php echo $data['event_id'];?>/edit_user/<?php echo $user['id'];?>">go</a></td>
+                                <td><a href="<?php echo $data['event_id'];?>/edit_user/<?php echo $user['id'];?>" class="btn btn-sm spec_event">view</a><a href="<?php echo $data['event_id'];?>/delete_user/<?php echo $user['id'];?> " class="btn btn-sm spec_event user_delete" data-id="<?php echo $user['id'];?>" data-event-id="<?php echo $event_id;?>" >delete <i class='fa fa-spinner fa-spin'></i></a></td>
+
                             </tr>
                             <?php
                         }

@@ -1082,6 +1082,96 @@ $(function () {
             event.preventDefault();
             show_settings();
 
+        } else if (target.is(".user_delete")) {
+            event.preventDefault();
+            window_alert_show("Are you sure you want to delete this user?");
+            // HIER
+
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                user_id = button.attr("data-id");
+                event_id = button.attr("data-event-id");
+
+
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/users/edit/' + event_id + '/delete_user/' + user_id,
+
+                    success: function (data) {
+                        if(data){
+                            old_content = $('.my_events_list');
+                            old_content_html = old_content.html("");
+
+                            new_content = $(data).find(".my_events_list").html();
+
+                            old_content.html(new_content).show("slow");
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+
+            });
+
+        } else if (target.is(".delete_event")) {
+            event.preventDefault();
+            window_alert_show("Are you sure you want to delete this event? All users and the statistics will be lost!");
+            // HIER
+
+            $(".overlay_wrapper .btn-success").on("click", function () {
+                $(".overlay .btn-success").data('clicked', "1");
+                $(".overlay_wrapper").slideUp("fast", function () {
+                    $(".overlay").slideUp("fast");
+                });
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                user_id = button.attr("data-user-id");
+                event_id = button.attr("data-event-id");
+
+
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/myevents/delete/' + event_id,
+
+                    success: function (data) {
+                        if(data == "deleted"){
+                            $(button).closest(".my_events_event").slideUp("fast");
+                            stop_loading(button);
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+
+            });
+
         } else if (target.is("#checkmailsettings_again")) {
             event.preventDefault();
             user_id = $('#user_id').val();

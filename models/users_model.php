@@ -452,4 +452,23 @@ class users_model extends model{
                                       WHERE user_id = $user_id
                                       ");
     }
+
+    public function deleteUser($event_id, $user_id){
+        $tablename = "users_event_".$event_id;
+        $tablename2 = "users_mails_".$event_id;
+
+        $sql = $this -> db -> query("DELETE FROM $tablename WHERE id = $user_id");
+
+        if($sql){
+            $sql2 = $this -> db -> query("DELETE FROM $tablename2 WHERE user_id = $user_id");
+
+            if($sql2){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }

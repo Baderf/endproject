@@ -434,6 +434,17 @@ class users extends user_controller{
 
                         $this -> view -> render("users/new_user", $this -> view ->data);
                     }
+                }else if($url[4] == "delete_user"){
+
+                    $user_id = $url[5];
+
+                    if($this -> model -> deleteUser($event_id, $user_id)){
+                        $location = APP_ROOT . 'backend/' . 'users/edit/' . $event_id;
+                        header("location: $location");
+                    }else{
+                        $this -> edit($event_id);
+                    }
+
                 }
             }else{
                 $this -> view -> data['event_name'] = $this -> model -> getEventName($event_id);

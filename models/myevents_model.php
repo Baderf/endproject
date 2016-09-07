@@ -669,7 +669,7 @@ class myevents_model extends model{
         $file_name = $user_media_event . '/' . time() . '_' .  $_FILES['event_image']['name'] ;
 
         if (move_uploaded_file($_FILES['event_image']['tmp_name'], $file_name)) {
-            $stmt = $this -> db -> prepare("UPDATE event_details SET event_image = ? WHERE event_id = ?");
+            $stmt = $this -> db -> prepare("UPDATE events SET image = ? WHERE id = ?");
             $stmt -> bind_param("si", $file_name, $event_id);
             $stmt -> execute();
             $stmt -> close();
@@ -691,6 +691,38 @@ class myevents_model extends model{
             return $result;
         }elseif($result === true){
             return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getAllEvents($user_id){
+        $sql = $this -> db -> query("SELECT * FROM events WHERE user_id = $user_id AND deleted = 0");
+
+        if($sql -> num_rows > 0) {
+            $events = $sql->fetch_all(MYSQLI_ASSOC);
+            return $events;
+        }else{
+            return false;
+        }
+
+
+    }
+
+    public function deleteEvent($event_id, $user_id){
+        $tablename = "users_mails_".$event_id;
+        $tablename2 = "users_event_".$event_id;
+
+        if($this -> db -> query("DROP TABLE IF EXISTS $tablename")){
+            if($this -> db -> query("DROP TABLE IF EXISTS $tablename2")){
+                if($this -> db -> query("DELETE FROM events WHERE id = $event_id AND user_id = $user_id")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }else{
             return false;
         }

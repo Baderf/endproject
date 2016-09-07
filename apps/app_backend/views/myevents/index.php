@@ -46,209 +46,185 @@
             </ul>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 my_events_list">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_events_event">
-                <div class="edit_event">
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </div>
 
-                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 event_image">
-                    <img src="http://fpoimg.com/1400x180" class="my_event_image">
-                    <span class="img_text_overlay">in progress</span>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_title">
-                    <h4>Project Finance Meeting</h4>
-                    <p>Date created - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                    <p class="status_info">Start of event - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_info">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 finished_tasks">
-                        <h5>Finished Tasks</h5>
-                        <ul class="list">
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
+            <?php if($data['events']){
 
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
 
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-                        </ul>
+                $rules = [
+                    "std_" => "Save the date",
+                    "invitation_" => "Invitation",
+                    "reminder_" => "Reminder",
+                    "info_" => "Information",
+                    "ty_" => "Thank you",
+                ];
+                $positions = [
+                    "Save the date" => "std_sent",
+                    "Invitation" => "invitation_sent",
+                    "Reminder" => "reminder_sent",
+                    "Information" => "info_sent",
+                    "Thank you" => "ty_sent",
+                ];
+
+                foreach($data['events'] as $event){
+
+                    if($event['image'] === "standard"){
+                        $image = APP_ROOT . 'apps/app_backend/' . APP_PUBLIC . 'media/standard.jpg';
+                    }else{
+                        $image = APP_ROOT . $event['image'];
+                    }
+
+
+
+                    $today = time();
+                    $event_time = strtotime($event['date_to']);
+
+                    if($event_time >= $today){
+                        $progress = "In progress";
+                    }else{
+                        $progress = "Completed";
+                    }
+
+                    $tasks = array();
+
+                    if($event['std_sent'] !== "0"){
+                        array_push($tasks, $rules["std_"]);
+                    }
+
+                    if($event['invitation_sent'] !== "0"){
+                        array_push($tasks, $rules["invitation_"]);
+                    }
+
+                    if($event['reminder_sent'] !== "0"){
+                        array_push($tasks, $rules["reminder_"]);
+                    }
+
+                    if($event['info_sent'] !== "0"){
+                        if(count($tasks) >= 3){
+                            array_shift($tasks);
+                        }
+                        array_push($tasks, $rules["info_"]);
+                    }
+
+                    if($event['ty_sent'] !== "0"){
+                        if(count($tasks) >= 3){
+                            array_shift($tasks);
+                        }
+                        array_push($tasks, $rules["ty_"]);
+                    }
+
+                    if(empty($tasks)){
+                        $next_step = "Save the Date";
+                    }elseif($event['ty_sent'] === "0"){
+                        $last_task = end($tasks);
+                        $tosearch = array_search($last_task, $rules);
+
+
+                        $current = $tosearch;
+                        $keys = array_keys($rules);
+                        $ordinal = (array_search($current,$keys)+1)%count($keys);
+                        $next = $keys[$ordinal];
+                        $next_step = $rules[$next];
+                    }else{
+                        $next_step = "Finished!";
+                    }
+
+
+
+
+
+                    ?>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_events_event">
+                        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 event_image">
+                            <img src="<?php echo $image; ?>" class="my_event_image">
+                            <span class="img_text_overlay"><?php echo $progress; ?></span>
+                        </div>
+                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_title">
+                            <h4><?php echo $event['title']; ?></h4>
+                            <p>Date created - <span class="text-info"><?php echo $event['created_at']; ?></span></p>
+                            <p class="status_info">Start of event - <span class="text-info"><?php echo $event['date_to']; ?></span></p>
+                        </div>
+                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_info">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 finished_tasks">
+                                <h5>Finished Tasks</h5>
+
+                                <?php
+                                    if(!empty($tasks)){
+                                    ?>
+                                        <ul class="list">
+                                            <?php
+
+
+
+                                        foreach ($tasks as $task){
+                                                $search = $positions[$task];
+                                            ?>
+
+                                                <li>
+                                                    <?php echo $task;?> sent - <span class="text-info"><?php echo $event[$search]; ?></span>
+                                                </li>
+
+
+                                <?php
+                                        }
+                                        ?>
+                                        </ul>
+                                            <?php
+
+                                    }else{
+                                        ?>
+
+                                        <span class="text-info">No mails sent jet!</span>
+
+                                        <?php
+
+                                    }
+                                ?>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 statistic_infos">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
+                                    <span class="text-info">Open Rate</span>
+                                    <span class="sum">33 %</span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
+                                    <span class="text-info">Participants</span>
+                                    <span class="sum">33 %</span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
+                                    <span class="text-info">next step</span>
+
+                                    <?php
+                                        if($next_step != "Finished!"){
+                                        ?>
+                                            <p class="next-step"><?php echo $next_step; ?></p>
+                                            <a href="#" class="btn btn-default btn-sm btn-view spec_dashboard">Create</a>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <p class="next-step"><?php echo $next_step; ?></p>
+                                            <?php
+                                        }
+                                    ?>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 event_btns">
+                                <div class="col-lg-12 col-xs-12 event_btn">
+                                    <a href="myevents/delete/<?php echo $event['id']; ?>" class="btn btn-block btn-default delete_event" data-event-id = "<?php echo $event['id']; ?>" data-user-id = "<?php echo sessions::get("userid"); ?>">delete <i class='fa fa-spinner fa-spin'></i></a>
+                                </div>
+                                <div class="col-lg-12 col-xs-12 event_btn">
+                                    <a href="myevents/edit/<?php echo $event['id']; ?>" class="btn btn-block btn-default spec_event_low">edit</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 statistic_infos">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Open Rate</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Participants</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">next step</span>
-                            <p class="next-step">Reminder</p>
-                            <a href="#" class="btn btn-default btn-sm btn-view spec_dashboard">view</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 event_btns">
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_design">design</a>
-                        </div>
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_event">edit</a>
-                        </div>
-                    </div>
+            <?php
+                }
 
-                </div>
-
-
-            </div>
-
-
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_events_event">
-                <div class="edit_event">
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </div>
-
-                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 event_image">
-                    <img src="http://fpoimg.com/1400x180" class="my_event_image">
-                    <span class="img_text_overlay">in progress</span>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_title">
-                    <h4>Project Finance Meeting</h4>
-                    <p>Date created - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                    <p class="status_info">Start of event - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_info">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 finished_tasks">
-                        <h5>Finished Tasks</h5>
-                        <ul class="list">
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 statistic_infos">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Open Rate</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Participants</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">next step</span>
-                            <p class="next-step">Reminder</p>
-                            <a href="#" class="btn btn-default btn-sm btn-view spec_dashboard">view</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 event_btns">
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_design">design</a>
-                        </div>
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_event">edit</a>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_events_event">
-                <div class="edit_event">
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                    <a href="#" class="btn btn-sm btn-default">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </div>
-
-                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 event_image">
-                    <img src="http://fpoimg.com/1400x180" class="my_event_image">
-                    <span class="img_text_overlay">in progress</span>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_title">
-                    <h4>Project Finance Meeting</h4>
-                    <p>Date created - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                    <p class="status_info">Start of event - <span class="text-info">12/10/2016 12:00 a.m.</span></p>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 event_info">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 finished_tasks">
-                        <h5>Finished Tasks</h5>
-                        <ul class="list">
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-
-                            <li>
-                                Reminder sent - <span class="text-info">13/10/2016</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 statistic_infos">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Open Rate</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">Participants</span>
-                            <span class="sum">33 %</span>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                            <span class="text-info">next step</span>
-                            <p class="next-step">Reminder</p>
-                            <a href="#" class="btn btn-default btn-sm btn-view spec_dashboard">view</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 event_btns">
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_design">design</a>
-                        </div>
-                        <div class="col-lg-12 col-xs-12 event_btn">
-                            <a href="#" class="btn btn-block btn-default spec_event">edit</a>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
+            }?>
 
 
 

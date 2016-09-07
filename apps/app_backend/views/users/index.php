@@ -74,7 +74,7 @@
                     <tbody>
 
                     <?php
-                        if(isset($data['events']) && !empty($data['events'])){
+                        if(isset($data['events']) && !empty($data['events']) && $data['events'] != "false"){
 
                             foreach ($data['events'] as $event){
                                 ?>
@@ -88,6 +88,13 @@
                             </tr>
                     <?php
                             }
+                        }elseif($data['events'] == "false"){
+                            ?>
+                            <tr>
+                                <td colspan="4">Ups! No events were found. Please try again!</td>
+
+                            </tr>
+                    <?php
                         }else{
                             ?>
                             <tr>

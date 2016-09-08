@@ -48,8 +48,16 @@
                           </select>
                       </div>
 
-                      <input type="submit" class="btn btn-block spec_dashboard" disabled="true" name="send_user_mail" id="send_button_user_mail" value="send">
+                      <button class="btn btn-block spec_dashboard" disabled="true" name="send_user_mail" id="send_button_user_mail">Send <i class='fa fa-spinner fa-spin'></i></button
                   </form>
+            <div class="hidden_message alert alert-success send_success">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+            </div>
+            <div class="hidden_message alert alert-danger send_error">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+
+            </div>
 
         </div>
     </div>

@@ -1,5 +1,29 @@
+<div class="overlay is_hidden_testmail" data-action="close">
+    <div class="overlay_wrapper clearfix" id="overlay_wrapper_testmail">
+        <span class="btn_cancel" data-action="close">&times;</span>
 
+        <h3 class="spec_event">Testmail to:</h3>
 
+        <p>Please type in the email to whom you want to send this mail!</p>
+        <form action="" method="post">
+            <div class="form-group">
+                <label class="control-label" for="user_mails">Mails:</label>
+                <input class="form-control" type="email" name="test_mail_to" id="test_mail_to" value="" placeholder="Type in an email...">
+            </div>
+
+            <input type="submit" class="btn btn-block spec_dashboard" name="send_user_mail" id="send_button_user_testmail" value="send">
+        </form>
+
+        <div class="hidden_message alert alert-success send_success">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+            <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+        </div>
+        <div class="hidden_message alert alert-danger send_error">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+
+        </div>
+    </div>
+</div>
 
 <div class="overlay is_hidden_settings" data-action="close">
     <div class="overlay_wrapper" id="overlay_wrapper_settings">
@@ -153,11 +177,12 @@
 
                 <hr>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self btn_settings_mail">Settings <span class="settings_warner">x</span></a>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self btn_test_mail" id="open_test_mail">Send testmail</a>
 
                 <form action="" method="post">
                     <?php
                     $user_file = "usermedia_" . sessions::get("userid") . "/";
-                    $mail_file = "mails/mail_edit/mail_" . $data['mail_id'] . ".html";
+                    $mail_file = "mails/mail_html/mail_" . $data['mail_id'] . ".html";
 
                     ob_start();
                     require_once $_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;

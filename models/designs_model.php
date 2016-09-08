@@ -90,7 +90,49 @@ class designs_model extends model{
         return $event_info;
     }
 
-    public function getAllUserMails($user_id){
+    public function getAllUserMails($user_id, $action){
+
+        switch ($action) {
+            case "all":
+                $query = "SELECT 
+                                  mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    FROM mails 
+                                    LEFT JOIN events
+                                    ON mails.event_id = events.id
+                                    WHERE mails.user_id = $user_id";
+                break;
+            case "progress":
+                $query = "SELECT 
+                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    FROM mails 
+                                    LEFT JOIN events
+                                    ON mails.event_id = events.id
+                                    WHERE mails.user_id = $user_id
+                                    AND mails.already_sent = 0";
+                break;
+            case "alreadysent":
+                $query = "SELECT 
+                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    FROM mails 
+                                    LEFT JOIN events
+                                    ON mails.event_id = events.id
+                                    WHERE mails.already_sent = 1 AND mails.user_id = $user_id
+                                    ";
+                break;
+            case "latest":
+                $query = "SELECT 
+                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    FROM mails 
+                                    LEFT JOIN events
+                                    ON mails.event_id = events.id
+                                    WHERE mails.user_id = $user_id
+                                    ORDER BY id DESC";
+                break;
+        }
+
+        $sql = $this -> db -> query($query);
+
+
        $sql = $this -> db -> query("SELECT 
                                     mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
                                     FROM mails 

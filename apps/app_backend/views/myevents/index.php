@@ -29,25 +29,24 @@
 
             <ul class="list">
                 <li>
-                    <a href="#">All events</a>
+                    <a href="#" class="list_filter" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="all">All events</a>
                 </li>
 
                 <li>
-                    <a href="#about">In progress</a>
+                    <a href="#about" class="list_filter" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="progress">In progress</a>
                 </li>
 
                 <li>
-                    <a href="#services">Completed</a>
+                    <a href="#services" class="list_filter" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="completed">Completed</a>
                 </li>
 
                 <li>
-                    <a href="#contact">Latest created</a>
+                    <a href="#contact" class="list_filter" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="latest">Latest created</a>
                 </li>
             </ul>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 my_events_list">
-<?php echo sessions::get("userid"); ?>
-<?php echo sessions::get("username"); ?>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 area_loading_spinner"><p class="loading_text"><i class='fa fa-spinner fa-spin'></i></p></div>
             <?php if($data['events']){
 
 
@@ -198,7 +197,7 @@
                                         if($next_step != "Finished!"){
                                         ?>
                                             <p class="next-step"><?php echo $next_step; ?></p>
-                                            <a href="#" class="btn btn-default btn-sm btn-view spec_dashboard">Create</a>
+                                            <a href="<?php echo APP_ROOT . 'backend/' . 'designs/newDesign';  ?>" class="btn btn-default btn-sm btn-view spec_dashboard">Create</a>
                                             <?php
                                         }else{
                                             ?>
@@ -228,7 +227,7 @@
             }elseif(!$data['events']){
                 ?>
                 <div class="alert alert-info">
-                    <strong>Info</strong> You no created events. Please <a href="myevents/newEvent">create</a> a new event!
+                    <strong>Info</strong> You no events. Please <strong><a href="myevents/newEvent">create</a></strong> a new event!
                 </div>
             <?php
             }?>

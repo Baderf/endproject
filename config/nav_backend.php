@@ -5,6 +5,5 @@ $nav_backend = array(
     'My Events' => 'myevents',
     'Designs' => 'designs',
     'Formulars' => 'formulars',
-    'Settings' => 'settings',
-    'Users' => 'users'
+    'Users' => 'users',
 );

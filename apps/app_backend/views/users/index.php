@@ -83,7 +83,7 @@
                                 <td><?php echo $event['created_at'];?></td>
                                 <td><strong><?php echo $event['count'];?></strong></td>
                                 <td>
-                                    <a href="users/edit/<?php echo $event['id'];?>">go to users</a>
+                                    <a href="<?php echo APP_ROOT . 'backend/users/edit/' . $event['id'];?>">go to users</a>
                                 </td>
                             </tr>
                     <?php

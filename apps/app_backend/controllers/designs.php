@@ -8,7 +8,16 @@ class designs extends user_controller{
     }
 
     public function index(){
-        $this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"));
+        if(!isset($_POST['action']) || empty($_POST['action'])){
+            $action = "all";
+        }else{
+            $action = $_POST['action'];
+        }
+
+        $this -> view -> data['action'] = $action;
+
+
+        $this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"), $action);
 
         $this -> view -> render("designs/index", $this -> view -> data);
     }
@@ -141,6 +150,23 @@ class designs extends user_controller{
         }
 
        $this -> view -> render("designs/create", $this -> view -> data);
+    }
+
+    public function testmail(){
+
+        $mail_id = $_POST['mail_id'];
+        $user_id = $_POST['user_id'];
+        $email = $_POST['email'];
+        $event_id = "1";
+
+        $mail = new mailservice();
+
+        if($testmail = $mail -> sendTestMail($mail_id, $user_id, $email, $event_id)){
+            echo "sent";
+        }else{
+            var_dump($mail -> errors);
+        }
+
     }
 
     public function checkMailTypes(){

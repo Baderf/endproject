@@ -654,8 +654,27 @@ class myevents_model extends model{
         }
     }
 
-    public function getAllEvents($user_id){
-        $sql = $this -> db -> query("SELECT * FROM events WHERE user_id = $user_id AND deleted = 0");
+    public function getAllEvents($user_id, $action){
+
+        switch ($action) {
+            case "all":
+                $query = "SELECT * FROM events WHERE user_id = $user_id AND deleted = 0";
+                break;
+            case "progress":
+                $actual_time = time();
+                $query = "SELECT * FROM events WHERE user_id = $user_id AND deleted = 0 AND date_to_time > $actual_time";
+                break;
+            case "completed":
+                $actual_time = time();
+                $query = "SELECT * FROM events WHERE user_id = $user_id AND deleted = 0 AND date_to_time < $actual_time";
+                break;
+            case "latest":
+                $actual_time = time();
+                $query = "SELECT * FROM events WHERE user_id = $user_id AND deleted = 0 ORDER BY created_at_time DESC";
+                break;
+        }
+
+        $sql = $this -> db -> query($query);
 
         if($sql -> num_rows > 0) {
             $events = $sql->fetch_all(MYSQLI_ASSOC);

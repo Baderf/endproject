@@ -1,7 +1,10 @@
 // SEND - Checking System:
 
 
-
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
 
 function send_button(){
     select = $("#user_mails");
@@ -11,6 +14,77 @@ function send_button(){
     }else{
         button.removeAttr("disabled");
     }
+}
+
+
+
+function ajax_filter(action, target, insert, baseURL, item, button){
+    $(".area_loading_spinner").fadeIn("slow");
+    button.attr("disabled", "true");
+
+    $.ajax({
+        method: "POST",
+        url: baseURL + 'backend/' + target,
+        data: {
+            action: action
+        },
+
+        success: function (data) {
+
+            if(data) {
+
+                if($(data).find("."+insert + " ." +item).length == 0){
+                    $("."+insert + " ." +item).each(function(){
+
+                        $("."+insert + " .alert-info").fadeOut("fast");
+
+
+                        $(this).fadeOut("slow", function(){
+                            $(this).remove();
+                        });
+
+                    });
+                    $(data).find("." +insert +" .alert-info").hide().appendTo("." +insert).fadeIn("slow", function(){
+                        $(".area_loading_spinner").fadeOut("slow");
+                    });
+
+                    button.removeAttr("disabled");
+
+                }else{
+                    $("."+insert + " ." +item).each(function(){
+
+                        removed = false;
+                        $("."+insert + " .alert-info").fadeOut("fast");
+
+                        $(this).fadeOut("slow", function(){
+                            $(this).remove();
+                        });
+
+                    });
+                    $(data).find("."+insert + " ." +item).each(function(){
+                        $("."+insert + " .alert-info").fadeOut("fast");
+                        $(this).hide().appendTo("." +insert);
+                        $(this).slideDown("slow");
+                        $(".fa-spinner").hide();
+                    });
+
+                    $(".area_loading_spinner").fadeOut("slow");
+                    button.removeAttr("disabled");
+                }
+
+
+
+            }
+
+        },
+        error: function(xhr, textStatus, errorThrown){
+            $(".area_loading_spinner").fadeOut("slow");
+        }
+
+    }).always(function(jqXHR, textStatus){
+
+    });
+
 }
 
 function check_countusers(baseURL, event_id, mail_type){
@@ -262,12 +336,16 @@ function show_success_message(element, button, text){
     })
 }
 
-function show_slide_message(element, text){
+function show_slide_message(element, text, button = false){
     element.html(text);
     element.slideDown("slow", function(){
         setTimeout(function(){
             element.slideUp("slow");
-        },2000)
+            if(button != false){
+                button.removeAttr("disabled");
+                stop_loading(button);
+            }
+        },3000)
     })
 }
 
@@ -323,6 +401,8 @@ function count_settings(){
 }
 
 $(function(){
+
+
 
     if($("#send_button_user_mail")[0]){
         select = $("#user_mails");
@@ -1082,10 +1162,14 @@ $(function () {
             event.preventDefault();
             show_settings();
 
+        } else if (target.is("#show_info")) {
+            event.preventDefault();
+            show_info();
+
         } else if (target.is(".user_delete")) {
             event.preventDefault();
             window_alert_show("Are you sure you want to delete this user?");
-            // HIER
+
 
             $(".overlay_wrapper .btn-success").on("click", function () {
                 $(".overlay .btn-success").data('clicked', "1");
@@ -1132,7 +1216,7 @@ $(function () {
         } else if (target.is(".delete_event")) {
             event.preventDefault();
             window_alert_show("Are you sure you want to delete this event? All users and the statistics will be lost!");
-            // HIER
+
 
             $(".overlay_wrapper .btn-success").on("click", function () {
                 $(".overlay .btn-success").data('clicked', "1");
@@ -1233,6 +1317,88 @@ $(function () {
             event.preventDefault();
             show_settings();
 
+        } else if (target.is(".list_filter")) {
+
+            event.preventDefault();
+
+            button = $(event.target);
+
+            eaction = button.data("action");
+            etarget = button.data("type");
+            einsert = button.data("insert");
+            eitem = button.data("item");
+            baseURL = $('body').data('baseurl');
+
+            ajax_filter(eaction, etarget, einsert, baseURL, eitem, button);
+
+        } else if (target.is(".btn_test_mail")) {
+            event.preventDefault();
+            show_testmailer();
+
+        } else if (target.is("#send_button_user_testmail")) {
+            event.preventDefault();
+
+
+            button = $(event.target);
+            button.prop("disabled", true);
+            input = $("#test_mail_to");
+
+            if(!input.val() == ""){
+
+                if(!isEmail(input.val())){
+                    element = $(".send_error");
+                    text = "This email is not valid!";
+                    show_slide_message(element, text, button);
+                    return;
+                }else {
+                    // ajax call:
+                    var baseURL = $('body').data('baseurl');
+                    button.prop("disabled", true);
+
+                    email = input.val();
+                    user_id = $('#user_id').val();
+                    mail_id = $('#this_id').val();
+
+
+                    $.ajax({
+                        method: "POST",
+                        url: baseURL + 'backend/designs/testmail',
+                        data: {
+                            email: email,
+                            user_id: user_id,
+                            mail_id: mail_id
+                        },
+
+
+                        success: function (data) {
+                            if (data == "sent") {
+                                element = $(".send_success");
+                                text = "Testmail has been sent!";
+                                show_slide_message(element, text, button);
+                            }else{
+                                element = $(".send_error");
+                                text = data;
+                                show_slide_message(element, text, button);
+                            }
+
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+
+                        }
+
+                    }).always(function (jqXHR, textStatus) {
+
+                    });
+
+                }
+
+            }else{
+                element = $(".send_error");
+                text = "You didn't fill out the email-field!";
+                show_slide_message(element, text, button);
+                return;
+            }
+
         } else if (target.is(".make_preview")) {
             event.preventDefault();
             id = $(target).data("id");
@@ -1292,8 +1458,32 @@ $(function () {
 
 
                     success: function (data) {
-                        if(data == "unlinked"){
-                            // Mach
+                        if(data == "resetted"){
+                            button.slideUp("slow", function(){
+                                button.remove();
+                                buttons = $(".static_delete").length;
+                                allbutton = $(".static_delete#all");
+                                if (buttons == 1){
+                                    allbutton.slideUp("slow", function(){
+                                        $("<div class='alert alert-warning'><strong>Warning!</strong> This user didn't get any email from you yet!</div>").insertAfter(allbutton);
+                                        allbutton.remove();
+                                    });
+                                }
+                            });
+
+                        }else if(data == "resettedAll"){
+                            $(".static_delete").slideUp("fast");
+                            allbutton = $(".static_delete#all");
+
+                            allbutton.slideUp("slow", function(){
+                                $("<div class='alert alert-warning'><strong>Warning!</strong> This user didn't get any email from you yet!</div>").insertAfter(allbutton);
+                                allbutton.remove();
+                            });
+                        }else{
+                            element = $(".user_saving");
+                            text = "There has been an error setting the rections."
+
+                            show_info_message(element, button, text);
                         }
 
                     },
@@ -1308,6 +1498,50 @@ $(function () {
 
 
             });
+        } else if (target.is("#send_button_user_mail")) {
+            event.preventDefault();
+
+                // Ajax Call:
+                var baseURL = $('body').data('baseurl');
+                button = $(event.target);
+                button.prop("disabled", true);
+                start_loading(button);
+
+                user_id = $('#user_id').val();
+                event_id = $('#event_id').val();
+                mail_id = $("#user_mails").val();
+
+                $.ajax({
+                    method: "POST",
+                    url: baseURL + 'backend/users/sendMail',
+                    data: {
+                        user_id: user_id,
+                        event_id: event_id,
+                        mail_id: mail_id
+                    },
+
+
+                    success: function (data) {
+                        if(data == "sent"){
+                            element = $(".send_success");
+                            text = "Success - Mail sent!";
+                            show_slide_message(element, text, button);
+                        }else{
+                            element = $(".send_error");
+                            text = "Error - Mail not sent!";
+                            show_slide_message(element, text, button);
+                        }
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        stop_loading(button);
+                    }
+
+                }).always(function(jqXHR, textStatus){
+                    start_loading(button);
+                });
+
+
         } else if (target.is(".unlink_formular")) {
             event.preventDefault();
             window_alert_show("Are you sure that you want to unlink the formular? This will delete the whole data table of your formular!");
@@ -1903,6 +2137,17 @@ $(function () {
                 $("#overlay_wrapper_settings").slideDown("slow");
             });
         }
+        function show_testmailer() {
+            $(".overlay.is_hidden_testmail").slideDown("fast", function () {
+                $("#overlay_wrapper_testmail").slideDown("slow");
+            });
+        }
+        function show_info() {
+            $(".overlay.is_hidden_showinfo").slideDown("fast", function () {
+                $("#overlay_wrapper_show_info").slideDown("slow");
+            });
+        }
+
 
 
 

@@ -290,16 +290,7 @@ class formulars_model extends model{
 
         return $last_id;
     }
-
-    public function getFormularDetails($formular_id){
-        $sql = $this->db->query("SELECT * FROM formulars WHERE id = $formular_id");
-
-        if($sql -> num_rows == 1){
-            $formular = $sql -> fetch_assoc();
-        }
-
-        return $formular;
-    }
+    
 
     public function getFormularStandardfields($formular_id){
         $sql = $this -> db -> query ("SELECT * FROM standard_formular_fields");
@@ -309,6 +300,16 @@ class formulars_model extends model{
         }
 
         return $standard_fields;
+    }
+
+    public function getFormularDetails($formular_id){
+        $sql = $this->db->query("SELECT * FROM formulars WHERE id = $formular_id");
+
+        if($sql -> num_rows == 1){
+            $formular = $sql -> fetch_assoc();
+        }
+
+        return $formular;
     }
     
     public function getFormularStandardActiveFields($formular_id){

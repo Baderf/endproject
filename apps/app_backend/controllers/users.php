@@ -7,6 +7,20 @@ class users extends user_controller{
         parent::__construct();
     }
 
+    public function sendMail(){
+        $mail_id = $_POST['mail_id'];
+        $user_id = $_POST['user_id'];
+        $event_id = $_POST['event_id'];
+
+        $mail = new mailservice();
+
+        if($mail -> sendUserMail($mail_id, $user_id, $event_id)){
+            echo "sent";
+        }else{
+            echo "error";
+        }
+    }
+
     public function progress(){
         $filter = "progress";
         $this -> index($filter);
@@ -75,6 +89,7 @@ class users extends user_controller{
                         if(isset($_POST['f-saveeventuser'])){
 
                             $user_id = $url[5];
+                            $userfields = array();
 
 
                             $user_data = array(
@@ -99,7 +114,7 @@ class users extends user_controller{
                             if($user_field_ids = $this -> model -> checkForUserFields($event_id)){
                                 $ids = explode("::", $user_field_ids['user_field_ids']);
                                 $form_id = $user_field_ids['id'];
-                                $userfields = array();
+
 
 
 
@@ -120,6 +135,7 @@ class users extends user_controller{
                             }
 
                             if($this->model->updateUserData($event_id, $user_id, $user_data, $userfields)){
+                                echo "Hallo";
                                 $location = APP_ROOT . 'backend/users/edit/' .$event_id;
                                 header("Location: $location");
                             }
@@ -503,7 +519,7 @@ class users extends user_controller{
 
         if($type == "all"){
             if($this -> model -> resetAllStats($event_id, $user_id)){
-                echo "resetted";
+                echo "resettedAll";
             }else{
                 echo "error";
             }

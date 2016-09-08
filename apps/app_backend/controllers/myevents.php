@@ -8,10 +8,16 @@ class myevents extends user_controller{
     }
 
     public function index(){
+        if(!isset($_POST['action']) || empty($_POST['action'])){
+            $action = "all";
+        }else{
+            $action = $_POST['action'];
+        }
 
         $this -> view -> data['username'] = sessions::get('uname');
+        $this -> view -> data['action'] = $action;
 
-        if(!$this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"))){
+        if(!$this -> view -> data['events'] = $this -> model -> getAllEvents(sessions::get("userid"), $action)){
             $this -> view -> data['events'] = FALSE;
         }
 

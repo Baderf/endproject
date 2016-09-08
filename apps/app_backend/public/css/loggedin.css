@@ -1750,3 +1750,24 @@ input.info_settings {
 .view_mode .email_item_options {
     display: none!important;
 }
+
+.area_loading_spinner {
+    background-color: rgba(0,0,0,0.9);
+    width: 79%;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    z-index:1;
+    text-align: center;
+    display: none;
+}
+
+.area_loading_spinner .fa-spinner{
+    display: inline-block!important;
+}
+
+.area_loading_spinner .loading_text{
+    display: inline-block;
+    margin-top: calc(25vh - 50px);
+    font-size: 30px;
+}

@@ -1,5 +1,51 @@
 
+<div class="overlay is_hidden_testmail" data-action="close">
+    <div class="overlay_wrapper clearfix" id="overlay_wrapper_testmail">
+        <span class="btn_cancel" data-action="close">&times;</span>
 
+        <h3 class="spec_event">Testmail to:</h3>
+
+        <p>Please type in the email to whom you want to send this mail!</p>
+        <form action="" method="post">
+            <div class="form-group">
+                <label class="control-label" for="user_mails">Mails:</label>
+                <input class="form-control" type="email" name="test_mail_to" id="test_mail_to" value="" placeholder="Type in an email...">
+            </div>
+
+            <input type="submit" class="btn btn-block spec_dashboard" name="send_user_mail" id="send_button_user_testmail" value="send">
+        </form>
+
+        <div class="hidden_message alert alert-success send_success">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+            <strong>Successfuly saved! <i class='glyphicon glyphicon-ok'></i></strong>
+        </div>
+        <div class="hidden_message alert alert-danger send_error">
+            <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+
+        </div>
+    </div>
+</div>
+<div class="overlay is_hidden_showinfo" data-action="close">
+    <div class="overlay_wrapper clearfix" id="overlay_wrapper_show_info">
+        <span class="btn_cancel" data-action="close">&times;</span>
+
+        <h3 class="spec_event">Information</h3>
+
+        <ul>
+            <li>
+                <strong>Salutation:</strong>
+                <p>To insert a Salutation just insert this text: <strong>###Salutation###</strong></br>
+                    The Salutation works as follows:<br><br>
+
+                    Dear + Sex of your user (Mr./Ms.) + Lastname of your user!
+
+                </p>
+
+            </li>
+        </ul>
+
+    </div>
+</div>
 
 <div class="overlay is_hidden_settings" data-action="close">
     <div class="overlay_wrapper" id="overlay_wrapper_settings">
@@ -254,6 +300,8 @@
 
                 <hr>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self btn_settings_mail">Settings <span class="settings_warner">x</span></a>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self btn_test_mail" id="open_test_mail">Send testmail</a>
+                <a href="#" class="btn btn-default btn-block btn-back btn-self btn_show_info" id="show_info">Info</a>
                 <button class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</button>
                 <hr>
                 <form action="" method="post">

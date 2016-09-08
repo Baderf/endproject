@@ -192,8 +192,18 @@ class users_model extends model{
 
         $this -> where = "UPDATE ".$tablename . " SET ";
 
+        $numuserItems = count($user_data);
+        $e = 0;
+
         foreach( $user_data as $key => $val ){
-            $this -> where .= "$key = \"$val\",";
+            if(++$e === $numuserItems && empty($user_fields)){
+                $this -> where .= "$key = \"$val\"";
+            }elseif(++$e === $numuserItems && !empty($user_fields)){
+                $this -> where .= "$key = \"$val\",";
+            }else{
+                $this -> where .= "$key = \"$val\",";
+            }
+
         }
 
         if(!empty($user_fields)){
@@ -203,9 +213,9 @@ class users_model extends model{
 
             foreach ( $user_fields as $key => $val ){
                 if(++$f === $numItems){
-                    $this -> where .= "$key = \"$val\"";
+                    $this -> where .= "`$key` = \"$val\"";
                 }else{
-                    $this -> where .= "$key = \"$val\",";
+                    $this -> where .= "`$key` = \"$val\",";
                 }
             }
         }
@@ -214,11 +224,12 @@ class users_model extends model{
 
         $this -> where .= " WHERE id = $user_id";
 
-
+        echo $this -> where;
 
         if($sql = $this -> db -> query($this -> where)){
-
            return true;
+        }else{
+            return false;
         }
 
 
@@ -430,9 +441,9 @@ class users_model extends model{
 
     public function resetAllStats($event_id, $user_id){
         $tablename = 'users_mails_' . $event_id;
-        $last_update = date("m/d/Y g:i a");
 
-        $stmt = $this -> db -> query("UPDATE $tablename SET 
+
+        $sql = $this -> db -> query("UPDATE $tablename SET 
                                       invitation_sent = 0,
                                       invitation_open = 0,
                                       invitation_viewed = 0,
@@ -447,10 +458,15 @@ class users_model extends model{
                                       info_viewed = 0,
                                       ty_sent = 0,
                                       ty_open = 0,
-                                      ty_viewed = 0,
-                                      last_update = $last_update
+                                      ty_viewed = 0
                                       WHERE user_id = $user_id
                                       ");
+
+        if($sql){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function deleteUser($event_id, $user_id){

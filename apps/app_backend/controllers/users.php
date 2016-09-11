@@ -14,10 +14,12 @@ class users extends user_controller{
 
         $mail = new mailservice();
 
-        if($mail -> sendUserMail($mail_id, $user_id, $event_id)){
+        $error = $mail -> sendUserMail($mail_id, $user_id, $event_id);
+
+        if(!is_array($error)){
             echo "sent";
         }else{
-            echo "error";
+            var_dump($error) ;
         }
     }
 
@@ -277,7 +279,7 @@ class users extends user_controller{
 
 
                     $this -> view -> data['user_values'] = $form ->getForm();
-                    $this -> view -> data['reset_options'] = $this -> model -> getResetOptions($event_id, sessions::get("userid"));
+                    $this -> view -> data['reset_options'] = $this -> model -> getResetOptions($event_id, $url[5]);
                     $this -> view -> data['send_options'] = $this -> model -> getSendOptions($event_id, sessions::get("userid"));
 
                     $this -> view -> render("users/edit_user", $this -> view ->data);

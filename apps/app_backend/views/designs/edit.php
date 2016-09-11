@@ -305,16 +305,7 @@
                 <button class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</button>
                 <hr>
                 <form action="" method="post">
-                    <?php
-                    $user_file = "usermedia_" . sessions::get("userid") . "/";
-                    $mail_file = "mails/mail_edit/mail_" . $data['mail_id'] . ".html";
 
-                    ob_start();
-                    require_once $_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;
-                    $email = ob_get_contents();
-                    ob_end_clean();
-
-                    ?>
                     <input type="hidden" id="this_id" name="this_id" value="<?php echo $url[3];?>">
                     <input type="hidden" id="user_id" name="user_id" value="<?php echo sessions::get("userid");?>">
                     <input type="hidden" id="mail_title" name="mail_title" value="<?php echo $data['mail_infos']['title'];?>">
@@ -335,7 +326,10 @@
 
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 email-wrapper" id="email_template">
-                <?php echo $email;?>
+                <?php $user_file = "usermedia_" . sessions::get("userid") . "/";
+                $mail_file = "mails/mail_edit/mail_" . $data['mail_id'] . ".html";
+
+                require_once $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;?>
             </div>
 
 

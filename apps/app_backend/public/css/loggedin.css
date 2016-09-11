@@ -641,12 +641,18 @@ ____DASHBOARD____
 }
 
 .dashboard_events {
-  margin-right: 10px;
   background-color: #f0f0f0;
+    padding-right:5px;
+width: calc(32% - 5px);
+    margin-right: 20px;
 }
 
 .ds_events {
   margin-bottom: 30px;
+}
+
+.statistic_event_hide {
+    display: none;
 }
 
 .ds_header {

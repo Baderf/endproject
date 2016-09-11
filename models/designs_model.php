@@ -16,8 +16,8 @@ class designs_model extends model{
         $mailfile = $mail . ".html";
         $user_file = "usermedia_" . $user_id;
 
-        $userfile_fulltext = $_SERVER['DOCUMENT_ROOT'] . "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_edit/" . $mailfile;
-        $userfile_email = $_SERVER['DOCUMENT_ROOT'] . "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_html/" . $mailfile;
+        $userfile_fulltext = $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_edit/" . $mailfile;
+        $userfile_email = $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_html/" . $mailfile;
 
         if(file_put_contents($userfile_fulltext, $fulltext)){
             if(file_put_contents($userfile_email, $emailtext)){
@@ -192,7 +192,7 @@ class designs_model extends model{
         if($stmt -> execute()){
             $this -> last_id = $stmt -> insert_id;
 
-            $userfolder = $_SERVER['DOCUMENT_ROOT'] . "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/usermedia_" . $user_id;
+            $userfolder = $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/usermedia_" . $user_id;
             $usermailhtmlfolder = $userfolder . "/mails/mail_html";
             $usermaileditfolder = $userfolder . "/mails/mail_edit";
             $usermailtemplatefolder = $userfolder . "/mails/templates";
@@ -220,7 +220,7 @@ class designs_model extends model{
             }
 
         }else{
-            return "Insert hat nicht funktioniert";
+            return false;
         }
     }
 

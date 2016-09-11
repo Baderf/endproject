@@ -16,6 +16,16 @@ function send_button(){
     }
 }
 
+function switch_statistic_to(id){
+
+
+    $(".dashboard_statistics").find(".statistic_event_active").hide("slow", function(){
+        $(this).removeClass("statistic_event_active").addClass("statistic_event_hide");
+
+        $(".statistic_event_hide[data-id=" + id + "]").show("slow").addClass("statistic_event_active").removeClass("statistic_event_hide");
+    });
+}
+
 
 
 function ajax_filter(action, target, insert, baseURL, item, button){
@@ -402,6 +412,45 @@ function count_settings(){
 
 $(function(){
 
+    if($(".chart_area")[0]){
+        $(".chart_area").each(function(){
+
+            var ctx = $(this).find("canvas");
+            var accepted = ctx.data("accepted");
+            var canceled = ctx.data("canceled");
+            var noaction = ctx.data("noaction");
+
+            var data = {
+                labels: [
+                    "Particpate",
+                    "Cancel",
+                    "No Action"
+                ],
+                datasets: [
+                    {
+                        data: [accepted, canceled, noaction],
+                        backgroundColor: [
+                            "#009688",
+                            "#f34848",
+                            "#FFCE56"
+                        ],
+                        hoverBackgroundColor: [
+                            "#009688",
+                            "#f34848",
+                            "#FFCE56"
+                        ]
+                    }]
+            };
+            var myPieChart = new Chart(ctx,{
+                type: 'pie',
+                data: data,
+                options: {},
+                animation:{
+                    animateScale:true
+                }
+            });
+        });
+    }
 
 
     if($("#send_button_user_mail")[0]){
@@ -1335,6 +1384,14 @@ $(function () {
             event.preventDefault();
             show_testmailer();
 
+        } else if (target.is(".event_link_stat")) {
+            event.preventDefault();
+            id = $(event.target).data("id");
+            $(".event_link.event_active").removeClass("event_active");
+
+            switch_statistic_to(id);
+            $(".event_link[data-id=" + id +"]").addClass("event_active");
+
         } else if (target.is("#send_button_user_testmail")) {
             event.preventDefault();
 
@@ -1402,9 +1459,10 @@ $(function () {
         } else if (target.is(".make_preview")) {
             event.preventDefault();
             id = $(target).data("id");
+            var baseURL = $('body').data('baseurl');
 
 
-            window.open("http://localhost/endproject/backend/formulars/preview/" +id, "endproject/backend/formulars/preview/" +id, "width=650,height=700");
+            window.open(baseURL+"backend/formulars/preview/" +id, baseURL+"backend/formulars/preview/" +id, "width=650,height=700");
 
 
         } else if (target.is(".field_delete")) {

@@ -68,7 +68,7 @@ class mailservice extends model{
         $mail->setFrom('florian.bader.merken@gmail.com', "Mailpig");
 
         $mail->Subject = $mail_settings['subject'];
-        //$mail->addReplyTo('@florian.bader.merken@gmail.com', 'Information');
+        $mail->addReplyTo($mail_settings['sender_adress'], $mail_settings['sender']);
 
                                          // Set email format to HTML
 
@@ -90,13 +90,13 @@ class mailservice extends model{
             $mail->addAddress($user['email'], $user['lastname'] . " " . $user['firstname']);     // Add a recipient
 
             ob_start();
-            $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
+            $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
 
             $pattern_yes = '/###AUTHCODE-YES###/';
-            $replacement_yes = 'www.google.at/test_yes';
+            $replacement_yes = 'http://www.baderflorian.at/useraction/participate/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
 
             $pattern_no = '/###AUTHCODE-NO###/';
-            $replacement_no = 'www.google.at/test_no';
+            $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
             $pattern_salutation = '/###Salutation###/';
             if($user['sex'] == "Male"){
@@ -120,7 +120,6 @@ class mailservice extends model{
 
             if(!$mail->send()) {
                 $error = "Mail could not be sent. Mailer Error: " . $mail->ErrorInfo;
-                $error = "There was a problem to find your event users! Please try again later!";
                 array_push($this->errors, $error);
             } else {
                 // Update user
@@ -250,26 +249,34 @@ class mailservice extends model{
         $mail->ClearAllRecipients();
         $mail->addAddress($email);     // Add a recipient
 
-        $link_yes = "baderflorian.at/accepting/EVENT_ID/MAIL_TYPE/HASH/ID";
-        $link_no = "baderflorian.at/cancel/EVENT_ID/MAIL_TYPE/HASH/ID";
+        $pattern_yes = '/###AUTHCODE-YES###/';
+        $replacement_yes = 'http://www.baderflorian.at/useraction/participate/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
 
-        ob_start();
-        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
+        $pattern_no = '/###AUTHCODE-NO###/';
+        $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
-        $link1 = array("###AUTHCODE-YES###");
-        $link2 = array("###AUTHCODE-NO###");
+        $pattern_salutation = '/###Salutation###/';
+        if($user['sex'] == "Male"){
+            $sex = "Mr. ";
+        }elseif ($user['sex'] == "Female" ){
+            $sex = "Ms. ";
+        }
+        $replacement_salutation = 'Dear ' . $sex . $user['lastname'];
 
-        str_replace($link1, $link_yes, $mail_content);
-        str_replace($link2, $link_no, $mail_content);
+        $text = (string)$mail_content;
+
+        $new_content = preg_replace($pattern_yes, $replacement_yes, $mail_content, -1 );
+        $new_content2 = preg_replace($pattern_no, $replacement_no, $new_content, -1 );
+        $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
 
 
-        $mail -> Body = $mail_content;
+
+        $mail -> Body = $new_content3;
 
         ob_end_clean();
 
         if(!$mail->send()) {
             $error = "Mail could not be sent. Mailer Error: " . $mail->ErrorInfo;
-            $error = "There was a problem to find your event users! Please try again later!";
             array_push($this->errors, $error);
         } else {
             return true;
@@ -291,7 +298,7 @@ class mailservice extends model{
         }
 
         $tablename = "users_event_".$event_id;
-        $sql = $this -> db -> query("SELECT id, sex, firstname, lastname, email FROM $tablename WHERE id=$user_id");
+        $sql = $this -> db -> query("SELECT id, sex, firstname, lastname, email, hash FROM $tablename WHERE id=$user_id");
 
         if($sql -> num_rows == 1){
             $user = $sql -> fetch_assoc();
@@ -336,13 +343,13 @@ class mailservice extends model{
         $mail->addAddress($user['email']);     // Add a recipient
 
         ob_start();
-        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
+        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
 
         $pattern_yes = '/###AUTHCODE-YES###/';
-        $replacement_yes = 'www.google.at/test_yes';
+        $replacement_yes = 'http://www.baderflorian.at/useraction/participate/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
 
         $pattern_no = '/###AUTHCODE-NO###/';
-        $replacement_no = 'www.google.at/test_no';
+        $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
         $pattern_salutation = '/###Salutation###/';
         if($user['sex'] == "Male"){
@@ -359,13 +366,14 @@ class mailservice extends model{
         $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
 
 
+
         $mail -> Body = $new_content3;
 
         ob_end_clean();
 
         if(!$mail->send()) {
             $error = "Mail could not be sent. Mailer Error: " . $mail->ErrorInfo;
-            $error = "There was a problem to find your event users! Please try again later!";
+
             array_push($this->errors, $error);
         } else {
             if($this -> updateUserSent($user_id, $mail_settings['mail_type'], $event_id)){
@@ -374,7 +382,7 @@ class mailservice extends model{
 
         }
 
-        return false;
+        return $this->errors;
     }
 
     public function sendConfirmationMail($mail_infos, $user){
@@ -415,13 +423,13 @@ class mailservice extends model{
         $mail->addAddress($user['email']);     // Add a recipient
 
         ob_start();
-        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . 'app_backend/' . APP_PUBLIC . "media/" . $user_file . $mail_file);
+        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/" . APPS . 'app_backend/' . APP_PUBLIC . "media/" . $user_file . $mail_file);
 
         $pattern_yes = '/###AUTHCODE-YES###/';
-        $replacement_yes = 'www.google.at/test_yes';
+        $replacement_yes = 'http://www.baderflorian.at/useraction/participate/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
 
         $pattern_no = '/###AUTHCODE-NO###/';
-        $replacement_no = 'www.google.at/test_no';
+        $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
         $pattern_salutation = '/###Salutation###/';
         if($user['sex'] == "Male"){
@@ -436,6 +444,7 @@ class mailservice extends model{
         $new_content = preg_replace($pattern_yes, $replacement_yes, $mail_content, -1 );
         $new_content2 = preg_replace($pattern_no, $replacement_no, $new_content, -1 );
         $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
+
 
 
         $mail -> Body = $new_content3;

@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8054fd1f-63ab-49a4-a084-5a016e0474ec" name="Default" comment="" />
+    <list default="true" id="8054fd1f-63ab-49a4-a084-5a016e0474ec" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/app_backend/views/dashboard/left_statistic.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/app_backend/views/dashboard/statistic.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/app_backend/views/dashboard/upcomming.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/controllers/dashboard.php" afterPath="$PROJECT_DIR$/apps/app_backend/controllers/dashboard.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/controllers/designs.php" afterPath="$PROJECT_DIR$/apps/app_backend/controllers/designs.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/controllers/users.php" afterPath="$PROJECT_DIR$/apps/app_backend/controllers/users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css" afterPath="$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/public/js/functions.js" afterPath="$PROJECT_DIR$/apps/app_backend/public/js/functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/views/dashboard/index.php" afterPath="$PROJECT_DIR$/apps/app_backend/views/dashboard/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/views/designs/edit.php" afterPath="$PROJECT_DIR$/apps/app_backend/views/designs/edit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php" afterPath="$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_frontend/controllers/register.php" afterPath="$PROJECT_DIR$/apps/app_frontend/controllers/register.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php" afterPath="$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php" afterPath="$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_frontend/views/register/activate.php" afterPath="$PROJECT_DIR$/apps/app_frontend/views/register/activate.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/app_frontend/views/register/success.php" afterPath="$PROJECT_DIR$/apps/app_frontend/views/register/success.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/mailservice.php" afterPath="$PROJECT_DIR$/libs/mailservice.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/designs_model.php" afterPath="$PROJECT_DIR$/models/designs_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/useraction_model.php" afterPath="$PROJECT_DIR$/models/useraction_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/users_model.php" afterPath="$PROJECT_DIR$/models/users_model.php" />
+    </list>
     <ignored path="endproject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -12,122 +34,60 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="useraction.php" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="204">
-                    <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="endproject" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="myevents_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/myevents_model.php">
+    <leaf>
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="676" column="45" selection-start-line="658" selection-start-column="7" selection-end-line="676" selection-end-column="44" />
+            <state relative-caret-position="195">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/dashboard_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
-                <element signature="n#__construct#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#createEventUsersTable#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#newEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#countUser#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#checkUserEmails#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#UpdateMailSettingsMan#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#checkForDuplicates#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#checkMailSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#validate_email#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#getEventData#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#updateMailSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#getMailInfos#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#updateEventOverview#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#updateEventSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#getAllFormulars#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#getLinkedMails#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#linkform#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#linkFormular#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#linkFormularToEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#checkForLinkedEvents#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#getFormularData#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#unlinkEventFormular#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#createUserColumns#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#deleteUserColumns#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#uploadEventImage#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#sendMail#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <element signature="n#deleteEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-                <marker date="1473357950179" expanded="true" signature="262:367" ph="CREATE TABLE... ${$name}" />
-                <marker date="1473357950179" expanded="true" signature="401:511" ph="CREATE TABLE... ${$name_mail}" />
-                <marker date="1473357950179" expanded="true" signature="836:978" ph="INSERT INTO events... " />
-                <marker date="1473357950179" expanded="true" signature="1285:1332" ph="INSERT INTO event_details... " />
-                <marker date="1473357950179" expanded="true" signature="1564:1641" ph="INSERT INTO events_link_eventdetails... " />
-                <marker date="1473357950179" expanded="true" signature="2161:2219" ph="SELECT COUNT... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="2329:2384" ph="SELECT COUNT... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="2497:2547" ph="SELECT COUNT... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="2660:2711" ph="SELECT COUNT... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="2821:2870" ph="SELECT COUNT... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="3177:3216" ph="SELECT lastn... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="4202:4320" ph="UPDATE mails... " />
-                <marker date="1473357950179" expanded="true" signature="4729:4772" ph="SELECT id, f... ${$tablename}" />
-                <marker date="1473357950179" expanded="true" signature="6337:6470" ph="SELECT subje... mails" />
-                <marker date="1473357950179" expanded="true" signature="7940:7989" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="8271:8372" ph="UPDATE mails... " />
-                <marker date="1473357950179" expanded="true" signature="8730:8800" ph="SELECT * FRO... mails" />
-                <marker date="1473357950179" expanded="true" signature="9136:9248" ph="UPDATE event... " />
-                <marker date="1473357950179" expanded="true" signature="9576:9634" ph="UPDATE event... " />
-                <marker date="1473357950179" expanded="true" signature="9869:9909" ph="SELECT * FRO... formulars" />
-                <marker date="1473357950179" expanded="true" signature="10197:10258" ph="SELECT * FRO... mails" />
-                <marker date="1473357950179" expanded="true" signature="10528:10604" ph="UPDATE event... " />
-                <marker date="1473357950179" expanded="true" signature="11999:12094" ph="SELECT form_... events" />
-                <marker date="1473357950179" expanded="true" signature="12309:12381" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="12562:12618" ph="SELECT * FRO... formulars" />
-                <marker date="1473357950179" expanded="true" signature="12961:13019" ph="UPDATE event... " />
-                <marker date="1473357950179" expanded="true" signature="13386:13448" ph="SELECT form_... events" />
-                <marker date="1473357950179" expanded="true" signature="13682:13730" ph="SELECT user_... formulars" />
-                <marker date="1473357950179" expanded="true" signature="14448:14510" ph="SELECT title... user_formular_fields" />
-                <marker date="1473357950179" expanded="true" signature="15410:15441" ph="ALTER TABLE ${$tablename}... " />
-                <marker date="1473357950179" expanded="true" signature="15926:15988" ph="SELECT form_... events" />
-                <marker date="1473357950179" expanded="true" signature="16222:16270" ph="SELECT user_... formulars" />
-                <marker date="1473357950179" expanded="true" signature="16985:17047" ph="SELECT title... user_formular_fields" />
-                <marker date="1473357950179" expanded="true" signature="17906:17937" ph="ALTER TABLE ${$tablename}... " />
-                <marker date="1473357950179" expanded="true" signature="18424:18486" ph="SELECT * FRO... event_details" />
-                <marker date="1473357950179" expanded="true" signature="20168:20208" ph="UPDATE event... " />
-                <marker date="1473357950179" expanded="true" signature="20892:20953" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21073:21134" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21073:21153" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21073:21154" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21287:21368" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21498:21560" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21498:21565" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21498:21568" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="21498:21589" ph="SELECT * FRO... events" />
-                <marker date="1473357950179" expanded="true" signature="22035:22096" ph="SELECT id FR... mails" />
-                <marker date="1473357950179" expanded="true" signature="22563:22599" ph="DELETE from " />
-                <marker date="1473357950179" expanded="true" signature="22667:22688" ph="DROP TABLE I... " />
-                <marker date="1473357950179" expanded="true" signature="22748:22769" ph="DROP TABLE I... " />
-                <marker date="1473357950179" expanded="true" signature="22834:22888" ph="DELETE FROM " />
-                <marker date="1473357950179" expanded="true" signature="23318:23339" ph="DROP TABLE I... " />
-                <marker date="1473357950179" expanded="true" signature="23395:23416" ph="DROP TABLE I... " />
-                <marker date="1473357950179" expanded="true" signature="23477:23531" ph="DELETE FROM " />
+                <marker date="1473619221000" expanded="true" signature="156:192" ph="SELECT * FRO... events" />
+                <marker date="1473619221000" expanded="true" signature="156:193" ph="SELECT * FRO... events" />
+                <marker date="1473619221000" expanded="true" signature="156:220" ph="SELECT * FRO... events" />
+                <marker date="1473619221000" expanded="true" signature="156:221" ph="SELECT * FRO... events" />
+                <marker date="1473619221000" expanded="true" signature="488:1434" ph="SELECT SUM(C... ${$tablename}" />
+                <marker date="1473619221000" expanded="true" signature="488:1444" ph="SELECT SUM(C... tbl_recipes" />
+                <marker date="1473619221000" expanded="true" signature="1663:1945" ph="SELECT SUM(C... " />
+                <marker date="1473619221000" expanded="true" signature="2351:2435" ph="SELECT * FRO... ${$tablename}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <marker date="1473629431000" expanded="true" signature="3107:3410" ph="..." />
+                <marker date="1473629431000" expanded="true" signature="3322:3387" ph="..." />
+                <marker date="1473629431000" expanded="true" signature="3526:4239" ph="..." />
+                <marker date="1473629431000" expanded="true" signature="3566:3739" ph="..." />
+                <marker date="1473629431000" expanded="true" signature="5434:6379" ph="..." />
               </folding>
             </state>
           </provider>
@@ -136,98 +96,40 @@
       <file leaf-file-name="loggedin.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="1756" column="16" selection-start-line="1756" selection-start-column="16" selection-end-line="1756" selection-end-column="16" />
+            <state relative-caret-position="24">
+              <caret line="641" column="0" selection-start-line="641" selection-start-column="0" selection-end-line="641" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/app_backend/public/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="242">
+              <caret line="1389" column="39" selection-start-line="1389" selection-start-column="39" selection-end-line="1389" selection-end-column="39" />
               <folding>
-                <element signature="n#!!block;n#check_countusers#0" expanded="false" />
-                <element signature="n#!!block;n#checkuseremails#0" expanded="false" />
-                <element signature="n#!!block;n#checkduplicates#0" expanded="false" />
-                <element signature="n#!!block;n#checksettings#0" expanded="false" />
+                <marker date="1473629201000" expanded="true" signature="87978:93426" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/index.php">
+      <file leaf-file-name="statistic.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/statistic.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="48" column="157" selection-start-line="48" selection-start-column="157" selection-end-line="48" selection-end-column="157" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myevents.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/myevents.php">
+      <file leaf-file-name="upcomming.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/upcomming.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="designs.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/designs.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="designs_model.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/designs_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="121" column="26" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
-              <folding>
-                <marker date="1473361853748" expanded="true" signature="908:969" ph="UPDATE mails... " />
-                <marker date="1473361853748" expanded="true" signature="1457:1530" ph="SELECT * FRO... mail_templates" />
-                <marker date="1473361853748" expanded="true" signature="1661:1733" ph="INSERT INTO mail_templates... " />
-                <marker date="1473361853748" expanded="true" signature="2073:2143" ph="SELECT * FRO... mails" />
-                <marker date="1473361853748" expanded="true" signature="2421:2533" ph="UPDATE mails... " />
-                <marker date="1473361853748" expanded="true" signature="2902:2983" ph="SELECT enter... events" />
-                <marker date="1473361853748" expanded="true" signature="3252:3647" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="3252:3655" ph="SELECT * FRO... events" />
-                <marker date="1473361853748" expanded="true" signature="3736:3743" ph="SELECT * FRO... events" />
-                <marker date="1473361853748" expanded="true" signature="3736:4133" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="3736:4204" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="4288:4295" ph="SELECT * FRO... events" />
-                <marker date="1473361853748" expanded="true" signature="4288:4712" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="4836:4843" ph="SELECT * FRO... events" />
-                <marker date="1473361853748" expanded="true" signature="4836:5294" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="5414:5811" ph="SELECT mails... mails" />
-                <marker date="1473361853748" expanded="true" signature="6082:6171" ph="SELECT * FRO... mail_templates" />
-                <marker date="1473361853748" expanded="true" signature="6379:6498" ph="SELECT * FRO... mail_templates" />
-                <marker date="1473361853748" expanded="true" signature="6794:6860" ph="DELETE FROM " />
-                <marker date="1473361853748" expanded="true" signature="7209:7291" ph="INSERT INTO mails... " />
-                <marker date="1473361853748" expanded="true" signature="8313:8381" ph="UPDATE mails... " />
-                <marker date="1473361853748" expanded="true" signature="8874:8943" ph="SELECT title... events" />
-                <marker date="1473361853748" expanded="true" signature="9178:9263" ph="SELECT mail_... mails" />
-                <marker date="1473361853748" expanded="true" signature="9527:9612" ph="SELECT mail_... mails" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="157" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -241,13 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apps/app_backend/public/media/usermedia_1/mails/templates/standard.html" />
-        <option value="$PROJECT_DIR$/apps/app_backend/public/media/standard.html" />
-        <option value="$PROJECT_DIR$/models/register_model.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/public/media/usermedia_1/mails/mail_edit/mail_11.html" />
-        <option value="$PROJECT_DIR$/apps/app_backend/public/media/usermedia_1/mails/mail_edit/mail_13.html" />
-        <option value="$PROJECT_DIR$/apps/app_backend/views/designs/create.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/views/myevents/new.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/index.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/formulars/new.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/users_list/show.php" />
@@ -265,33 +160,40 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/public/media/usermedia_1/mails/mail_html/mail_25.html" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/designs/view.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/views/designs/edit.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/register/index.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/register/formular.php" />
         <option value="$PROJECT_DIR$/models/formulars_model.php" />
-        <option value="$PROJECT_DIR$/models/users_model.php" />
-        <option value="$PROJECT_DIR$/apps/app_frontend/views/register/success.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/successfeedback.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/mailconfirmation.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/success.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/successfb.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/controllers/users.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php" />
-        <option value="$PROJECT_DIR$/libs/mailservice.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/users/index.php" />
         <option value="$PROJECT_DIR$/config/nav_backend.php" />
-        <option value="$PROJECT_DIR$/models/useraction_model.php" />
-        <option value="$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php" />
-        <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php" />
         <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/cancelederror.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css" />
         <option value="$PROJECT_DIR$/models/myevents_model.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/controllers/myevents.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/myevents/index.php" />
-        <option value="$PROJECT_DIR$/apps/app_backend/controllers/designs.php" />
-        <option value="$PROJECT_DIR$/models/designs_model.php" />
         <option value="$PROJECT_DIR$/apps/app_backend/views/designs/index.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/controllers/designs.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/designs/edit.php" />
+        <option value="$PROJECT_DIR$/models/designs_model.php" />
+        <option value="$PROJECT_DIR$/apps/app_frontend/views/register/activate.php" />
+        <option value="$PROJECT_DIR$/apps/app_frontend/controllers/register.php" />
+        <option value="$PROJECT_DIR$/apps/app_frontend/views/register/success.php" />
+        <option value="$PROJECT_DIR$/models/useraction_model.php" />
+        <option value="$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php" />
+        <option value="$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php" />
+        <option value="$PROJECT_DIR$/libs/mailservice.php" />
+        <option value="$PROJECT_DIR$/models/users_model.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/controllers/users.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/controllers/dashboard.php" />
+        <option value="$PROJECT_DIR$/models/dashboard_model.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/dashboard/left_statistic.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/dashboard/statistic.php" />
+        <option value="$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css" />
         <option value="$PROJECT_DIR$/apps/app_backend/public/js/functions.js" />
+        <option value="$PROJECT_DIR$/apps/app_backend/views/dashboard/index.php" />
       </list>
     </option>
   </component>
@@ -306,10 +208,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -336,7 +237,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -379,123 +280,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mailactions" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="endproject" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -595,7 +380,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="designs" />
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,7 +482,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -718,6 +503,9 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -745,6 +533,19 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
       <method />
     </configuration>
   </component>
@@ -800,23 +601,34 @@
       <workItem from="1473240293960" duration="14274000" />
       <workItem from="1473260808254" duration="6294000" />
       <workItem from="1473323569588" duration="37312000" />
+      <workItem from="1473596937710" duration="8285000" />
+      <workItem from="1473614489177" duration="13005000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="391419000" />
+    <option name="totallyTimeSpent" value="412709000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29583332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3040057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -884,116 +696,40 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/apps/app_backend/controllers/users.php</url>
-          <line>29</line>
+          <line>31</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/libs/mailservice.php</url>
-          <line>379</line>
+          <line>387</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/models/formulars_model.php</url>
+          <line>344</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php</url>
+          <line>54</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/models/useraction_model.php</url>
+          <line>199</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/libs/mailservice.php</url>
+          <line>288</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/ss_sent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/er_sent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/sessions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/send.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/users_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="55" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="25" column="128" selection-start-line="25" selection-start-column="128" selection-end-line="25" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/formulars/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2784">
-          <caret line="315" column="29" selection-start-line="315" selection-start-column="29" selection-end-line="315" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="269" column="65" selection-start-line="269" selection-start-column="46" selection-end-line="269" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/views/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="624">
@@ -1014,16 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#4;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#table#0;n#div#4;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#4;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#4;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,14 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="77" column="396" selection-start-line="77" selection-start-column="359" selection-end-line="77" selection-end-column="396" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="291" column="70" selection-start-line="291" selection-start-column="22" selection-end-line="291" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1059,119 +777,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="80" />
-          <folding>
-            <marker date="1464190908000" expanded="true" signature="2856:3062" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/activate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/users_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="220" column="9" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-          <folding>
-            <element signature="n#deleteUser#0;n#users_model#0;n#!!top" expanded="false" />
-            <marker date="1473347942800" expanded="true" signature="244:298" ph="SELECT id, u... users" />
-            <marker date="1473347942800" expanded="true" signature="592:697" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1473347942800" expanded="true" signature="1027:1063" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473347942800" expanded="true" signature="1432:1467" ph="INSERT INTO ${$tablename}... " />
-            <marker date="1473347942800" expanded="true" signature="3603:3640" ph="SELECT * FRO... mails" />
-            <marker date="1473347942800" expanded="true" signature="3946:3998" ph="INSERT INTO ${$tablename2}... " />
-            <marker date="1473347942800" expanded="true" signature="4177:4220" ph="SELECT id, f... ${$tablename}" />
-            <marker date="1473347942800" expanded="true" signature="4446:4482" ph="SELECT title... events" />
-            <marker date="1473347942800" expanded="true" signature="5970:6027" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="6550:6647" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="7210:7267" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="7360:7483" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="7570:7693" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="7777:7867" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="7928:7985" ph="SELECT id, t... events" />
-            <marker date="1473347942800" expanded="true" signature="8547:8568" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473347942800" expanded="true" signature="8817:8855" ph="SELECT form_... events" />
-            <marker date="1473347942800" expanded="true" signature="9084:9136" ph="SELECT user_... formulars" />
-            <marker date="1473347942800" expanded="true" signature="10304:10356" ph="UPDATE ${$ta... " />
-            <marker date="1473347942800" expanded="true" signature="10616:10657" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473347942800" expanded="true" signature="10921:10982" ph="SELECT * FRO... mails" />
-            <marker date="1473347942800" expanded="true" signature="11385:11444" ph="UPDATE ${$ta... " />
-            <marker date="1473347942800" expanded="true" signature="11633:11693" ph="UPDATE ${$ta... " />
-            <marker date="1473347942800" expanded="true" signature="11857:11917" ph="UPDATE ${$ta... " />
-            <marker date="1473347942800" expanded="true" signature="12183:13085" ph="UPDATE ${$ta... " />
-            <marker date="1473347942800" expanded="true" signature="13424:13458" ph="DELETE FROM " />
-            <marker date="1473347942800" expanded="true" signature="13531:13571" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/formulars_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="312" column="5" selection-start-line="312" selection-start-column="5" selection-end-line="312" selection-end-column="5" />
-          <folding>
-            <marker date="1473345270836" expanded="true" signature="243:348" ph="SELECT id, t... events" />
-            <marker date="1473345270836" expanded="true" signature="625:665" ph="SELECT * FRO... formulars" />
-            <marker date="1473345270836" expanded="true" signature="1000:1075" ph="SELECT stand... settings" />
-            <marker date="1473345270836" expanded="true" signature="1212:1290" ph="INSERT INTO formulars... " />
-            <marker date="1473345270836" expanded="true" signature="1509:1596" ph="UPDATE formu... " />
-            <marker date="1473345270836" expanded="true" signature="1952:2057" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="2371:2455" ph="UPDATE formu... " />
-            <marker date="1473345270836" expanded="true" signature="2872:3042" ph="UPDATE user_... " />
-            <marker date="1473345270836" expanded="true" signature="3262:3326" ph="UPDATE formu... " />
-            <marker date="1473345270836" expanded="true" signature="3770:3916" ph="INSERT INTO user_formular_fields... " />
-            <marker date="1473345270836" expanded="true" signature="4120:4184" ph="UPDATE formu... " />
-            <marker date="1473345270836" expanded="true" signature="4545:4593" ph="SELECT user_... formulars" />
-            <marker date="1473345270836" expanded="true" signature="5183:5245" ph="SELECT title... user_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="6176:6207" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473345270836" expanded="true" signature="6497:6528" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473345270836" expanded="true" signature="6821:6904" ph="SELECT id, t... mails" />
-            <marker date="1473345270836" expanded="true" signature="7177:7225" ph="SELECT user_... formulars" />
-            <marker date="1473345270836" expanded="true" signature="7943:8005" ph="SELECT title... user_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="9042:9073" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473345270836" expanded="true" signature="9411:9442" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473345270836" expanded="true" signature="9796:9836" ph="SELECT MAX(i... user_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="10067:10105" ph="SELECT * FRO... standard_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="10346:10381" ph="SELECT * FRO... formulars" />
-            <marker date="1473345270836" expanded="true" signature="10633:10685" ph="SELECT stand... formulars" />
-            <marker date="1473345270836" expanded="true" signature="10940:10991" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1473345270836" expanded="true" signature="11336:11439" ph="UPDATE formu... " />
-            <marker date="1473345270836" expanded="true" signature="11820:11928" ph="UPDATE formu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/formulars.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2159">
           <caret line="145" column="42" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="116" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="116" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#section#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/formular.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1184,31 +793,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/success.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="67" selection-start-line="3" selection-start-column="67" selection-end-line="3" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/successfeedback.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/successfeedback.php" />
     <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/mailconfirmation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/success.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
@@ -1228,24 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="28" />
-          <folding>
-            <element signature="n#progress#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#all#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#completed#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#latest#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#index#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#edit#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#setReaction#0;n#users#0;n#!!top" expanded="false" />
-            <element signature="n#resetStats#0;n#users#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1253,52 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/users/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="86" column="88" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
-          <folding>
-            <marker date="1473354945370" expanded="true" signature="3909:4042" ph="..." />
-            <marker date="1473354945370" expanded="true" signature="4163:4327" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/mailservice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="196" column="28" selection-start-line="196" selection-start-column="28" selection-end-line="196" selection-end-column="28" />
-          <folding>
-            <element signature="n#sendCampaign#0;n#mailservice#0;n#!!top" expanded="false" />
-            <element signature="n#updateSentMailEvent#0;n#mailservice#0;n#!!top" expanded="false" />
-            <element signature="n#sendTestMail#0;n#mailservice#0;n#!!top" expanded="false" />
-            <element signature="n#sendConfirmationMail#0;n#mailservice#0;n#!!top" expanded="false" />
-            <element signature="n#validate_email#0;n#mailservice#0;n#!!top" expanded="false" />
-            <marker date="1473354545606" expanded="true" signature="166:279" ph="SELECT mail_... mails" />
-            <marker date="1473354545606" expanded="true" signature="1339:1456" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473354545606" expanded="true" signature="5558:5576" ph="UPDATE event... " />
-            <marker date="1473354545606" expanded="true" signature="5558:5600" ph="UPDATE event... " />
-            <marker date="1473354545606" expanded="true" signature="5558:5601" ph="UPDATE event... " />
-            <marker date="1473354545606" expanded="true" signature="5674:5714" ph="UPDATE mails... " />
-            <marker date="1473354545606" expanded="true" signature="5674:5719" ph="UPDATE mails... " />
-            <marker date="1473354545606" expanded="true" signature="6623:6677" ph="UPDATE ${$ta... " />
-            <marker date="1473354545606" expanded="true" signature="6901:7014" ph="SELECT mail_... mails" />
-            <marker date="1473354545606" expanded="true" signature="9485:9575" ph="SELECT mail_... mails" />
-            <marker date="1473354545606" expanded="true" signature="9485:9583" ph="SELECT mail_... mails" />
-            <marker date="1473354545606" expanded="true" signature="9960:10028" ph="SELECT id, s... ${$tablename}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="52" column="71" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1310,90 +832,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php">
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        <state relative-caret-position="825">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/cancelederror.php">
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/send.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="71" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/useraction_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="252" column="105" selection-start-line="252" selection-start-column="105" selection-end-line="252" selection-end-column="105" />
-          <folding>
-            <element signature="n#checkIfUserExists#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#setViewed#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getFormularID#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getFormularDetails#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getFormularStandardfields#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getUserFormular#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getEventInformation#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getUserInfos#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#checkForUserFields#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#updateUserData#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#userParticipate#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#sendConfirmation#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <element signature="n#getSuccessFeedback#0;n#useraction_model#0;n#!!top" expanded="false" />
-            <marker date="1473355729656" expanded="true" signature="266:273" ph="SELECT * FRO... " />
-            <marker date="1473355729656" expanded="true" signature="266:280" ph="SELECT hash ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="266:281" ph="SELECT hash $" />
-            <marker date="1473355729656" expanded="true" signature="266:305" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="266:306" ph="SELECT hash ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="266:315" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="1325:1346" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="1325:1348" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="1325:1400" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="1325:1401" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="1599:1637" ph="SELECT form_... events" />
-            <marker date="1473355729656" expanded="true" signature="1599:1638" ph="SELECT form_... evets" />
-            <marker date="1473355729656" expanded="true" signature="1909:1944" ph="SELECT * FRO... formulars" />
-            <marker date="1473355729656" expanded="true" signature="2186:2224" ph="SELECT * FRO... standard_formular_fields" />
-            <marker date="1473355729656" expanded="true" signature="2481:2559" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1473355729656" expanded="true" signature="2481:2571" ph="SELECT * FRO... user_formular_fields" />
-            <marker date="1473355729656" expanded="true" signature="2796:2828" ph="SELECT * FRO... events" />
-            <marker date="1473355729656" expanded="true" signature="2796:2829" ph="SELECT * FRO... events" />
-            <marker date="1473355729656" expanded="true" signature="3147:3160" ph="SELECT * FRO... " />
-            <marker date="1473355729656" expanded="true" signature="3147:3161" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="3147:3183" ph="SELECT * FRO... ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="3427:3465" ph="SELECT form_... events" />
-            <marker date="1473355729656" expanded="true" signature="3694:3746" ph="SELECT user_... formulars" />
-            <marker date="1473355729656" expanded="true" signature="5631:5693" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="5631:5694" ph="UPDATE ${$ta... " />
-            <marker date="1473355729656" expanded="true" signature="5926:5959" ph="SELECT sex, ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="5926:5983" ph="SELECT sex, ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="5926:5988" ph="SELECT sex, ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="5926:5994" ph="SELECT sex, ${$tablename}" />
-            <marker date="1473355729656" expanded="true" signature="6118:6206" ph="SELECT id FR... mails" />
-            <marker date="1473355729656" expanded="true" signature="6118:6246" ph="SELECT id, u... mails" />
-            <marker date="1473355729656" expanded="true" signature="6736:6771" ph="SELECT actio... formulars" />
-            <marker date="1473355729656" expanded="true" signature="6736:6783" ph="SELECT actio... formulars" />
-            <marker date="1473355729656" expanded="true" signature="7079:7148" ph="UPDATE ${$ta... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="1756" column="16" selection-start-line="1756" selection-start-column="16" selection-end-line="1756" selection-end-column="16" />
+        <state relative-caret-position="150">
+          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -1401,166 +851,471 @@
     <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/myevents.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="50" />
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_8.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="263" column="27" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="331" column="61" selection-start-line="331" selection-start-column="61" selection-end-line="331" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/error_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/formulars_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding>
+            <marker date="1473594230000" expanded="true" signature="243:348" ph="SELECT id, t... events" />
+            <marker date="1473594230000" expanded="true" signature="625:665" ph="SELECT * FRO... formulars" />
+            <marker date="1473594230000" expanded="true" signature="1000:1075" ph="SELECT stand... settings" />
+            <marker date="1473594230000" expanded="true" signature="1212:1290" ph="INSERT INTO formulars... " />
+            <marker date="1473594230000" expanded="true" signature="1509:1596" ph="UPDATE formu... " />
+            <marker date="1473594230000" expanded="true" signature="1952:2057" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="2371:2455" ph="UPDATE formu... " />
+            <marker date="1473594230000" expanded="true" signature="2872:3042" ph="UPDATE user_... " />
+            <marker date="1473594230000" expanded="true" signature="3262:3326" ph="UPDATE formu... " />
+            <marker date="1473594230000" expanded="true" signature="3770:3916" ph="INSERT INTO user_formular_fields... " />
+            <marker date="1473594230000" expanded="true" signature="4120:4184" ph="UPDATE formu... " />
+            <marker date="1473594230000" expanded="true" signature="4545:4593" ph="SELECT user_... formulars" />
+            <marker date="1473594230000" expanded="true" signature="5183:5245" ph="SELECT title... user_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="6176:6207" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594230000" expanded="true" signature="6497:6528" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594230000" expanded="true" signature="6821:6904" ph="SELECT id, t... mails" />
+            <marker date="1473594230000" expanded="true" signature="7177:7225" ph="SELECT user_... formulars" />
+            <marker date="1473594230000" expanded="true" signature="7943:8005" ph="SELECT title... user_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="9042:9073" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594230000" expanded="true" signature="9411:9442" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594230000" expanded="true" signature="9796:9836" ph="SELECT MAX(i... user_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="10067:10105" ph="SELECT * FRO... standard_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="10346:10381" ph="SELECT * FRO... formulars" />
+            <marker date="1473594230000" expanded="true" signature="10633:10685" ph="SELECT stand... formulars" />
+            <marker date="1473594230000" expanded="true" signature="10940:10991" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1473594230000" expanded="true" signature="11336:11439" ph="UPDATE formu... " />
+            <marker date="1473594230000" expanded="true" signature="11820:11928" ph="UPDATE formu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/home_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/myevents_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="676" column="45" selection-start-line="658" selection-start-column="7" selection-end-line="676" selection-end-column="44" />
+        <state relative-caret-position="-216">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
           <folding>
-            <element signature="n#__construct#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#createEventUsersTable#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#newEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#countUser#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#checkUserEmails#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#UpdateMailSettingsMan#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#checkForDuplicates#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#checkMailSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#validate_email#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#getEventData#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#updateMailSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#getMailInfos#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#updateEventOverview#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#updateEventSettings#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#getAllFormulars#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#getLinkedMails#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#linkform#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#linkFormular#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#linkFormularToEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#checkForLinkedEvents#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#getFormularData#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#unlinkEventFormular#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#createUserColumns#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#deleteUserColumns#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#uploadEventImage#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#sendMail#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <element signature="n#deleteEvent#0;n#myevents_model#0;n#!!top" expanded="false" />
-            <marker date="1473357950179" expanded="true" signature="262:367" ph="CREATE TABLE... ${$name}" />
-            <marker date="1473357950179" expanded="true" signature="401:511" ph="CREATE TABLE... ${$name_mail}" />
-            <marker date="1473357950179" expanded="true" signature="836:978" ph="INSERT INTO events... " />
-            <marker date="1473357950179" expanded="true" signature="1285:1332" ph="INSERT INTO event_details... " />
-            <marker date="1473357950179" expanded="true" signature="1564:1641" ph="INSERT INTO events_link_eventdetails... " />
-            <marker date="1473357950179" expanded="true" signature="2161:2219" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="2329:2384" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="2497:2547" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="2660:2711" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="2821:2870" ph="SELECT COUNT... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="3177:3216" ph="SELECT lastn... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="4202:4320" ph="UPDATE mails... " />
-            <marker date="1473357950179" expanded="true" signature="4729:4772" ph="SELECT id, f... ${$tablename}" />
-            <marker date="1473357950179" expanded="true" signature="6337:6470" ph="SELECT subje... mails" />
-            <marker date="1473357950179" expanded="true" signature="7940:7989" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="8271:8372" ph="UPDATE mails... " />
-            <marker date="1473357950179" expanded="true" signature="8730:8800" ph="SELECT * FRO... mails" />
-            <marker date="1473357950179" expanded="true" signature="9136:9248" ph="UPDATE event... " />
-            <marker date="1473357950179" expanded="true" signature="9576:9634" ph="UPDATE event... " />
-            <marker date="1473357950179" expanded="true" signature="9869:9909" ph="SELECT * FRO... formulars" />
-            <marker date="1473357950179" expanded="true" signature="10197:10258" ph="SELECT * FRO... mails" />
-            <marker date="1473357950179" expanded="true" signature="10528:10604" ph="UPDATE event... " />
-            <marker date="1473357950179" expanded="true" signature="11999:12094" ph="SELECT form_... events" />
-            <marker date="1473357950179" expanded="true" signature="12309:12381" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="12562:12618" ph="SELECT * FRO... formulars" />
-            <marker date="1473357950179" expanded="true" signature="12961:13019" ph="UPDATE event... " />
-            <marker date="1473357950179" expanded="true" signature="13386:13448" ph="SELECT form_... events" />
-            <marker date="1473357950179" expanded="true" signature="13682:13730" ph="SELECT user_... formulars" />
-            <marker date="1473357950179" expanded="true" signature="14448:14510" ph="SELECT title... user_formular_fields" />
-            <marker date="1473357950179" expanded="true" signature="15410:15441" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473357950179" expanded="true" signature="15926:15988" ph="SELECT form_... events" />
-            <marker date="1473357950179" expanded="true" signature="16222:16270" ph="SELECT user_... formulars" />
-            <marker date="1473357950179" expanded="true" signature="16985:17047" ph="SELECT title... user_formular_fields" />
-            <marker date="1473357950179" expanded="true" signature="17906:17937" ph="ALTER TABLE ${$tablename}... " />
-            <marker date="1473357950179" expanded="true" signature="18424:18486" ph="SELECT * FRO... event_details" />
-            <marker date="1473357950179" expanded="true" signature="20168:20208" ph="UPDATE event... " />
-            <marker date="1473357950179" expanded="true" signature="20892:20953" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21073:21134" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21073:21153" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21073:21154" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21287:21368" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21498:21560" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21498:21565" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21498:21568" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="21498:21589" ph="SELECT * FRO... events" />
-            <marker date="1473357950179" expanded="true" signature="22035:22096" ph="SELECT id FR... mails" />
-            <marker date="1473357950179" expanded="true" signature="22563:22599" ph="DELETE from " />
-            <marker date="1473357950179" expanded="true" signature="22667:22688" ph="DROP TABLE I... " />
-            <marker date="1473357950179" expanded="true" signature="22748:22769" ph="DROP TABLE I... " />
-            <marker date="1473357950179" expanded="true" signature="22834:22888" ph="DELETE FROM " />
-            <marker date="1473357950179" expanded="true" signature="23318:23339" ph="DROP TABLE I... " />
-            <marker date="1473357950179" expanded="true" signature="23395:23416" ph="DROP TABLE I... " />
-            <marker date="1473357950179" expanded="true" signature="23477:23531" ph="DELETE FROM " />
+            <marker date="1473594231000" expanded="true" signature="262:367" ph="CREATE TABLE... ${$name}" />
+            <marker date="1473594231000" expanded="true" signature="401:511" ph="CREATE TABLE... ${$name_mail}" />
+            <marker date="1473594231000" expanded="true" signature="836:978" ph="INSERT INTO events... " />
+            <marker date="1473594231000" expanded="true" signature="1285:1332" ph="INSERT INTO event_details... " />
+            <marker date="1473594231000" expanded="true" signature="1564:1641" ph="INSERT INTO events_link_eventdetails... " />
+            <marker date="1473594231000" expanded="true" signature="2161:2219" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="2329:2384" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="2497:2547" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="2660:2711" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="2821:2870" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="3177:3216" ph="SELECT lastn... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="4202:4320" ph="UPDATE mails... " />
+            <marker date="1473594231000" expanded="true" signature="4729:4772" ph="SELECT id, f... ${$tablename}" />
+            <marker date="1473594231000" expanded="true" signature="6337:6470" ph="SELECT subje... mails" />
+            <marker date="1473594231000" expanded="true" signature="7940:7989" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="8271:8372" ph="UPDATE mails... " />
+            <marker date="1473594231000" expanded="true" signature="8730:8800" ph="SELECT * FRO... mails" />
+            <marker date="1473594231000" expanded="true" signature="9136:9248" ph="UPDATE event... " />
+            <marker date="1473594231000" expanded="true" signature="9576:9634" ph="UPDATE event... " />
+            <marker date="1473594231000" expanded="true" signature="9869:9909" ph="SELECT * FRO... formulars" />
+            <marker date="1473594231000" expanded="true" signature="10197:10258" ph="SELECT * FRO... mails" />
+            <marker date="1473594231000" expanded="true" signature="10528:10604" ph="UPDATE event... " />
+            <marker date="1473594231000" expanded="true" signature="11999:12094" ph="SELECT form_... events" />
+            <marker date="1473594231000" expanded="true" signature="12309:12381" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="12562:12618" ph="SELECT * FRO... formulars" />
+            <marker date="1473594231000" expanded="true" signature="12961:13019" ph="UPDATE event... " />
+            <marker date="1473594231000" expanded="true" signature="13386:13448" ph="SELECT form_... events" />
+            <marker date="1473594231000" expanded="true" signature="13682:13730" ph="SELECT user_... formulars" />
+            <marker date="1473594231000" expanded="true" signature="14448:14510" ph="SELECT title... user_formular_fields" />
+            <marker date="1473594231000" expanded="true" signature="15410:15441" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594231000" expanded="true" signature="15926:15988" ph="SELECT form_... events" />
+            <marker date="1473594231000" expanded="true" signature="16222:16270" ph="SELECT user_... formulars" />
+            <marker date="1473594231000" expanded="true" signature="16985:17047" ph="SELECT title... user_formular_fields" />
+            <marker date="1473594231000" expanded="true" signature="17906:17937" ph="ALTER TABLE ${$tablename}... " />
+            <marker date="1473594231000" expanded="true" signature="18424:18486" ph="SELECT * FRO... event_details" />
+            <marker date="1473594231000" expanded="true" signature="20168:20208" ph="UPDATE event... " />
+            <marker date="1473594231000" expanded="true" signature="20892:20953" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="21073:21154" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="21287:21368" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="21498:21589" ph="SELECT * FRO... events" />
+            <marker date="1473594231000" expanded="true" signature="22035:22096" ph="SELECT id FR... mails" />
+            <marker date="1473594231000" expanded="true" signature="22563:22599" ph="DELETE from " />
+            <marker date="1473594231000" expanded="true" signature="22667:22688" ph="DROP TABLE I... " />
+            <marker date="1473594231000" expanded="true" signature="22748:22769" ph="DROP TABLE I... " />
+            <marker date="1473594231000" expanded="true" signature="22834:22888" ph="DELETE FROM " />
+            <marker date="1473594231000" expanded="true" signature="23318:23339" ph="DROP TABLE I... " />
+            <marker date="1473594231000" expanded="true" signature="23395:23416" ph="DROP TABLE I... " />
+            <marker date="1473594231000" expanded="true" signature="23477:23531" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/index.php">
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/success.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="157" />
+        <state relative-caret-position="75">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/users_list_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1470036762000" expanded="true" signature="256:295" ph="SELECT first... ${$table_name}" />
+            <marker date="1470036762000" expanded="true" signature="760:995" ph="INSERT INTO ${$table_name}... " />
+            <marker date="1470036762000" expanded="true" signature="1392:1430" ph="SELECT form_... events" />
+            <marker date="1470036762000" expanded="true" signature="1610:1658" ph="SELECT user_... formulars" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/public/js/jquery.easing.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/formular.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/designs.php">
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/activate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-          <folding />
+        <state relative-caret-position="30">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/register/success.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+          <folding>
+            <element signature="n#index#0;n#register#0;n#!!top" expanded="false" />
+            <element signature="n#success#0;n#register#0;n#!!top" expanded="false" />
+            <element signature="n#activate#0;n#register#0;n#!!top" expanded="false" />
+            <marker date="1473602539000" expanded="true" signature="2840:3059" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/cancelederror.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="71" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/mailservice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="98" column="69" selection-start-line="98" selection-start-column="69" selection-end-line="98" selection-end-column="69" />
+          <folding>
+            <marker date="1473606222000" expanded="true" signature="166:279" ph="SELECT mail_... mails" />
+            <marker date="1473606222000" expanded="true" signature="1339:1456" ph="SELECT * FRO... ${$tablename}" />
+            <marker date="1473606222000" expanded="true" signature="5657:5700" ph="UPDATE event... " />
+            <marker date="1473606222000" expanded="true" signature="5773:5818" ph="UPDATE mails... " />
+            <marker date="1473606222000" expanded="true" signature="6722:6776" ph="UPDATE ${$ta... " />
+            <marker date="1473606222000" expanded="true" signature="7000:7113" ph="SELECT mail_... mails" />
+            <marker date="1473606222000" expanded="true" signature="9950:10040" ph="SELECT mail_... mails" />
+            <marker date="1473606222000" expanded="true" signature="10425:10499" ph="SELECT id, s... ${$tablename}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/useraction_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="252" column="85" selection-start-line="252" selection-start-column="85" selection-end-line="252" selection-end-column="85" />
+          <folding>
+            <marker date="1473603895000" expanded="true" signature="266:315" ph="SELECT * FRO... ${$tablename}" />
+            <marker date="1473603895000" expanded="true" signature="1325:1401" ph="UPDATE ${$ta... " />
+            <marker date="1473603895000" expanded="true" signature="1599:1637" ph="SELECT form_... events" />
+            <marker date="1473603895000" expanded="true" signature="1909:1944" ph="SELECT * FRO... formulars" />
+            <marker date="1473603895000" expanded="true" signature="2186:2224" ph="SELECT * FRO... standard_formular_fields" />
+            <marker date="1473603895000" expanded="true" signature="2481:2559" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1473603895000" expanded="true" signature="2796:2828" ph="SELECT * FRO... events" />
+            <marker date="1473603895000" expanded="true" signature="3147:3183" ph="SELECT * FRO... ${$tablename}" />
+            <marker date="1473603895000" expanded="true" signature="3427:3465" ph="SELECT form_... events" />
+            <marker date="1473603895000" expanded="true" signature="3694:3746" ph="SELECT user_... formulars" />
+            <marker date="1473603895000" expanded="true" signature="5631:5693" ph="UPDATE ${$ta... " />
+            <marker date="1473603895000" expanded="true" signature="5631:5694" ph="UPDATE ${$ta... " />
+            <marker date="1473603895000" expanded="true" signature="5631:5700" ph="UPDATE ${$ta... " />
+            <marker date="1473603895000" expanded="true" signature="5928:5996" ph="SELECT sex, ${$tablename}" />
+            <marker date="1473603895000" expanded="true" signature="6120:6248" ph="SELECT id, u... mails" />
+            <marker date="1473603895000" expanded="true" signature="6738:6785" ph="SELECT actio... formulars" />
+            <marker date="1473603895000" expanded="true" signature="7081:7150" ph="UPDATE ${$ta... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/views/mailactions/canceled.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_frontend/controllers/useraction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="107" />
+          <folding>
+            <element signature="n#canceledsuccess#0;n#useraction#0;n#!!top" expanded="false" />
+            <element signature="n#canceledError#0;n#useraction#0;n#!!top" expanded="false" />
+            <element signature="n#mailconfirmation#0;n#useraction#0;n#!!top" expanded="false" />
+            <element signature="n#successfeedback#0;n#useraction#0;n#!!top" expanded="false" />
+            <element signature="n#success#0;n#useraction#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/users/edit_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="129" column="83" selection-start-line="129" selection-start-column="83" selection-end-line="129" selection-end-column="83" />
+          <folding>
+            <marker date="1473607254000" expanded="true" signature="6946:7015" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="281" column="113" selection-start-line="281" selection-start-column="113" selection-end-line="281" selection-end-column="113" />
+          <folding>
+            <element signature="n#sendMail#0;n#users#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/users_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="398" column="89" selection-start-line="398" selection-start-column="89" selection-end-line="398" selection-end-column="89" />
+          <folding>
+            <marker date="1473607150000" expanded="true" signature="244:298" ph="SELECT id, u... users" />
+            <marker date="1473607150000" expanded="true" signature="592:697" ph="SELECT * FRO... user_formular_fields" />
+            <marker date="1473607150000" expanded="true" signature="1027:1063" ph="SELECT * FRO... ${$tablename}" />
+            <marker date="1473607150000" expanded="true" signature="1432:1467" ph="INSERT INTO ${$tablename}... " />
+            <marker date="1473607150000" expanded="true" signature="3603:3640" ph="SELECT * FRO... mails" />
+            <marker date="1473607150000" expanded="true" signature="3946:3998" ph="INSERT INTO ${$tablename2}... " />
+            <marker date="1473607150000" expanded="true" signature="4177:4220" ph="SELECT id, f... ${$tablename}" />
+            <marker date="1473607150000" expanded="true" signature="4446:4482" ph="SELECT title... events" />
+            <marker date="1473607150000" expanded="true" signature="5960:6017" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="6540:6637" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="7200:7257" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="7350:7473" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="7560:7683" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="7767:7857" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="7918:7975" ph="SELECT id, t... events" />
+            <marker date="1473607150000" expanded="true" signature="8537:8558" ph="SELECT COUNT... ${$tablename}" />
+            <marker date="1473607150000" expanded="true" signature="8807:8845" ph="SELECT form_... events" />
+            <marker date="1473607150000" expanded="true" signature="9074:9126" ph="SELECT user_... formulars" />
+            <marker date="1473607150000" expanded="true" signature="10294:10346" ph="UPDATE ${$ta... " />
+            <marker date="1473607150000" expanded="true" signature="10606:10647" ph="SELECT * FRO... ${$tablename}" />
+            <marker date="1473607150000" expanded="true" signature="10911:10972" ph="SELECT * FRO... mails" />
+            <marker date="1473607150000" expanded="true" signature="11375:11434" ph="UPDATE ${$ta... " />
+            <marker date="1473607150000" expanded="true" signature="11623:11683" ph="UPDATE ${$ta... " />
+            <marker date="1473607150000" expanded="true" signature="11847:11907" ph="UPDATE ${$ta... " />
+            <marker date="1473607150000" expanded="true" signature="12173:13075" ph="UPDATE ${$ta... " />
+            <marker date="1473607150000" expanded="true" signature="13414:13448" ph="DELETE FROM " />
+            <marker date="1473607150000" expanded="true" signature="13521:13561" ph="DELETE FROM " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/designs_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="121" column="26" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="34" />
           <folding>
-            <marker date="1473361853748" expanded="true" signature="908:969" ph="UPDATE mails... " />
-            <marker date="1473361853748" expanded="true" signature="1457:1530" ph="SELECT * FRO... mail_templates" />
-            <marker date="1473361853748" expanded="true" signature="1661:1733" ph="INSERT INTO mail_templates... " />
-            <marker date="1473361853748" expanded="true" signature="2073:2143" ph="SELECT * FRO... mails" />
-            <marker date="1473361853748" expanded="true" signature="2421:2533" ph="UPDATE mails... " />
-            <marker date="1473361853748" expanded="true" signature="2902:2983" ph="SELECT enter... events" />
-            <marker date="1473361853748" expanded="true" signature="3252:3647" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="3252:3655" ph="SELECT * FRO... events" />
-            <marker date="1473361853748" expanded="true" signature="3736:3743" ph="SELECT * FRO... events" />
-            <marker date="1473361853748" expanded="true" signature="3736:4133" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="3736:4204" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="4288:4295" ph="SELECT * FRO... events" />
-            <marker date="1473361853748" expanded="true" signature="4288:4712" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="4836:4843" ph="SELECT * FRO... events" />
-            <marker date="1473361853748" expanded="true" signature="4836:5294" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="5414:5811" ph="SELECT mails... mails" />
-            <marker date="1473361853748" expanded="true" signature="6082:6171" ph="SELECT * FRO... mail_templates" />
-            <marker date="1473361853748" expanded="true" signature="6379:6498" ph="SELECT * FRO... mail_templates" />
-            <marker date="1473361853748" expanded="true" signature="6794:6860" ph="DELETE FROM " />
-            <marker date="1473361853748" expanded="true" signature="7209:7291" ph="INSERT INTO mails... " />
-            <marker date="1473361853748" expanded="true" signature="8313:8381" ph="UPDATE mails... " />
-            <marker date="1473361853748" expanded="true" signature="8874:8943" ph="SELECT title... events" />
-            <marker date="1473361853748" expanded="true" signature="9178:9263" ph="SELECT mail_... mails" />
-            <marker date="1473361853748" expanded="true" signature="9527:9612" ph="SELECT mail_... mails" />
+            <marker date="1473599853000" expanded="true" signature="886:947" ph="UPDATE mails... " />
+            <marker date="1473599853000" expanded="true" signature="1435:1508" ph="SELECT * FRO... mail_templates" />
+            <marker date="1473599853000" expanded="true" signature="1639:1711" ph="INSERT INTO mail_templates... " />
+            <marker date="1473599853000" expanded="true" signature="2051:2121" ph="SELECT * FRO... mails" />
+            <marker date="1473599853000" expanded="true" signature="2399:2511" ph="UPDATE mails... " />
+            <marker date="1473599853000" expanded="true" signature="2880:2961" ph="SELECT enter... events" />
+            <marker date="1473599853000" expanded="true" signature="3230:3625" ph="SELECT mails... mails" />
+            <marker date="1473599853000" expanded="true" signature="3714:4182" ph="SELECT mails... mails" />
+            <marker date="1473599853000" expanded="true" signature="4266:4690" ph="SELECT mails... mails" />
+            <marker date="1473599853000" expanded="true" signature="4814:5272" ph="SELECT mails... mails" />
+            <marker date="1473599853000" expanded="true" signature="5392:5789" ph="SELECT mails... mails" />
+            <marker date="1473599853000" expanded="true" signature="6060:6149" ph="SELECT * FRO... mail_templates" />
+            <marker date="1473599853000" expanded="true" signature="6357:6476" ph="SELECT * FRO... mail_templates" />
+            <marker date="1473599853000" expanded="true" signature="6772:6838" ph="DELETE FROM " />
+            <marker date="1473599853000" expanded="true" signature="7187:7269" ph="INSERT INTO mails... " />
+            <marker date="1473599853000" expanded="true" signature="8280:8348" ph="UPDATE mails... " />
+            <marker date="1473599853000" expanded="true" signature="8815:8884" ph="SELECT title... events" />
+            <marker date="1473599853000" expanded="true" signature="9119:9204" ph="SELECT mail_... mails" />
+            <marker date="1473599853000" expanded="true" signature="9468:9553" ph="SELECT mail_... mails" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/designs/index.php">
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/designs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="48" column="157" selection-start-line="48" selection-start-column="157" selection-end-line="48" selection-end-column="157" />
+        <state relative-caret-position="120">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="n#newDesign#0;n#designs#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/users/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="90" column="55" selection-start-line="90" selection-start-column="53" selection-end-line="90" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/myevents/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="228" column="16" selection-start-line="228" selection-start-column="16" selection-end-line="230" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/upcomming.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/controllers/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/left_statistic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="74" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/statistic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/dashboard_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <marker date="1473619221000" expanded="true" signature="156:192" ph="SELECT * FRO... events" />
+            <marker date="1473619221000" expanded="true" signature="156:193" ph="SELECT * FRO... events" />
+            <marker date="1473619221000" expanded="true" signature="156:220" ph="SELECT * FRO... events" />
+            <marker date="1473619221000" expanded="true" signature="156:221" ph="SELECT * FRO... events" />
+            <marker date="1473619221000" expanded="true" signature="488:1434" ph="SELECT SUM(C... ${$tablename}" />
+            <marker date="1473619221000" expanded="true" signature="488:1444" ph="SELECT SUM(C... tbl_recipes" />
+            <marker date="1473619221000" expanded="true" signature="1663:1945" ph="SELECT SUM(C... " />
+            <marker date="1473619221000" expanded="true" signature="2351:2435" ph="SELECT * FRO... ${$tablename}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/public/css/loggedin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="641" column="0" selection-start-line="641" selection-start-column="0" selection-end-line="641" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/app_backend/public/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="242">
+          <caret line="1389" column="39" selection-start-line="1389" selection-start-column="39" selection-end-line="1389" selection-end-column="39" />
           <folding>
-            <element signature="n#!!block;n#check_countusers#0" expanded="false" />
-            <element signature="n#!!block;n#checkuseremails#0" expanded="false" />
-            <element signature="n#!!block;n#checkduplicates#0" expanded="false" />
-            <element signature="n#!!block;n#checksettings#0" expanded="false" />
+            <marker date="1473629201000" expanded="true" signature="87978:93426" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/app_backend/views/dashboard/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#div#3;n#div#1;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <marker date="1473629431000" expanded="true" signature="3107:3410" ph="..." />
+            <marker date="1473629431000" expanded="true" signature="3322:3387" ph="..." />
+            <marker date="1473629431000" expanded="true" signature="3526:4239" ph="..." />
+            <marker date="1473629431000" expanded="true" signature="3566:3739" ph="..." />
+            <marker date="1473629431000" expanded="true" signature="5434:6379" ph="..." />
           </folding>
         </state>
       </provider>

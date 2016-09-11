@@ -128,16 +128,16 @@
                 <?php
 
                if(!isset($data['reset_options']) || empty($data['reset_options'])){
-                   ?>
+                    ?>
+
                    <div class="alert alert-info">
                        <strong>Info!</strong> This user has got no mails from you!
                    </div>
                    <?php
                }else{
 
-                // Wenn 0 dann nur ein div mit info anzeigen
                 foreach ($data['reset_options'] as $option){
-                    if($option['invitation_sent'] == 1){
+                    if($option['invitation_sent'] != 0){
                         ?>
                         <div>
                         <button class="btn-block btn btn-sm spec_event static_delete" id="invitation">invitation statics <i class='fa fa-spinner fa-spin'></i></button>
@@ -170,7 +170,7 @@
                         <button class="btn-block btn btn-sm spec_event static_delete" id="ty">thank you statics <i class='fa fa-spinner fa-spin'></i></button>
                         </div>
                             <?php
-                    }elseif ($option['ty_sent'] == '0' && $option['info_sent'] == 0 && $option['reminder_sent'] == 0 && $option['std_sent'] == 0 && $option['invitation_sent'] == 0){
+                    }elseif ($option['ty_sent'] == 0 && $option['info_sent'] == 0 && $option['reminder_sent'] == 0 && $option['std_sent'] == 0 && $option['invitation_sent'] == 0){
                     ?>
                         <div class="alert alert-warning">
                             <strong>Warning!</strong> This user didn't get any email from you yet!

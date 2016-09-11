@@ -9,13 +9,13 @@ class useraction extends controller
         parent::__construct();
     }
 
-    public function canceled($hash){
+    public function canceledsuccess($hash){
         $url = (isset($_GET['url'])) ? $_GET['url'] : null;
         $url = explode("/", $url);
         $event_id = $url[2];
 
         if(isset($hash) && !empty($hash)){
-            $this -> view -> render("mailaction/canceled");
+            $this -> view -> render("mailactions/canceled");
         }
     }
 
@@ -25,7 +25,7 @@ class useraction extends controller
         $event_id = $url[2];
 
         if(isset($hash) && !empty($hash)){
-            $this -> view -> render("mailaction/cancelederror");
+            $this -> view -> render("mailactions/cancelederror");
         }
     }
 
@@ -295,7 +295,7 @@ class useraction extends controller
                                 }
 
 
-                                $form->addInput("submit", "saveparticipation", null, array('value' => 'Send', 'class' => 'spec_dashboard'));
+                                $form->addInput("submit", "saveparticipation", null, array('value' => 'Participate', 'class' => 'spec_dashboard'));
 
                                 $this->view->data['form'] = $form->getForm();
                             }
@@ -318,14 +318,16 @@ class useraction extends controller
                 // Forbidden!!!
             }
 
-        }elseif(isset($url[1]) && $url[1] == "canceled" && isset($url[2]) && isset($url[3]) && isset($url[4]) && isset($url[5])){
+        }elseif(isset($url[1]) && $url[1] == "canceled" && isset($url[2]) && isset($url[3])){
             $hash = $url[2];
-            $event_id = $url[4];
+            $event_id = $url[3];
 
             if($this-> model -> cancelUser($hash, $event_id)){
-                $location = APP_ROOT . 'useraction/canceled/'.$hash.'/'.$event_id;
+                $location = APP_ROOT . 'useraction/canceledsuccess/'.$hash.'/'.$event_id;
+                header("Location: $location");
             }else{
                 $location = APP_ROOT . 'useraction/canceledError/'.$hash.'/'.$event_id;
+                header("Location: $location");
             }
 
         }

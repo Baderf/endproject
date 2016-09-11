@@ -18,14 +18,14 @@ class register extends guest_controller{
         $options = array( 'Österreich', 'Deutschland', 'Schweiz' );
 
         $form
-            -> addInput("text", "vname", "Vorname", array('placeholder' => "Guillermo"))
-            -> addInput("text", "nname", "Nachname", array('placeholder' => "Neugebauer"))
+            -> addInput("text", "vname", "Firstname", array('placeholder' => "Guillermo"))
+            -> addInput("text", "nname", "Lastname", array('placeholder' => "Neugebauer"))
             -> addInput("text", "uname", "Username", array('placeholder' => 'Benutzername'))
-            -> addInput("email", "email", "E-Mailadresse", array('placeholder' => 'test@test.at'))
-            -> addInput("password", "pw", "Passwort")
-            -> addInput("password", "pwwh", "Passwort Wiederholung")
-            -> addSelect("country", "Land", $options, 0)
-            -> addInput("submit", "setregister", null, array('value' => 'Jetzt registrieren'))
+            -> addInput("email", "email", "E-Mail", array('placeholder' => 'test@test.at'))
+            -> addInput("password", "pw", "Password")
+            -> addInput("password", "pwwh", "Password repeat")
+            -> addSelect("country", "Country", $options, 0)
+            -> addInput("submit", "setregister", null, array('value' => 'Register now!'))
         ;
 
         $this -> view -> data['form'] = $form -> getForm();
@@ -42,9 +42,9 @@ class register extends guest_controller{
 
         if( $hash !== null){
             if( $this -> model -> setActivate($hash) === false ){
-                $this -> view -> data['text'] = "Sie wurden bereits aktiviert.";
+                $this -> view -> data['text'] = "You are already acitvated.";
             }else{
-                $this -> view -> data['text'] = "Sie wurden erfolgreich aktiviert. Sie können sich nun einloggen";
+                $this -> view -> data['text'] = "The activation was successful. You can now login to your account!";
             }
 
             $this -> view -> render('register/activate', $this -> view -> data);
@@ -56,14 +56,14 @@ class register extends guest_controller{
         if( $_POST['form-token'] == sessions::get('form-token') ){
 
             $validation = new validation();
-            $validation -> val($_POST['f-vname'], "Vorname", true, "text", 2, 20);
-            $validation -> val($_POST['f-nname'], "Nachname", true, "text", 2, 20);
+            $validation -> val($_POST['f-vname'], "Firstname", true, "text", 2, 20);
+            $validation -> val($_POST['f-nname'], "Lastname", true, "text", 2, 20);
             $validation -> val($_POST['f-uname'], "Username", true, "textnumber", 5, 15);
-            $validation -> val($_POST['f-email'], "E-Mailadresse", true, "email");
-            $validation -> val($_POST['f-pw'], "Passwort", true, "password", 6);
+            $validation -> val($_POST['f-email'], "E-Mail", true, "email");
+            $validation -> val($_POST['f-pw'], "Password", true, "password", 6);
             $validation -> check(
                 array('name' => 'Passwort', 'value' => $_POST['f-pw']),
-                array('name' => 'Passwort Wiederholung', 'value' => $_POST['f-pwwh'])
+                array('name' => 'Passwort repeat', 'value' => $_POST['f-pwwh'])
             );
 
             $errors = $validation -> getErrors();
@@ -74,22 +74,33 @@ class register extends guest_controller{
                 // In die DB eintragen
                 $hash = $this -> model -> setRegister($_POST);
 
-                $link = APP_ROOT . "register/activate/" . $hash;
+                $link = "www.baderflorian.at/register/activate/" . $hash;
                 $message = "<p>
-                Danke für die Registrierung. Um diese abzuschließen klicke auf den folgenden Link
+                Thank you for registration to mailpig. Please click at the following link to activate your account!
                 <br><br>
-                <a href=\"$link\">Bitte klicken Sie hier.</a>
+                <a href=\"$link\">Please click here.</a>
                 </p>"; // optimal: E-Mail-Template-View reinladen
 
                 // Mail versenden
+
                 $mail = new PHPMailer();
-                $mail -> CharSet = 'utf-8';
-                $mail -> IsHTML(true);
-                $mail -> AddAddress($_POST['f-email']);
-                $mail -> SetFrom("guillermo@smartlabs.at");
-                $mail -> Subject = "Ihre Registrierung bei MVC";
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = 'florian.bader.merken@gmail.com';                 // SMTP username
+                $mail->Password = 'Schnappi33!';                           // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 587;
+                //$mail->SMTPDebug = 2;
+                $mail->isHTML(true);
                 $mail -> Body = $message;
-                $mail -> Send();
+                $mail->setFrom('florian.bader.merken@gmail.com', "Mailpig");
+
+                $mail->Subject = "Your registration at mailpig";
+                $mail -> AddAddress($_POST['f-email']);
+
+
+                $mail -> send();
 
                 // Weiterleitung auf Register - Success
                 header('Location: register/success');

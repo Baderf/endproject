@@ -196,13 +196,17 @@ class users_model extends model{
         $e = 0;
 
         foreach( $user_data as $key => $val ){
-            if(++$e === $numuserItems && empty($user_fields)){
+            ++$e;
+
+            if(($e === $numuserItems) && empty($user_fields)){
                 $this -> where .= "$key = \"$val\"";
-            }elseif(++$e === $numuserItems && !empty($user_fields)){
+            }elseif($e === $numuserItems && !empty($user_fields)){
                 $this -> where .= "$key = \"$val\",";
             }else{
                 $this -> where .= "$key = \"$val\",";
             }
+
+
 
         }
 
@@ -224,7 +228,6 @@ class users_model extends model{
 
         $this -> where .= " WHERE id = $user_id";
 
-        echo $this -> where;
 
         if($sql = $this -> db -> query($this -> where)){
            return true;

@@ -200,7 +200,7 @@ class useraction_model extends model{
     public function userParticipate($event_id, $hash){
         $tablename = "users_event_".$event_id;
 
-        $sql = $this -> db -> query("UPDATE $tablename SET accepted = 1, canceled = 0 WHERE hash = $hash");
+        $sql = $this -> db -> query("UPDATE $tablename SET accepted = 1, canceled = 0 WHERE hash = '$hash'");
 
         if($sql){
             return true;

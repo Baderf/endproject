@@ -134,7 +134,8 @@ function checkuseremails(baseURL,event_id){
         method: "POST",
         url: baseURL + 'backend/myevents/checkuseremails',
         data: {
-            event_id: event_id
+            event_id: event_id,
+            mail_type: mail_type
         },
 
         success: function (data) {
@@ -258,7 +259,8 @@ function checkduplicates(baseURL,event_id){
         method: "POST",
         url: baseURL + 'backend/myevents/checkforduplicates',
         data: {
-            event_id: event_id
+            event_id: event_id,
+            mail_type: mail_type
         },
 
         success: function (data) {
@@ -1377,6 +1379,12 @@ $(function () {
             einsert = button.data("insert");
             eitem = button.data("item");
             baseURL = $('body').data('baseurl');
+
+            $(".list_filter").each(function(){
+                $(this).removeClass("active");
+            });
+
+            button.addClass("active");
 
             ajax_filter(eaction, etarget, einsert, baseURL, eitem, button);
 

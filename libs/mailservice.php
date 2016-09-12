@@ -23,25 +23,25 @@ class mailservice extends model{
 
         switch ($mail_settings['mail_type']) {
             case "invitation":
-                $sql_type = "invitation_sent";
+                $query = ("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0");
                 break;
             case 'reminder':
-                $sql_type = "reminder_sent";
+                $query = ("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 1 AND $tablename2.accepted = 0 AND $tablename2.canceled = 0");
                 break;
             case "savethedate":
-                $sql_type = "std_sent";
+                $query = ("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0 AND $tablename.std_sent = 0 AND $tablename.reminder_sent = 0 AND $tablename.info_sent = 0 AND $tablename.ty_sent = 0");
                 break;
             case "info":
-                $sql_type = "info_sent";
+                $query = ("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
                 break;
             case "thankyou":
-                $sql_type = "ty_sent";
+                $query = ("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
                 break;
         }
 
         // SELECT id, hash, firstname, lastname, sex, email
 
-        $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.$sql_type != 1");
+        $sql = $this -> db -> query($query);
 
         if($sql){
             $users = $sql->fetch_all(MYSQLI_ASSOC);

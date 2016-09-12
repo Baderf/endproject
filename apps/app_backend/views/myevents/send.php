@@ -49,6 +49,25 @@
         <div class="col-lg-12 col-md-12 col-sm-12 create_event my_container clearfix">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="check_system">
                 <h4>Checking your settings!</h4>
+                <?php
+                $type = $data['mail_infos']['mail_type'];
+
+                if($type == "savethedate"){
+                    $type = "Save the Date";
+                    $text = "This is a <strong>$type</strong>-mail. The recipients are all persons who haven't got any mail from you from this event!";
+                }elseif($type == "invitation"){
+                    $text = "This is a <strong>$type</strong>-mail. The recipients are all persons who haven't got an invitation from this event.";
+                }elseif($type == "reminder"){
+                    $text = "This is a <strong>$type</strong>-mail. The recipients are all persons who made no reaction to any further mails.";
+                }elseif($type == "information"){
+                    $text = "This is a <strong>$type</strong>-mail. The recipients are all persons who accepted the invitation and have the status 'participate'.";
+                }elseif($type == "thankyou"){
+                    $type = "Thank you";
+                    $text = "This is a <strong>$type</strong>-mail. The recipients are all persons who accepted the invitation and have the status 'participate'.";
+                }
+
+                ;?>
+                <p><?php echo $text;?></p>
                 <hr>
 
                 <form action="" role="form" method="post">

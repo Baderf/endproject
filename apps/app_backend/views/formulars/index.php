@@ -17,6 +17,19 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_formular">
         <h3>My Formulars</h3>
         <span class="page_quader"></span>
+        <form action="" method="post">
+            <div class="search_field">
+                <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 form-group has-feedback has-feedback-left">
+                    <label class="control-label invisible" for="search">Search:</label>
+                    <input class="form-control" name="search" type="text" id="search" placeholder="The formular title..">
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                </div>
+                <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 form-group has-feedback has-feedback-left">
+                    <input type="submit" name="search_event" class="btn btn-block spec_dashboard" id="search_submit" value="go">
+                </div>
+            </div>
+
+        </form>
     </div>
 
 
@@ -25,19 +38,19 @@
 
             <ul class="list">
                 <li>
-                    <a href="#">All formulars</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/formulars/all'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "all"){echo "active";}?>">All formulars</a>
                 </li>
 
                 <li>
-                    <a href="#about">In progress</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/formulars/userfields'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "userfields"){echo "active";}?>">With specified fields</a>
                 </li>
 
                 <li>
-                    <a href="#services">Completed</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/formulars/nouserfields'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "nouserfields"){echo "active";}?>">Without specified fields</a>
                 </li>
 
                 <li>
-                    <a href="#contact">Latest created</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/formulars/latest'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "latest"){echo "active";}?>">Latest created</a>
                 </li>
             </ul>
         </div>
@@ -70,14 +83,10 @@
                                         echo $formular['updated_at'];
                                         ?></td>
                                     <td>
-                                        <a href="formulars/delete/<?php
-                                        echo $formular['id'];
-                                        ?>" class="btn btn-sm btn-warning">
+                                        <a href="<?php echo APP_ROOT . $url[0] . '/formulars/delete/' . $formular['id'];?>" class="btn btn-sm btn-warning">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
-                                        <a href="formulars/edit/<?php
-                                        echo $formular['id'];
-                                        ?>" class="btn btn-sm btn-info">
+                                        <a href="<?php echo APP_ROOT . $url[0] . '/formulars/edit/' . $formular['id'];?>" class="btn btn-sm btn-info">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
                                     </td>
@@ -88,7 +97,7 @@
                         }else{
                             ?>
                             <tr>
-                                <td colspan="4">You don't have any formulars - <a href="formulars/newFormular">Create new formular!</a></td>
+                                <td colspan="4">You don't have any formulars - <a href="<?php echo APP_ROOT . $url[0] . '/formulars/newFormular'?>">Create new formular!</a></td>
                             </tr>
                     <?php
 

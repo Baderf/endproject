@@ -57,8 +57,14 @@ class users extends user_controller{
             }
 
         }else{
-            if(!isset($filter)){
+
+            $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+            $url = explode("/", $url);
+
+            if(!isset($url[2])){
                 $filter = "all";
+            }else{
+                $filter = $url[2];
             }
 
             if(isset($filter)){
@@ -81,8 +87,7 @@ class users extends user_controller{
             $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
             $url = explode("/", $url);
 
-
-            if(isset($url[4])){
+            if(isset($url[4]) && ($url[4] == "edit_user" || $url[4] == "new_user" || $url[4] == "delete_user")){
 
                 if($url[4] == "edit_user"){
 
@@ -465,11 +470,42 @@ class users extends user_controller{
 
                 }
             }else{
-                $this -> view -> data['event_name'] = $this -> model -> getEventName($event_id);
-                $this -> view -> data["users"] = $this -> model -> getAllUsers($event_id);
-                $this -> view -> data["event_id"] = $event_id;
 
-                $this -> view -> render("users/edit", $this -> view -> data);
+                if(isset($_POST['search_event'])){
+                    $this -> view -> data['link_active'] = "all";
+                    $search_text = $_POST['search'];
+
+                    if($this -> view-> data['users'] = $this -> model -> getSearchedUsers($search_text, $event_id)){
+                        $this -> view -> data['event_name'] = $this -> model -> getEventName($event_id);
+                        $this -> view -> data["event_id"] = $event_id;
+                        $this -> view -> render("users/edit", $this -> view -> data);
+                    }else{
+                        $this -> view -> data['link_active'] = "all";
+                        $this -> view->data['users'] = "false";
+                        $this -> view -> render("users/edit", $this -> view -> data);
+                        return true;
+                    }
+
+                }else{
+                    if(!isset($url[4])){
+                        $filter = "all";
+                    }else{
+                        $filter = $url[4];
+                    }
+
+                    if(isset($filter)){
+                        $this -> view -> data['link_active'] = $filter;
+                        $this -> view -> data['users'] = $this -> model -> getUsersWithFilter($filter, $event_id);
+                    }else{
+                        $this -> view -> data['link_active'] = $filter;
+                        $this -> view -> data['events'] = $this -> model -> getAllUsers($event_id);
+                    }
+
+                    $this -> view -> data['event_name'] = $this -> model -> getEventName($event_id);
+                    $this -> view -> data["event_id"] = $event_id;
+                    $this -> view -> render("users/edit", $this -> view -> data);
+                }
+
             }
 
 

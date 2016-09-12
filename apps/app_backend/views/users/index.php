@@ -32,6 +32,11 @@
         </form>
     </div>
 
+    <?php
+    $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+    $url = explode("/", $url);
+    ?>
+
 
 
     <!-- /.content-section-a -->
@@ -76,8 +81,7 @@
                     <?php
                         if(isset($data['events']) && !empty($data['events']) && $data['events'] != "false"){
 
-                            foreach ($data['events'] as $event){
-                                ?>
+                            foreach ($data['events'] as $event){?>
                             <tr>
                                 <td><?php echo $event['title'];?></td>
                                 <td><?php echo $event['created_at'];?></td>

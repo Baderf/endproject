@@ -8,18 +8,48 @@ class designs extends user_controller{
     }
 
     public function index(){
-        if(!isset($_POST['action']) || empty($_POST['action'])){
-            $action = "all";
+
+        $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+        $url = explode("/", $url);
+
+        if(isset($_POST['search_event'])){
+            $this -> view -> data['link_active'] = "all";
+            $search_text = $_POST['search'];
+
+            if($this -> view-> data['mails'] = $this -> model -> getSearchedDesigns($search_text, sessions::get("userid"))){
+                $this -> view -> data['username'] = sessions::get('uname');
+                $this -> view -> render("designs/index", $this -> view -> data);
+            }else{
+                $this -> view -> data['link_active'] = "all";
+                $this -> view->data['mails'] = "none";
+                $this -> view -> render("designs/index", $this -> view -> data);
+            }
+
         }else{
-            $action = $_POST['action'];
+            if(!isset($url[2])){
+                $filter = "all";
+            }else{
+                $filter = $url[2];
+            }
+
+            if(isset($filter)){
+                echo "Hallo";
+                $this -> view -> data['link_active'] = $filter;
+                if(!$this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"), $filter)){
+                    $this -> view -> data['mails'] = "none";
+                }
+            }else{
+                $this -> view -> data['link_active'] = $filter;
+                if(!$this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"), $action = "all")){
+                    $this -> view -> data['mails'] = "none";
+                }
+            }
+
+            $this -> view -> data['username'] = sessions::get('uname');
+            $this -> view -> render("designs/index", $this -> view -> data);
         }
 
-        $this -> view -> data['action'] = $action;
 
-
-        $this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"), $action);
-
-        $this -> view -> render("designs/index", $this -> view -> data);
     }
 
     public function saveMail(){

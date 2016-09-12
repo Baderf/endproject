@@ -34,6 +34,40 @@ class formulars_model extends model{
 
     }
 
+    public function getSearchedFormulars($search_text, $user_id){
+        $sql = $this -> db -> query("SELECT * FROM formulars WHERE user_id = $user_id AND title LIKE '%$search_text%'");
+
+        if($sql -> num_rows > 0){
+            $formulars = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $formulars;
+        }
+
+        return false;
+    }
+
+    public function getFormularsWithFilter($filter, $user_id){
+        $tablename = "formulars";
+
+        if($filter == "all"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id");
+        }elseif($filter == "userfields"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id AND user_field_ids != ''");
+
+        }elseif($filter == "nouserfields"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id AND user_field_ids = ''");
+
+        }elseif($filter == "latest"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE user_id = $user_id ORDER BY id DESC");
+        }
+
+        if($sql -> num_rows > 0){
+            $formulars = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $formulars;
+        }else{
+            return false;
+        }
+    }
+
     public function createNewFormular($title, $user_id){
 
         $created_at = date("d/m/Y h:s a");

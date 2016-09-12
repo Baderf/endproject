@@ -17,6 +17,19 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_design">
         <h3>My Designs</h3>
         <span class="page_quader"></span>
+        <form action="" method="post">
+            <div class="search_field">
+                <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 form-group has-feedback has-feedback-left">
+                    <label class="control-label invisible" for="search">Search:</label>
+                    <input class="form-control" name="search" type="text" id="search" placeholder="The formular title..">
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                </div>
+                <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 form-group has-feedback has-feedback-left">
+                    <input type="submit" name="search_event" class="btn btn-block spec_dashboard" id="search_submit" value="go">
+                </div>
+            </div>
+
+        </form>
     </div>
 
 
@@ -29,19 +42,19 @@
 
             <ul class="list">
                 <li>
-                    <a href="#" class="list_filter" data-type="designs/index" data-item="item" data-insert="table_mails_body" data-action="all">All mails</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/designs/all'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "all"){echo "active";}?>">All mails</a>
                 </li>
 
                 <li>
-                    <a href="#about" class="list_filter" data-type="designs/index" data-item="item" data-insert="table_mails_body" data-action="progress">In progress</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/designs/progress'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "progress"){echo "active";}?>">In progress</a>
                 </li>
 
                 <li>
-                    <a href="#services" class="list_filter" data-type="designs/index" data-item="item" data-insert="table_mails_body" data-action="alreadysent">Already sent</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/designs/alreadysent'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "alreadysent"){echo "active";}?>">Already sent</a>
                 </li>
 
                 <li>
-                    <a href="#contact" class="list_filter" data-type="designs/index" data-item="item" data-insert="table_mails_body" data-action="latest">Latest updated</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/designs/latest'?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "latest"){echo "active";}?>">Latest updated</a>
                 </li>
             </ul>
         </div>
@@ -50,7 +63,7 @@
 
             <?php
 
-            if(isset($data['mails']) && !empty($data['mails'])) {
+            if(isset($data['mails']) && !empty($data['mails']) && $data['mails'] != "none") {
 
                 ?>
 

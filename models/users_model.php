@@ -490,4 +490,40 @@ class users_model extends model{
             return false;
         }
     }
+
+    public function getSearchedUsers($search_text, $event_id){
+        $tablename = "users_event_".$event_id;
+
+        $sql = $this -> db -> query("SELECT * FROM $tablename WHERE lastname LIKE '%$search_text%'");
+
+        if($sql -> num_rows > 0){
+            $users = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $users;
+        }else{
+            return false;
+        }
+    }
+
+    public function getUsersWithFilter($filter, $event_id){
+        $tablename = "users_event_".$event_id;
+
+        if($filter == "all"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename");
+        }elseif($filter == "accepted"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE accepted = 1 AND canceled = 0");
+
+        }elseif($filter == "cancelled"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE accepted = 0 AND canceled = 1");
+
+        }elseif($filter == "noaction"){
+            $sql = $this -> db -> query("SELECT * FROM $tablename WHERE accepted = 0 AND canceled = 0");
+        }
+
+        if($sql -> num_rows > 0){
+            $users = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $users;
+        }else{
+            return false;
+        }
+    }
 }

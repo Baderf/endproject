@@ -54,26 +54,28 @@ class myevents_model extends model{
 
     public function countUser($event_id, $mail_type){
         $tablename = "users_mails_" . $event_id;
+        $tablename2 = "users_event_".$event_id;
         $sql = false;
 
 
-           switch ($mail_type) {
-               case "invitation":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE invitation_sent != 1");
-                   break;
-               case "reminder":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE reminder_sent = 0");
-                   break;
-               case "savethedate":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE std_sent = 0");
-                   break;
-               case "information":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE info_sent = 0");
-                   break;
-               case "thankyou":
-                   $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename WHERE ty_sent = 0");
-                   break;
-           }
+        switch ($mail_type) {
+            case "invitation":
+                $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0");
+                break;
+            case 'reminder':
+                $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 1 AND $tablename2.accepted = 0 AND $tablename2.canceled = 0");
+                break;
+            case "savethedate":
+                $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0 AND $tablename.std_sent = 0 AND $tablename.reminder_sent = 0 AND $tablename.info_sent = 0 AND $tablename.ty_sent = 0");
+                break;
+            case "information":
+                $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+            case "thankyou":
+                $sql = $this -> db -> query("SELECT COUNT(*) FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+        }
+
 
         if($sql){
             $count = $sql ->fetch_row();
@@ -84,10 +86,27 @@ class myevents_model extends model{
         return false;
     }
 
-    public function checkUserEmails($event_id){
-        $tablename = "users_event_".$event_id;
+    public function checkUserEmails($event_id, $mail_type){
+        $tablename = "users_mails_".$event_id;
+        $tablename2 = "users_event_".$event_id;
 
-        $sql = $this -> db -> query("SELECT lastname, firstname, email FROM $tablename");
+        switch ($mail_type) {
+            case "invitation":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0");
+                break;
+            case 'reminder':
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 1 AND $tablename2.accepted = 0 AND $tablename2.canceled = 0");
+                break;
+            case "savethedate":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0 AND $tablename.std_sent = 0 AND $tablename.reminder_sent = 0 AND $tablename.info_sent = 0 AND $tablename.ty_sent = 0");
+                break;
+            case "information":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+            case "thankyou":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+        }
 
         if($sql){
             $users = $sql -> fetch_all(MYSQLI_ASSOC);
@@ -136,11 +155,30 @@ class myevents_model extends model{
         }
     }
 
-    public function checkForDuplicates($event_id){
+    public function checkForDuplicates($event_id, $mail_type){
 
-        $tablename = "users_event_".$event_id;
+        $tablename = "users_mails_".$event_id;
+        $tablename2 = "users_event_".$event_id;
 
-        $sql = $this -> db -> query("SELECT id, firstname, lastname, email FROM $tablename");
+        switch ($mail_type) {
+            case "invitation":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0");
+                break;
+            case 'reminder':
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 1 AND $tablename2.accepted = 0 AND $tablename2.canceled = 0");
+                break;
+            case "savethedate":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.invitation_sent = 0 AND $tablename.std_sent = 0 AND $tablename.reminder_sent = 0 AND $tablename.info_sent = 0 AND $tablename.ty_sent = 0");
+                break;
+            case "information":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+            case "thankyou":
+                $sql = $this -> db -> query("SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0");
+                break;
+        }
+
+        //echo "SELECT * FROM $tablename LEFT JOIN $tablename2 ON $tablename2.id = $tablename.user_id WHERE $tablename.info_sent = 0 AND $tablename2.accepted = 1 AND $tablename2.canceled = 0";
 
         if($sql){
             $users = $sql -> fetch_all(MYSQLI_ASSOC);

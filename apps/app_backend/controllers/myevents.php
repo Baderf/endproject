@@ -276,8 +276,9 @@ class myevents extends user_controller{
         header('Content-type: application/json');
 
         $event_id = $_POST['event_id'];
+        $mail_type = $_POST['mail_type'];
 
-        if($check = $this -> model -> checkUserEmails($event_id)){
+        if($check = $this -> model -> checkUserEmails($event_id, $mail_type)){
 
             echo json_encode($check);
         }
@@ -300,8 +301,9 @@ class myevents extends user_controller{
 
     public function checkforduplicates(){
         $event_id = $_POST['event_id'];
+        $mail_type = $_POST['mail_type'];
 
-        $check = $this -> model -> checkForDuplicates($event_id);
+        $check = $this -> model -> checkForDuplicates($event_id, $mail_type);
 
         if($check === TRUE){
             echo "true";

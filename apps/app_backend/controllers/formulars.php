@@ -12,14 +12,49 @@ class formulars extends user_controller{
 
     public function index(){
 
+        $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+        $url = explode("/", $url);
 
-        if(!$this -> view -> data['formulars'] = $this -> model -> getAllFormulars(sessions::get("userid"))){
-            $this -> view -> data['formulars'] = "none";
+
+        if(isset($_POST['search_event'])){
+            $this -> view -> data['link_active'] = "all";
+            $search_text = $_POST['search'];
+
+            if($this -> view-> data['formulars'] = $this -> model -> getSearchedFormulars($search_text, sessions::get("userid"))){
+                $this -> view -> data['username'] = sessions::get('uname');
+                $this -> view -> render("formulars/index", $this -> view -> data);
+            }else{
+                $this -> view -> data['link_active'] = "all";
+                $this -> view->data['formulars'] = "none";
+                $this -> view -> render("formulars/index", $this -> view -> data);
+            }
+
+        }else{
+            if(!isset($url[2])){
+                $filter = "all";
+            }else{
+                $filter = $url[2];
+            }
+
+            if(isset($filter)){
+                $this -> view -> data['link_active'] = $filter;
+                if(!$this -> view -> data['formulars'] = $this -> model -> getFormularsWithFilter($filter, sessions::get("userid"))){
+                    $this -> view -> data['formulars'] = "none";
+                }
+            }else{
+                $this -> view -> data['link_active'] = $filter;
+                if(!$this -> view -> data['formulars'] = $this -> model -> getAllFormulars(sessions::get("userid"))){
+                    $this -> view -> data['formulars'] = "none";
+                }
+            }
+
+            $this -> view -> data['username'] = sessions::get('uname');
+            $this -> view -> render("formulars/index", $this -> view -> data);
         }
 
-        $this -> view -> data['username'] = sessions::get('uname');
 
-        $this -> view -> render("formulars/index", $this -> view -> data);
+
+
     }
 
     public function preview($form_id){

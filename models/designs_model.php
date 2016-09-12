@@ -132,18 +132,14 @@ class designs_model extends model{
 
         $sql = $this -> db -> query($query);
 
-
-       $sql = $this -> db -> query("SELECT 
-                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
-                                    FROM mails 
-                                    LEFT JOIN events
-                                    ON mails.event_id = events.id
-                                    WHERE mails.user_id = $user_id");
         if($sql -> num_rows > 0){
             $mails = $sql ->fetch_all(MYSQLI_ASSOC);
+            return $mails;
+        }else{
+            return false;
         }
 
-        return $mails;
+
 
     }
 
@@ -254,5 +250,22 @@ class designs_model extends model{
 
         return $types;
     }
+
+    public function getSearchedDesigns($search_text, $user_id){
+        $sql = $this -> db -> query("SELECT 
+                                    mails.id, mails.already_sent, mails.event_id, mails.title, mails.mail_type, events.title as event_title, events.id as event_id 
+                                    FROM mails 
+                                    LEFT JOIN events
+                                    ON mails.event_id = events.id
+                                    WHERE mails.user_id = $user_id AND mails.title LIKE '%$search_text%'");
+
+        if($sql -> num_rows > 0){
+            $mails = $sql -> fetch_all(MYSQLI_ASSOC);
+            return $mails;
+        }
+
+        return false;
+    }
+
 
 }

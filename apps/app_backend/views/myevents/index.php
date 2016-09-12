@@ -29,7 +29,7 @@
 
             <ul class="list">
                 <li>
-                    <a href="#" class="list_filter" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="all">All events</a>
+                    <a href="#" class="list_filter active" data-type="myevents/index" data-item="my_events_event" data-insert="my_events_list" data-action="all">All events</a>
                 </li>
 
                 <li>

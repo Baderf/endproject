@@ -4,6 +4,10 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <?php
             $url_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
+
+                $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+                $url = explode("/", $url);
+
             ?>
             <a href="<?php
             echo $url_back;
@@ -22,6 +26,19 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_users">
         <h3><?php echo "Users of ". $data['event_name']['title'];?></h3>
         <span class="page_quader"></span>
+        <form action="" method="post">
+            <div class="search_field">
+                <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 form-group has-feedback has-feedback-left">
+                    <label class="control-label invisible" for="search">Search:</label>
+                    <input class="form-control" name="search" type="text" id="search" placeholder="The user name..">
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                </div>
+                <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 form-group has-feedback has-feedback-left">
+                    <input type="submit" name="search_event" class="btn btn-block spec_event" id="search_submit" value="go">
+                </div>
+            </div>
+
+        </form>
     </div>
 
 
@@ -34,19 +51,19 @@
 
             <ul class="list">
                 <li>
-                    <a href="#">All user</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/edit/' . $event_id . '/all'; ?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "all"){echo "active";}?>">All user</a>
                 </li>
 
                 <li>
-                    <a href="#about">Commited</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/edit/' . $event_id . '/accepted'; ?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "accepted"){echo "active";}?>">Accepted</a>
                 </li>
 
                 <li>
-                    <a href="#services">Cancelled</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/edit/' . $event_id . '/cancelled'; ?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "cancelled"){echo "active";}?>">Cancelled</a>
                 </li>
 
                 <li>
-                    <a href="#contact">No feedback</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users/edit/' . $event_id . '/noaction'; ?>" class="<?php if(isset($data['link_active']) && $data['link_active'] == "noaction"){echo "active";}?>">No action</a>
                 </li>
             </ul>
         </div>
@@ -75,7 +92,7 @@
                                 <td><?php echo $user['lastname'];?></td>
 
                                 <td><?php echo $user['email'];?></td>
-                                <td><a href="<?php echo $data['event_id'];?>/edit_user/<?php echo $user['id'];?>" class="btn btn-sm spec_event">view</a><a href="<?php echo $data['event_id'];?>/delete_user/<?php echo $user['id'];?> " class="btn btn-sm spec_event user_delete" data-id="<?php echo $user['id'];?>" data-event-id="<?php echo $event_id;?>" >delete <i class='fa fa-spinner fa-spin'></i></a></td>
+                                <td><a href="<?php echo APP_ROOT . 'backend/users/edit/' . $data['event_id'] . '/edit_user/' . $user['id'];?>" class="btn btn-sm spec_event">view</a><a href="<?php echo $data['event_id'];?>/delete_user/<?php echo $user['id'];?> " class="btn btn-sm spec_event user_delete" data-id="<?php echo $user['id'];?>" data-event-id="<?php echo $event_id;?>" >delete <i class='fa fa-spinner fa-spin'></i></a></td>
 
                             </tr>
                             <?php

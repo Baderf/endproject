@@ -33,7 +33,6 @@ class designs extends user_controller{
             }
 
             if(isset($filter)){
-                echo "Hallo";
                 $this -> view -> data['link_active'] = $filter;
                 if(!$this -> view -> data['mails'] = $this -> model -> getAllUserMails(sessions::get("userid"), $filter)){
                     $this -> view -> data['mails'] = "none";
@@ -63,7 +62,6 @@ class designs extends user_controller{
                 echo "saved";
             }else{
                 echo "error";
-                var_dump($this->model->saveMail($user_id, $mail_id, $fulltext, $emailtext));
             }
         }
     }

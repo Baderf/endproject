@@ -14,6 +14,12 @@ if( in_array($url[0], $apps) ){
     define("CURRENT_APP", APP_DEFAULT . '/' );
 }
 
+if(isset($_POST)){
+    foreach($_POST as &$post){
+        $post = htmlspecialchars($post, ENT_QUOTES);
+    }
+}
+
 require_once APP_CORE . 'autoloader.php';
 
 spl_autoload_register("autoloader::loadController");

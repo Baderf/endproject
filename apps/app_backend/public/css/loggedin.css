@@ -1777,3 +1777,14 @@ input.info_settings {
     margin-top: calc(25vh - 50px);
     font-size: 30px;
 }
+
+.mailpig_helper{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index:99999;
+    background-color: #009688;
+    border-radius: 4px;
+    border: 1px solid #0a9739;
+    color: white;
+}

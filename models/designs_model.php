@@ -19,8 +19,60 @@ class designs_model extends model{
         $userfile_fulltext = $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_edit/" . $mailfile;
         $userfile_email = $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . "/mails/mail_html/" . $mailfile;
 
+        $header = "<meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\"><table height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" bgcolor=\"#ececec\" border=\"0\">
+  <tbody>
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+      <td>
+        <div>
+          <table cellspacing=\"0\" cellpadding=\"0\" width=\"730\" align=\"center\" border=\"0\" style=\"font-family: verdana\">
+            <tbody>
+              <tr>
+                <td valign=\"top\">
+                  <table cellspacing=\"0\" cellpadding=\"0\" width=\"721\" align=\"center\" border=\"0\">
+                    <tbody>
+                      <tr>
+                        <td bgcolor=\"#ffffff\">
+                          <table cellspacing=\"0\" cellpadding=\"13\" width=\"721\"  border=\"0\" style=\"background-repeat: no-repeat; font-family: verdana\">
+                            <tbody>
+                              <div>
+                              <tr valign=\"top\">
+                                <td width=\"651\" height=\"50\" style=\"font-size: 12px\">";
+
+        $footer = "
+        </td>
+        </tr>
+        </div>
+        
+        </tbody>
+        </table>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </td>
+        </tr>
+        <tr>
+            <td valign=\"top\"><br />
+            </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        </tbody>
+        </table>
+        ";
+
+        $full_mail = $header . $emailtext . $footer;
+
+
+
+
         if(file_put_contents($userfile_fulltext, $fulltext)){
-            if(file_put_contents($userfile_email, $emailtext)){
+            if(file_put_contents($userfile_email, $full_mail)){
                 $stmt = $this -> db -> prepare("UPDATE mails SET last_update = ? WHERE id = ? AND user_id = ?");
                 $stmt -> bind_param("sii", $update_time, $mail_id, $user_id);
 
@@ -32,11 +84,9 @@ class designs_model extends model{
                     return false;
                 }
             }
-        };
-        ;
+        }
 
-
-
+        return false;
     }
 
     public function createTemplate($user_id, $mail_id, $title){
@@ -229,7 +279,6 @@ class designs_model extends model{
 
         return $events;
     }
-
 
     public function checkMailTypesJSON($event_id, $user_id){
         $sql = $this -> db -> query("SELECT mail_type FROM mails WHERE event_id = $event_id AND user_id = $user_id LIMIT 6");

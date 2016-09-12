@@ -46,7 +46,17 @@
     </div>
 </div>
 <body class="logged_in" data-baseurl="<?php echo APP_ROOT; ?>">
-
+<div class="mailpig_helper col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/logo_pig.png'; ?>" alt="">
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p><strong class="mailpig_helper_title">Hi, <?php // echo sessions::get("username"); ?></strong></p>
+        <p class="mailpig_helper_text">Do you need some help?</p>
+        <button class="btn btn-sm spec_dashboard">dont show again</button>
+    </div>
+    </div>
 
 <!-- Mobile Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top topnav visible-xs" role="navigation">
@@ -59,35 +69,39 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand topnav" href="<?php echo APP_ROOT?>home"><h1>Mailpig</h1></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
+
+                <?php
+                $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+                $url = explode("/", $url);
+                ?>
                 <li>
-                    <a href="#about" class="nav-btn">Dashboard</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/dashboard' ?>" class="nav-btn">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#services" class="nav-btn">My Events</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/myevents' ?>" class="nav-btn">My Events</a>
                 </li>
                 <li>
-                    <a href="#contact" class="nav-btn">Designs</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/designs' ?>" class="nav-btn">Designs</a>
                 </li>
                 <li>
-                    <a href="#getstarted" class="nav-btn">Formulars</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/formulars' ?>" class="nav-btn">Formulars</a>
                 </li>
                 <li>
-                    <a href="#login" class="nav-btn">Settings</a>
-                </li>
-                <li>
-                    <a href="#users" class="nav-btn">Users</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/users' ?>" class="nav-btn">Users</a>
                 </li>
             </ul>
+            <hr>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#about" class="nav-btn">Logout</a>
+                    <a href="<?php echo APP_ROOT . $url[0] . '/logout' ?>" class="nav-btn">Logout</a>
                 </li>
                 <li>
-                    <a href="<?php echo APP_ROOT?>home" class="nav-btn">Logo</a>
+                    <a href="<?php echo APP_ROOT;?>home" class="nav-btn">Back to Mailpig</a>
                 </li>
             </ul>
         </div>
@@ -135,6 +149,7 @@
     </div>
 
 </nav>
+
 <div class="col-lg-12 hader_background">
 
 </div>

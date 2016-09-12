@@ -158,37 +158,106 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements" >
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_1">
+                <!-- HIER -->
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements_left" id="left_2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
                         <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_2">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool" style="border-color: green">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Textbox</p>
+                        <p>2 Images with Text</p>
                         <div class="email_header email-item">
 
-                            <div id="editor8" contenteditable="true">
-                                <h1>Inline Editing in Action!</h1>
-                                <p>The "div" element that contains this text is now editable.
+                            <div id="editor94" contenteditable="true">
+                                <table cellspacing="0" cellpadding="0" border="0" style="width:100%" class=" cke_show_border"><tbody><tr><td style="width:50%"><h3>Your image goes here...</h3></td><td><br></td><td style="width:50%"><h3>Your image goes here...</h3></td></tr><tr><td>More text goes here...</td><td><br></td><td>More text goes here</td></tr></tbody></table><p>More text goes here.</p>
+                            </div>
+                            <div class="email_item_options">
+
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Text-Image-box</p>
+                        <div class="email_header email-item">
+
+                            <div id="editor103" contenteditable="true">
+                                <table cellspacing="0" cellpadding="5" border="0" style="width:100%" class=" cke_show_border"><tbody><tr><td style="width:50%"><h3>place image here</h3><p><br></p></td><td><br></td><td style="width:50%"><h3>your text goes here</h3><p><br></p></td></tr><tr><td>More text goes here</td><td><br></td><td>More text goes here</td></tr></tbody></table><p><br></p><p style="text-align: left;">More text goes here.</p>
+                            </div>
+                            <div class="email_item_options">
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>2 Images with Text</p>
+                        <div class="email_header email-item">
+
+                            <div id="editor31" contenteditable="true">
+                                <table cellspacing="0" cellpadding="0" border="0" style="width:100%" class=" cke_show_border"><tbody><tr><td style="width:50%"><h3>Your image goes here...</h3></td><td><br></td><td style="width:50%"><h3>Your image goes here...</h3></td></tr><tr><td>More text goes here...</td><td><br></td><td>More text goes here</td></tr></tbody></table><p>More text goes here.</p>
+                            </div>
+                            <div class="email_item_options">
+
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_up">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-info arrow_down">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#" class="btn btn-sm btn-transparent item_delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
+                        <img src="http://fpoimg.com/120x60">
+                        <p>Titlebox</p>
+                        <div class="email_header email-item">
+
+                            <div id="editor91" contenteditable="true">
+                                <table cellspacing="0" cellpadding="5" border="0" style="width:100%; background-color: #e9f93c;" class=" cke_show_border"><tbody><tr><td style="width:50%" colspan="3"><h3 style="text-align: left;">Title of your event...</h3></td></tr></tbody></table><p><br></p><p style="text-align: left;">More text goes here.</p>
                             </div>
 
                             <div class="email_item_options">
@@ -211,6 +280,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -309,8 +379,8 @@
                     <input type="hidden" id="this_id" name="this_id" value="<?php echo $url[3];?>">
                     <input type="hidden" id="user_id" name="user_id" value="<?php echo sessions::get("userid");?>">
                     <input type="hidden" id="mail_title" name="mail_title" value="<?php echo $data['mail_infos']['title'];?>">
-                    <input type="hidden" id="emailhtmlall" name="emailhtmlall" value="1">
-                    <input type="hidden" id="emailhtmltext" name="emailhtmltext" value="1">
+                    <input type="hidden" id="emailhtmlall" name="emailhtmlall" value="">
+                    <input type="hidden" id="emailhtmltext" name="emailhtmltext" value="">
                     <button class="btn btn-block btn-primary btn-self" id="save_email" name="savemail">save <i class='fa fa-spinner fa-spin'></i></button>
                 </form>
             </div>

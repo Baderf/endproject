@@ -5,9 +5,7 @@
             <?php
             $url_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
             ?>
-            <a href="<?php
-            echo $url_back;
-            ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
 
     </div>

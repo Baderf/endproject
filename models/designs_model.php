@@ -29,6 +29,7 @@ class designs_model extends model{
             <tbody>
               <tr>
                 <td valign=\"top\">
+                <td valign=\"top\">
                   <table cellspacing=\"0\" cellpadding=\"0\" width=\"721\" align=\"center\" border=\"0\">
                     <tbody>
                       <tr>
@@ -61,7 +62,7 @@ class designs_model extends model{
         </div>
         </td>
         </tr>
-        <tr><td>&nbsp;</td></tr>
+        <tr><td><img src='###IMGVIEW###' alt='logo' style='display:none;'></td></tr>
         </tbody>
         </table>
         ";

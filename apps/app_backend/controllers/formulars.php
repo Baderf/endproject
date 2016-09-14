@@ -161,7 +161,7 @@ class formulars extends user_controller{
 
 
 
-            $form -> addInput("submit", "setregister", null, array('value' => 'Send', 'class' => 'spec_dashboard'));
+            //$form -> addInput("submit", "setregister", null, array('value' => 'Send', 'class' => 'spec_dashboard'));
 
             $this -> view -> data['form'] = $form ->getForm();
         }

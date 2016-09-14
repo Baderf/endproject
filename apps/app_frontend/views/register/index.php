@@ -16,8 +16,5 @@
 
         <?php echo $form;
         ?>
-
-        <img src="<?php echo APP_ROOT . 'useraction/viewed/e6a9fc04320a924f46c7c737432bb0389d9dd095/25/33/invitation' ?>" style="display: none;" alt="">
-
     </div>
 </section>

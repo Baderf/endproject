@@ -716,6 +716,32 @@ class myevents_model extends model{
 
         if($sql -> num_rows > 0) {
             $events = $sql->fetch_all(MYSQLI_ASSOC);
+
+            foreach ($events as &$event){
+
+                $tablename = "users_event_".$event['id'];
+
+                $sql = $this -> db -> query("
+                SELECT 
+                    SUM(CASE WHEN accepted = 1 THEN 1 ELSE 0 END) AS accepted,
+                    COUNT(*) AS TOTAL
+                    
+                FROM $tablename
+                
+                ");
+
+                if($sql -> num_rows > 0){
+                    $extras = $sql -> fetch_assoc();
+
+                    $event['count_users'] = $extras['TOTAL'];
+                    $event['count_accepted'] = $extras['accepted'];
+
+                }
+
+            }
+
+
+
             return $events;
         }else{
             return false;

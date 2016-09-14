@@ -1,6 +1,47 @@
 // SEND - Checking System:
 
 
+function fade_in_next_step(prev_step, next_step){
+    $(".step.step"+prev_step).fadeOut("fast", function(){
+        $(".step.step"+prev_step).removeClass("active");
+        $(".step.step"+next_step).fadeIn().addClass("active");
+    })
+}
+
+function sayHello(){
+    setTimeout(function(){
+
+        $(".mailpig_speak").fadeIn();
+
+        $time = 4000;
+
+
+        $(".mailpig_speak p.speak").each(function(index, element){
+            setTimeout(function(){
+                if(index == 0){
+                    $(element).fadeIn();
+                }else{
+                    $("p.speak" + index).fadeOut("fast", function(){
+                        $(element).fadeIn();
+                    });
+                }
+
+            }, 3000*index);
+
+        });
+
+    }, 5000);
+
+    setTimeout(function(){
+        $(".mailpig_speak").fadeOut();
+
+    }, 15000);
+}
+
+function show_help(){
+    $(".mailpig_helper").toggleClass("active");
+}
+
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -413,6 +454,12 @@ function count_settings(){
 }
 
 $(function(){
+
+    if($(".mailpig_speak")[0]){
+        sayHello();
+
+        // HIER
+    }
 
     if($(".chart_area")[0]){
         $(".chart_area").each(function(){
@@ -1392,6 +1439,91 @@ $(function () {
             event.preventDefault();
             show_testmailer();
 
+        }  else if (target.is(".mail_pig_helper_img")) {
+            event.preventDefault();
+            show_help();
+
+        }   else if (target.is(".mailpig_steps .close")) {
+            event.preventDefault();
+            show_help();
+
+        }   else if (target.is(".mailpig_next")) {
+            event.preventDefault();
+
+            actual_step = $(".step.active").data("step");
+            steps = 0;
+
+            $(".mailpig_steps .step").each(function(){
+                steps = steps + 1;
+            });
+
+            next_step = actual_step + 1;
+
+            if(next_step > steps){
+                next_step = 1;
+            }
+
+            fade_in_next_step(actual_step, next_step);
+
+        }    else if (target.is(".mailpig_prev")) {
+            event.preventDefault();
+
+            actual_step = $(".step.active").data("step");
+            steps = 0;
+
+            $(".mailpig_steps .step").each(function(){
+                steps = steps + 1;
+            });
+
+            next_step = actual_step - 1;
+
+            if(next_step < 1){
+                next_step = steps;
+            }
+
+            fade_in_next_step(actual_step, next_step);
+
+        }    else if (target.is(".dont_show_again")) {
+            event.preventDefault();
+
+            button = $(event.target);
+            button.prop("disabled", true);
+            user_id = $(".helper_user_id").val();
+            var baseURL = $('body').data('baseurl');
+
+            start_loading(button);
+
+
+            $.ajax({
+                method: "POST",
+                url: baseURL + 'backend/dashboard/dontshowagain',
+                data: {
+                    user_id: user_id
+                },
+
+
+                success: function (data) {
+                    if (data == "set") {
+                        element = $(".send_success");
+                        text = "Helper disabled!";
+                        show_success_message(element, button, text);
+                        stop_loading(button);
+
+
+                        $(".mailpig_helper").fadeOut("slow", function(){
+                            $(".mail_pig_helper_img").fadeOut();
+                        });
+                    }
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+
+                }
+
+            }).always(function (jqXHR, textStatus) {
+
+            });
+
         } else if (target.is(".event_link_stat")) {
             event.preventDefault();
             id = $(event.target).data("id");
@@ -1473,6 +1605,9 @@ $(function () {
             window.open(baseURL+"backend/formulars/preview/" +id, baseURL+"backend/formulars/preview/" +id, "width=650,height=700");
 
 
+        } else if (target.is(".close_window")) {
+            event.preventDefault();
+            window.close();
         } else if (target.is(".field_delete")) {
             event.preventDefault();
             window_alert_show("Are you sure that you want to delete the hole input field?");

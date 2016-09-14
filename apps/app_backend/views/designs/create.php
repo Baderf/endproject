@@ -1,8 +1,8 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
-    <div class="col-lg-12 page_header spec_design">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_design">
         <h3>Create new design</h3>
         <span class="page_quader"></span>
     </div>
@@ -12,7 +12,7 @@
     <!-- /.content-section-a -->
 
     <div>
-        <div class="col-lg-12 col-md-12 col-sm-12 create_event my_container clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 create_event my_container clearfix">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <form action="" role="form" method="post">
                     <input type="hidden" id="user" value="<?php echo sessions::get("userid"); ?>">

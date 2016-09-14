@@ -98,6 +98,9 @@ class mailservice extends model{
             $pattern_no = '/###AUTHCODE-NO###/';
             $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
+            $pattern_view = '/###IMGVIEW###/';
+            $replacement_view = 'http://www.baderflorian.at/useraction/viewed/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
+
             $pattern_salutation = '/###Salutation###/';
             if($user['sex'] == "Male"){
                 $sex = "Mr. ";
@@ -111,10 +114,11 @@ class mailservice extends model{
             $new_content = preg_replace($pattern_yes, $replacement_yes, $mail_content, -1 );
             $new_content2 = preg_replace($pattern_no, $replacement_no, $new_content, -1 );
             $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
+            $new_content4 = preg_replace($pattern_view, $replacement_view, $new_content3, -1 );
 
 
 
-            $mail -> Body = $new_content3;
+            $mail -> Body = $new_content4;
 
             ob_end_clean();
 
@@ -126,7 +130,7 @@ class mailservice extends model{
                 if($this -> updateUserSent($user['id'], $mail_settings['mail_type'], $mail_settings['event_id'])){
                     $users_sent++;
                     if($users_sent === 1){
-                        if($this -> updateSentMailEvent($mail_settings['event_id'], $sql_type, $mail_id)){
+                        if($this -> updateSentMailEvent($mail_settings['event_id'], $mail_settings['mail_type'], $mail_id)){
                             continue;
                         }else{
                             $error = "Event couldn't be updated!";
@@ -158,7 +162,27 @@ class mailservice extends model{
 
     }
 
-    public function updateSentMailEvent($event_id, $sql_type, $mail_id){
+    public function updateSentMailEvent($event_id, $mail_type, $mail_id){
+
+        switch ($mail_type) {
+            case "invitation":
+                $sql_type = "invitation_sent";
+                break;
+            case 'reminder':
+                $sql_type = "reminder_sent";
+                break;
+            case "savethedate":
+                $sql_type = "std_sent";
+                break;
+            case "info":
+                $sql_type = "info_sent";
+                break;
+            case "thankyou":
+                $sql_type = "ty_sent";
+                break;
+        }
+
+
         $sql = $this -> db -> query("UPDATE events SET $sql_type = 1 WHERE id = $event_id");
 
         if($sql){
@@ -197,7 +221,7 @@ class mailservice extends model{
         }
 
         $tablename = "users_mails_".$event_id;
-        $sql = $this -> db -> query("UPDATE $tablename SET $sql_type = '1' WHERE user_id = $user_id");
+        $sql = $this -> db -> query("UPDATE $tablename SET $sql_type = 1 WHERE user_id = $user_id");
 
         if($sql){
             return true;
@@ -244,10 +268,12 @@ class mailservice extends model{
         $user_file = "usermedia_" . sessions::get("userid") . "/";
         $mail_file = "mails/mail_html/mail_" . $mail_id . ".html";
 
-        $users_sent = 0;
 
         $mail->ClearAllRecipients();
         $mail->addAddress($email);     // Add a recipient
+
+        ob_start();
+        $mail_content = file_get_contents($_SERVER['DOCUMENT_ROOT']. "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file);
 
         $pattern_yes = '/###AUTHCODE-YES###/';
         $replacement_yes = 'http://www.baderflorian.at/useraction/participate/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
@@ -255,23 +281,28 @@ class mailservice extends model{
         $pattern_no = '/###AUTHCODE-NO###/';
         $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
+        $pattern_view = '/###IMGVIEW###/';
+        $replacement_view = 'http://www.baderflorian.at/useraction/viewed/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
+
         $pattern_salutation = '/###Salutation###/';
         if($user['sex'] == "Male"){
             $sex = "Mr. ";
         }elseif ($user['sex'] == "Female" ){
             $sex = "Ms. ";
+        }else{
+            $sex = "Mr. ";
         }
-        $replacement_salutation = 'Dear ' . $sex . $user['lastname'];
 
-        $text = (string)$mail_content;
+        $replacement_salutation = 'Dear ' . $sex . "Testuser";
 
         $new_content = preg_replace($pattern_yes, $replacement_yes, $mail_content, -1 );
         $new_content2 = preg_replace($pattern_no, $replacement_no, $new_content, -1 );
         $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
+        $new_content4 = preg_replace($pattern_view, $replacement_view, $new_content3, -1 );
 
 
 
-        $mail -> Body = $new_content3;
+        $mail -> Body = $new_content4;
 
         ob_end_clean();
 
@@ -351,6 +382,9 @@ class mailservice extends model{
         $pattern_no = '/###AUTHCODE-NO###/';
         $replacement_no = 'http://www.baderflorian.at/useraction/canceled/' . $user['hash'] . '/'.$mail_settings['event_id'];
 
+        $pattern_view = '/###IMGVIEW###/';
+        $replacement_view = 'http://www.baderflorian.at/useraction/viewed/' . $user['hash'] . '/'.$mail_id. '/'.$mail_settings['event_id']. '/' . $mail_settings['mail_type'];
+
         $pattern_salutation = '/###Salutation###/';
         if($user['sex'] == "Male"){
             $sex = "Mr. ";
@@ -364,10 +398,11 @@ class mailservice extends model{
         $new_content = preg_replace($pattern_yes, $replacement_yes, $mail_content, -1 );
         $new_content2 = preg_replace($pattern_no, $replacement_no, $new_content, -1 );
         $new_content3 = preg_replace($pattern_salutation, $replacement_salutation, $new_content2, -1 );
+        $new_content4 = preg_replace($pattern_view, $replacement_view, $new_content3, -1 );
 
 
 
-        $mail -> Body = $new_content3;
+        $mail -> Body = $new_content4;
 
         ob_end_clean();
 

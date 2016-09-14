@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
             <a href="<?php echo APP_ROOT . $url[0] . '/myevents/newEvent'?>" class="btn btn-default btn-lg btn-back btn-self">
@@ -179,7 +179,18 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6 form-group has-feedback has-feedback-left">
                                     <label class="control-label" for="event_image">Current image:</label>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <img class="event_edit_image" src="<?php echo APP_ROOT . $data['event_details']['event_image']; ?>" alt="">
+
+                                        <?php
+
+
+                                            if($data['event_edit']['image'] == "standard"){
+                                                $path = APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/intro-bg.jpg';
+                                            }else{
+                                                $path = APP_ROOT . $data['event_edit']['image'];
+                                            }
+                                        ?>
+
+                                        <img class="event_edit_image" src="<?php echo $path;?>" alt="">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
                                         <label class="control-label" for="event_image">Upload new image:</label>
@@ -204,9 +215,9 @@
 
                 <div class="tab-pane" id="panel-820473">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <form action="" method="post">
-                            <div class="col-lg-12 col-md-12">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <h3>Formulars</h3>
                             </div>
 
@@ -235,8 +246,9 @@
                                             }
                                             echo "</select>";
                                             echo "</div>";
-                                            echo "<div class=\"col-lg-2 col-md-2 form-group has-feedback has-feedback-left\">";
-                                            echo  "<button class=\"btn btn-sm btn-self add_formular_link\" id='add_formular_link'>Link<i class='fa fa-spinner fa-spin'></i></button>";
+                                            echo "<div class=\"col-md-2 col-lg-2 col-sm-12 col-xs-12 form-group has-feedback has-feedback-left\">";
+                                            echo  "<button class=\"btn btn-sm btn-self add_formular_link visible-lg visible-md visible-sm\" id='add_formular_link'>Link<i class='fa fa-spinner fa-spin'></i></button>";
+                                            echo  "<button class=\"btn btn-block btn-self add_formular_link visible-xs\" id='add_formular_link'>Link<i class='fa fa-spinner fa-spin'></i></button>";
 
                                             echo "</div>";
                                         }else{
@@ -256,7 +268,7 @@
 
                             </form>
                         </div>
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <input type="hidden" class="hidden_input" id="user_id" value="<?php echo sessions::get("userid");?>">
                             <input type="hidden" class="hidden_input" id="event_id" value="<?php echo $url[3];?>">
                             <h4>Linked Formular</h4>
@@ -298,17 +310,14 @@
                             </table>
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-right-area">
-                            <input type="submit" class="btn btn-lg spec spec_dashboard" value="Save">
-                        </div>
                     </div>
                 </div>
 
                 <div class="tab-pane" id="panel-820123">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <form action="" method="post">
-                                <div class="col-lg-12 col-md-12">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                     <h3>Linked mails</h3>
                                 </div>
 
@@ -326,7 +335,7 @@
 
 
                                           ?>
-                                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mail_item">
+                                          <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 mail_item">
                                               <h4><?php echo $mail['title'];?></h4>
                                               <div class="mail_item_content">
                                                   <p>Type: <span class="mail_content_type"><?php echo $mail['mail_type'];?></span></p>

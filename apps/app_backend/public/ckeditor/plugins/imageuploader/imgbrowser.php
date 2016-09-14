@@ -8,7 +8,11 @@ session_start();
 
 <?php
 
+require "../../../../../../libs/sessions.php";
+
+
 // Don't remove the following two rows
+
 $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $root = "http://$_SERVER[HTTP_HOST]";
 

@@ -64,7 +64,7 @@
                 <li>
                     <?php
                     if (sessions::get("usergroup") === false) {
-                        echo  "<a href=" . APP_ROOT . 'login' . ">Login</a>";
+                        echo  '<a href="login">Login</a>';
                     }             else{
                         echo '<a href="backend/dashboard">Dashboard</a>';
                     }

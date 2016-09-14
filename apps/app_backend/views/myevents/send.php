@@ -1,8 +1,8 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
-    <div class="col-lg-12 page_header spec_event" id="send_mail">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_event" id="send_mail">
         <h3>Send - Properties: <?php echo $data['mail_infos']['title'];?></h3>
         <span class="page_quader"></span>
     </div>
@@ -49,6 +49,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 create_event my_container clearfix">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="check_system">
                 <h4>Checking your settings!</h4>
+                <hr>
                 <?php
                 $type = $data['mail_infos']['mail_type'];
 
@@ -68,7 +69,7 @@
 
                 ;?>
                 <p><?php echo $text;?></p>
-                <hr>
+
 
                 <form action="" role="form" method="post">
                     <div class="form-group has-feedback has-feedback-left <?php if(isset($data['mail_infos']['sender']) && empty($data['mail_infos']['sender'])){echo 'info_settings';};?>">

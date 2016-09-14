@@ -1,8 +1,8 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
-    <div class="col-lg-12 page_header spec_event">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_event">
         <h3>Create new event</h3>
         <span class="page_quader"></span>
     </div>
@@ -11,8 +11,8 @@
 
     <!-- /.content-section-a -->
 
-    <div>
-        <div class="col-lg-12 col-md-12 col-sm-12 create_event my_container clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 create_event my_container clearfix">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <form action="" role="form" method="post">
                     <div class="form-group has-feedback has-feedback-left">
@@ -58,11 +58,11 @@
                 <div style="overflow:hidden;">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div id="datetimepicker_from" data-date="12/03/2012 12:00 PM"></div>
 
                             </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div id="datetimepicker_to" data-date="12/03/2012 12:00 PM"></div>
 
                             </div>

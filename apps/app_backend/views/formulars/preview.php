@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header">
-        <a href="#" class="btn btn-default btn-lg btn-back btn-self">Close</a>
+        <a href="#" class="btn btn-default btn-lg btn-back btn-self close_window">Close</a>
         </div>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_formular">
@@ -41,7 +41,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Close</a>
+            <a href="#" class="btn btn-default btn-lg btn-back btn-self close_window">Close</a>
         </div>
     </div>
 

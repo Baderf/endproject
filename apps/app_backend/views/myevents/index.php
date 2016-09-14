@@ -1,8 +1,48 @@
 <div class="wrapper clearfix">
 
+    <?php
+
+    $intro = sessions::get("intro_on");
+
+    if( $intro == "1"){
+        ?>
+        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/logo_pig.png'; ?>" class="mail_pig_helper_img" alt="">
+
+        <div class="mailpig_helper">
+            <div class="mailpig_speak_edge"></div>
+            <div class="mailpig_steps">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                <div class="step step1 active" data-step="1">
+                    Ok, here's your <strong>event</strong>-list.
+                    Here you will see created events ...
+                </div>
+                <div class="step step2" data-step="2">
+                    You can filter them on the left side...
+                </div>
+                <div class="step step3" data-step="3">
+                    The event is a completed event, when the date-to is over the actual date ...
+                </div>
+                <div class="step step4" data-step="4">
+                    To create a new event just click on <strong>create new event</strong>
+                </div>
+
+                <div class="mailpig_helper_options">
+                    <button class="btn btn-sm spec_dashboard dont_show_again">dont show again <i class='fa fa-spinner fa-spin'></i></button>
+                    <button class="btn btn-sm spec_event mailpig_prev"><i class="glyphicon glyphicon-step-backward"></i></button>
+                    <button class="btn btn-sm spec_event mailpig_next"><i class="glyphicon glyphicon-step-forward"></i></button>
+                    <input type="hidden" name="userid" class="helper_user_id" value="<?php echo sessions::get("userid");?>">
+                </div>
+
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
             <a href="myevents/newEvent" class="btn btn-default btn-lg btn-back btn-self">
@@ -160,7 +200,7 @@
                                             ?>
 
                                                 <li>
-                                                    <?php echo $task;?> sent - <span class="text-info"><?php echo $event[$search]; ?></span>
+                                                    <?php echo $task;?> <span class="text-info">- sent </span>
                                                 </li>
 
 
@@ -183,12 +223,12 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 statistic_infos">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
-                                    <span class="text-info">Open Rate</span>
-                                    <span class="sum">33 %</span>
+                                    <span class="text-info">Users</span>
+                                    <span class="sum"><?php echo $event['count_users']; ?></span>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
                                     <span class="text-info">Participants</span>
-                                    <span class="sum">33 %</span>
+                                    <span class="sum"><?php echo $event['count_accepted']; ?></span>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 statistic-box">
                                     <span class="text-info">next step</span>

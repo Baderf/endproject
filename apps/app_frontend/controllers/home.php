@@ -9,19 +9,29 @@ class home extends controller {
 
     public function index(){
 
-        $text = $this -> model -> getText();
+        if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ) {
+            if(isset($_POST['register_start'])) {
+                if(!empty($_POST['register_start'])){
+                    $username = $_POST['username_home'];
+                    $location = APP_ROOT . 'register/' . $username;
+                    header("Location: $location");
+                }
+            }
 
-        $data = array(
-            'headline' => $text,
-            'text' => "Danke dass du unsere Seite besuchst!"
-        );
+        }else{
+            $this -> view -> render("home/index");
+        }
 
-        $this -> view -> render("home/index", $data);
+
     }
 
     public function show( $val = null ){
 
         $this -> view -> render("home/show");
+    }
+
+    public function getSession(){
+        echo sessions::get("userid");
     }
 
 }

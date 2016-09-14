@@ -73,9 +73,7 @@
             <?php
             $url_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
             ?>
-            <a href="<?php
-            echo $url_back;
-            ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
 
     </div>
@@ -114,8 +112,8 @@
 
     <!-- jQuery -->
 
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+    <div>
+        <div class="col-lg-6 col-md-8 col-sm-8 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 default_user_values">
                 <h4>User-Data:</h4>
                 <?php echo $data['user_values'];?>

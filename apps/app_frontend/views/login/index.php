@@ -18,6 +18,18 @@
                         <input class="form-control" type="password" name="f-password" id="password" placeholder="Password...">
                         <i class="glyphicon glyphicon-lock form-control-feedback"></i>
                     </div>
+
+                    <?php
+                    if(isset($data['formError'])){
+                        ?>
+                        <div class="alert alert-danger">
+                            <strong>Warning!</strong>- <?php echo $data['formError']; ?>
+                        </div>
+                    <?php
+
+                    }
+                    ?>
+
                     <input type="submit" name="f-setlogin" value="Login" class="btn btn-lg btn-home btn-home-big btn-default"></input>
                 </form>
             </div>

@@ -1,8 +1,8 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
-    <div class="col-lg-12 page_header spec_formular">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page_header spec_formular">
         <h3>Edit formular: </h3>
         <span class="page_quader"></span>
     </div>
@@ -99,7 +99,7 @@
                             <p>
                                 <?php if(!empty($data['linked_events'])){
                                     ?>
-                            <div class="alert alert-danger">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert alert-danger">
 
                                 <strong>Warning!</strong> - This formular is linked with following events, where you already have sent emails:
                                 <br>
@@ -123,14 +123,13 @@
                                 }; ?>
                             </p>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Consectetur corporis culpa deserunt nam nemo officiis rem.
-                                Cumque ducimus eaque eligendi fugiat illo, numquam odit quidem quod sint sit,
-                                ullam velit.
+                                You can create formulars to allow you user to update their userdata.
+                                Also you can create your own formulars to ask for special things.
                             </p>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <input type="submit" name="saveOverviewFormular" class="btn btn-lg btn-block spec spec_dashboard visible-sm visible-xs" value="Save">
+                            <a href="<?php echo APP_ROOT . 'backend/' . 'formulars/' . 'preview/' . $data['formdetails']['id']; ?>" data-id = "<?php echo $data['formdetails']['id']; ?>" class="btn btn-lg btn-block spec spec_event visible-sm visible-xs make_preview">See preview</a>
                         </div>
                         </form>
                     </div>
@@ -304,7 +303,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <h4>Create a new form</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet dicta doloremque earum error eum illum, placeat quisquam rem saepe sequi! Facilis nesciunt optio porro quasi quo quos reprehenderit, ut! Explicabo.</p>
+                            <p>Fill in a title and select a type and start configuring your own formular!</p>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                     <div class="form-group has-feedback has-feedback-left">
@@ -407,7 +406,7 @@
                                     <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
                                     <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group form_build_selection" >
                                         <label class="control-label" for="selection_user">Defaultvalue:</label>
                                         <select class="form-control selection_user" name="form_selection_" >
@@ -493,7 +492,7 @@
                                     <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
                                     <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                 </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group form_build_selection" >
                                     <label class="control-label" for="selection_user" id="field_title_">Defaultvalue:</label>
                                     <select class="form-control selection_user" name="form_selection_" >
@@ -641,7 +640,7 @@
                                 <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 min_max">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group has-feedback has-feedback-left">
                                         <label class="control-label" for="formtype">Placeholder: </label>
                                         <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
@@ -716,14 +715,14 @@
                                 <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                     <div class="form-group has-feedback has-feedback-left placeholder_value">
                                         <label class="control-label" for="formtype">Placeholder: </label>
                                         <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
                                         <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                     <div class="form-group has-feedback has-feedback-left default_value">
                                         <label class="control-label" for="formtype">Default-Value: </label>
                                         <input class="form-control datepicker_userspec" name="formtitle" type="text" placeholder="Your formular title...">
@@ -788,14 +787,14 @@
                                 <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                     <div class="form-group has-feedback has-feedback-left placeholder_value">
                                         <label class="control-label" for="formtype">Placeholder: </label>
                                         <input class="form-control input_field_placeholder" name="formtitle" type="text" placeholder="The placeholder goes here..." value="">
                                         <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                     <div class="form-group has-feedback has-feedback-left">
                                         <label class="control-label" for="formtype">Default-Value: </label>
                                         <input class="form-control timepicker_userspec" name="formtitle" type="text" placeholder="Your time goes here...">
@@ -854,7 +853,7 @@
                                     <input class="form-control input_field_title" name="formtitle" id="field_title_" type="text" placeholder="Fill in the title..." value="">
                                     <i class="glyphicon glyphicon-plus form-control-feedback"></i>
                                 </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group form_build_selection" >
                                     <label class="control-label" for="selection_user">Defaultvalue:</label>
                                     <select class="form-control selection_user" name="form_selection_" >

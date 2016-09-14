@@ -185,7 +185,7 @@
                     $mail_file = "mails/mail_html/mail_" . $data['mail_id'] . ".html";
 
                     ob_start();
-                    require_once $_SERVER['DOCUMENT_ROOT']. "/endproject/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;
+                    require_once $_SERVER['DOCUMENT_ROOT']. "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;
                     $email = ob_get_contents();
                     ob_end_clean();
 

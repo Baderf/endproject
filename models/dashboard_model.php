@@ -2,11 +2,22 @@
 
 class dashboard_model extends model{
 
+
+    public function setIntroNull($user_id){
+        $sql = $this -> db -> query("UPDATE users SET intro_on = 0 WHERE id = $user_id");
+
+        if($sql){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getEvents($user_id){
 
         $actual_time = time();
 
-        $sql = $this -> db -> query("SELECT * FROM events WHERE user_id = $user_id AND date_to_time < $actual_time");
+        $sql = $this -> db -> query("SELECT * FROM events WHERE user_id = $user_id AND date_to_time > $actual_time");
 
         if($sql -> num_rows >0){
             $events = $sql->fetch_all(MYSQLI_ASSOC);

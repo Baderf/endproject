@@ -1,8 +1,48 @@
 <div class="wrapper clearfix">
 
+    <?php
+
+    $intro = sessions::get("intro_on");
+
+    if( $intro == "1"){
+        ?>
+        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/logo_pig.png'; ?>" class="mail_pig_helper_img" alt="">
+
+        <div class="mailpig_helper">
+            <div class="mailpig_speak_edge"></div>
+            <div class="mailpig_steps">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                <div class="step step1 active" data-step="1">
+                    Ok, here we are at your <strong>designs</strong>-list.
+                    Here you will see created mails ...
+                </div>
+                <div class="step step2" data-step="2">
+                    You can filter them on the left side...
+                </div>
+                <div class="step step3" data-step="3">
+                    The mail is in progress so long you don't send it ...
+                </div>
+                <div class="step step4" data-step="4">
+                    To create a new mail just click on <strong>create new design</strong>
+                </div>
+
+                <div class="mailpig_helper_options">
+                    <button class="btn btn-sm spec_dashboard dont_show_again">dont show again <i class='fa fa-spinner fa-spin'></i></button>
+                    <button class="btn btn-sm spec_event mailpig_prev"><i class="glyphicon glyphicon-step-backward"></i></button>
+                    <button class="btn btn-sm spec_event mailpig_next"><i class="glyphicon glyphicon-step-forward"></i></button>
+                    <input type="hidden" name="userid" class="helper_user_id" value="<?php echo sessions::get("userid");?>">
+                </div>
+
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
             <a href="designs/newDesign" class="btn btn-default btn-lg btn-back btn-self">
@@ -71,8 +111,8 @@
                     <thead class="thead-inverse">
                     <tr>
                         <th>Name</th>
-                        <th>Type</th>
-                        <th>Eventname</th>
+                        <th class="visible-lg visible-md visible-sm">Type</th>
+                        <th class="visible-lg visible-md visible-sm">Eventname</th>
                         <th>In progress/sent</th>
                         <th>Action</th>
                     </tr>
@@ -87,8 +127,8 @@
 
                             <tr class="item">
                                 <th scope="row"><?php echo $mail['title']; ?></th>
-                                <td class="mail_type"><?php echo $mail['mail_type']; ?></td>
-                                <td><?php echo $mail['event_title']; ?></td>
+                                <td class="mail_type visible-lg visible-md visible-sm"><?php echo $mail['mail_type']; ?></td>
+                                <td class="visible-lg visible-md visible-sm"><?php echo $mail['event_title']; ?></td>
                                 <td><?php
                                     if ($mail['already_sent'] == "1") {
                                         echo "already sent";

@@ -1,6 +1,6 @@
 <div class="wrapper clearfix">
 
-    <a href="#" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
 
     <div class="col-lg-12 page_header spec_event" id="send_mail">
         <h3>Send - Report: <?php echo $data['mail_infos']['title'];?></h3>

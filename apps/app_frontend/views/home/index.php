@@ -10,9 +10,9 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h3 class="home_mailpig_text">send your own Mail with </h3><h1 class="mailpig_text">Mailpig</h1>
-
+                        <form action="" method="post">
                         <h3 class="home_choose_name">
-                            <input class="choose_username" type="text" placeholder="Choose your Username...">
+                            <input class="choose_username" name="username_home" type="text" placeholder="Choose your Username...">
                         </h3>
 
                         <ul class="list-inline get_started_free">
@@ -20,9 +20,10 @@
                                 <h4>Join the big family and enjoy best support</h4>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-default btn-home btn-home-big btn-lg">get started for FREE!</a>
+                                <input type="submit" name="register_start" id="register_start" class="btn btn-default btn-home btn-home-big btn-lg" value="get started for FREE!">
                             </li>
                         </ul>
+                        </form>
                     </div>
                 </div>
             </div>

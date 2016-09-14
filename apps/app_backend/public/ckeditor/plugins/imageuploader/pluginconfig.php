@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 // checking lang value
 if(isset($_COOKIE['sy_lang'])) {
     $load_lang_code = $_COOKIE['sy_lang'];
@@ -19,6 +23,7 @@ switch ($load_lang_code) {
 
 if(isset($_POST["newpath"]) or isset($_POST["extension"]) or isset($_GET["file_style"])){
     session_start();
+
 }
 
 if(isset($_SESSION['username'])){
@@ -154,9 +159,17 @@ $browserfolder = pathinfo("$_SERVER[REQUEST_URI]");
 $browserfolder = ltrim($browserfolder["dirname"], '/');
 $usersiteroot = substr($_SERVER["SCRIPT_FILENAME"], 0, (stripos($_SERVER["SCRIPT_FILENAME"], $_SERVER["SCRIPT_NAME"])+1));
 
-$useruploadfolder = "/endproject/apps/app_backend/public/media/usermedia_1/avc";
+// ".$user_id."
+
+$user_id = sessions::get("userid");
+$useruploadfolder = "/apps/app_backend/public/media/usermedia_" . $user_id;
+
+$browserfolder = str_replace("/backend/designs/edit/", "/apps/app_backend/public/", $browserfolder);
+
 
 $useruploadfolder1 = "$browserfolder/uploads";
 $useruploadpath = $usersiteroot."$useruploadfolder/";
+$filename = $useruploadfolder1;
+
 $foldershistory[] = $useruploadfolder;
 

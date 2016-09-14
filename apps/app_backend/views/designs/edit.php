@@ -139,14 +139,9 @@
         Otherwise it could make some problems at sending this mail.
     </div>
 
-    <div class="design_menu visible-md visible-sm visible-xs">
-        <span class="glyphicon glyphicon-picture"></span>
-    </div>
-
-
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_area">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 design_tools">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_switch_row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 design_tools">
+            <div class="col-lg-12 col-md-12 visible-lg visible-md design_switch_row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_switch switch_designs switch_active">
                     <span class="glyphicon glyphicon-picture"></span>
                     <p>design</p>
@@ -157,7 +152,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements" >
+            <div class="col-lg-12 col-md-12 visible-lg visible-md design_tool_elements" >
                 <!-- HIER -->
 
 
@@ -386,7 +381,7 @@
             </div>
         </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 templater">
+        <div class="col-lg-9 col-md-12 visible-lg visible-md templater">
 
             <script src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . "ckeditor/ckeditor.js";?>"></script>
 
@@ -399,10 +394,30 @@
                 <?php $user_file = "usermedia_" . sessions::get("userid") . "/";
                 $mail_file = "mails/mail_edit/mail_" . $data['mail_id'] . ".html";
 
-                require_once $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file;?>
+                if(!require_once $_SERVER['DOCUMENT_ROOT'] . "/" . APPS . CURRENT_APP . APP_PUBLIC . "media/" . $user_file . $mail_file){
+                    ?>
+                    <div class="alert alert-warning">
+                        <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                        <strong>We are sorry, there was a problem getting your mail!</strong>
+                        <br>
+                        <i class="glyphicon glyphicon-thumbs-down"></i><br><br>
+                        Please contact us. We will fix the problem.
+                    </div>
+                <?php
+                }?>
             </div>
 
 
+        </div>
+
+        <div class="col-sm-6 col-xs-6 visible-sm visible-xs templater_info">
+            <div class="alert alert-warning">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>We are sorry, your device is too small!</strong>
+                <br><br>
+                <i class="glyphicon glyphicon-thumbs-down" style="display:block; text-align: center; font-size:30px;"></i><br><br>
+                Please switch to a bigger screen. The mail needs a space from 720 pixels, so that's very much space.
+            </div>
         </div>
     </div>
 

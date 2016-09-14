@@ -5,9 +5,7 @@
             <?php
             $url_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
             ?>
-            <a href="<?php
-            echo $url_back;
-            ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
 
 
@@ -19,12 +17,12 @@
         <span class="page_quader"></span>
         <form action="" method="post">
         <div class="search_field">
-            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 form-group has-feedback has-feedback-left">
+            <div class="col-lg-8 col-md-8 col-xs-8 col-sm-8 col-xs-8 form-group has-feedback has-feedback-left">
                 <label class="control-label invisible" for="search">Search:</label>
                 <input class="form-control" name="search" type="text" id="search" placeholder="The event title..">
                 <i class="glyphicon glyphicon-search form-control-feedback"></i>
             </div>
-            <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 form-group has-feedback has-feedback-left">
+            <div class=" col-lg-4 col-md-4 col-xs-4 col-sm-4 col-xs-4 form-group has-feedback has-feedback-left">
                 <input type="submit" name="search_event" class="btn btn-block spec_event" id="search_submit" value="go">
             </div>
         </div>
@@ -44,7 +42,7 @@
     <!-- jQuery -->
 
     <div class="row left_filter">
-        <div class="col-lg-2 col-md-2 col-sm-2 left_filter_area spec_users">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 left_filter_area spec_users">
 
             <ul class="list">
                 <li>
@@ -65,13 +63,13 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-10 col-md-10 col-sm-10 my_formulars_list">
-            <div class="col-lg-12 col-md-12 col-sm-12 my_formulars">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 my_formulars_list">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_formulars">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Eventname</th>
-                        <th>Created at</th>
+                        <th class="visible-lg visible-md visible-sm">Created at</th>
                         <th>Count users</th>
                         <th>Edit</th>
                     </tr>
@@ -84,7 +82,7 @@
                             foreach ($data['events'] as $event){?>
                             <tr>
                                 <td><?php echo $event['title'];?></td>
-                                <td><?php echo $event['created_at'];?></td>
+                                <td class="visible-lg visible-md visible-sm"><?php echo $event['created_at'];?></td>
                                 <td><strong><?php echo $event['count'];?></strong></td>
                                 <td>
                                     <a href="<?php echo APP_ROOT . 'backend/users/edit/' . $event['id'];?>">go to users</a>

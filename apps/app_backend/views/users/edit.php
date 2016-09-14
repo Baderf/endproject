@@ -9,9 +9,7 @@
                 $url = explode("/", $url);
 
             ?>
-            <a href="<?php
-            echo $url_back;
-            ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
+            <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
             <a href="<?php echo $data['event_id'];?>/new_user" class="btn btn-default btn-lg btn-back btn-self">
@@ -74,7 +72,7 @@
                 <tr>
                     <th>Firstname</th>
                     <th>Lastname</th>
-                    <th>Email</th>
+                    <th class="visible-md visible-lg visible-sm">Email</th>
                     <th>Edit</th>
                 </tr>
                 </thead>
@@ -91,7 +89,7 @@
                                 <td><?php echo $user['firstname'];?></td>
                                 <td><?php echo $user['lastname'];?></td>
 
-                                <td><?php echo $user['email'];?></td>
+                                <td class="visible-md visible-lg visible-sm"><?php echo $user['email'];?></td>
                                 <td><a href="<?php echo APP_ROOT . 'backend/users/edit/' . $data['event_id'] . '/edit_user/' . $user['id'];?>" class="btn btn-sm spec_event">view</a><a href="<?php echo $data['event_id'];?>/delete_user/<?php echo $user['id'];?> " class="btn btn-sm spec_event user_delete" data-id="<?php echo $user['id'];?>" data-event-id="<?php echo $event_id;?>" >delete <i class='fa fa-spinner fa-spin'></i></a></td>
 
                             </tr>

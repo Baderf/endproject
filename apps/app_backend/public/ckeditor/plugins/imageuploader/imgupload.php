@@ -4,6 +4,7 @@
 // For licensing, see LICENSE.md
 
 session_start();
+require "../../../../../../libs/sessions.php";
 
 if(!isset($_SESSION['username'])) {
     exit;

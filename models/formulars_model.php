@@ -10,7 +10,7 @@ class formulars_model extends model{
     }
 
     public function checkForEntries($formular_id, $user_id){
-        $sql = $this -> db -> query("SELECT id, title FROM events WHERE form_id = $formular_id AND user_id = $user_id AND campaigns_sent = '1'");
+        $sql = $this -> db -> query("SELECT id, title FROM events WHERE form_id = $formular_id AND user_id = $user_id");
 
         if($sql -> num_rows > 0){
             $linked_forms = $sql -> fetch_all(MYSQLI_ASSOC);

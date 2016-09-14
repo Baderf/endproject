@@ -111,6 +111,13 @@ class designs extends user_controller{
 
     public function edit($mail_id){
 
+        $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+        $url = explode("/", $url);
+
+        if($url[3] == "ckeditor"){
+            header("Location: http://www.baderflorian.at/apps/app_backend/public/ckeditor/plugins/imageuploader/imgbrowser.php?CKEditor=editor2&CKEditorFuncNum=905&langCode=en");
+        }
+
 
         $this -> view -> data['mail_id'] = $mail_id;
         if($this -> model -> checkIfIsTemplate(sessions::get("userid"), $mail_id)){

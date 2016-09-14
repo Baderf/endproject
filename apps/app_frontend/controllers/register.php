@@ -9,19 +9,29 @@ class register extends guest_controller{
 
     public function index(){
 
+        $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
+        $url = explode("/", $url);
+
         if( $_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST) ){
             $this -> process();
         }
+
+        if(array_key_exists("1", $url)){
+            $uname = $url[1];
+        }else{
+            $uname = "";
+        }
+
 
         $form = new formbuilder("register");
 
         $options = array( 'Österreich', 'Deutschland', 'Schweiz' );
 
         $form
-            -> addInput("text", "vname", "Firstname", array('placeholder' => "Guillermo"))
-            -> addInput("text", "nname", "Lastname", array('placeholder' => "Neugebauer"))
-            -> addInput("text", "uname", "Username", array('placeholder' => 'Benutzername'))
-            -> addInput("email", "email", "E-Mail", array('placeholder' => 'test@test.at'))
+            -> addInput("text", "vname", "Firstname", array('placeholder' => "Your firstname goes here..."))
+            -> addInput("text", "nname", "Lastname", array('placeholder' => "Your lastname goes here..."))
+            -> addInput("text", "uname", "Username", array('placeholder' => 'Your username goes here...', 'value' => $uname))
+            -> addInput("email", "email", "E-Mail", array('placeholder' => 'Your email goes here...'))
             -> addInput("password", "pw", "Password")
             -> addInput("password", "pwwh", "Password repeat")
             -> addSelect("country", "Country", $options, 0)
@@ -103,7 +113,7 @@ class register extends guest_controller{
                 $mail -> send();
 
                 // Weiterleitung auf Register - Success
-                header('Location: register/success');
+                header('Location:' . APP_ROOT . 'register/success');
                 exit();
 
             }else{

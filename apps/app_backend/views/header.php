@@ -46,17 +46,12 @@
     </div>
 </div>
 <body class="logged_in" data-baseurl="<?php echo APP_ROOT; ?>">
-<div class="mailpig_helper col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/logo_pig.png'; ?>" alt="">
-    </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p><strong class="mailpig_helper_title">Hi, <?php // echo sessions::get("username"); ?></strong></p>
-        <p class="mailpig_helper_text">Do you need some help?</p>
-        <button class="btn btn-sm spec_dashboard">dont show again</button>
-    </div>
-    </div>
+
+<?php
+
+
+?>
+
 
 <!-- Mobile Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top topnav visible-xs" role="navigation">
@@ -150,6 +145,6 @@
 
 </nav>
 
-<div class="col-lg-12 hader_background">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hader_background">
 
 </div>

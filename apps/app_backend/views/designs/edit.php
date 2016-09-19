@@ -140,7 +140,7 @@
     </div>
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_area">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 design_tools">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 design_tools">
             <div class="col-lg-12 col-md-12 visible-lg visible-md design_switch_row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_switch switch_designs switch_active">
                     <span class="glyphicon glyphicon-picture"></span>
@@ -158,7 +158,7 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool_elements_left" id="left_2">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_image.jpg'; ?>">
                         <p>2 Images with Text</p>
                         <div class="email_header email-item">
 
@@ -188,7 +188,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_icon.jpg'; ?>">
                         <p>Text-Image-box</p>
                         <div class="email_header email-item">
 
@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_image.jpg'; ?>">
                         <p>2 Images with Text</p>
                         <div class="email_header email-item">
 
@@ -247,7 +247,7 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/title_icon.jpg'; ?>">
                         <p>Titlebox</p>
                         <div class="email_header email-item">
 
@@ -311,30 +311,30 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content_tool_elements">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_3">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_image.jpg'; ?>">
+                        <p>Imagebox</p>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_image.jpg'; ?>">
+                        <p>Text-Imagebox</p>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_icon.jpg'; ?>">
+                        <p>Textbox</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 design_tool_elements_left" id="left_4">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_image.jpg'; ?>">
+                        <p>Text-Image box</p>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/title_icon.jpg'; ?>">
+                        <p>Titlebox</p>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_tool">
-                        <img src="http://fpoimg.com/120x60">
-                        <p>Content</p>
+                        <img src="<?php echo APP_ROOT . APPS . CURRENT_APP . APP_PUBLIC . 'img/icons/text_icon.jpg'; ?>">
+                        <p>Textbox</p>
                     </div>
                 </div>
 
@@ -367,7 +367,7 @@
                 <a href="#" class="btn btn-default btn-block btn-back btn-self btn_settings_mail">Settings <span class="settings_warner">x</span></a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self btn_test_mail" id="open_test_mail">Send testmail</a>
                 <a href="#" class="btn btn-default btn-block btn-back btn-self btn_show_info" id="show_info">Info</a>
-                <button class="btn btn-default btn-block btn-back btn-self" id="setmetaboxes">Set meta-boxes</button>
+                <button class="btn btn-default btn-block btn-back btn-self visible-lg visible-md" id="setmetaboxes">Set meta-boxes</button>
                 <hr>
                 <form action="" method="post">
 
@@ -410,7 +410,7 @@
 
         </div>
 
-        <div class="col-sm-6 col-xs-6 visible-sm visible-xs templater_info">
+        <div class="col-sm-6 col-xs-12 visible-sm visible-xs templater_info">
             <div class="alert alert-warning">
                 <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
                 <strong>We are sorry, your device is too small!</strong>

@@ -114,13 +114,9 @@
         You can send it again or change the settings of this mail but can't edit the content.
     </div>
 
-    <div class="design_menu visible-md visible-sm visible-xs">
-        <span class="glyphicon glyphicon-picture"></span>
-    </div>
-
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 design_area" disabled>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 design_tools">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 design_tools">
 
 
 
@@ -199,7 +195,7 @@
             </div>
         </div>
 
-        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 templater view_mode">
+        <div class="col-lg-9 col-md-12 visible-lg visible-md templater view_mode">
 
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 edit_toolbar" id="toolbarLocation">
@@ -212,6 +208,16 @@
             </div>
 
 
+        </div>
+
+        <div class="col-sm-6 col-xs-12 visible-sm visible-xs templater_info">
+            <div class="alert alert-warning">
+                <!--<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+                <strong>We are sorry, your device is too small!</strong>
+                <br><br>
+                <i class="glyphicon glyphicon-thumbs-down" style="display:block; text-align: center; font-size:30px;"></i><br><br>
+                Please switch to a bigger screen. The mail needs a space from 720 pixels, so that's very much space.
+            </div>
         </div>
     </div>
 

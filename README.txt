@@ -21,3 +21,7 @@ endproject/backend/formulars
 
 Designtool
 endproject/backend/designs
+
+Zugangsdaten (Login):
+Uname: Presentation
+PW: schnappi33

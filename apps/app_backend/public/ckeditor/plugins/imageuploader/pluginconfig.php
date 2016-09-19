@@ -164,7 +164,7 @@ $usersiteroot = substr($_SERVER["SCRIPT_FILENAME"], 0, (stripos($_SERVER["SCRIPT
 $user_id = sessions::get("userid");
 $useruploadfolder = "/apps/app_backend/public/media/usermedia_" . $user_id;
 
-$browserfolder = str_replace("/backend/designs/edit/", "/apps/app_backend/public/", $browserfolder);
+//$browserfolder = str_replace("/backend/designs/edit/", "/apps/app_backend/public/", $browserfolder);
 
 
 $useruploadfolder1 = "$browserfolder/uploads";

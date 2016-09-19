@@ -1355,7 +1355,7 @@ FORMULARE
 
 .overlay_wrapper {
     display: none;
-    width: 500px;
+    width: 70%;
     height: 200px;
     background-color: #fff;
     padding: 10px;
@@ -1383,9 +1383,42 @@ FORMULARE
   color: #7b7b7b;
 }
 
+#overlay_wrapper_testmail,
+#overlay_wrapper_show_info {
+    height: 300px;
+    width: 50%;
+    text-align: left;
+}
+
+#overlay_wrapper_testmail h3,
+#overlay_wrapper_show_info h3{
+    text-align: center;
+    padding: 20px;
+}
+
+@media(max-width:900px) {
+    #overlay_wrapper_settings{
+        width: 70%!important;
+    }
+
+    #overlay_wrapper_testmail,
+    #overlay_wrapper_show_info{
+        height: 340px;
+        width: 70%;
+        text-align: left;
+    }
+
+}
+
+.templater_info {
+    margin-top: 20px;
+}
+
+
 #overlay_wrapper_settings {
   height: auto;
-  margin-top: calc(50vh - 300px);
+  margin-top: calc(50vh - 350px);
+    width: 50%;
 }
 
 .overlay_wrapper p {

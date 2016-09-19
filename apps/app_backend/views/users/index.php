@@ -100,7 +100,7 @@
                         }else{
                             ?>
                             <tr>
-                                <td colspan="4">No events created - Please <a href="myevents/newEvent">create</a> an event!</td>
+                                <td colspan="4">No events created - Please <a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>">create</a> an event!</td>
 
                             </tr>
                     <?php

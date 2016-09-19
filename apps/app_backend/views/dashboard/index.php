@@ -74,7 +74,7 @@
             <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: right">
-            <a href="myevents/newEvent" class="btn btn-default btn-lg btn-back btn-self">
+            <a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new Event
             </a>
@@ -99,7 +99,7 @@
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="alert alert-info">
-                <strong>Info</strong> You don't have any events. Please <strong><a href="myevents/newEvent">create</a></strong> a new event!
+                <strong>Info</strong> You don't have any events. Please <strong><a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>">create</a></strong> a new event!
             </div>
         </div>
 
@@ -202,7 +202,7 @@
         </div>
 
         <?php
-        if ($data['events'] != "noevents") {
+        if (!empty($running_events)) {
             ?>
 
 
@@ -257,7 +257,7 @@
 
 
                     <div class="statistic_button_footer">
-                        <a href="myevents/edit/<?php echo $event['id']; ?>"
+                        <a href="<?php echo APP_ROOT . 'backend/myevents/edit'. $event['id']; ?>"
                            class="btn btn-default btn-lg btn-back btn-self">
                             go to event
                         </a>
@@ -515,7 +515,7 @@
                     }
                     ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 statistic_button_footer">
-                        <a href="myevents/edit/<?php echo $event['id']; ?>"
+                        <a href="<?php echo APP_ROOT . 'backend/myevents/edit'. $event['id']; ?>"
                            class="btn btn-default btn-lg btn-back btn-self">
                             go to event
                         </a>
@@ -532,6 +532,10 @@
             ?>
             </div>
             <?php
+        }else{
+            ?>
+            <p>You don't have any running events, so we can't give you any statistics to your events! :(</p>
+    <?php
         }
     }
 ?>

@@ -21,7 +21,7 @@
             <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
-            <a href="<?php echo APP_ROOT . $url[0] . '/myevents/newEvent'?>" class="btn btn-default btn-lg btn-back btn-self">
+            <a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new Event
             </a>
@@ -353,7 +353,7 @@
                                  }else{
                                      ?>
                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 alert alert-info">
-                                         <strong>No Mails linked!</strong> Please <a href="designs/newDesign">create a new design.</a>
+                                         <strong>No Mails linked!</strong> Please <a href="<?php echo APP_ROOT . 'backend/designs/newDesign';?>">create a new design.</a>
                                      </div>
                                 <?php
                                  }

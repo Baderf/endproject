@@ -45,7 +45,7 @@
             <a href="<?php echo $_SERVER['REFERER'];?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
-            <a href="designs/newDesign" class="btn btn-default btn-lg btn-back btn-self">
+            <a href="<?php echo APP_ROOT . 'backend/designs/newDesign';?>" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new Design
             </a>
@@ -140,14 +140,14 @@
 
                                     <?php if ($mail['already_sent'] != "1") {
                                         ?>
-                                        <a href="designs/edit/<?php echo $mail['id']; ?>" class="btn btn-sm btn-info">edit</a>
+                                        <a href="<?php echo APP_ROOT . 'backend/designs/edit/' . $mail['id']; ?>" class="btn btn-sm btn-info">edit</a>
                                         <a href="<?php echo APP_ROOT . 'backend/myevents/send/' . $mail['id']; ?>"
                                            class="btn btn-sm btn-success">send</a>
                                         <?php
                                     } else {
                                         ?>
-                                        <a href="designs/view/<?php echo $mail['id']; ?>" class="btn btn-sm btn-info">view</a>
-                                        <a href="myevents/send/<?php echo $mail['id']; ?>"
+                                        <a href="<?php echo APP_ROOT . 'backend/designs/view/' . $mail['id']; ?>" class="btn btn-sm btn-info">view</a>
+                                        <a href="<?php echo APP_ROOT . 'backend/myevents/send/' . $mail['id']; ?>"
                                            class="btn btn-sm btn-success">send again</a>
                                         <?php
                                     } ?>
@@ -162,7 +162,7 @@
 
                         <tr>
                             <th scope="row" colspan="5"><span>You haven't created mails yet.</span>
-                        <span><a href="designs/newDesign" class="btn btn-default btn-lg btn-back btn-self">
+                        <span><a href="<?php echo APP_ROOT . 'backend/designs/newDesign';?>" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new Design
             </a></span>
@@ -182,7 +182,7 @@
             }else{
                 ?>
                 <div class="alert alert-info">
-                    <strong>Info</strong> You have no designs. Please <strong><a href="designs/newDesign">create</a></strong> a new design!
+                    <strong>Info</strong> You have no designs. Please <strong><a href="<?php echo APP_ROOT . 'backend/designs/newDesign';?>">create</a></strong> a new design!
                 </div>
             <?php
 

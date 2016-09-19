@@ -26,8 +26,8 @@ CKEDITOR.editorConfig = function( config ) {
 
             success: function (data) {
                 userfolderid = data;
-                config.filebrowserImageUploadUrl = "//apps/app_backend/public/media/usermedia_" + userfolderid;
-                config.filebrowserImageBrowseUrl = "//apps/app_backend/public/ckeditor/plugins/imageuploader/imgbrowser.php";
+                config.filebrowserImageUploadUrl = "http://baderflorian.at/backend/designs/edit/apps/app_backend/public/media/usermedia_" + userfolderid;
+                config.filebrowserImageBrowseUrl = "http://baderflorian.at/backend/designs/edit/apps/app_backend/public/ckeditor/plugins/imageuploader/imgbrowser.php";
 
 
                 var CKBUILDER_CONFIG = {

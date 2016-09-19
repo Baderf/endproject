@@ -45,7 +45,7 @@
             <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-default btn-lg btn-back btn-self">Back</a>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: right;">
-            <a href="myevents/newEvent" class="btn btn-default btn-lg btn-back btn-self">
+            <a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>" class="btn btn-default btn-lg btn-back btn-self">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Create new Event
             </a>
@@ -250,10 +250,10 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 event_btns">
                                 <div class="col-lg-12 col-xs-12 event_btn">
-                                    <a href="myevents/delete/<?php echo $event['id']; ?>" class="btn btn-block btn-default delete_event" data-event-id = "<?php echo $event['id']; ?>" data-user-id = "<?php echo sessions::get("userid"); ?>">delete <i class='fa fa-spinner fa-spin'></i></a>
+                                    <a href="<?php echo APP_ROOT . 'backend/myevents/delete/' . $event['id']; ?>" class="btn btn-block btn-default delete_event" data-event-id = "<?php echo $event['id']; ?>" data-user-id = "<?php echo sessions::get("userid"); ?>">delete <i class='fa fa-spinner fa-spin'></i></a>
                                 </div>
                                 <div class="col-lg-12 col-xs-12 event_btn">
-                                    <a href="myevents/edit/<?php echo $event['id']; ?>" class="btn btn-block btn-default spec_event_low">edit</a>
+                                    <a href="<?php echo APP_ROOT . 'backend/myevents/edit/' . $event['id']; ?>" class="btn btn-block btn-default spec_event_low">edit</a>
                                 </div>
                             </div>
 
@@ -267,7 +267,7 @@
             }elseif(!$data['events']){
                 ?>
                 <div class="alert alert-info">
-                    <strong>Info</strong> You no events. Please <strong><a href="myevents/newEvent">create</a></strong> a new event!
+                    <strong>Info</strong> You no events. Please <strong><a href="<?php echo APP_ROOT . 'backend/myevents/newEvent';?>">create</a></strong> a new event!
                 </div>
             <?php
             }?>

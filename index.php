@@ -8,6 +8,12 @@ require_once 'config/paths.php';
 $url = ( isset($_GET['url']) ) ? $_GET['url'] : null;
 $url = explode("/", $url);
 
+if($url[3] == "ckeditor"){
+    header("Location: http://www.baderflorian.at/backend/designs/edit/apps/app_backend/public/ckeditor/plugins/imageuploader/imgbrowser.php?CKEditor=editor2&CKEditorFuncNum=905&langCode=en");
+}elseif($url[0] == "apps"){
+    header("Location: http://www.baderflorian.at/apps/app_backend/public/ckeditor/plugins/imageuploader/imgbrowser.php?CKEditor=editor2&CKEditorFuncNum=905&langCode=en");
+}
+
 
 if( in_array($url[0], $apps) ){
     define("CURRENT_APP", array_search($url[0], $apps) . '/');
@@ -40,4 +46,6 @@ spl_autoload_register("autoloader::loadCore");
 sessions::init();
 
 $app = new bootstrap();
+
+
 

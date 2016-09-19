@@ -286,6 +286,12 @@ class designs_model extends model{
 
         if($sql -> num_rows > 0 && $sql ->num_rows < 7){
             $types = $sql -> fetch_all(MYSQLI_ASSOC);
+
+            if($types == NULL){
+                $types = array();
+            }
+        }else{
+            $types = array();
         }
 
         return json_encode($types);
